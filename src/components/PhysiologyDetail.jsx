@@ -43,6 +43,7 @@ const PhysiologyDetail = () => {
       </header>
 
       <div className="subtopics-list">
+        {console.log('Subtopics:', topic.subtopics)}
         {topic.subtopics.map((subtopic, index) => (
           <motion.div
             key={subtopic.id}

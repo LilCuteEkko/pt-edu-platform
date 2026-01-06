@@ -37,6 +37,72 @@ const iconMap = {
     'Pill': Pill
 };
 
+const PathologyCard = React.memo(({ pathology, index, onClick }) => {
+    const Icon = iconMap[pathology.icon] || Info;
+    const hasDetails = !!pathology.details;
+
+    return (
+        <motion.div
+            layout
+            className={`pathology-card ${hasDetails ? 'clickable' : ''}`}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ delay: index * 0.05 }}
+            whileHover={{ y: -5 }}
+            onClick={() => hasDetails && onClick(pathology)}
+        >
+            <div className="card-header">
+                <div className="header-left">
+                    <div className="icon-wrapper">
+                        <Icon size={24} />
+                    </div>
+                    <div className="header-text">
+                        {pathology.category && (
+                            <span className="category-kicker">{pathology.category}</span>
+                        )}
+                        <h3>{pathology.name}</h3>
+                        {pathology.acronym && <span className="acronym">{pathology.acronym}</span>}
+                    </div>
+                </div>
+            </div>
+
+            <div className="card-image-container">
+                {pathology.image ? (
+                    <img src={pathology.image} alt={pathology.name} className="card-image" loading="lazy" />
+                ) : (
+                    <div className="placeholder-image">
+                        <Icon size={48} strokeWidth={1.5} />
+                    </div>
+                )}
+            </div>
+
+            <p className="description">{pathology.description}</p>
+
+            <div className="key-features">
+                <h4>Key Features:</h4>
+                <ul>
+                    {pathology.keyFeatures.slice(0, 3).map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                    ))}
+                    {pathology.keyFeatures.length > 3 &&
+                        <li className="more-indicator">+{pathology.keyFeatures.length - 3} more...</li>
+                    }
+                </ul>
+            </div>
+
+            <div className="pt-intervention">
+                <h4>PT Intervention:</h4>
+                <p>{pathology.ptIntervention}</p>
+            </div>
+
+            {hasDetails && (
+                <div className="click-hint">Click for Deep Dive</div>
+            )}
+        </motion.div>
+    );
+});
+
 const PathologyGrid = ({ pathologies, categoryContent }) => {
     const [selectedPathology, setSelectedPathology] = useState(null);
     const [activeTab, setActiveTab] = useState('All');
@@ -47,9 +113,11 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
     const hasCategories = categories.length > 2;
 
     // Filter pathologies
-    const filteredPathologies = activeTab === 'All'
-        ? pathologies
-        : pathologies.filter(p => p.category === activeTab);
+    const filteredPathologies = React.useMemo(() => {
+        return activeTab === 'All'
+            ? pathologies
+            : pathologies.filter(p => p.category === activeTab);
+    }, [activeTab, pathologies]);
 
     // Get content for active category
     const activeContent = categoryContent && categoryContent[activeTab];
@@ -78,8 +146,8 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
             {/* Sub-Tabs for Active Category Content */}
             {activeContent && (
                 <div className="sub-tabs-container">
-                    {['Condition Cards', 'Anatomy', 'Special Tests', 'Function & ROM'].map(tab => (
-                        activeContent[tab === 'Condition Cards' ? 'pathologyInfo' : (tab === 'Function & ROM' ? 'function' : (tab === 'Special Tests' ? 'specialTests' : 'anatomy'))] || tab === 'Condition Cards' ? (
+                    {['Condition Cards', 'Anatomy', 'Special Tests', 'Red Flags', 'Function & ROM'].map(tab => (
+                        activeContent[tab === 'Condition Cards' ? 'pathologyInfo' : (tab === 'Function & ROM' ? 'function' : (tab === 'Special Tests' ? 'specialTests' : (tab === 'Red Flags' ? 'redFlags' : 'anatomy')))] || tab === 'Condition Cards' ? (
                             <button
                                 key={tab}
                                 className={`sub-tab-btn ${subTab === tab ? 'active' : ''}`}
@@ -101,62 +169,14 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                         exit={{ opacity: 0 }}
                         className="pathology-grid"
                     >
-                        {filteredPathologies.map((pathology, index) => {
-                            const Icon = iconMap[pathology.icon] || Info;
-                            const hasDetails = !!pathology.details;
-
-                            return (
-                                <motion.div
-                                    key={pathology.id}
-                                    layout
-                                    className={`pathology-card ${hasDetails ? 'clickable' : ''}`}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ delay: index * 0.05 }}
-                                    whileHover={{ y: -5 }}
-                                    onClick={() => hasDetails && setSelectedPathology(pathology)}
-                                >
-                                    <div className="card-header">
-                                        <div className="header-left">
-                                            <div className="icon-wrapper">
-                                                <Icon size={24} />
-                                            </div>
-                                            <div className="header-text">
-                                                <h3>{pathology.name}</h3>
-                                                {pathology.acronym && <span className="acronym">{pathology.acronym}</span>}
-                                            </div>
-                                        </div>
-                                        {pathology.category && (
-                                            <span className="category-tag">{pathology.category}</span>
-                                        )}
-                                    </div>
-
-                                    <p className="description">{pathology.description}</p>
-
-                                    <div className="key-features">
-                                        <h4>Key Features:</h4>
-                                        <ul>
-                                            {pathology.keyFeatures.slice(0, 3).map((feature, i) => (
-                                                <li key={i}>{feature}</li>
-                                            ))}
-                                            {pathology.keyFeatures.length > 3 &&
-                                                <li className="more-indicator">+{pathology.keyFeatures.length - 3} more...</li>
-                                            }
-                                        </ul>
-                                    </div>
-
-                                    <div className="pt-intervention">
-                                        <h4>PT Intervention:</h4>
-                                        <p>{pathology.ptIntervention}</p>
-                                    </div>
-
-                                    {hasDetails && (
-                                        <div className="click-hint">Click for Deep Dive</div>
-                                    )}
-                                </motion.div>
-                            );
-                        })}
+                        {filteredPathologies.map((pathology, index) => (
+                            <PathologyCard
+                                key={pathology.id}
+                                pathology={pathology}
+                                index={index}
+                                onClick={setSelectedPathology}
+                            />
+                        ))}
                     </motion.div>
                 )}
 
@@ -221,10 +241,48 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                                         <h4>{group.category}</h4>
                                         <ul>
                                             {group.tests.map(test => (
-                                                <li key={test.name}>
-                                                    <strong>{test.name}</strong>
-                                                    {test.purpose && <span className="test-purpose"> - {test.purpose}</span>}
-                                                    <div className="test-positive">Positive: {test.positive}</div>
+                                                <li key={test.name} className="special-test-item">
+                                                    <div className="test-header">
+                                                        <strong>{test.name}</strong>
+                                                        {test.purpose && <span className="test-purpose"> - {test.purpose}</span>}
+                                                    </div>
+                                                    {test.image && (
+                                                        <div className="test-image-container">
+                                                            <img src={test.image} alt={test.name} className="test-image" loading="lazy" />
+                                                        </div>
+                                                    )}
+                                                    <div className="test-technique"><strong>Technique:</strong> {test.technique}</div>
+                                                    <div className="test-positive"><strong>Positive:</strong> {test.positive}</div>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+
+                {subTab === 'Red Flags' && activeContent?.redFlags && (
+                    <motion.div
+                        key="redflags"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        className="category-detail-section red-flag-section"
+                    >
+                        <div className="detail-block">
+                            <h3 className="red-flag-header">
+                                <AlertTriangle size={20} /> Red Flags & Central Signs
+                            </h3>
+                            <div className="tests-grid">
+                                {activeContent.redFlags.map(group => (
+                                    <div key={group.category} className="test-group red-flag-group">
+                                        <h4>{group.category}</h4>
+                                        <ul>
+                                            {group.findings.map((finding, idx) => (
+                                                <li key={idx}>
+                                                    <strong>{finding.name}</strong>: {finding.description}
                                                 </li>
                                             ))}
                                         </ul>
@@ -413,11 +471,11 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                     background: var(--color-surface);
                     border: 1px solid color-mix(in srgb, var(--color-text), transparent 90%);
                     border-radius: var(--radius-lg);
-                    padding: 1.25rem; /* Reduced from 1.5rem */
+                    padding: 1.5rem;
                     box-shadow: var(--shadow-sm);
                     display: flex;
                     flex-direction: column;
-                    gap: 0.75rem; /* Reduced from 1rem */
+                    gap: 1rem;
                     transition: box-shadow 0.2s;
                     position: relative;
                 }
@@ -438,9 +496,16 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                 }
                 .header-left {
                     display: flex;
-                    align-items: center;
+                    align-items: flex-start; /* Changed from center to align with new column layout */
                     gap: 0.75rem;
                     flex: 1;
+                    min-width: 0; /* Important for text wrapping */
+                }
+                .header-text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.1rem;
+                    min-width: 0; /* Important for text wrapping */
                 }
                 .icon-wrapper {
                     background: var(--color-primary-light);
@@ -450,12 +515,16 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    margin-top: 0.2rem; /* Align icon visually with title block */
                 }
                 .header-text h3 {
                     margin: 0;
-                    font-size: 1.1rem;
-                    line-height: 1.2;
+                    font-size: 1.25rem;
+                    line-height: 1.3;
                     color: var(--color-text);
+                    min-height: 3.25rem;
+                    display: flex;
+                    align-items: center;
                 }
                 .acronym {
                     font-size: 0.8rem;
@@ -466,17 +535,58 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                     border-radius: 4px;
                     margin-top: 0.25rem;
                     display: inline-block;
+                    width: fit-content;
+                }
+                .category-kicker {
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: var(--color-primary);
+                    font-weight: 700;
+                }
+                .card-image-container {
+                    width: 100%;
+                    height: 180px;
+                    border-radius: var(--radius-md);
+                    overflow: hidden;
+                    border: 1px solid var(--color-border);
+                    background: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                }
+                .card-image {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+                .placeholder-image {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: color-mix(in srgb, var(--color-background), transparent 50%);
+                    color: var(--color-border);
                 }
                 .description {
-                    font-size: 0.9rem;
+                    font-size: 1rem;
                     color: var(--color-text-muted);
-                    line-height: 1.5;
+                    line-height: 1.6;
                     margin: 0;
+                    min-height: 4.8rem;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-align: justify;
                 }
                 .key-features {
                     background: color-mix(in srgb, var(--color-surface), var(--color-text) 3%);
                     padding: 1rem;
                     border-radius: var(--radius-md);
+                    flex-grow: 1;
                 }
                 .key-features h4 {
                     font-size: 0.85rem;
@@ -488,7 +598,7 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                 .key-features ul {
                     margin: 0;
                     padding-left: 1.2rem;
-                    font-size: 0.9rem;
+                    font-size: 0.95rem;
                     color: var(--color-text);
                 }
                 .key-features li {
@@ -514,20 +624,54 @@ const PathologyGrid = ({ pathologies, categoryContent }) => {
                 }
                 .pt-intervention p {
                     margin: 0;
-                    font-size: 0.9rem;
+                    font-size: 0.95rem;
                     color: var(--color-text);
                     font-weight: 500;
                 }
-                .category-tag {
-                    font-size: 0.7rem;
-                    background: var(--color-background);
-                    padding: 0.2rem 0.6rem;
-                    border-radius: 999px;
+                .red-flag-section {
+                    border-color: var(--color-danger);
+                    background: var(--color-danger-light);
+                }
+                .red-flag-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--color-danger) !important;
+                    border-bottom-color: var(--color-danger) !important;
+                }
+                .red-flag-group {
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-danger);
+                }
+                .red-flag-group h4 {
+                    color: var(--color-danger);
+                }
+                
+                .special-test-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .test-image-container {
+                    margin: 0.5rem 0;
+                    border-radius: var(--radius-md);
+                    overflow: hidden;
                     border: 1px solid var(--color-border);
-                    color: var(--color-text-muted);
-                    font-weight: 500;
-                    white-space: nowrap;
-                    flex-shrink: 0;
+                    background: white;
+                    display: flex;
+                    justify-content: center;
+                    padding: 0.5rem;
+                }
+                .test-image {
+                    max-width: 100%;
+                    height: auto;
+                    max-height: 200px;
+                    object-fit: contain;
+                }
+                .test-technique, .test-positive {
+                    font-size: 0.9rem;
+                    color: var(--color-text);
+                    line-height: 1.4;
                 }
             `}</style>
         </>

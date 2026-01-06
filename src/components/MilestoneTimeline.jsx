@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Baby, ArrowRight, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import MilestoneAnimator from './MilestoneAnimator';
 
 const MilestoneTimeline = ({ milestones }) => {
     const [selectedMilestone, setSelectedMilestone] = useState(milestones[0]);
@@ -40,18 +41,22 @@ const MilestoneTimeline = ({ milestones }) => {
                     className="milestone-content"
                 >
                     <div className="milestone-visual">
-                        <motion.img
-                            src={selectedMilestone.img}
-                            alt={selectedMilestone.title}
-                            initial={{ scale: 0.9 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                            onError={(e) => {
-                                console.error("Image failed to load:", selectedMilestone.img);
-                                e.target.style.display = 'none';
-                                e.target.parentElement.innerHTML = `<div style="text-align:center; color: #ef4444; padding: 2rem;">Item Image Not Found<br/><span style="font-size:0.8em; color:#666">${selectedMilestone.title}</span></div>`;
-                            }}
-                        />
+                        {selectedMilestone.animationId ? (
+                            <MilestoneAnimator milestoneId={selectedMilestone.animationId} />
+                        ) : (
+                            <motion.img
+                                src={selectedMilestone.img}
+                                alt={selectedMilestone.title}
+                                initial={{ scale: 0.9 }}
+                                animate={{ scale: 1 }}
+                                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                                onError={(e) => {
+                                    console.error("Image failed to load:", selectedMilestone.img);
+                                    e.target.style.display = 'none';
+                                    e.target.parentElement.style.display = 'none'; // Hide container if image fails
+                                }}
+                            />
+                        )}
                     </div>
 
                     <div className="milestone-text">
@@ -191,12 +196,16 @@ const MilestoneTimeline = ({ milestones }) => {
             border-radius: var(--radius-lg);
             padding: 2rem;
             border: 1px solid var(--color-border);
+            height: 400px; /* Explicit height for SVG scaling */
+            width: 100%;
+            overflow: hidden;
         }
         
         .milestone-visual img {
             max-width: 100%;
             height: auto;
-            max-height: 400px;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .milestone-text {

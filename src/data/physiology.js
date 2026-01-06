@@ -21,6 +21,27 @@ import babySittingImg from '../assets/pediatrics/baby_sitting.png';
 import babyCrawlingImg from '../assets/pediatrics/baby_crawling.png';
 import babyStandingImg from '../assets/pediatrics/baby_standing.png';
 import babyWalkingImg from '../assets/pediatrics/baby_walking.png';
+import cpGmfcsImg from '../assets/pediatrics/cp_gmfcs_schematic_1767711382942.png';
+import spinaBifidaImg from '../assets/pediatrics/spina_bifida_schematic_1767711400384.png';
+import gowersSignImg from '../assets/pediatrics/gowers_sign_schematic_1767711427577.png';
+import torticollisImg from '../assets/pediatrics/torticollis_schematic_1767711443571.png';
+
+// Condition Images
+import lcpdImg from '../assets/pediatrics/lcpd_schematic.png';
+import scfeImg from '../assets/pediatrics/scfe_schematic.png';
+import erbsImg from '../assets/pediatrics/erbs_palsy_schematic.png';
+import dsImg from '../assets/pediatrics/down_syndrome_schematic.png';
+import oiImg from '../assets/pediatrics/oi_schematic.png';
+import amcImg from '../assets/pediatrics/amc_schematic.png';
+
+// Special Tests Assets
+import barlowImg from '../assets/pediatrics/barlow_test.png';
+import ortolaniImg from '../assets/pediatrics/ortolani_test.png';
+import galeazziImg from '../assets/pediatrics/galeazzi_sign.png';
+import adamsTestImg from '../assets/pediatrics/adams_test.png';
+import thomasTestImg from '../assets/pediatrics/thomas_test.png';
+import thaTestImg from '../assets/pediatrics/thigh_foot_angle.png';
+
 import arterialUlcerImg from '../assets/wound-care/arterial_ulcer_icon_1767664793931.png';
 import venousUlcerImg from '../assets/wound-care/venous_ulcer_icon_1767664807273.png';
 import pressureStagingImg from '../assets/wound-care/pressure_injury_staging_1767664821212.png';
@@ -220,6 +241,8 @@ const kneeContent = {
         ]
     }
 };
+
+
 
 
 export const physiologyTopics = [
@@ -2278,389 +2301,225 @@ export const physiologyTopics = [
         icon: 'Heart',
         subtopics: [
             {
-                id: 'cardiac-cycle',
-                title: 'The Cardiac Cycle',
-                introduction: 'The sequence of mechanical and electrical events that repeat with every heartbeat. Includes Systole (Contraction) and Diastole (Relaxation).',
-                type: 'interactive-heart', // Enable visualizer
+                id: 'cardiac-anatomy',
+                title: 'Cardiac Anatomy & Cycle',
+                introduction: 'The pump (Heart) and its electrical drive.',
+                type: 'interactive-heart',
                 content: [
-                    'Atrial Systole: Atria contract, pushing final 20% of blood into ventricles ("Atrial Kick").',
-                    'Isovolumetric Contraction: Ventricles contract, AV valves close (S1 "Lub"), pressure rises but volume stays same.',
-                    'Rapid Ejection: Semilunar valves open, blood is ejected into Aorta/Pulmonary Artery.',
-                    'Isovolumetric Relaxation: Ventricles relax, Semilunar valves close (S2 "Dub").',
-                    'Rapid Filling: AV valves open, blood passively fills ventricles (80% of filling).'
+                    'Chambers: Right Heart (Venous return -> Lungs), Left Heart (Oxygenated -> Body).',
+                    'Valves: Tricuspid/Mitral (AV valves - S1 "Lub"), Pulmonic/Aortic (Semilunar - S2 "Dub").',
+                    'Systole: Contraction & Ejection (1/3 of cycle).',
+                    'Diastole: Relaxation & Filling (2/3 of cycle - Coronary perfusion occurs here).',
+                    'Conduction: SA Node (Pacemaker) -> AV Node (Delays signal) -> Bundle of His -> Purkinje Fibers.',
+                    'ECG Basics: P wave (atrial depol), QRS (ventricular depol), T wave (ventricular repol).'
                 ],
-                clinicalRelevance: 'Heart Failure (HFrEF): The heart cannot pump with enough force (systolic dysfunction), reducing Ejection Fraction (<40%).',
-                pathologyConnection: 'Aortic Stenosis: Narrowing of the aortic valve obstructs flow, causing a systolic murmur and hypertrophy.'
+                clinicalRelevance: 'Atrial Fibrillation loses "Atrial Kick" (20-30% of CO). Tachycardia shortens Diastole (risk of ischemia).',
+                pathologyConnection: 'Valve Stenosis (obstruction) vs Regurgitation (backflow) causes murmurs.'
             },
             {
-                id: 'conduction-system',
-                title: 'Electrical Conduction System',
-                introduction: 'The pathway of electrical signals that coordinate heart beats.',
+                id: 'hemodynamics',
+                title: 'Hemodynamics & Exercise',
+                introduction: 'Physics of blood flow, pressure regulation, and exercise adaptations.',
                 content: [
-                    'SA Node: The "Pacemaker" (60-100 bpm). Initiates impulse in right atrium.',
-                    'AV Node: Delays the signal (~0.1s) to allow atria to fully contract before ventricles.',
-                    'Bundle of His: Transmits signal to the ventricles.',
-                    'Purkinje Fibers: Rapidly distribute signal to ventricular walls for synchronized contraction.'
+                    'Cardiac Output (Q): HR x SV. Resting ~5L/min. Elite athletes have high SV, low HR.',
+                    'Blood Pressure: Q x TPR (Resistance). Regulated by Baroreceptors (short term) and Kidneys (long term).',
+                    'Oxyhemoglobin Curve: Shift Right (Bohr Effect) = Unloads O2 to tissues (Acidosis, Hyperthermia, CO2).',
+                    'A-VO2 Difference: Amount of O2 extracted by tissues. Increases with exercise.'
                 ],
-                clinicalRelevance: 'Arrhythmias: Atrial Fibrillation (chaotic atrial signals) or Heart Block (disrupted signal at AV node).',
-                pathologyConnection: 'Myocardial Infarction: Blockage of coronary arteries kills heart tissue, potentially disrupting these conduction pathways.'
+                clinicalRelevance: 'Valsalva Maneuver increases intrathoracic pressure, dropping venous return. Contraindicated in cardiac patients.'
+            },
+            {
+                id: 'pulmonary-mechanics',
+                title: 'Pulmonary Physiology',
+                introduction: 'Mechanics of breathing and gas exchange.',
+                content: [
+                    'Muscles of Inspiration: Diaphragm (Primary - C3,4,5), External Intercostals.',
+                    'Muscles of Expiration: Passive at rest. Abdominals/Internal Intercostals during forced expiration (Cough).',
+                    'Lung Volumes: Tidal Volume (TV - normal breath), Residual Volume (RV - air left after max exhale), Vital Capacity (VC - max exhale after max inhale).',
+                    'V/Q Mismatch: Ratio of Ventilation (V) to Perfusion (Q). Dead Space (V without Q), Shunt (Q without V).'
+                ],
+                clinicalRelevance: 'Paradoxical Breathing (abdomen moves in on inhale) indicates diaphragm fatigue or paralysis.'
             },
             {
                 id: 'cp-pathologies',
                 title: 'Cardiopulmonary Pathologies',
-                introduction: 'Common conditions affecting the heart and lungs that require specialized rehabilitation strategies.',
                 type: 'pathology-grid',
-                clinicalRelevance: 'Vital sign monitoring and understanding endurance limitations are paramount for safety.',
-                pathologyConnection: 'Includes Obstructive/Restrictive lung diseases and Cardiac pump dysfunction.',
+                introduction: 'Common conditions affecting the heart and lungs.',
                 pathologies: [
+                    // --- CARDIAC ---
                     {
-                        id: 'copd',
-                        name: 'Chronic Obstructive Pulmonary Disease',
-                        acronym: 'COPD',
-                        icon: 'Activity', // Using Activity (suggesting breath/endurance) as placeholder
-                        description: 'A group of lung diseases (Emphysema, Chronic Bronchitis) that block airflow and make it difficult to breathe.',
-                        keyFeatures: [
-                            'Dyspnea on exertion (DOE)',
-                            'Barrel Chest (Hyperinflation)',
-                            'Pursed-lip breathing (PLB) posture',
-                            'Chronic cough / Sputum production'
-                        ],
-                        ptIntervention: 'Energy conservation, Pursed-lip breathing, Aerobic endurance training, Thoracic mobility.',
-                        details: {
-                            overview: 'COPD is a chronic inflammatory lung disease that causes obstructed airflow from the lungs. It is typically caused by long-term exposure to irritating gases usually from cigarette smoke.',
-                            anatomy: [
-                                'Bronchioles: Inflammation and excess mucus (Chronic Bronchitis).',
-                                'Alveoli: Destruction of air sacs reduces surface area for gas exchange (Emphysema).',
-                                'Diaphragm: Flattened due to hyperinflation, making it mechanically less efficient.'
-                            ],
-                            physiology: [
-                                'Air Trapping: Loss of elastic recoil means air gets trapped in lungs during expiration.',
-                                'V/Q Mismatch: Poor ventilation leads to Hypoxemia (low O2) and Hypercapnia (high CO2).'
-                            ],
-                            stats: [
-                                { label: 'Prevalence', value: '3rd leading cause of death worldwide' },
-                                { label: 'Types', value: 'Blue Bloater (Bronchitis) vs Pink Puffer (Emphysema)' }
-                            ],
-                            medications: [
-                                { name: 'Bronchodilators', mechanism: 'Beta-agonists/Anticholinergics', effect: 'Opens airways (Albuterol, Spiriva).' },
-                                { name: 'Corticosteroids', mechanism: 'Anti-inflammatory', effect: 'Reduces swelling (Flovent).' }
-                            ],
-                            medicalInterventions: [
-                                'Oxygen Therapy: To maintain SaO2 > 88-90%.',
-                                'Lung Volume Reduction Surgery: Removing damaged tissue.'
-                            ],
-                            ptManagement: [
-                                { stage: 'Education', focus: 'Breathing: Teaching Pursed-Lip Breathing (PLB) and Diaphragmatic breathing.' },
-                                { stage: 'Exercise', focus: 'Endurance: Walking programs/cycling to improve aerobic capacity.' },
-                                { stage: 'Clearance', focus: 'Hygiene: ACBT (Active Cycle of Breathing) for secretion clearance.' }
-                            ]
-                        }
-                    },
-                    {
-                        id: 'hf',
-                        name: 'Heart Failure',
-                        acronym: 'CHF',
+                        id: 'cad', name: 'Coronary Artery Disease (CAD)', category: 'Cardiac',
                         icon: 'Heart',
-                        description: 'A chronic condition in which the heart doesn\'t pump blood as well as it should. Can be Left or Right sided.',
-                        keyFeatures: [
-                            'Dyspnea / Orthopnea (SOB lying flat)',
-                            'Peripheral Edema (Right sided)',
-                            'Fatigue / Weakness',
-                            'Weight gain (fluid retention)'
-                        ],
-                        ptIntervention: 'Monitoring vitals (daily weights), interval training, energy conservation. Watch for decompensation signs.',
+                        description: 'Atherosclerosis of coronary arteries leading to reduced blood supply to the heart muscle.',
+                        keyFeatures: ['Angina (Stable vs Unstable)', 'ST Depression (Ischemia)', 'Levine\'s Sign (Clenched fist to chest)'],
+                        ptIntervention: 'Aerobic conditioning (Below angina threshold), Risk factor determination.',
                         details: {
-                            overview: 'Heart Failure is a chronic, progressive condition in which the heart muscle is unable to pump enough blood to meet the body\'s needs for blood and oxygen.',
-                            anatomy: [
-                                'Left Ventricle: Hypertrophy (stiff) or Dilation (weak).',
-                                'Valves: Regurgitation often complicates the condition.',
-                                'Lungs: Left-sided failure causes backup into lungs (Pulmonary Edema).'
-                            ],
-                            physiology: [
-                                'Frank-Starling Law: Fails. Stretching the heart no longer increases contractility.',
-                                'RAAS Activation: Kidneys retain water/salt to boost pressure, worsening volume overload.'
-                            ],
-                            stats: [
-                                { label: 'Classifications', value: 'HFrEF (Systolic) vs HFpEF (Diastolic)' },
-                                { label: 'Hospitalization', value: '#1 cause for adults >65' }
-                            ],
-                            medications: [
-                                { name: 'ACE Inhibitors', mechanism: 'Vasodilator', effect: 'Reduces afterload (Lisinopril).' },
-                                { name: 'Beta Blockers', mechanism: 'Sympathetic blocker', effect: 'Reduces heart rate/workload (Metoprolol).' },
-                                { name: 'Diuretics', mechanism: 'Water pill', effect: 'Reduces fluid overload (Lasix).' }
-                            ],
-                            medicalInterventions: [
-                                'LVAD: Left Ventricular Assist Device (pump) for end-stage failure.',
-                                'AICD: Implantable defibrillator for arrhythmias.'
-                            ],
-                            ptManagement: [
-                                { stage: 'Monitoring', focus: 'Safety: Check weight daily (>2lbs/day is red flag). Monitor BP/HR.' },
-                                { stage: 'Activity', focus: 'Conditioning: Low-level aerobic intervals. Warm-up/Cool-down is critical.' },
-                                { stage: 'Education', focus: 'Lifestyle: Sodium restriction, fluid restriction.' }
-                            ]
+                            overview: 'CAD is the narrowing or blockage of the coronary arteries, usually caused by atherosclerosis. It is the major cause of myocardial infarction.',
+                            anatomy: ['LAD (Left Anterior Descending) - Supplies anterior LV.', 'RCA (Right Coronary Artery) - Supplies SA/AV nodes (arrhythmia risk).'],
+                            physiology: ['Demand Ischemia: O2 demand > O2 supply.', 'Stable Angina: Predictable pattern. Unstable Angina: Unpredictable/at rest (Red Flag).'],
+                            stats: [{ label: 'Prevalence', value: '#1 Killer in US' }, { label: 'Target', value: 'LDL < 100' }],
+                            medications: [{ name: 'Statins', effect: 'Lower cholesterol' }, { name: 'Nitroglycerin', effect: 'Vasodilation (acute angina)' }],
+                            ptManagement: [{ stage: 'Assessment', focus: 'Determine RPP (Rate Pressure Product).' }, { stage: 'Intervention', focus: 'Aerobic training 40-80% HRR. Warm-up essential.' }]
                         }
                     },
                     {
-                        id: 'mi',
-                        name: 'Myocardial Infarction',
-                        acronym: 'MI',
+                        id: 'mi', name: 'Myocardial Infarction (MI)', category: 'Cardiac',
                         icon: 'AlertTriangle',
-                        description: 'A heart attack. Blood flow to the heart muscle is abruptly cut off, causing tissue death.',
-                        keyFeatures: [
-                            'Chest pain/pressure (Angina)',
-                            'Radiating pain (Left arm, jaw)',
-                            'Shortness of breath (SOB)',
-                            'Diaphoresis (Sweating) / Nausea'
-                        ],
-                        ptIntervention: 'Cardiac Rehab (Phase I-III). Progressive mobilization, sternal precautions (if CABG), lifestyle modification.',
+                        description: 'Irreversible necrosis of heart tissue due to prolonged ischemia.',
+                        keyFeatures: ['STEMI (Elevated ST)', 'Elevated Troponin I/T', 'Crushing chest pain', 'Diaphoresis'],
+                        ptIntervention: 'Phase I Rehab (Inpatient): Early mob (1-2 METs), Sternal precautions (if CABG).',
                         details: {
-                            overview: 'A myocardial infarction (MI), commonly known as a heart attack, occurs when blood flow decreases or stops to a part of the heart, causing damage to the heart muscle.',
-                            anatomy: [
-                                'Coronary Arteries: LAD (Widowmaker), RCA, Circumflex.',
-                                'Myocardium: Tissue death leads to scar formation (non-contractile).'
-                            ],
-                            physiology: [
-                                'Atherosclerosis: Plaque rupture triggers clot formation.',
-                                'Ischemia vs Infarct: Ischemia is reversible (Angina), Infarct is permanent necrosis.'
-                            ],
-                            stats: [
-                                { label: 'Timing', value: 'Time is Muscle (90 min door-to-balloon goal)' },
-                                { label: 'Types', value: 'STEMI (Full thickness) vs NSTEMI' }
-                            ],
-                            medications: [
-                                { name: 'Nitroglycerin', mechanism: 'Vasodilator', effect: 'Relieves Angina.' },
-                                { name: 'Antiplatelets', mechanism: 'Clot prevention', effect: 'Aspirin/Brilinta.' },
-                                { name: 'Morphine', mechanism: 'Analgesic', effect: 'Pain and anxiety relief (MONA protocol).' }
-                            ],
-                            medicalInterventions: [
-                                'PCI (Stent): Percutaneous Coronary Intervention to open artery.',
-                                'CABG: Coronary Artery Bypass Graft (Open heart surgery).'
-                            ],
+                            overview: 'An MI ("heart attack") occurs when a coronary artery is completely occluded, causing cell death.',
+                            anatomy: ['Zone of Infarction (Dead)', 'Zone of Injury (Non-contractile)', 'Zone of Ischemia (Salvagable)'],
+                            physiology: ['Systolic Dysfunction: Loss of pump strength.', 'Diastolic Dysfunction: Stiffness/scarring.'],
+                            stats: [{ label: 'Golden Hour', value: 'Reperfusion window' }, { label: 'Complication', value: 'Arrhythmia/Sudden Death' }],
+                            medications: [{ name: 'Beta Blockers', effect: 'Reduce myocardial O2 demand' }, { name: 'Antiplatelets', effect: 'Prevent clots (Aspirin/Plavix)' }],
                             ptManagement: [
-                                { stage: 'Phase I (Inpatient)', focus: 'Mobility: METs 1-3. Ambulation, stairs, education on Sternal Precautions.' },
-                                { stage: 'Phase II (Outpatient)', focus: 'Conditioning: Monitored aerobic exercise (ECG), risk factor modification.' },
-                                { stage: 'Phase III', focus: 'Maintenance: Lifelong fitness independence.' }
-                            ]
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'pediatrics',
-        title: 'Pediatric Physical Therapy',
-        description: 'Management of congenital, developmental, and neuromuscular disorders in infants and children.',
-        icon: 'Baby',
-        subtopics: [
-            {
-                id: 'peds-pathologies',
-                title: 'Pediatric Pathologies',
-                introduction: 'Common congenital and developmental conditions requiring early intervention and long-term management.',
-                type: 'pathology-grid',
-                clinicalRelevance: 'Family-centered care and play-based therapy are essential for compliance and outcomes.',
-                pathologyConnection: 'Early intervention takes advantage of high neuroplasticity during development.',
-                pathologies: [
-                    {
-                        id: 'cp',
-                        name: 'Cerebral Palsy',
-                        acronym: 'CP',
-                        description: 'A group of non-progressive disorders of movement and posture caused by damage to the developing brain.',
-                        keyFeatures: [
-                            'Spastic (Motor Cortex), Dyskinetic (Basal Ganglia), or Ataxic (Cerebellum)',
-                            'Abnormal muscle tone (Hyper/Hypotonia)',
-                            'Persistence of primitive reflexes',
-                            'Gait abnormalities (e.g., Scissoring, Crouch gait)'
-                        ],
-                        ptIntervention: 'Spasticity management (stretching, positioning), strengthening, gait training, adaptive equipment, constraint-induced movement therapy (CIMT).',
-                        icon: 'Brain',
-                        details: {
-                            overview: 'Cerebral Palsy (CP) is the most common motor disability in childhood. It is a non-progressive permanent disorder of movement and posture.',
-                            anatomy: [
-                                'Periventricular Leukomalacia (PVL): White matter damage (common in preemies).',
-                                'Cerebral Dysgenesis: Abnormal brain development.',
-                                'Intracranial Hemorrhage (IVH): Bleeding in the brain.'
-                            ],
-                            physiology: [
-                                'Spasticity: Loss of inhibition leads to velocity-dependent resistance to stretch.',
-                                'Muscle Growth: Muscles grow slower than bone, leading to contractures.',
-                                'Co-contraction: Inability to isolate muscle activation.'
-                            ],
-                            stats: [
-                                { label: 'Prevalence', value: '1 in 323 children' },
-                                { label: 'GMFCS', value: 'Level I (Walks indep) to V (Total assist)' },
-                                { label: 'Types', value: 'Spastic (80%), Dyskinetic, Ataxic, Mixed' }
-                            ],
-                            medications: [
-                                { name: 'Botox', mechanism: 'Neuromuscular blocker', effect: 'Local spasticity relief (creates window for casting).' },
-                                { name: 'Baclofen', mechanism: 'GABA agonist', effect: 'Systemic spasticity management (Oral or Pump).' }
-                            ],
-                            medicalInterventions: [
-                                'SDR (Selective Dorsal Rhizotomy): Cutting sensory nerve rootlets to reduce spasticity.',
-                                'Orthopedic Surgery: Tendon lengthening (e.g., Achilles), Derotational osteotomy.'
-                            ],
-                            ptManagement: [
-                                { stage: 'Infancy', focus: 'Handling: Positioning, carrying, facilitating milestones.' },
-                                { stage: 'Childhood', focus: 'Function: Mobility aids (gait trainers), orthotics (AFOs), serial casting.' },
-                                { stage: 'Adolescence', focus: 'Independence: Community mobility, adaptive sports, transition planning.' }
+                                { stage: 'Phase I', focus: 'Vitals monitoring (HR rise < 20bpm). Sternal precautions.' },
+                                { stage: 'Phase II', focus: 'Outpatient monitored exercise (ECG).' },
+                                { stage: 'Phase III', focus: 'Life-long maintenance.' }
                             ]
                         }
                     },
                     {
-                        id: 'sb',
-                        name: 'Spina Bifida',
-                        acronym: 'SB',
-                        description: 'Neural tube defect where the spinal column doesnt close completely. Myelomeningocele is the most severe form.',
-                        keyFeatures: [
-                            'Motor/Sensory loss below lesion level',
-                            'Hydrocephalus (Arnold-Chiari II malformation)',
-                            'Neurogenic bladder/bowel',
-                            'Latex allergy is common'
-                        ],
-                        ptIntervention: 'Prescription of orthotics (AFOs, HKAFOs), wheelchair mobility, standing frames for bone density, skin care education.',
-                        icon: 'AlignJustify',
-                        details: {
-                            overview: 'Spina Bifida is a neural tube defect that occurs when the spine and spinal cord do not form properly. Myelomeningocele is the most severe type.',
-                            anatomy: [
-                                'Vertebral Arch: Fails to fuse (L5-S1 most common).',
-                                'Sac: Meninges and/or Spinal Cord protrude through the defect.',
-                                'Chiari II: Cerebellum pulled into spinal canal, obstructing CSF flow (Hydrocephalus).'
-                            ],
-                            physiology: [
-                                'Folic Acid: Deficiency in early pregnancy is specialized risk factor.',
-                                'Tethered Cord: Spinal cord scar tissue limits movement, causing progressive decline.'
-                            ],
-                            stats: [
-                                { label: 'Incidence', value: 'Reduced by folic acid fortification' },
-                                { label: 'Levels', value: 'Thoracic (Wheelchair) vs Lumbar/Sacral (Walking)' },
-                                { label: 'Shunt', value: 'VP Shunt required in >80% for hydrocephalus' }
-                            ],
-                            medications: [
-                                { name: 'Anticholinergics', mechanism: 'Bladder relaxant', effect: 'Manages neurogenic bladder (Oxybutynin).' }
-                            ],
-                            medicalInterventions: [
-                                'Fetal Surgery: Closing defect in utero (improves outcomes).',
-                                'Shunt Revision: Fixing blocked VP shunts (Watch for: vomiting, headache, lethargy).'
-                            ],
-                            ptManagement: [
-                                { stage: 'Infant', focus: 'Development: Standing frames (by age 1) for bone density/hip formation.' },
-                                { stage: 'School', focus: 'Mobility: Wheelchair skills vs Ambulation (RGOs/HKAFOs usually discarded for efficiency).' },
-                                { stage: 'Life', focus: 'Skin: Daily skin checks for pressure ulcers (insensate areas).' }
-                            ]
-                        }
-                    },
-                    {
-                        id: 'dmd',
-                        name: 'Duchenne Muscular Dystrophy',
-                        acronym: 'DMD',
-                        description: 'X-linked recessive genetic disorder causing progressive muscle degeneration and weakness due to lack of dystrophin.',
-                        keyFeatures: [
-                            'Gowers\' Sign (walking hands up legs to stand)',
-                            'Pseudohypertrophy of calves',
-                            'Proximal weakness > Distal',
-                            'Loss of ambulation by early teens'
-                        ],
-                        ptIntervention: 'Submaximal exercise (avoid eccentric fatigue), respiratory care, stretching to prevent contractures, mobility preservation.',
+                        id: 'chf', name: 'Congestive Heart Failure', category: 'Cardiac',
                         icon: 'Activity',
+                        description: 'Chronic inability of the heart to pump sufficient blood to meet metabolic needs.',
+                        keyFeatures: ['L-Sided: Dyspnea/Orthopnea/S3 Heart sound', 'R-Sided: Periph Edema/JVD/Weight gain'],
+                        ptIntervention: 'Energy conservation, Upright positioning, Monitoring weight gain (>3lbs/day).',
                         details: {
-                            overview: 'Duchenne Muscular Dystrophy (DMD) is a genetic disorder characterized by progressive muscle degeneration and weakness. It is caused by an absence of dystrophin, a protein that helps keep muscle cells intact.',
-                            anatomy: [
-                                'Target: Skeletal and Cardiac muscle.',
-                                'Damage: Cell membrane (sarcolemma) becomes fragile and leaks Ca2+.',
-                                'Fibrosis: Muscle tissue replaced by fat and scar tissue (Pseudohypertrophy).'
-                            ],
-                            physiology: [
-                                'Dystrophin: Structural protein linking cytoskeleton to extracellular matrix. Shock absorber function lost.',
-                                'Apoptosis: Muscle cells die and are not regenerated.'
-                            ],
-                            stats: [
-                                { label: 'Genetics', value: 'X-Linked Recessive (Affects Males)' },
-                                { label: 'Diagnosis', value: 'Age 3-5 (Gross motor delays)' },
-                                { label: 'Life Exp', value: '20s-30s (Respiratory/Cardiac failure)' }
-                            ],
-                            medications: [
-                                { name: 'Corticosteroids', mechanism: 'Prednisone/Deflazacort', effect: 'Slows decline (prolongs walking 2-3 yrs).' },
-                                { name: 'Exon Skipping', mechanism: 'Genetic modifier', effect: 'Converts DMD to milder Becker-like phenotype.' }
-                            ],
-                            medicalInterventions: [
-                                'Spinal Fusion: For severe scoliosis affecting lung function.',
-                                'Ventilation: CPAP/BiPAP at night as respiratory muscles weaken.'
-                            ],
-                            ptManagement: [
-                                { stage: 'Early', focus: 'Preservation: Submaximal activity (swimming). AVOID eccentrics (muscle damage).' },
-                                { stage: 'Ambulatory', focus: 'Stretching: Gastroc/TFL to prevent contractures. Night splints.' },
-                                { stage: 'Non-Ambulatory', focus: 'Respiratory: Cough assist, stacking breathing. Power mobility.' }
-                            ]
+                            overview: 'Heart failure is a progressive condition where the heart muscle is unable to pump enough blood due to weakness (Systolic) or stiffness (Diastolic).',
+                            anatomy: ['Left Ventricular Hypertrophy (LVH).', 'Dilation (enlarged chambers).'],
+                            physiology: ['Compensated: RAAS activation retains fluid to boost BP.', 'Decompensated: Fluid overload causes pulmonary edema.'],
+                            stats: [{ label: 'Classification', value: 'NYHA Class I-IV' }, { label: 'Marker', value: 'BNP (B-type Natriuretic Peptide)' }],
+                            medications: [{ name: 'Diuretics (Lasix)', effect: 'Fluid removal' }, { name: 'ACE Inhibitors', effect: 'Vasodilation/Remodeling prevention' }],
+                            ptManagement: [{ stage: 'Acute', focus: 'Upright posture, frequent rest.' }, { stage: 'Chronic', focus: 'Interval training, 6MWT assessment.' }]
                         }
                     },
                     {
-                        id: 'torticollis',
-                        name: 'Congenital Muscular Torticollis',
-                        acronym: 'CMT',
-                        description: 'Shortening of the Sternocleidomastoid (SCM) muscle, causing a lateral tilt and rotation of the head.',
-                        keyFeatures: [
-                            'Head tilted TO the tight side, rotated AWAY',
-                            'Plagiocephaly (flat head) often associated',
-                            'Palpable mass in SCM',
-                            'Decreased cervical ROM'
-                        ],
-                        ptIntervention: 'Passive stretching of SCM, strengthening of contralateral side, positioning, tummy time, helmet therapy if plagiocephaly persists.',
-                        icon: 'User',
+                        id: 'pad', name: 'Peripheral Artery Disease', category: 'Vascular',
+                        icon: 'Footprints', // Requires icon support, fallback to generic if needed
+                        description: 'Atherosclerosis of the lower extremities causing reduced blood flow.',
+                        keyFeatures: ['Intermittent Claudication (Pain with walking)', 'ABI < 0.90', 'Diminished pulses', 'Shiny/hairless skin'],
+                        ptIntervention: 'Walking program: Walk to claudication pain (3/4), rest until subsides, repeat.',
                         details: {
-                            overview: 'Congenital Muscular Torticollis (CMT) presents as a postural deformity detectable at or shortly after birth, characterized by a unilateral shortening of the SCM muscle.',
-                            anatomy: [
-                                'Muscle: Sternocleidomastoid (SCM).',
-                                'Action: SCM flexes/side-bends same side, rotates opposite.',
-                                'Presentation: Left Torticollis = Left Tilt + Right Rotation.'
-                            ],
-                            physiology: [
-                                'Etiology: Intrauterine crowding, breech presentation, or birth trauma.',
-                                'Fibrosis: Mass of fibrotic tissue may form in the muscle belly.'
-                            ],
-                            stats: [
-                                { label: 'Incidence', value: '3rd most common newborn concern' },
-                                { label: 'Association', value: 'Hip Dysplasia (refer for US)' },
-                                { label: 'Plagiocephaly', value: '>80% have cranial asymmetry' }
-                            ],
-                            medications: [
-                                { name: 'None', mechanism: 'N/A', effect: 'Primarily mechanical/conservative mgmt.' }
-                            ],
-                            medicalInterventions: [
-                                'Surgery: SCM release (rare, only if conservative fails >1 yr).'
-                            ],
-                            ptManagement: [
-                                { stage: 'Stretching', focus: 'Protocol: 90% success if started <6 mo. Frequent gentle stretches.' },
-                                { stage: 'Positioning', focus: 'Environment: Toy placement to encourage looking to non-preferred side.' },
-                                { stage: 'Tummy Time', focus: 'Strength: Cervical extension and shoulder stability.' }
-                            ]
+                            overview: 'PAD is arterial insufficiency in the limbs. It is a strong predictor of concomitant CAD.',
+                            anatomy: ['Femoral Artery', 'Popliteal Artery', 'Dorsalis Pedis (Pulse check)'],
+                            physiology: ['Supply vs Demand mismatch in leg muscles.', 'Critical Limb Ischemia: Pain at rest (Advanced).'],
+                            stats: [{ label: 'ABI Normal', value: '1.0 - 1.4' }, { label: 'Severe', value: 'ABI < 0.5' }],
+                            medications: [{ name: 'Cilostazol', effect: 'Vasodilator/Antiplatelet' }, { name: 'Statins', effect: 'Plaque stabilization' }],
+                            ptManagement: [{ stage: 'Claudication', focus: 'Walk-Rest-Walk regimen (Angiogenesis).' }, { stage: 'Wound Care', focus: 'Protect feet/inspection.' }]
+                        }
+                    },
+                    {
+                        id: 'dvt', name: 'DVT & Pulmonary Embolism', category: 'Vascular',
+                        icon: 'AlertTriangle',
+                        description: 'Venous thrombosis with risk of dislodging to lungs (PE).',
+                        keyFeatures: ['Unilateral calf swelling', 'Redness/Warmth', 'Wells Score criteria', 'Shortness of breath (PE)'],
+                        ptIntervention: 'Prevention (Ankle pumps). Once anticoagulated: Early ambulation is SAFE (does not dislodge clot).',
+                        details: {
+                            overview: 'Deep Vein Thrombosis is a clot in deep veins. Pulmonary Embolism is when it travels to lungs (Medical Emergency).',
+                            anatomy: ['Deep Veins: Iliac, Femoral, Popliteal, Tibial.', 'Lungs: Pulmonary Artery blockage.'],
+                            physiology: ['Virchow\'s Triad: Stasis, Endothelial Injury, Hypercoagulability.'],
+                            stats: [{ label: 'Wells Score', value: '>2 = High Probability' }, { label: 'PE Risk', value: 'High Mortality without Tx' }],
+                            medications: [{ name: 'Heparin/Lovenox', effect: 'Rapid anticoagulation' }, { name: 'Warfarin/Eliquis', effect: 'Long term Maintenance' }],
+                            ptManagement: [{ stage: 'Prevention', focus: 'Compression stockings, mobility.' }, { stage: 'Acute DVT', focus: 'Mobilize AFTER anticoagulation started.' }]
+                        }
+                    },
+
+                    // --- PULMONARY ---
+                    {
+                        id: 'copd', name: 'COPD', category: 'Pulmonary',
+                        icon: 'Wind',
+                        description: 'Group of diseases (Emphysema/Chronic Bronchitis) blocking airflow.',
+                        keyFeatures: ['Barrel Chest', 'Pursed Lip Breathing', 'Digital Clubbing', 'Respiratory Acidosis'],
+                        ptIntervention: 'Pursed Lip Breathing (PLB), Tripod position, Energy conservation.',
+                        details: {
+                            overview: 'COPD is characterized by irreversible airflow limitation.',
+                            anatomy: ['Emphysema: Alveolar wall destruction (Pink Puffer).', 'Chronic Bronchitis: Mucus/Inflammation (Blue Bloater).'],
+                            physiology: ['Air Trapping: Increased Residual Volume (RV).', 'Hypoxic Drive: Dependent on low O2 (use caution with O2 therapy).'],
+                            stats: [{ label: 'FEV1/FVC', value: '< 0.70 (Diagnostic)' }, { label: 'O2 Sat', value: '88-92% Target' }],
+                            medications: [{ name: 'Bronchodilators', effect: 'Albuterol/Spiriva' }, { name: 'Steroids', effect: 'Anti-inflammatory' }],
+                            ptManagement: [{ stage: 'Tech', focus: 'Pursed Lip Breathing (provides internal PEEP).' }, { stage: 'Exercise', focus: 'Interval training to improve skeletal muscle usage.' }]
+                        }
+                    },
+                    {
+                        id: 'restrictive', name: 'Restrictive Lung Disease', category: 'Pulmonary',
+                        icon: 'Wind',
+                        description: 'Conditions preventing full lung expansion (e.g., Pulmonary Fibrosis, Scoliosis).',
+                        keyFeatures: ['Rapid Shallow Breathing', 'Dry Cough', 'Decreased Lung Volumes (TLC)', 'Cyanosis'],
+                        ptIntervention: 'Deep breathing (Diaphragmatic), Thoracic mobilization/stretching.',
+                        details: {
+                            overview: 'Restrictive diseases involve stiffness of the lung parenchyma or chest wall issues.',
+                            anatomy: ['Interstitial Fibrosis (Scarring).', 'Chest Wall: Scoliosis, Obesity, Ankylosing Spondylitis.'],
+                            physiology: ['Decreased Compliance (Stiff lungs).', 'Work of breathing is increased.'],
+                            stats: [{ label: 'FVC', value: 'Reduced' }, { label: 'FEV1/FVC', value: 'Normal or High' }],
+                            medications: [{ name: 'Anti-fibrotics', effect: 'Slow progression (IPF)' }, { name: 'O2', effect: 'Supportive' }],
+                            ptManagement: [{ stage: 'Focus', focus: 'Chest expansion exercises, Posture correction.' }, { stage: 'Outcome', focus: 'Maximize functional independence.' }]
+                        }
+                    },
+                    {
+                        id: 'pneumonia', name: 'Pneumonia', category: 'Pulmonary',
+                        icon: 'Activity',
+                        description: 'Infection causing inflammation and fluid in alveoli.',
+                        keyFeatures: ['Productive Cough (Green/Rusty)', 'Fever/Chills', 'Crackles/Rales', 'Tachycardia'],
+                        ptIntervention: 'Airway clearance (Percussion/Vibration - if no abscess), Early mobilization.',
+                        details: {
+                            overview: 'Inflammatory condition of the lung primarily affecting alveoli filled with fluid or pus.',
+                            anatomy: ['Lobar (one lobe) vs Bronchopneumonia (patchy).', 'Aspiration: Usually R Middle/Lower lobe.'],
+                            physiology: ['V/Q Shunt: Perfusion without ventilation (Hypoxemia).', 'Consolidation on X-ray.'],
+                            stats: [{ label: 'Type', value: 'Community Acquired vs Hospital' }, { label: 'Prevention', value: 'Vaccination/Mobility' }],
+                            medications: [{ name: 'Antibiotics', effect: 'Bacterial' }, { name: 'Expectorants', effect: 'Thin mucus' }],
+                            ptManagement: [{ stage: 'Acute', focus: 'Deep breathing (Incentive Spirometry).' }, { stage: 'Drainage', focus: 'Postural drainage positions.' }]
+                        }
+                    },
+                    {
+                        id: 'cf', name: 'Cystic Fibrosis', category: 'Pulmonary',
+                        icon: 'Activity',
+                        description: 'Genetic disorder affecting exocrine glands (thick mucus in lungs/pancreas).',
+                        keyFeatures: ['Salty skin', 'Frequent infections', 'Failure to thrive', 'Positive Sweat Test'],
+                        ptIntervention: 'Vigorous Airway Clearance (Vest, percussion), High intensity aerobic exercise.',
+                        details: {
+                            overview: 'CF is an autosomal recessive disorder mutating the CFTR protein, leading to thick, sticky mucus.',
+                            anatomy: ['Lungs: Bronchiectasis (dilated airways).', 'Pancreas: Enzyme deficiency.'],
+                            physiology: ['Mucus plugging -> Infection -> Scarring.', 'Malabsorption of nutrients.'],
+                            stats: [{ label: 'Life Exp', value: 'Rising (~40-50s)' }, { label: 'Genetics', value: 'CFTR Mut' }],
+                            medications: [{ name: 'Mucolytics', effect: 'Pulmozyme' }, { name: 'CFTR Modulators', effect: 'Trikafta (Game changer)' }],
+                            ptManagement: [{ stage: 'Daily', focus: 'Airway Clearance Techniques (ACTs) mandatory.' }, { stage: 'Exercise', focus: 'Sports participation encouraged.' }]
+                        }
+                    },
+                    {
+                        id: 'asthma', name: 'Asthma', category: 'Pulmonary',
+                        icon: 'Wind',
+                        description: 'Chronic inflammatory airway disease with reversible obstruction.',
+                        keyFeatures: ['Wheezing (Expiratory)', 'Chest tightness', 'Dyspnea', 'Night symptoms'],
+                        ptIntervention: 'Education on triggers, Warm-up/Cool-down (prevent EIB), Breathing control.',
+                        details: {
+                            overview: 'Asthma involves airway hyper-responsiveness to triggers (allergens, cold air, exercise).',
+                            anatomy: ['Bronchial smooth muscle constriction.', 'Mucosal edema.'],
+                            physiology: ['Reversible Obstruction: Improves with bronchodilator.', 'Status Asthmaticus: Emergency (unrelenting).'],
+                            stats: [{ label: 'Triggers', value: 'Exercise, Cold, Allergens' }, { label: 'Sounds', value: 'Wheezing' }],
+                            medications: [{ name: 'Rescue Inhaler', effect: 'SABA (Albuterol)' }, { name: 'Controller', effect: 'ICS (Steroids)' }],
+                            ptManagement: [{ stage: 'EIB', focus: 'Exercise Induced Bronchospasm prevention.' }, { stage: 'Attack', focus: 'Upright, PLB, Inhaler use.' }]
                         }
                     }
                 ]
             },
             {
-                id: 'developmental-milestones',
-                title: 'Developmental Milestones',
-                introduction: 'Key gross motor skills acquired during the first year of life.',
-                type: 'milestone-tracker',
-                content: [], // Handled by component
-                milestones: [
-                    { age: '2-3 Months', skill: 'Prone on Elbows', description: 'Lifts head 90°, takes weight on forearms.' },
-                    { age: '4-5 Months', skill: 'Rolling', description: 'Rolls prone to supine, then supine to prone. Feet to mouth.' },
-                    { age: '6-7 Months', skill: 'Independent Sitting', description: 'Sits without support, protective extension forward.' },
-                    { age: '8-9 Months', skill: 'Creeping & Crawling', description: 'Quadruped position, pulls to stand.' },
-                    { age: '10-11 Months', skill: 'Cruising', description: 'Walks holding onto furniture. Stands independently.' },
-                    { age: '12-15 Months', skill: 'Independent Walking', description: 'Walks without support, creeps up stairs.' }
+                id: 'pt-management',
+                title: 'PT Management & Interventions',
+                introduction: 'Specific techniques for cardiopulmonary rehabilitation.',
+                content: [
+                    'Pursed Lip Breathing (PLB): Increases back-pressure to keep airways open (good for COPD).',
+                    'Diaphragmatic Breathing: Reduces accessory muscle use and work of breathing.',
+                    'Postural Drainage: Using gravity to drain secretions. (e.g., Prone for posterior segments, Trendelenburg for lower lobes).',
+                    'Auscultation Sounds: Wheezes (Asthma/COPD), Crackles/Rales (Fluid/Pneumonia/CHF), Stridor (Upper airway obstruction).'
                 ],
-                reflexes: [
-                    { name: 'Moro', stimulus: 'Sudden head drop', response: 'Arms abduct/extend then adduct', age: '0-4 mo' },
-                    { name: 'ATNR', stimulus: 'Head turn to side', response: 'Face side extend, Skull side flex ("Fencer")', age: '0-6 mo' },
-                    { name: 'STNR', stimulus: 'Neck flexion/extension', response: 'Flex: Arms flex/Legs extend. Ext: Arms ext/Legs flex', age: '6-8 mo' },
-                    { name: 'Palmar Grasp', stimulus: 'Pressure on palm', response: 'Finger flexion', age: '0-4 mo' },
-                    { name: 'Plantar Grasp', stimulus: 'Pressure on ball of foot', response: 'Toe flexion', age: '0-9 mo' }
-                ]
+                clinicalRelevance: 'Stop exercise if: Angina, Lightheadedness, Cyanosis, or abnormal BP response (drop in SBP >10mmHg).'
             }
         ]
     },
+
     {
         id: 'pharmacology',
         title: 'Pharmacology for PT',
@@ -2704,6 +2563,62 @@ export const physiologyTopics = [
                 type: 'pathology-grid',
                 clinicalRelevance: 'Differentiating between peripheral (BPPV, Neuritis) and central (Stroke, TBI) causes is the first priority in assessment (HINTS exam).',
                 pathologyConnection: 'Vertigo is a symptom, not a diagnosis. Treatment relies on finding the mechanical or physiological root.',
+                categoryContent: {
+                    'All': {
+                        pathologyInfo: true,
+                        specialTests: [
+                            {
+                                category: 'Oculomotor / VOMs',
+                                tests: [
+                                    { name: 'Smooth Pursuit', purpose: 'Central Vestibular', positive: 'Saccadic (jerky) tracking' },
+                                    { name: 'Saccades', purpose: 'Central Vestibular', positive: 'Overshooting (hypermetria) or undershooting' },
+                                    { name: 'Convergence', purpose: 'Central / Concussion', positive: 'Near Point Convergence > 6cm' },
+                                    { name: 'VOR Cancellation', purpose: 'Cerebellar function', positive: 'Saccades (inability to suppress VOR)' }
+                                ]
+                            },
+                            {
+                                category: 'VOR Function',
+                                tests: [
+                                    { name: 'Head Impulse Test (HIT)', purpose: 'Peripheral Hypofunction', positive: 'Corrective Saccade (refixation)' },
+                                    { name: 'Dynamic Visual Acuity (DVA)', purpose: 'Vestibular function during motion', positive: 'Loss of >2 lines on eye chart' },
+                                    { name: 'Head Shake Nystagmus', purpose: 'Asymmetric Vestibular Input', positive: '>3 beats of nystagmus' }
+                                ]
+                            },
+                            {
+                                category: 'Positional Testing',
+                                tests: [
+                                    { name: 'Dix-Hallpike', purpose: 'PC/AC BPPV', positive: 'Vertigo + Torsional/Upbeating Nystagmus' },
+                                    { name: 'Supine Roll Test', purpose: 'Horizontal Canal BPPV', positive: 'Vertigo + Geotropic/Apogeotropic Nystagmus' }
+                                ]
+                            },
+                            {
+                                category: 'Spinal / Balance',
+                                tests: [
+                                    { name: 'Fukuda Step Test', purpose: 'Peripheral asymmetry', positive: 'Rotation >30 degrees' },
+                                    { name: 'Romberg (Sharpened)', purpose: 'Somatosensory/Vestibular', positive: 'Sway or falls (Eyes Closed)' }
+                                ]
+                            }
+                        ],
+                        redFlags: [
+                            {
+                                category: 'HINTS Exam (Acute Vestibular Syndrome)',
+                                findings: [
+                                    { name: 'HI (Head Impulse)', description: 'Normal Head Impulse Test (in acute vertigo means Central/Stroke).' },
+                                    { name: 'N (Nystagmus)', description: 'Direction-Changing Nystagmus (e.g., Left looking Left, Right looking Right).' },
+                                    { name: 'TS (Test of Skew)', description: 'Vertical Skew Deviation (eye misalignment).' }
+                                ]
+                            },
+                            {
+                                category: 'Central Signs',
+                                findings: [
+                                    { name: 'The 4 D\'s', description: 'Diplopia, Dysphagia, Dysarthria, Dysmetria.' },
+                                    { name: 'Vertical Nystagmus', description: 'Pure vertical nystagmus (without torsion) is always Central.' },
+                                    { name: 'Ataxia', description: 'Inability to stand or walk (Peripheral vertigo patients can usually walk).' }
+                                ]
+                            }
+                        ]
+                    }
+                },
                 pathologies: [
                     {
                         id: 'bppv',
@@ -3039,6 +2954,7 @@ export const physiologyTopics = [
                         title: 'Prone Head Lift',
                         desc: 'Lifts head 45-90 degrees. Prop on forearms.',
                         img: babyProneImg,
+                        animationId: 'prone',
                         keyPoints: ['Strengthens neck extensors', 'Visual tracking']
                     },
                     {
@@ -3046,6 +2962,7 @@ export const physiologyTopics = [
                         title: 'Rolling Over',
                         desc: 'Rolls prone to supine (first), then supine to prone.',
                         img: babyRollingImg,
+                        animationId: 'rolling',
                         keyPoints: ['Dissociation of head/limbs', 'Core activation']
                     },
                     {
@@ -3053,6 +2970,7 @@ export const physiologyTopics = [
                         title: 'Independent Sitting',
                         desc: 'Sits without support. Hands free for play.',
                         img: babySittingImg,
+                        animationId: 'sitting',
                         keyPoints: ['Righting reactions', 'Protective extension']
                     },
                     {
@@ -3060,6 +2978,7 @@ export const physiologyTopics = [
                         title: 'Crawling & Creeping',
                         desc: 'Quadruped movement. Reciprocal pattern.',
                         img: babyCrawlingImg,
+                        animationId: 'crawling',
                         keyPoints: ['Shoulder stability', 'Cross-lateral coordination']
                     },
                     {
@@ -3067,6 +2986,7 @@ export const physiologyTopics = [
                         title: 'Pull to Stand & Cruising',
                         desc: 'Pulls up on furniture. Walks sideways holding on.',
                         img: babyStandingImg,
+                        animationId: 'standing',
                         keyPoints: ['Weight shifting', 'Eccentric quadriceps control']
                     },
                     {
@@ -3074,6 +2994,7 @@ export const physiologyTopics = [
                         title: 'Independent Walking',
                         desc: 'Unassisted ambulation. High guard position initially.',
                         img: babyWalkingImg,
+                        animationId: 'walking',
                         keyPoints: ['Wide base of support', 'Lumbar lordosis development']
                     }
                 ]
@@ -3083,13 +3004,498 @@ export const physiologyTopics = [
                 title: 'Primitive Reflexes',
                 introduction: 'Involuntary motor responses originating in the brainstem. Integration is essential for voluntary movement.',
                 content: [
-                    'Rooting (0-3 mo): Head turn to touch on cheek.',
-                    'Moro (0-4 mo): Extension/Abduction then Flexion/Adduction to sudden drop.',
-                    'ATNR (0-6 mo): "Fencer pose" with head turn.',
-                    'STNR (6-8 mo): Flexion of head flexes arms/extends legs.',
-                    'Palmar Grasp (0-4 mo): Finger flexion to palm pressure.'
+                    'Rooting (0-3 mo): Head turn to touch on cheek. Relevance: Feeding. Absence = CNS depression.',
+                    'Moro (0-4 mo): Extension/Abduction then Flexion/Adduction. Relevance: Asymmetry = Brachial plexus injury/Clavicle fx.',
+                    'ATNR (0-6 mo): "Fencer pose". Relevance: Persistence prevents rolling and bilateral hand use.',
+                    'STNR (6-8 mo): Flexion of head flexes arms/extends legs. Relevance: Persistence prevents crawling.',
+                    'Palmar Grasp (0-4 mo): Finger flexion. Relevance: Persistence prevents voluntary release.'
+                ],
+                reflexes: [
+                    {
+                        name: 'Moro Reflex',
+                        trigger: 'Sudden backward head drop',
+                        response: 'Abduction/Extension of arms followed by flexion',
+                        integration: '4-6 months',
+                        relevance: 'Absence: CNS depression/injury. Asymmetry: Brachial plexus injury (Erbs) or Clavicle fx. Persistence: Delays head control & sitting balance.'
+                    },
+                    {
+                        name: 'ATNR',
+                        trigger: 'Head turned to side',
+                        response: 'Face side extends, Skull side flexes ("Fencing")',
+                        integration: '4-6 months',
+                        relevance: 'Persistence: Prevents rolling, bringing hands to midline, and hand-mouth activities. May lead to scoliosis or hip subluxation.'
+                    },
+                    {
+                        name: 'STNR',
+                        trigger: 'Neck flexion/extension',
+                        response: 'Flex: Arms flex/Legs extend. Ext: Arms ext/Legs flex',
+                        integration: '8-12 months',
+                        relevance: 'Persistence: Interferes with reciprocating crawling (bunny hopping instead) and sitting balance. Difficulty with visual tracking.'
+                    },
+                    {
+                        name: 'Palmar Grasp',
+                        trigger: 'Pressure on palm',
+                        response: 'Finger flexion',
+                        integration: '4-6 months',
+                        relevance: 'Persistence: Prevents voluntary grasp/release, weight bearing on open hand (crawling), and protective extension.'
+                    },
+                    {
+                        name: 'Plantar Grasp',
+                        trigger: 'Pressure on sole of foot',
+                        response: 'Toe flexion',
+                        integration: '9 months',
+                        relevance: 'Persistence: Interferes with standing balance, walking (toe curling), and putting on shoes.'
+                    },
+                    {
+                        name: 'Landau',
+                        trigger: 'Suspension in prone',
+                        response: 'Complete extension of head, trunk, and extremities',
+                        integration: '12-24 months',
+                        relevance: 'Absence: Hypotonia or mental retardation. "Breaks" flexion dominance for posture.'
+                    },
+                    {
+                        name: 'Galant',
+                        trigger: 'Stroke paravertebral skin',
+                        response: 'Lateral trunk flexion to stimulus side',
+                        integration: '2-4 months',
+                        relevance: 'Persistence: Scoliosis screening active. Interferes with sitting balance and can cause restlessness (waistband sensitivity).'
+                    }
+                ]
+            },
+            {
+                id: 'pediatric-pathologies',
+                title: 'Pediatric Conditions',
+                introduction: 'Common pediatric pathologies affecting the neuromuscular and musculoskeletal systems.',
+                type: 'pathology-grid',
+                categoryContent: {
+                    'All': {
+                        pathologyInfo: true,
+                        specialTests: [
+                            {
+                                category: 'Hip Dysplasia (DDH)',
+                                tests: [
+                                    {
+                                        name: 'Barlow Maneuver',
+                                        purpose: 'Test for unstable hip - Ability to dislocate.',
+                                        positive: 'Palpable "clunk" as femoral head exits acetabulum.',
+                                        technique: 'Adduct hip while applying posterior force.'
+                                    },
+                                    {
+                                        name: 'Ortolani Maneuver',
+                                        purpose: 'Test for hip dislocation - Ability to reduce.',
+                                        positive: 'Palpable "clunk" as femoral head reduces back into acetabulum.',
+                                        technique: 'Abduct hip while lifting greater trochanter anteriorly.'
+                                    },
+                                    {
+                                        name: 'Galeazzi Sign',
+                                        purpose: 'Assess for leg length discrepancy (LLD).',
+                                        positive: 'One knee lower than other in hook-lying.',
+                                        technique: 'Child supine, knees flexed 90°, feet flat.'
+                                    }
+                                ]
+                            },
+                            {
+                                category: 'Scoliosis',
+                                tests: [
+                                    {
+                                        name: 'Adams Forward Bend Test',
+                                        purpose: 'Screening for structural scoliosis.',
+                                        positive: 'Rib hump on one side (thoracic rotation).',
+                                        technique: 'Child bends forward at waist, knees straight.'
+                                    }
+                                ]
+                            }
+                        ],
+                        redFlags: [
+                            {
+                                category: 'Neurologic Signs',
+                                findings: [
+                                    { name: 'Shunt Dysfunction', description: 'Vomiting, headache, irritability, "sunset eyes".' },
+                                    { name: 'Tethered Cord', description: 'Changes in bowel/bladder, back pain, gait changes.' }
+                                ]
+                            },
+                            {
+                                category: 'Orthopedic',
+                                findings: [
+                                    { name: 'Atlantoaxial Instability', description: 'Down syndrome risk. Neck pain, torticollis, hyperreflexia.' }
+                                ]
+                            }
+                        ]
+                    },
+                    'Neuromuscular': { pathologyInfo: true },
+                    'Musculoskeletal': { pathologyInfo: true },
+                    'Genetic': { pathologyInfo: true }
+                },
+                pathologies: [
+                    {
+                        id: 'cp',
+                        name: 'Cerebral Palsy',
+                        acronym: 'CP',
+                        category: 'Neuromuscular',
+                        icon: 'Brain',
+                        image: cpGmfcsImg,
+                        description: 'A group of non-progressive disorders of movement and posture caused by damage to the developing brain.',
+                        keyFeatures: [
+                            'Spastic (Motor Cortex), Dyskinetic (Basal Ganglia), or Ataxic (Cerebellum)',
+                            'Abnormal muscle tone (Hyper/Hypotonia)',
+                            'Persistence of primitive reflexes',
+                            'Gait abnormalities (e.g., Scissoring, Crouch gait)'
+                        ],
+                        ptIntervention: 'Spasticity management (stretching, positioning), strengthening, gait training, adaptive equipment, constraint-induced movement therapy (CIMT).',
+                        details: {
+                            overview: 'Cerebral Palsy (CP) is the most common motor disability in childhood. It is a non-progressive permanent disorder of movement and posture.',
+                            anatomy: [
+                                'Periventricular Leukomalacia (PVL): White matter damage (common in preemies).',
+                                'Cerebral Dysgenesis: Abnormal brain development.',
+                                'Intracranial Hemorrhage (IVH): Bleeding in the brain.'
+                            ],
+                            physiology: [
+                                'Spasticity: Loss of inhibition leads to velocity-dependent resistance to stretch.',
+                                'Muscle Growth: Muscles grow slower than bone, leading to contractures.',
+                                'Co-contraction: Inability to isolate muscle activation.'
+                            ],
+                            stats: [
+                                { label: 'Prevalence', value: '1 in 323 children' },
+                                { label: 'GMFCS', value: 'Level I (Walks indep) to V (Total assist)' },
+                                { label: 'Types', value: 'Spastic (80%), Dyskinetic, Ataxic, Mixed' }
+                            ],
+                            medications: [
+                                { name: 'Botox', mechanism: 'Neuromuscular blocker', effect: 'Local spasticity relief (creates window for casting).' },
+                                { name: 'Baclofen', mechanism: 'GABA agonist', effect: 'Systemic spasticity management (Oral or Pump).' }
+                            ],
+                            medicalInterventions: [
+                                'SDR (Selective Dorsal Rhizotomy): Cutting sensory nerve rootlets to reduce spasticity.',
+                                'Orthopedic Surgery: Tendon lengthening (e.g., Achilles), Derotational osteotomy.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Infancy', focus: 'Handling: Positioning, carrying, facilitating milestones.' },
+                                { stage: 'Childhood', focus: 'Function: Mobility aids (gait trainers), orthotics (AFOs), serial casting.' },
+                                { stage: 'Adolescence', focus: 'Independence: Community mobility, adaptive sports, transition planning.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'sb',
+                        name: 'Spina Bifida',
+                        acronym: 'SB',
+                        category: 'Neuromuscular',
+                        icon: 'AlignJustify',
+                        image: spinaBifidaImg,
+                        description: 'Neural tube defect where the spinal column doesnt close completely. Myelomeningocele is the most severe form.',
+                        keyFeatures: [
+                            'Motor/Sensory loss below lesion level',
+                            'Hydrocephalus (Arnold-Chiari II malformation)',
+                            'Neurogenic bladder/bowel',
+                            'Latex allergy is common'
+                        ],
+                        ptIntervention: 'Prescription of orthotics (AFOs, HKAFOs), wheelchair mobility, standing frames for bone density, skin care education.',
+                        details: {
+                            overview: 'Spina Bifida is a neural tube defect that occurs when the spine and spinal cord do not form properly. Myelomeningocele is the most severe type.',
+                            anatomy: [
+                                'Vertebral Arch: Fails to fuse (L5-S1 most common).',
+                                'Sac: Meninges and/or Spinal Cord protrude through the defect.',
+                                'Chiari II: Cerebellum pulled into spinal canal, obstructing CSF flow (Hydrocephalus).'
+                            ],
+                            physiology: [
+                                'Folic Acid: Deficiency in early pregnancy is specialized risk factor.',
+                                'Tethered Cord: Spinal cord scar tissue limits movement, causing progressive decline.'
+                            ],
+                            stats: [
+                                { label: 'Incidence', value: 'Reduced by folic acid fortification' },
+                                { label: 'Levels', value: 'Thoracic (Wheelchair) vs Lumbar/Sacral (Walking)' },
+                                { label: 'Shunt', value: 'VP Shunt required in >80% for hydrocephalus' }
+                            ],
+                            medications: [
+                                { name: 'Anticholinergics', mechanism: 'Bladder relaxant', effect: 'Manages neurogenic bladder (Oxybutynin).' }
+                            ],
+                            medicalInterventions: [
+                                'Fetal Surgery: Closing defect in utero (improves outcomes).',
+                                'Shunt Revision: Fixing blocked VP shunts (Watch for: vomiting, headache, lethargy).'
+                            ],
+                            ptManagement: [
+                                { stage: 'Infant', focus: 'Development: Standing frames (by age 1) for bone density/hip formation.' },
+                                { stage: 'School', focus: 'Mobility: Wheelchair skills vs Ambulation (RGOs/HKAFOs usually discarded for efficiency).' },
+                                { stage: 'Life', focus: 'Skin: Daily skin checks for pressure ulcers (insensate areas).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'dmd',
+                        name: 'Duchenne Muscular Dystrophy',
+                        acronym: 'DMD',
+                        category: 'Neuromuscular',
+                        icon: 'Zap',
+                        image: gowersSignImg,
+                        description: 'X-linked recessive genetic disorder causing progressive muscle degeneration and weakness due to lack of dystrophin.',
+                        keyFeatures: [
+                            'Gowers\' Sign (walking hands up legs to stand)',
+                            'Pseudohypertrophy of calves',
+                            'Proximal weakness > Distal',
+                            'Loss of ambulation by early teens'
+                        ],
+                        ptIntervention: 'Submaximal exercise (avoid eccentric fatigue), respiratory care, stretching to prevent contractures, mobility preservation.',
+                        details: {
+                            overview: 'Duchenne Muscular Dystrophy (DMD) is a genetic disorder characterized by progressive muscle degeneration and weakness. It is caused by an absence of dystrophin, a protein that helps keep muscle cells intact.',
+                            anatomy: [
+                                'Target: Skeletal and Cardiac muscle.',
+                                'Damage: Cell membrane (sarcolemma) becomes fragile and leaks Ca2+.',
+                                'Fibrosis: Muscle tissue replaced by fat and scar tissue (Pseudohypertrophy).'
+                            ],
+                            physiology: [
+                                'Dystrophin: Structural protein linking cytoskeleton to extracellular matrix. Shock absorber function lost.',
+                                'Apoptosis: Muscle cells die and are not regenerated.'
+                            ],
+                            stats: [
+                                { label: 'Genetics', value: 'X-Linked Recessive (Affects Males)' },
+                                { label: 'Diagnosis', value: 'Age 3-5 (Gross motor delays)' },
+                                { label: 'Life Exp', value: '20s-30s (Respiratory/Cardiac failure)' }
+                            ],
+                            medications: [
+                                { name: 'Corticosteroids', mechanism: 'Prednisone/Deflazacort', effect: 'Slows decline (prolongs walking 2-3 yrs).' },
+                                { name: 'Exon Skipping', mechanism: 'Genetic modifier', effect: 'Converts DMD to milder Becker-like phenotype.' }
+                            ],
+                            medicalInterventions: [
+                                'Spinal Fusion: For severe scoliosis affecting lung function.',
+                                'Ventilation: CPAP/BiPAP at night as respiratory muscles weaken.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Early', focus: 'Preservation: Submaximal activity (swimming). AVOID eccentrics (muscle damage).' },
+                                { stage: 'Ambulatory', focus: 'Stretching: Gastroc/TFL to prevent contractures. Night splints.' },
+                                { stage: 'Non-Ambulatory', focus: 'Respiratory: Cough assist, stacking breathing. Power mobility.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'torticollis',
+                        name: 'Congenital Muscular Torticollis',
+                        acronym: 'CMT',
+                        category: 'Musculoskeletal',
+                        icon: 'User',
+                        image: torticollisImg,
+                        description: 'Shortening of the Sternocleidomastoid (SCM) muscle, causing a lateral tilt and rotation of the head.',
+                        keyFeatures: [
+                            'Head tilted TO the tight side, rotated AWAY',
+                            'Plagiocephaly (flat head) often associated',
+                            'Palpable mass in SCM',
+                            'Decreased cervical ROM'
+                        ],
+                        ptIntervention: 'Passive stretching of SCM, strengthening of contralateral side, positioning, tummy time, helmet therapy if plagiocephaly persists.',
+                        details: {
+                            overview: 'Congenital Muscular Torticollis (CMT) presents as a postural deformity detectable at or shortly after birth, characterized by a unilateral shortening of the SCM muscle.',
+                            anatomy: [
+                                'Muscle: Sternocleidomastoid (SCM).',
+                                'Action: SCM flexes/side-bends same side, rotates opposite.',
+                                'Presentation: Left Torticollis = Left Tilt + Right Rotation.'
+                            ],
+                            physiology: [
+                                'Etiology: Intrauterine crowding, breech presentation, or birth trauma.',
+                                'Fibrosis: Mass of fibrotic tissue may form in the muscle belly.'
+                            ],
+                            stats: [
+                                { label: 'Incidence', value: '3rd most common newborn concern' },
+                                { label: 'Association', value: 'Hip Dysplasia (refer for US)' },
+                                { label: 'Plagiocephaly', value: '>80% have cranial asymmetry' }
+                            ],
+                            medications: [
+                                { name: 'None', mechanism: 'N/A', effect: 'Primarily mechanical/conservative mgmt.' }
+                            ],
+                            medicalInterventions: [
+                                'Surgery: SCM release (rare, only if conservative fails >1 yr).'
+                            ],
+                            ptManagement: [
+                                { stage: 'Stretching', focus: 'Protocol: 90% success if started <6 mo. Frequent gentle stretches.' },
+                                { stage: 'Positioning', focus: 'Environment: Toy placement to encourage looking to non-preferred side.' },
+                                { stage: 'Tummy Time', focus: 'Strength: Cervical extension and shoulder stability.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'lcpd',
+                        name: 'Legg-Calvé-Perthes Disease',
+                        acronym: 'LCPD',
+                        category: 'Musculoskeletal',
+                        icon: 'Bone',
+                        image: lcpdImg,
+                        description: 'Idiopathic avascular necrosis of the femoral head in children (ages 4-8 usually).',
+                        keyFeatures: [
+                            'Insidious onset of limp (Trendelenburg)',
+                            'Pain in hip, groin, thigh, or KNEE',
+                            'Limited Abduction and Internal Rotation',
+                            'Better prognosis in younger children (<6)'
+                        ],
+                        ptIntervention: 'Maintenance of ROM (Abduction bracing), gait training, aquatic therapy, activity modification.',
+                        details: {
+                            overview: 'Disruption of blood flow to the femoral head leads to bone death (necrosis), followed by resorption and remodeling due to "creeping substitution".',
+                            anatomy: [
+                                'Blood Supply: Medial Circumflex Femoral Artery is disrupted.',
+                                'Femoral Head: Flattens (Coxa Plana) if not contained.'
+                            ],
+                            physiology: [
+                                'Stages: 1. Initial/Necrosis, 2. Fragmentation (Highest risk of deformity), 3. Reossification, 4. Healed.',
+                                'Containment: Goal is to keep femoral head deep in acetabulum to mold it spherically.'
+                            ],
+                            stats: [
+                                { label: 'Gender', value: 'Male > Female (4:1)' },
+                                { label: 'Age', value: '4-8 years most common' }
+                            ],
+                            ptManagement: [
+                                { stage: 'Containment', focus: 'Bracing: Petrie casting or bracing in abduction ("Scottish Rite").' },
+                                { stage: 'Rehab', focus: 'ROM: Aggressive AROM/PROM to prevent contracture. NWB if pain is severe.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'scfe',
+                        name: 'Slipped Capital Femoral Epiphysis',
+                        acronym: 'SCFE',
+                        category: 'Musculoskeletal',
+                        icon: 'AlertTriangle',
+                        image: scfeImg,
+                        description: 'Displacement of the femoral epiphysis (growth plate). The "Ice cream falls off the cone".',
+                        keyFeatures: [
+                            'Obese adolescent male (10-16 yrs)',
+                            'Hip/Knee pain + Limp',
+                            'Leg held in External Rotation',
+                            'Limited Flexion and Internal Rotation'
+                        ],
+                        ptIntervention: 'IMMEDIATE NWB and Surgical Referral. Post-op: Gait training, ROM, strengthening.',
+                        details: {
+                            overview: 'Mechanical failure of the physis (growth plate). Can be Stable (can walk) or Unstable (cannot walk - higher AVN risk).',
+                            anatomy: [
+                                'Physis: Weakened during rapid growth spurt.',
+                                'Displacement: Femoral neck moves anteriorly/superiorly; Head stays posterior/inferior.'
+                            ],
+                            physiology: [
+                                'Endocrine: associated with Hypothyroidism or GH deficiency.',
+                                'Obesity: Increased shear forces on the hip.'
+                            ],
+                            medicalInterventions: [
+                                'Surgery: In Situ Pinning (Screw) to prevent further slip.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Pre-Op', focus: 'Safety: Crutches NWB. Do not attempt ROM assessment (risk of worsening slip).' },
+                                { stage: 'Post-Op', focus: 'Recovery: WBAT (usually), regain Abduction/IR range.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'erbs-palsy',
+                        name: 'Erb\'s Palsy',
+                        category: 'Neuromuscular',
+                        icon: 'Activity',
+                        image: erbsImg,
+                        description: 'Injury to the upper brachial plexus (C5-C6) often due to birth trauma (shoulder dystocia).',
+                        keyFeatures: [
+                            'Waiter\'s Tip Deformity (Adducted, IR, Wrist Flexed)',
+                            'Paralysis of Deltoid, Biceps, Rotator Cuff',
+                            'Moro reflex absent on affected side',
+                            'Sensory loss in C5-C6 dermatome'
+                        ],
+                        ptIntervention: 'Protect limb, Sensory stimulation, Passive ROM, Facilitate active movement.',
+                        details: {
+                            overview: 'Obstetric Brachial Plexus Injury (OBPI). Erb\'s (C5-C6) is most common. Klumpke\'s (C8-T1) affects hand.',
+                            anatomy: [
+                                'C5 Root: Deltoid (Shoulder abduction), Rhomboids.',
+                                'C6 Root: Biceps (Elbow flexion), Wrist extensors.'
+                            ],
+                            stats: [
+                                { label: 'Recovery', value: '80-90% recover spontaneously in 3-6 months' },
+                                { label: 'Surgery', value: 'Nerve graft if no biceps function by 3-6mo' }
+                            ],
+                            ptManagement: [
+                                { stage: 'Acute (0-2wks)', focus: 'Protection: Pin sleeve to shirt. Avoid traction. Gentle ROM.' },
+                                { stage: 'Rehab', focus: 'Activation: "Cookie" stretch (eating cookie) for Ext Rotation/Supination.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'down-syndrome',
+                        name: 'Down Syndrome',
+                        acronym: 'DS',
+                        category: 'Genetic',
+                        icon: 'User',
+                        image: dsImg,
+                        description: 'Trisomy 21. Genetic disorder associated with intellectual disability, hypotonia, and joint laxity.',
+                        keyFeatures: [
+                            'Generalized Hypotonia',
+                            'Ligamentous Laxity (Hypermobile)',
+                            'Delayed motor milestones',
+                            'Atlantoaxial Instability (AAI) risk'
+                        ],
+                        ptIntervention: 'Strengthen core/proximal stabilizers, facilitate milestones, treadmill training (for walking onset), orthotics (SMOs).',
+                        details: {
+                            overview: 'Most common chromosomal condition. Physical Therapy focuses on stability and gross motor endurance.',
+                            anatomy: [
+                                'Brain: Reduced cerebellar size (balance/coordination issues).',
+                                'Ligaments: Collagen defect leads to laxity (Pes Planus, Genu Recurvatum).'
+                            ],
+                            medicalInterventions: [
+                                'Cardiology: Screen for AV Canal defects.',
+                                'X-Ray: Screen for AAI before sports (Special Olympics rule).'
+                            ],
+                            ptManagement: [
+                                { stage: 'Early', focus: 'stability: Approx function. SMOs (Surestep) often used for fast stable base.' },
+                                { stage: 'School', focus: 'Fitness: Obesity prevention through active play.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'oi',
+                        name: 'Osteogenesis Imperfecta',
+                        acronym: 'OI',
+                        category: 'Genetic',
+                        icon: 'Bone',
+                        image: oiImg,
+                        description: 'Genetic "Brittle Bone Disease" caused by defect in Type I Collagen.',
+                        keyFeatures: [
+                            'Frequent fractures with minimal trauma',
+                            'Blue Sclera',
+                            'Bowing of long bones',
+                            'Dentinogenesis imperfecta (brittle teeth)'
+                        ],
+                        ptIntervention: 'Safe handling education (do NOT pull limbs), Aquatic therapy, Strengthening (isometrics), Mobility aids.',
+                        details: {
+                            overview: 'Connective tissue disorder ranging from mild (Type I) to lethal (Type II).',
+                            anatomy: [
+                                'Bone: Cortical thinning and trabecular rarification.',
+                                'Collagen: Type I collagen (bone/skin/tendon) is defective or reduced.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Handling', focus: 'Education: Lift from buttocks/trunk, never ankles/arms.' },
+                                { stage: 'Exercise', focus: 'Aquatics: Safe environment for movement. Avoid high impact/torque.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'amc',
+                        name: 'Arthrogryposis',
+                        acronym: 'AMC',
+                        category: 'Neuromuscular',
+                        icon: 'Layers',
+                        image: amcImg,
+                        description: 'Arthrogryposis Multiplex Congenita. Non-progressive congenital contractures in 2+ body areas.',
+                        keyFeatures: [
+                            'Severe joint contractures at birth',
+                            'Muscle atrophy / fibrosis',
+                            'Sensation is usually INTACT',
+                            'Intelligence is usually NORMAL'
+                        ],
+                        ptIntervention: 'Serial casting, splinting, stretching (frequent), adaptive equipment for ADLs.',
+                        details: {
+                            overview: 'Caused by fetal akinesia (lack of movement) in utero. The joints themselves are normal, but soft tissue is tight.',
+                            anatomy: [
+                                'Muscles: Replaced by fibrous/fatty tissue.',
+                                'Joints: Normal structure but capsule is rigid.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Infant', focus: 'ROM: Aggressive stretching and casting (Ponseti) for clubfoot/knees.' },
+                                { stage: 'Functional', focus: 'Adaptation: Since cognition is normal, focus on independence strategies.' }
+                            ]
+                        }
+                    }
                 ]
             }
         ]
-    }
+    },
+
 ];

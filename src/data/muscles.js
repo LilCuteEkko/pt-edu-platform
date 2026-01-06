@@ -40,6 +40,7 @@ import scmImg from '../assets/muscles/sternocleidomastoid.png';
 import scalenesImg from '../assets/muscles/scalenes.png';
 import upperTrapImg from '../assets/muscles/upper-trapezius.png';
 import levatorImg from '../assets/muscles/levator-scapulae.png';
+import musclePlaceholderImg from '../assets/muscles/placeholder.png';
 
 export const muscles = [
     // 0. Neck
@@ -509,6 +510,155 @@ export const muscles = [
         action: 'Everts and plantarflexes foot.',
         clinicalNotes: 'Supports transverse arch of foot.',
         imageUrl: fibularisLongusImg,
+        category: 'Lower Limb: Leg'
+    },
+
+    // 9. Back & Scapular (New)
+    {
+        id: 'latissimus-dorsi',
+        name: 'Latissimus Dorsi',
+        origin: 'Spinous processes T7-L5, iliac crest, thoracolumbar fascia.',
+        insertion: 'Floor of intertubercular groove of humerus.',
+        nerve: 'Thoracodorsal nerve (C6, C7, C8)',
+        action: 'Extends, adducts, and medially rotates humerus.',
+        clinicalNotes: 'The "Handcuff Muscle". Vital for crutch walking and depressor scapulae transfer.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back'
+    },
+    {
+        id: 'rhomboids',
+        name: 'Rhomboids (Major & Minor)',
+        origin: 'Minor: C7-T1. Major: T2-T5 spinous processes.',
+        insertion: 'Medial border of scapula.',
+        nerve: 'Dorsal Scapular nerve (C4, C5)',
+        action: 'Retracts (adducts) and downwardly rotates scapula.',
+        clinicalNotes: 'Weakness leads to "Scapular Winging" (along with Serratus Anterior).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back'
+    },
+    {
+        id: 'erector-spinae',
+        name: 'Erector Spinae Group',
+        origin: 'Broad tendon from posterior iliac crest, sacrum, and lumbar vertebrae.',
+        insertion: 'Ribs and transverse processes of thoracic/cervical vertebrae.',
+        nerve: 'Dorsal rami of spinal nerves',
+        action: 'Bilateral: Extends spine. Unilateral: Laterally flexes spine.',
+        clinicalNotes: 'Composed of Iliocostalis, Longissimus, and Spinalis (I Love Spine).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back'
+    },
+    {
+        id: 'quadratus-lumborum',
+        name: 'Quadratus Lumborum (QL)',
+        origin: 'Posterior iliac crest.',
+        insertion: '12th rib and L1-L4 transverse processes.',
+        nerve: 'T12-L4 ventral rami',
+        action: 'Unilateral: Hip hiking (lat flex). Bilateral: Extends lumbar spine, fixes 12th rib.',
+        clinicalNotes: 'Key muscle in "Hiking" the hip for clearance during gait. Common source of LBP.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back'
+    },
+
+    // 10. Lower Limb: Thigh (Expansion)
+    {
+        id: 'iliopsoas',
+        name: 'Iliopsoas (Psoas Major + Iliacus)',
+        origin: 'Psoas: L1-L5 Transverse processes. Iliacus: Iliac Fossa.',
+        insertion: 'Lesser Trochanter of femur.',
+        nerve: 'Femoral nerve (L2, L3)',
+        action: 'Primary hip flexor.',
+        clinicalNotes: 'Tightness causes excessive lumbar lordosis and anterior pelvic tilt.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Thigh'
+    },
+    {
+        id: 'vastus-lateralis',
+        name: 'Vastus Lateralis',
+        origin: 'Greater trochanter and Linea Aspera.',
+        insertion: 'Tibial tuberosity via Patellar Ligament.',
+        nerve: 'Femoral nerve (L2, L3, L4)',
+        action: 'Extends knee.',
+        clinicalNotes: 'Largest component of Quadriceps group.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Thigh'
+    },
+    {
+        id: 'vastus-medialis',
+        name: 'Vastus Medialis (VMO)',
+        origin: 'Intertrochanteric line and medial supracondylar line.',
+        insertion: 'Tibial tuberosity via Patellar Ligament.',
+        nerve: 'Femoral nerve (L2, L3, L4)',
+        action: 'Extends knee.',
+        clinicalNotes: 'Crucial for patellar tracking (prevents lateral dislocation). Weak VMO = PFPS.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Thigh'
+    },
+    {
+        id: 'semitendinosus',
+        name: 'Semitendinosus',
+        origin: 'Ischial Tuberosity.',
+        insertion: 'Proximal medial tibia (Pes Anserinus).',
+        nerve: 'Tibial nerve (L5, S1, S2)',
+        action: 'Flexes knee, extends thigh, medially rotates leg.',
+        clinicalNotes: 'Medial Hamstring (Superficial). Part of Pes Anserine group (Say Grace before Tea).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Thigh'
+    },
+    {
+        id: 'semimembranosus',
+        name: 'Semimembranosus',
+        origin: 'Ischial Tuberosity.',
+        insertion: 'Posterior medial condyle of tibia.',
+        nerve: 'Tibial nerve (L5, S1, S2)',
+        action: 'Flexes knee, extends thigh, medially rotates leg.',
+        clinicalNotes: 'Medial Hamstring (Deep).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Thigh'
+    },
+    {
+        id: 'gracilis',
+        name: 'Gracilis',
+        origin: 'Body and inferior ramus of pubis.',
+        insertion: 'Proximal medial tibia (Pes Anserinus).',
+        nerve: 'Obturator nerve (L2, L3)',
+        action: 'Adducts thigh, flexes knee, medially rotates leg.',
+        clinicalNotes: 'Most medial muscle of thigh. Often used for muscle flaps/transplants.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Thigh'
+    },
+
+    // 11. Lower Limb: Leg (Expansion)
+    {
+        id: 'soleus',
+        name: 'Soleus',
+        origin: 'Soleal line of tibia and head of fibula.',
+        insertion: 'Calcaneus via Achilles tendon.',
+        nerve: 'Tibial nerve (S1, S2)',
+        action: 'Plantarflexes foot.',
+        clinicalNotes: 'The "Workhorse" of plantarflexion. Slow-twitch fibers for posture. Active when knee is FLEXED.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Leg'
+    },
+    {
+        id: 'tibialis-posterior',
+        name: 'Tibialis Posterior',
+        origin: 'Posterior tibia and fibula, interosseous membrane.',
+        insertion: 'Navicular, Cuneiforms, Cuboid, bases of mets 2-4.',
+        nerve: 'Tibial nerve (L4, L5)',
+        action: 'Inverts and Plantarflexes foot.',
+        clinicalNotes: 'Supports Medial Longitudinal Arch. Tendonitis causes "Shin Splints".',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Leg'
+    },
+    {
+        id: 'extensor-hallucis-longus',
+        name: 'Extensor Hallucis Longus (EHL)',
+        origin: 'Middle anterior surface of fibula.',
+        insertion: 'Distal phalanx of great toe.',
+        nerve: 'Deep Fibular nerve (L5, S1)',
+        action: 'Extends great toe and dorsiflexes foot.',
+        clinicalNotes: 'Specific test for L5 nerve root integrity.',
+        imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Leg'
     }
 ];

@@ -40,11 +40,11 @@ const PathologyDeepDive = ({ pathology, onClose }) => {
                         <div className="split-view">
                             <div className="column">
                                 <h3><Brain size={18} /> Anatomy</h3>
-                                <ul>{details.anatomy.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                                {details.anatomy && <ul>{details.anatomy.map((item, i) => <li key={i}>{item}</li>)}</ul>}
                             </div>
                             <div className="column">
                                 <h3><Activity size={18} /> Physiology</h3>
-                                <ul>{details.physiology.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                                {details.physiology && <ul>{details.physiology.map((item, i) => <li key={i}>{item}</li>)}</ul>}
                             </div>
                         </div>
                     </div>
