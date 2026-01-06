@@ -13,6 +13,7 @@ import NeuromuscularDetail from './NeuromuscularDetail';
 // import brainDiagramImg from '../assets/neuromuscular/human-brain-anatomy.png';
 import InteractiveBrain from './InteractiveBrain';
 import MuscleCard from './MuscleCard';
+import MilestoneTimeline from './MilestoneTimeline';
 
 const PhysiologyDetail = () => {
   const { topicId } = useParams();
@@ -68,6 +69,8 @@ const PhysiologyDetail = () => {
               />
             ) : subtopic.type === 'milestone-tracker' ? (
               <MilestoneTracker milestones={subtopic.milestones} reflexes={subtopic.reflexes} />
+            ) : subtopic.type === 'milestone-timeline' ? (
+              <MilestoneTimeline milestones={subtopic.milestones} />
             ) : subtopic.type === 'muscle-list' ? (
               <div className="muscle-grid">
                 {subtopic.muscles.map((muscle, idx) => (

@@ -1,293 +1,558 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { integumentaryData } from '../data/integumentary';
-import { Layers, AlertTriangle, Activity, Clipboard, BookOpen, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import { Layers, AlertTriangle, Activity, Clipboard, ArrowLeft, Bandage } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import skinAnatomyImg from '../assets/integumentary/skin-anatomy.png';
-import pressureUlcerImg from '../assets/integumentary/pressure-ulcers.png';
-import ruleOfNinesImg from '../assets/integumentary/rule-of-nines.png';
 
 const IntegumentaryDetail = ({ topic }) => {
-    const [activeTab, setActiveTab] = useState('overview');
-    const [expandedCondition, setExpandedCondition] = useState(null);
+    // Default to the first subtopic if available
+    const [activeTab, setActiveTab] = useState(topic.subtopics[0]?.id || '');
 
-    const tabs = [
-        { id: 'overview', label: 'Overview & Anatomy', icon: Layers },
-        { id: 'conditions', label: 'Conditions', icon: AlertTriangle },
-        { id: 'woundCare', label: 'Wound Care', icon: Activity },
-        { id: 'documentation', label: 'Documentation', icon: Clipboard }
-    ];
+    if (!topic) return <div>Loading...</div>;
 
-    const toggleCondition = (id) => {
-        setExpandedCondition(expandedCondition === id ? null : id);
+    // Helper to get icon for tab
+    const getIcon = (id) => {
+        switch (id) {
+            case 'wound-assessment': return Clipboard;
+            case 'pathologies-integ': return AlertTriangle;
+            case 'wound-dressings': return Bandage;
+            case 'pt-management-integ': return Activity;
+            default: return Layers;
+        }
+    };
+
+    const renderAssessment = (subtopic) => (
+        <div className="subtopic-content">
+            <p className="lead-text">{subtopic.introduction}</p>
+
+            {/* Standard Content List */}
+            <div className="info-grid">
+                <div className="content-card">
+                    <h3>Key Assessment Parameters</h3>
+                    <ul className="params-list">
+                        {subtopic.content.map((item, idx) => (
+                            <li key={idx}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Clinical Relevance Box */}
+                {subtopic.clinicalRelevance && (
+                    <div className="clinical-box importance">
+                        <h4>Clinical Relevance</h4>
+                        <p>{subtopic.clinicalRelevance}</p>
+                    </div>
+                )}
+            </div>
+
+            {/* Images */}
+            {subtopic.images && (
+                <div className="images-section">
+                    {subtopic.images.map((img, idx) => (
+                        <div key={idx} className="image-card">
+                            <img src={img.url} alt={img.caption} />
+                            <p className="caption">{img.caption}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* Tables */}
+            {subtopic.tables && subtopic.tables.map((table, idx) => (
+                <div key={idx} className="table-container">
+                    <h3>{table.title}</h3>
+                    <div className="table-responsive">
+                        <table className="data-table">
+                            <thead>
+                                <tr>
+                                    {table.headers.map((h, i) => <th key={i}>{h}</th>)}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table.rows.map((row, rIdx) => (
+                                    <tr key={rIdx}>
+                                        {row.map((cell, cIdx) => <td key={cIdx}>{cell}</td>)}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+
+    const renderDressings = (subtopic) => (
+        <div className="subtopic-content">
+            <div className="intro-section">
+                <p>{subtopic.introduction}</p>
+                <div className="clinical-box tip">
+                    <p>{subtopic.clinicalRelevance}</p>
+                </div>
+            </div>
+
+            {/* Content (Golden Rules) */}
+            <ul className="key-points">
+                {subtopic.content.map((pt, i) => <li key={i}>{pt}</li>)}
+            </ul>
+
+            <div className="dressings-grid">
+                {subtopic.dressingTypes?.map((dressing, idx) => (
+                    <div key={idx} className="dressing-card">
+                        <div className="dressing-header">
+                            <img src={dressing.icon} alt={dressing.name} className="dressing-icon" />
+                            <h3>{dressing.name}</h3>
+                        </div>
+                        <p className="dressing-desc">{dressing.description}</p>
+
+                        <div className="dressing-details">
+                            <div className="detail-row indications">
+                                <strong>Indications:</strong>
+                                <span>{dressing.indications}</span>
+                            </div>
+                            <div className="detail-row contraindications">
+                                <strong>Contraindications:</strong>
+                                <span>{dressing.contraindications}</span>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
+    const renderPathologies = (subtopic) => (
+        <div className="subtopic-content">
+            <p>{subtopic.introduction}</p>
+
+            {/* Comparison Visuals */}
+            {subtopic.visuals?.map((vis, idx) => (
+                vis.type === 'comparison' && (
+                    <div key={idx} className="comparison-visuals">
+                        {vis.items.map((item, i) => (
+                            <div key={i} className="visual-item">
+                                <img src={item.img} alt={item.label} />
+                                <h4>{item.label}</h4>
+                                <p>{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                )
+            ))}
+
+            {/* Tables */}
+            {subtopic.tables?.map((table, idx) => (
+                <div key={idx} className="table-container">
+                    <h3>{table.title}</h3>
+                    <div className="table-responsive">
+                        <table className="data-table compact">
+                            <thead>
+                                <tr>
+                                    {table.headers.map((h, i) => <th key={i}>{h}</th>)}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table.rows.map((row, rIdx) => (
+                                    <tr key={rIdx}>
+                                        {row.map((cell, cIdx) => <td key={cIdx}>{cell}</td>)}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+
+    const renderManagement = (subtopic) => (
+        <div className="subtopic-content">
+            <p>{subtopic.introduction}</p>
+
+            <div className="content-card">
+                <h3>Interventions</h3>
+                <ul className="key-points">
+                    {subtopic.content.map((pt, i) => <li key={i}>{pt}</li>)}
+                </ul>
+            </div>
+
+            <h3 style={{ marginTop: '2rem' }}>Modality Guide</h3>
+            <div className="modalities-grid">
+                {subtopic.modalityGuide?.map((mod, idx) => (
+                    <div key={idx} className="modality-card">
+                        <h4>{mod.name}</h4>
+                        <p>{mod.use}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
+    const renderContent = (tabId) => {
+        const subtopic = topic.subtopics.find(s => s.id === tabId);
+        if (!subtopic) return null;
+
+        switch (tabId) {
+            case 'wound-assessment': return renderAssessment(subtopic);
+            case 'wound-dressings': return renderDressings(subtopic);
+            case 'pathologies-integ': return renderPathologies(subtopic);
+            case 'pt-management-integ': return renderManagement(subtopic);
+            default: return renderAssessment(subtopic); // Fallback
+        }
     };
 
     return (
-        <div className="integumentary-page container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+        <div className="integumentary-page container">
             <Link to="/physiology" className="back-link">
                 <ArrowLeft size={20} /> Back to Systems
             </Link>
 
-            <header className="detail-header" style={{ marginBottom: '2rem' }}>
-                <h1 style={{ color: 'var(--color-primary)' }}>{integumentaryData.overview.title}</h1>
-                <p className="lead">{integumentaryData.overview.description}</p>
+            <header className="detail-header">
+                <h1>{topic.title}</h1>
+                <p className="lead">{topic.description}</p>
             </header>
 
-            {/* Navigation Tabs */}
+            {/* Dynamic Tabs */}
             <div className="category-tabs">
-                {tabs.map(tab => {
-                    const Icon = tab.icon;
+                {topic.subtopics.map(sub => {
+                    const Icon = getIcon(sub.id);
                     return (
                         <button
-                            key={tab.id}
-                            className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-                            onClick={() => setActiveTab(tab.id)}
+                            key={sub.id}
+                            className={`tab-btn ${activeTab === sub.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(sub.id)}
                         >
                             <Icon size={18} />
-                            {tab.label}
+                            {sub.title}
                         </button>
                     );
                 })}
             </div>
 
             {/* Content Area */}
-            <div className="content-area" style={{ marginTop: '2rem' }}>
+            <div className="content-area">
                 <AnimatePresence mode='wait'>
-                    {activeTab === 'overview' && (
-                        <motion.div
-                            key="overview"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                        >
-                            <div className="content-card" style={{ marginBottom: '2rem', textAlign: 'center' }}>
-                                <img src={skinAnatomyImg} alt="Skin Anatomy Layers" style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '400px' }} />
-                                <p className="caption" style={{ marginTop: '0.5rem', color: 'var(--color-text-muted)' }}>Cross-section of Skin Layers</p>
-                            </div>
-
-                            <div className="cards-grid">
-                                {integumentaryData.overview.layers.map(layer => (
-                                    <div key={layer.name} className="content-card">
-                                        <h3>{layer.name}</h3>
-                                        <p>{layer.description}</p>
-                                        <div className="clinical-box importance" style={{ marginTop: '1rem' }}>
-                                            <strong>Relevance:</strong> {layer.relevance}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <h3 style={{ marginTop: '2rem' }}>Functions</h3>
-                            <ul className="params-list">
-                                {integumentaryData.overview.functions.map((func, idx) => (
-                                    <li key={idx}><strong>{func.title}:</strong> {func.description}</li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    )}
-
-                    {activeTab === 'conditions' && (
-                        <motion.div
-                            key="conditions"
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            className="labs-grid"
-                        >
-                            {integumentaryData.conditions.map(cond => (
-                                <div key={cond.id} className="lab-card expanded">
-                                    <div className="lab-header" onClick={() => toggleCondition(cond.id)} style={{ cursor: 'pointer' }}>
-                                        <h3>{cond.name}</h3>
-                                        {expandedCondition === cond.id ? <ChevronUp /> : <ChevronDown />}
-                                    </div>
-                                    <AnimatePresence>
-                                        {expandedCondition === cond.id && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: 'auto', opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                className="lab-details"
-                                            >
-                                                {/* Only show pressure ulcer image for that specific condition */}
-                                                {cond.id === 'pressure-injury' && (
-                                                    <div className="image-container" style={{ margin: '1rem 0' }}>
-                                                        <img src={pressureUlcerImg} alt="Pressure Ulcer Stages" style={{ width: '100%', borderRadius: '6px' }} />
-                                                    </div>
-                                                )}
-
-                                                {cond.causes && <p><strong>Causes:</strong> {cond.causes}</p>}
-
-                                                {cond.staging && (
-                                                    <div className="table-responsive">
-                                                        <table className="data-table">
-                                                            <thead><tr><th>Stage</th><th>Features</th><th>PT Role</th></tr></thead>
-                                                            <tbody>
-                                                                {cond.staging.map((s, i) => (
-                                                                    <tr key={i}><td>{s.stage}</td><td>{s.features}</td><td>{s.ptRole}</td></tr>
-                                                                ))}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                )}
-                                                {cond.wagnerGrade && (
-                                                    <ul className="key-points">
-                                                        {cond.wagnerGrade.map((g, i) => <li key={i}><strong>Grade {g.grade}:</strong> {g.desc}</li>)}
-                                                    </ul>
-                                                )}
-                                                {cond.comparison && (
-                                                    <div className="table-responsive">
-                                                        <table className="data-table">
-                                                            <thead><tr><th>Feature</th><th>Venous</th><th>Arterial</th></tr></thead>
-                                                            <tbody>
-                                                                {cond.comparison.map((c, i) => (
-                                                                    <tr key={i}><td><strong>{c.feature}</strong></td><td>{c.venous}</td><td>{c.arterial}</td></tr>
-                                                                ))}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                )}
-                                                {cond.classification && (
-                                                    <div className="table-responsive">
-                                                        <table className="data-table">
-                                                            <thead><tr><th>Degree</th><th>Layer</th><th>Features</th></tr></thead>
-                                                            <tbody>
-                                                                {cond.classification.map((c, i) => (
-                                                                    <tr key={i}>
-                                                                        <td><strong>{c.degree}</strong></td>
-                                                                        <td>{c.layer}</td>
-                                                                        <td>{c.features}</td>
-                                                                    </tr>
-                                                                ))}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                )}
-
-                                                {cond.ruleOfNines && (
-                                                    <div className="content-card" style={{ marginTop: '1rem', background: 'var(--color-surface-hover)' }}>
-                                                        <h4>Rule of Nines (Adult)</h4>
-                                                        <div className="grid-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'center' }}>
-                                                            <img src={ruleOfNinesImg} alt="Rule of Nines Chart" style={{ width: '100%', borderRadius: '6px' }} />
-                                                            <ul className="params-list grid-list">
-                                                                {cond.ruleOfNines.map((r, i) => (
-                                                                    <li key={i}><strong>{r.region}:</strong> {r.adult}</li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                )}
-
-                                                {cond.ptRole && <p className="clinical-relevance"><strong>PT Intervention:</strong> {cond.ptRole}</p>}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            ))}
-                        </motion.div>
-                    )}
-
-                    {activeTab === 'woundCare' && (
-                        <motion.div
-                            key="woundCare"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                        >
-                            <h2>Dressing Selection Guide</h2>
-                            <div className="table-responsive">
-                                <table className="data-table">
-                                    <thead><tr><th>Type</th><th>Indications</th><th>Notes</th></tr></thead>
-                                    <tbody>
-                                        {integumentaryData.woundCare.dressings.map((d, i) => (
-                                            <tr key={i}>
-                                                <td><strong>{d.type}</strong></td>
-                                                <td>{d.use}</td>
-                                                <td>{d.note}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <h2 style={{ marginTop: '2rem' }}>Debridement Methods</h2>
-                            <div className="cards-grid">
-                                {integumentaryData.woundCare.debridement.map(method => (
-                                    <div key={method.method} className="content-card">
-                                        <h4>{method.method}</h4>
-                                        <p>{method.desc}</p>
-                                        <small style={{ color: 'var(--color-primary)' }}>{method.correct}</small>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-
-                    {activeTab === 'documentation' && (
-                        <motion.div key="doc" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                            <div className="content-card">
-                                <h3>SOAP Note Template</h3>
-                                <div className="code-block" style={{ background: '#1e293b', padding: '1rem', borderRadius: '8px', color: '#e2e8f0', fontFamily: 'monospace' }}>
-                                    <p><strong style={{ color: '#60a5fa' }}>S:</strong> {integumentaryData.documentation.soapTemplate.s}</p>
-                                    <p><strong style={{ color: '#60a5fa' }}>O:</strong> {integumentaryData.documentation.soapTemplate.o}</p>
-                                    <p><strong style={{ color: '#60a5fa' }}>A:</strong> {integumentaryData.documentation.soapTemplate.a}</p>
-                                    <p><strong style={{ color: '#60a5fa' }}>P:</strong> {integumentaryData.documentation.soapTemplate.p}</p>
-                                </div>
-                            </div>
-                            <div className="clinical-box pathology" style={{ marginTop: '2rem' }}>
-                                <h3>🚩 Signs of Infection</h3>
-                                <ul>
-                                    {integumentaryData.documentation.infectionSigns.map(sign => (
-                                        <li key={sign}>{sign}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </motion.div>
-                    )}
+                    <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        {renderContent(activeTab)}
+                    </motion.div>
                 </AnimatePresence>
             </div>
 
             <style>{`
-                .cards-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                    gap: 1.5rem;
+                .integumentary-page {
+                    padding-top: 3rem;
+                    padding-bottom: 5rem;
                 }
-                .data-table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    background: var(--color-surface);
-                    border-radius: 8px;
-                    overflow: hidden;
-                }
-                .data-table th, .data-table td {
-                    padding: 1rem;
-                    text-align: left;
+                .detail-header {
+                    margin-bottom: 3rem;
                     border-bottom: 1px solid var(--color-border);
+                    padding-bottom: 2rem;
                 }
-                .data-table th {
-                    background: var(--color-primary-light);
+                .detail-header h1 {
                     color: var(--color-primary);
+                    margin-bottom: 0.75rem;
+                    font-size: 2.5rem;
+                    letter-spacing: -0.025em;
+                }
+                .lead {
+                    font-size: 1.25rem;
+                    color: var(--color-text-muted);
+                    line-height: 1.7;
+                    max-width: 800px;
+                }
+
+                /* Tab Navigation */
+                .category-tabs {
+                    display: flex;
+                    gap: 1rem;
+                    border-bottom: 1px solid var(--color-border);
+                    margin-bottom: 3rem;
+                    overflow-x: auto;
+                    padding-bottom: 2px;
                 }
                 .tab-btn {
                     display: flex;
                     align-items: center;
-                    gap: 0.5rem;
-                    padding: 0.75rem 1.5rem;
-                    border: none;
+                    gap: 0.75rem;
+                    padding: 1rem 1.5rem;
                     background: transparent;
+                    border: none;
+                    border-bottom: 3px solid transparent;
                     color: var(--color-text-muted);
                     font-weight: 600;
                     cursor: pointer;
-                    border-bottom: 2px solid transparent;
-                    transition: all 0.2s;
+                    white-space: nowrap;
+                    transition: all 0.2s ease;
+                    font-size: 1rem;
+                }
+                .tab-btn:hover {
+                    color: var(--color-primary);
+                    background: var(--color-surface-hover);
                 }
                 .tab-btn.active {
                     color: var(--color-primary);
                     border-bottom-color: var(--color-primary);
                 }
-                .category-tabs {
+
+                /* Layout & Typography */
+                .subtopic-content {
+                    animation: fadeIn 0.4s ease-out;
+                }
+                .lead-text {
+                    font-size: 1.125rem;
+                    line-height: 1.8;
+                    color: var(--color-text);
+                    margin-bottom: 2rem;
+                    max-width: 900px;
+                }
+                h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1.5rem;
+                    color: var(--color-text);
                     display: flex;
-                    overflow-x: auto;
+                    align-items: center;
+                    gap: 0.75rem;
+                }
+                
+                /* Cards & Grids */
+                .content-card {
+                    background: var(--color-surface);
+                    border-radius: var(--radius-lg);
+                    padding: 2rem;
+                    box-shadow: var(--shadow-md);
+                    border: 1px solid rgba(0,0,0,0.05);
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                }
+                .content-card:hover {
+                    transform: translateY(-2px);
+                    box-shadow: var(--shadow-lg);
+                }
+
+                .info-grid {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                    gap: 2rem;
+                    margin-bottom: 3rem;
+                }
+                @media (max-width: 900px) {
+                    .info-grid { grid-template-columns: 1fr; }
+                }
+
+                /* Lists */
+                .params-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                .params-list li {
+                    padding: 0.75rem 0;
                     border-bottom: 1px solid var(--color-border);
+                    display: flex;
+                    align-items: flex-start;
+                }
+                .params-list li:last-child { border-bottom: none; }
+                .params-list li::before {
+                    content: "•";
+                    color: var(--color-primary);
+                    font-weight: bold;
+                    margin-right: 0.75rem;
+                    font-size: 1.25rem;
+                    line-height: 1;
+                }
+
+                /* Clinical Boxes */
+                .clinical-box {
+                    padding: 1.5rem;
+                    border-radius: var(--radius-md);
+                    border-left: 4px solid var(--color-primary);
+                    background: var(--color-primary-light);
+                }
+                .clinical-box h4 {
+                    color: var(--color-primary);
+                    margin: 0 0 0.5rem 0;
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+                .clinical-box p { margin: 0; color: var(--color-text); }
+                
+                /* Images Grid */
+                .images-section {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 2rem;
+                    margin: 3rem 0;
+                }
+                .image-card {
+                    background: var(--color-surface);
+                    padding: 1rem;
+                    border-radius: var(--radius-lg);
+                    box-shadow: var(--shadow-sm);
+                    text-align: center;
+                }
+                .image-card img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: var(--radius-md);
                     margin-bottom: 1rem;
+                }
+                .caption {
+                    color: var(--color-text-muted);
+                    font-size: 0.9rem;
+                    font-style: italic;
+                }
+
+                /* Modern Tables */
+                .table-container {
+                    margin: 3rem 0;
+                    background: var(--color-surface);
+                    border-radius: var(--radius-lg);
+                    box-shadow: var(--shadow-md);
+                    overflow: hidden;
+                    border: 1px solid var(--color-border);
+                }
+                .table-container h3 {
+                    background: var(--color-bg);
+                    padding: 1.25rem 2rem;
+                    margin: 0;
+                    font-size: 1.1rem;
+                    border-bottom: 1px solid var(--color-border);
+                }
+                .data-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .data-table th {
+                    background: var(--color-bg);
+                    color: var(--color-text-muted);
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 0.75rem;
+                    letter-spacing: 0.05em;
+                    padding: 1rem 2rem;
+                    text-align: left;
+                }
+                .data-table td {
+                    padding: 1.25rem 2rem;
+                    border-top: 1px solid var(--color-border);
+                    color: var(--color-text);
+                }
+                .data-table tr:hover td {
+                    background: var(--color-primary-light);
+                }
+
+                /* Dressing Cards */
+                .dressings-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                    gap: 1.5rem;
+                    margin-top: 2rem;
+                }
+                .dressing-card {
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-border);
+                    border-radius: var(--radius-lg);
+                    padding: 2rem;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .dressing-card:hover {
+                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                    transform: translateY(-4px);
+                    border-color: var(--color-primary);
+                }
+                .dressing-icon {
+                    width: 72px;
+                    height: 72px;
+                    object-fit: contain;
+                    margin-bottom: 1.5rem;
+                    border-radius: 12px; /* Soften the white box edges */
+                    background: white; /* Ensure consistent background if transparent */
+                    padding: 4px;
+                }
+                .dressing-card h3 {
+                    margin-bottom: 0.75rem;
+                    color: var(--color-primary);
+                    font-size: 1.5rem; /* Larger header */
+                    line-height: 1.2;
+                }
+                .dressing-desc {
+                    color: var(--color-text-muted);
+                    margin-bottom: 2rem;
+                    line-height: 1.6;
+                    font-size: 1rem;
+                    flex-grow: 1; /* Push details to bottom */
+                }
+                .dressing-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem; /* More space between rows */
+                    font-size: 0.95rem; /* Slightly larger text */
+                    padding-top: 1.5rem;
+                    border-top: 1px solid var(--color-border);
+                }
+                .detail-row {
+                    display: grid;
+                    grid-template-columns: 140px 1fr; /* Increased from 120px to avoid collision */
+                    gap: 1rem;
+                    align-items: baseline; /* Align text properly */
+                }
+                .detail-row strong {
+                    color: var(--color-text); /* Ensure contrast */
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    letter-spacing: 0.02em;
+                }
+                .indications span { 
+                    color: var(--color-success, #10b981); 
+                    font-weight: 500;
+                    line-height: 1.5;
+                    display: block;
+                }
+                .contraindications span { 
+                    color: var(--color-danger); 
+                    font-weight: 500;
+                    line-height: 1.5;
+                    display: block;
+                }
+
+                /* Comparisons */
+                .comparison-visuals {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 2rem;
+                    margin: 3rem 0;
+                }
+                .visual-item {
+                    background: var(--color-surface);
+                    padding: 2rem;
+                    border-radius: var(--radius-lg);
+                    box-shadow: var(--shadow-md);
+                    text-align: center;
+                    border: 1px solid var(--color-border);
+                }
+                .visual-item img {
+                    height: 180px;
+                    margin-bottom: 1.5rem;
+                }
+                .visual-item h4 {
+                    color: var(--color-primary);
+                    margin-bottom: 0.5rem;
+                    font-size: 1.25rem;
+                }
+
+                /* Animations */
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
             `}</style>
         </div>

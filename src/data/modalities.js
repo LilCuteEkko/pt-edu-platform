@@ -30,19 +30,19 @@ export const modalities = [
       Dry needling (DN) is a skilled intervention that uses a thin filiform needle to penetrate the skin and stimulate underlying myofascial trigger points, muscular, and connective tissues.
 
       #### Theoretical Framework
-      - **Radiculopathy Model:** Treating the spinal segments innervating the painful muscle.
-      - **Trigger Point Model:** Direct treatment of the taut band to elicit a Local Twitch Response (LTR).
+      - Radiculopathy Model: Treating the spinal segments innervating the painful muscle.
+      - Trigger Point Model: Direct treatment of the taut band to elicit a Local Twitch Response (LTR).
       
       #### Key Techniques
-      - **Pistoning:** Fast entry and exit to elicit LTR. Resets the muscle spindle.
-      - **Static Insertion:** Leaving the needle in place for 10-20 minutes. Targets C-fiber inhibition for pain modulation.
-      - **Tent & Turn:** Rotating the needle to wind connective tissue (mechanotransduction).
-      - **Electric Stimulation (Internal):** Clamping electrodes to needles for deeper, more focused muscle activation than surface TENS.
+      - Pistoning: Fast entry and exit to elicit LTR. Resets the muscle spindle.
+      - Static Insertion: Leaving the needle in place for 10-20 minutes. Targets C-fiber inhibition for pain modulation.
+      - Tent & Turn: Rotating the needle to wind connective tissue (mechanotransduction).
+      - Electric Stimulation (Internal): Clamping electrodes to needles for deeper, more focused muscle activation than surface TENS.
       
       #### Safety & Precautions
-      - **Lung Fields:** Caution when needling around the thorax (Pneumothorax risk).
-      - **Neurovascular Bundles:** Avoiding major nerves and arteries (e.g., Femoral triangle).
-      - **Clean Needle Technique:** Sterile field, gloves, single-use needles.
+      - Lung Fields: Caution when needling around the thorax (Pneumothorax risk).
+      - Neurovascular Bundles: Avoiding major nerves and arteries (e.g., Femoral triangle).
+      - Clean Needle Technique: Sterile field, gloves, single-use needles.
     `
     },
     {
@@ -251,8 +251,8 @@ export const modalities = [
       Manipulation is a specialized skill requiring advanced training to perform safely and effectively.
       
       #### The "Pop" (Cavitation)
-      - **Mechanism:** Tribonucleation. Sudden spacing of the joint creates a drop in pressure, causing nitrogen gas to come out of solution from the synovial fluid.
-      - **Refractory Period:** The gas takes ~20 minutes to dissolve back into solution, meaning you cannot "re-pop" the same joint immediately.
+      - Mechanism: Tribonucleation. Sudden spacing of the joint creates a drop in pressure, causing nitrogen gas to come out of solution from the synovial fluid.
+      - Refractory Period: The gas takes ~20 minutes to dissolve back into solution, meaning you cannot "re-pop" the same joint immediately.
       
       #### Clinical Prediction Rule (CPR) for Lumbar Manipulation
       Patients most likely to benefit from L-Spine manip (Flynn et al.):
@@ -262,14 +262,14 @@ export const modalities = [
       4. At least one hip with > 35° internal rotation.
       5. Hypomobility of at least one lumbar segment.
       
-      **Success Rate:** 4/5 present = 95% probability of successful outcome.
+      Success Rate: 4/5 present = 95% probability of successful outcome.
       
       #### Grading Scale (Maitland)
-      - **Grade I:** Small amplitude, beginning of range (Pain).
-      - **Grade II:** Large amplitude, within range (Pain).
-      - **Grade III:** Large amplitude, up to limit (Stiffness).
-      - **Grade IV:** Small amplitude, at limit (Stiffness).
-      - **Grade V (HVT):** Small amplitude, high velocity thrust beyond the physiological limit but within anatomical barrier.
+      - Grade I: Small amplitude, beginning of range (Pain).
+      - Grade II: Large amplitude, within range (Pain).
+      - Grade III: Large amplitude, up to limit (Stiffness).
+      - Grade IV: Small amplitude, at limit (Stiffness).
+      - Grade V (HVT): Small amplitude, high velocity thrust beyond the physiological limit but within anatomical barrier.
     `
     },
     {
@@ -295,15 +295,15 @@ export const modalities = [
       Vibration therapy has gained popularity with optimal frequencies for different goals.
       
       #### Parameters
-      - **Frequency (Hz):**
-        - **20-30 Hz:** Relaxation, recovery, blood flow.
-        - **30-50 Hz:** Muscle activation, potentiation, strength.
-      - **Amplitude (mm):** Higher amplitude = higher G-force load on tissues.
+      - Frequency (Hz):
+        - 20-30 Hz: Relaxation, recovery, blood flow.
+        - 30-50 Hz: Muscle activation, potentiation, strength.
+      - Amplitude (mm): Higher amplitude = higher G-force load on tissues.
       
       #### Mechanisms
-      1. **Tonic Vibration Reflex (TVR):** Rapid muscle stretching causes reflex contraction (Ia afferent loop).
-      2. **Pain Gating:** Large diameter A-beta fiber stimulation overrides pain signals.
-      3. **Bone Density:** WBV (Whole Body Vibration) creates vertical loading forces, simulating gravity to stimulate osteogenesis (Wolff's Law).
+      1. Tonic Vibration Reflex (TVR): Rapid muscle stretching causes reflex contraction (Ia afferent loop).
+      2. Pain Gating: Large diameter A-beta fiber stimulation overrides pain signals.
+      3. Bone Density: WBV (Whole Body Vibration) creates vertical loading forces, simulating gravity to stimulate osteogenesis (Wolff's Law).
     `
     }
 ];

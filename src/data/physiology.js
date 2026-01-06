@@ -8,6 +8,22 @@ import {
     footAnkleContent
 } from './orthoContent';
 import { pharmacologyData } from './pharmacology';
+import hydrocolloidImg from '../assets/wound-care/hydrocolloid_dressing_1767664723782.png';
+import alginateImg from '../assets/wound-care/alginate_dressing_1767664735037.png';
+import foamImg from '../assets/wound-care/foam_dressing_1767664747676.png';
+import hydrogelImg from '../assets/wound-care/hydrogel_dressing_1767664766906.png';
+import transparentFilmImg from '../assets/wound-care/transparent_film_dressing_1767664779489.png';
+
+// PEDIATRIC ASSETS
+import babyProneImg from '../assets/pediatrics/baby_prone.png';
+import babyRollingImg from '../assets/pediatrics/baby_rolling.png';
+import babySittingImg from '../assets/pediatrics/baby_sitting.png';
+import babyCrawlingImg from '../assets/pediatrics/baby_crawling.png';
+import babyStandingImg from '../assets/pediatrics/baby_standing.png';
+import babyWalkingImg from '../assets/pediatrics/baby_walking.png';
+import arterialUlcerImg from '../assets/wound-care/arterial_ulcer_icon_1767664793931.png';
+import venousUlcerImg from '../assets/wound-care/venous_ulcer_icon_1767664807273.png';
+import pressureStagingImg from '../assets/wound-care/pressure_injury_staging_1767664821212.png';
 
 const shoulderContent = {
     pathologyInfo: true,
@@ -898,13 +914,7 @@ export const physiologyTopics = [
             }
         ]
     },
-    {
-        id: 'integumentary',
-        title: 'Integumentary System',
-        description: 'Skin anatomy, extensive wound care management, and PT interventions for tissue healing.',
-        icon: 'Layers',
-        subtopics: []
-    },
+
 
 
     {
@@ -2864,6 +2874,220 @@ export const physiologyTopics = [
                             ]
                         }
                     }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'integumentary',
+        title: 'Integumentary System',
+        description: 'Wound care management, tissue healing, and dermatological conditions relevant to Physical Therapy.',
+        icon: 'Layers',
+        subtopics: [
+            {
+                id: 'wound-assessment',
+                title: 'Wound Assessment & Classification',
+                introduction: 'Accurate assessment is the foundation of effective wound management. Physical Therapists must identify the etiology and stage of the wound to determine the appropriate plan of care.',
+                content: [
+                    'Etiology: Is it Arterial, Venous, Neuropathic (Diabetic), or Pressure-related?',
+                    'Location & Size: Measure Length x Width x Depth (clock method).',
+                    'Tissue Type: Viable (Granulation/Epithelial) vs Non-Viable (Slough/Eschar).',
+                    'Drainage (Exudate): Amount (Scant to Copious), Color (Serous, Sanguineous, Purulent), Odor.',
+                    'Periwound: Maceration, Erythema, Induration, Edema.'
+                ],
+                clinicalRelevance: 'Documentation must be precise. "Red, Yellow, Black" classification is a simple way to describe tissue type goals (Protect Red, Clean Yellow, Debride Black).',
+                images: [
+                    { url: pressureStagingImg, caption: 'Pressure Injury Staging Guide' }
+                ],
+                tables: [
+                    {
+                        title: 'Pressure Injury Staging (NPIAP)',
+                        headers: ['Stage', 'Description', 'Tissue Involvement'],
+                        rows: [
+                            ['Stage 1', 'Non-blanchable erythema of intact skin.', 'Epidermis only.'],
+                            ['Stage 2', 'Partial-thickness skin loss with exposed dermis. Blister.', 'Epidermis + Dermis.'],
+                            ['Stage 3', 'Full-thickness skin loss. Adipose visible.', 'Subcutaneous fat exposed. No bone/muscle.'],
+                            ['Stage 4', 'Full-thickness skin and tissue loss.', 'Exposed Fascia, Muscle, Tendon, Ligament, Cartilage, or Bone.'],
+                            ['Unstageable', 'Obscured full-thickness skin and tissue loss.', 'Slough or Eschar conceals depth.'],
+                            ['DTI', 'Deep Tissue Injury. Persistent non-blanchable deep red/maroon/purple.', 'Intact or non-intact skin.']
+                        ]
+                    },
+                    {
+                        title: 'Wagner Ulcer Grade Classification (Neuropathic/Diabetic)',
+                        headers: ['Grade', 'Description'],
+                        rows: [
+                            ['0', 'Pre-ulcerative lesion; healed ulcer; bony deformity.'],
+                            ['1', 'Superficial ulcer without subcutaneous tissue involvement.'],
+                            ['2', 'Deep ulcer penetrating to tendon, capsule, or bone.'],
+                            ['3', 'Deep ulcer with abscess, osteomyelitis, or joint sepsis.'],
+                            ['4', 'Gangrene of digit/forefoot.'],
+                            ['5', 'Gangrene of entire foot.']
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'wound-dressings',
+                title: 'Wound Dressings',
+                introduction: 'Choosing the right dressing depends on the wound\'s needs: Moisture balance, Bacterial control, and Protection.',
+                type: 'dressing-guide',
+                content: [
+                    'The Golden Rule: "If it\'s wet, dry it. If it\'s dry, wet it."',
+                    'Moist Wound Healing: Promotes faster re-epithelialization and reduces scarring.'
+                ],
+                clinicalRelevance: 'Always check for contraindications (e.g., allergies, infection status) before selecting a product.',
+                dressingTypes: [
+                    {
+                        name: 'Hydrocolloids',
+                        icon: hydrocolloidImg,
+                        description: 'Wafer type dressing with gel-forming agents. Occlusive or semi-occlusive.',
+                        indications: 'Partial thickness wounds, Autolytic debridement of necrosis, Mild exudate.',
+                        contraindications: 'Heavy exudate (maceration risk), Infected wounds, Exposed tendon/bone.'
+                    },
+                    {
+                        name: 'Alginates',
+                        icon: alginateImg,
+                        description: 'Derived from seaweed. Highly absorptive, forms a gel when in contact with exudate.',
+                        indications: 'Moderate to Heavy exudate, Packing tunneling wounds, Infected wounds (can be used).',
+                        contraindications: 'Dry or minimally draining wounds (will dry it out further), Exposed bone.'
+                    },
+                    {
+                        name: 'Foams',
+                        icon: foamImg,
+                        description: 'Polyurethane foam. Absorptive and provides semi-occlusive environment. Cushioning.',
+                        indications: 'Moderate to Heavy exudate, Protection over bony prominences, Under compression.',
+                        contraindications: 'Dry wounds (unless pre-moistened), Arterial ulcers (sometimes due to drying effect).'
+                    },
+                    {
+                        name: 'Hydrogels',
+                        icon: hydrogelImg,
+                        description: 'Water- or glycerin-based products. Donates moisture to the wound.',
+                        indications: 'Dry wounds (Arterial), Eschar/Slough (Softens for debridement), Exposed tendon/bone (keeps moist).',
+                        contraindications: 'Heavy exudate (maceration).'
+                    },
+                    {
+                        name: 'Transparent Films',
+                        icon: transparentFilmImg,
+                        description: 'Thin polyurethane membrane. Waterproof but permeable to oxygen/vapor.',
+                        indications: 'Stage 1 or 2 pressure ulcers, Autolytic debridement, Secondary dressing, IV sites.',
+                        contraindications: 'Infected wounds, Moderate/Heavy exudate, Fragile skin (adhesive injury).'
+                    }
+                ]
+            },
+            {
+                id: 'pathologies-integ',
+                title: 'Common Ulcer Pathologies',
+                introduction: 'Differentiating between arterial, venous, and neuropathic ulcers is critical for safe management.',
+                content: [],
+                visuals: [
+                    {
+                        type: 'comparison', items: [
+                            { label: 'Arterial', img: arterialUlcerImg, desc: 'Distal toes, dorsal foot. Punched out, pale bed, painful.' },
+                            { label: 'Venous', img: venousUlcerImg, desc: 'Medial malleolus, lower leg. Irregular, large, wet, hemosiderin stain.' }
+                        ]
+                    }
+                ],
+                tables: [
+                    {
+                        title: 'Ulcer Characteristics Comparison',
+                        headers: ['Feature', 'Arterial (Ischemic)', 'Venous (Stasis)', 'Neuropathic (Diabetic)'],
+                        rows: [
+                            ['Location', 'Toes, dorsum of foot, lateral malleolus.', 'Medial malleolus, medial lower leg ("Gaiter area").', 'Plantat aspect of foot, metatarsal heads, toes.'],
+                            ['Appearance', 'Round, "punched out", pale/necrotic bed. Minimal drainage.', 'Irregular borders, shallow, beefy red or yellow (slough). Heavy drainage.', 'Round, "punched out", callus rim. Deep.'],
+                            ['Pain', 'Severe, increases with elevation (Intermittent Claudication).', 'Mild/Moderate, decreases with elevation (aching).', 'Absent (loss of protective sensation).'],
+                            ['Pulses', 'Decreased or absent.', 'Normal.', 'Normal or decreased.'],
+                            ['Skin Changes', 'Shiny, hairless, cool, pale/cyanotic.', 'Hemosiderin staining (brown), Edema, Lipodermatosclerosis.', 'Dry, cracked, warm, callus formation.'],
+                            ['Treatment Pts', 'Revascularization. DO NOT COMPRESS if ABI < 0.5-0.8. Keep dry if gangrene.', 'Compression therapy (Unna boot). Elevation. Ambulation.', 'Off-loading (TCC), Blood sugar control, Foot care education.']
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'pt-management-integ',
+                title: 'PT Management & Modalities',
+                introduction: 'Physical Agents and direct wound care techniques can accelerate healing.',
+                content: [
+                    'Debridement: Removal of necrotic tissue.',
+                    '- Selective: Sharps (scalpel/scissors), Enzymatic (Santyl), Autolytic (body\'s enzymes + occlusive dressing), Biologic (Maggots).',
+                    '- Non-Selective: Wet-to-Dry (damages healthy tissue - largely outdated), Pulsatile Lavage with Suction (PLWS - good for tunneling/infection).',
+                    'Compression Therapy: Gold standard for Venous Stasis. Contraindicated in severe PAD (ABI < 0.5) and uncompensated CHF.',
+                    'Off-Loading: Total Contact Casting (TCC) is gold standard for neuropathic ulcers.'
+                ],
+                modalityGuide: [
+                    { name: 'E-Stim (HVPC)', use: 'Promotes angiogenesis, bactericidal effect, epithelial migration. Anode (+) for epithelialization, Cathode (-) for infection/inflammation.' },
+                    { name: 'Ultrasound', use: 'Low Frequency (MIST therapy): Debridement and bacterial reduction. High Frequency: Peri-wound collagen alignment.' },
+                    { name: 'Negative Pressure (VAC)', use: 'Promotes granulation, removes exudate, approximates wound edges. C/I: Malignancy, Osteomyelitis, Exposed vessels.' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'pediatrics',
+        title: 'Pediatrics',
+        description: 'Developmental milestones, reflexes, and pediatric conditions.',
+        icon: 'Baby', // Needs a Baby icon or similar (Smile? Users?)
+        subtopics: [
+            {
+                id: 'developmental-milestones',
+                title: 'Developmental Milestones',
+                introduction: 'Gross motor development follows a predictable sequence: Cephalocaudal (Head to Toe) and Proximodistal (Center to Periphery).',
+                type: 'milestone-timeline',
+                content: [],
+                milestones: [
+                    {
+                        age: '2-3 Months',
+                        title: 'Prone Head Lift',
+                        desc: 'Lifts head 45-90 degrees. Prop on forearms.',
+                        img: babyProneImg,
+                        keyPoints: ['Strengthens neck extensors', 'Visual tracking']
+                    },
+                    {
+                        age: '4-5 Months',
+                        title: 'Rolling Over',
+                        desc: 'Rolls prone to supine (first), then supine to prone.',
+                        img: babyRollingImg,
+                        keyPoints: ['Dissociation of head/limbs', 'Core activation']
+                    },
+                    {
+                        age: '6-7 Months',
+                        title: 'Independent Sitting',
+                        desc: 'Sits without support. Hands free for play.',
+                        img: babySittingImg,
+                        keyPoints: ['Righting reactions', 'Protective extension']
+                    },
+                    {
+                        age: '8-9 Months',
+                        title: 'Crawling & Creeping',
+                        desc: 'Quadruped movement. Reciprocal pattern.',
+                        img: babyCrawlingImg,
+                        keyPoints: ['Shoulder stability', 'Cross-lateral coordination']
+                    },
+                    {
+                        age: '10-11 Months',
+                        title: 'Pull to Stand & Cruising',
+                        desc: 'Pulls up on furniture. Walks sideways holding on.',
+                        img: babyStandingImg,
+                        keyPoints: ['Weight shifting', 'Eccentric quadriceps control']
+                    },
+                    {
+                        age: '12-15 Months',
+                        title: 'Independent Walking',
+                        desc: 'Unassisted ambulation. High guard position initially.',
+                        img: babyWalkingImg,
+                        keyPoints: ['Wide base of support', 'Lumbar lordosis development']
+                    }
+                ]
+            },
+            {
+                id: 'reflexes',
+                title: 'Primitive Reflexes',
+                introduction: 'Involuntary motor responses originating in the brainstem. Integration is essential for voluntary movement.',
+                content: [
+                    'Rooting (0-3 mo): Head turn to touch on cheek.',
+                    'Moro (0-4 mo): Extension/Abduction then Flexion/Adduction to sudden drop.',
+                    'ATNR (0-6 mo): "Fencer pose" with head turn.',
+                    'STNR (6-8 mo): Flexion of head flexes arms/extends legs.',
+                    'Palmar Grasp (0-4 mo): Finger flexion to palm pressure.'
                 ]
             }
         ]

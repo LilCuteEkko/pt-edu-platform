@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import { generateQuiz } from '../data/quizGenerator';
-import { Check, X, RefreshCw, Trophy, Brain, Activity } from 'lucide-react';
+import { physiologyTopics } from '../data/physiology'; // Import topics
+import { Check, X, RefreshCw, Trophy, Brain, Activity, Layers, ActivitySquare, Heart, Stethoscope } from 'lucide-react'; // More icons
 
 const QuizPage = () => {
   const [questions, setQuestions] = useState([]);
@@ -14,11 +16,12 @@ const QuizPage = () => {
 
   // New State for Mode Selection
   const [quizMode, setQuizMode] = useState(null); // 'muscles' | 'pathology'
+  const [difficulty, setDifficulty] = useState('medium'); // 'easy' | 'medium' | 'hard'
   const [isQuizActive, setIsQuizActive] = useState(false);
 
   const startQuiz = (mode) => {
     setQuizMode(mode);
-    setQuestions(generateQuiz(5, mode));
+    setQuestions(generateQuiz(5, mode, difficulty));
     setCurrentQuestionIndex(0);
     setScore(0);
     setShowResult(false);
@@ -68,18 +71,46 @@ const QuizPage = () => {
           <h1 className="title">Select Quiz Mode</h1>
           <p className="subtitle">Choose your area of study to begin</p>
 
+          <div className="difficulty-selector">
+            <label>Difficulty:</label>
+            <div className="diff-options">
+              {['easy', 'medium', 'hard'].map(level => (
+                <button
+                  key={level}
+                  className={`diff-btn ${difficulty === level ? 'active' : ''}`}
+                  onClick={() => setDifficulty(level)}
+                >
+                  {level.charAt(0).toUpperCase() + level.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="mode-grid">
+            {/* 1. Static Muscle Mode (Special case from muscles.js) */}
             <button className="mode-card" onClick={() => startQuiz('muscles')}>
               <Activity size={48} className="mode-icon" />
               <h2>Muscles & Nerves</h2>
               <p>Test your knowledge on origins, insertions, actions, and innervation.</p>
             </button>
 
-            <button className="mode-card" onClick={() => startQuiz('pathology')}>
-              <Brain size={48} className="mode-icon" />
-              <h2>Pathologies</h2>
-              <p>Challenge yourself on signs, symptoms, and clinical features of diseases.</p>
-            </button>
+            {/* 2. Dynamic Physiology Modes */}
+            {physiologyTopics.map(topic => {
+              // Simple icon mapper based on existing imports or string matches
+              let TopicIcon = Brain;
+              if (topic.id === 'cardiopulmonary') TopicIcon = Heart;
+              if (topic.id === 'integumentary') TopicIcon = Layers;
+              if (topic.id === 'musculoskeletal') TopicIcon = ActivitySquare;
+              // Fallback icon logic if needed based on title string matching could go here
+
+              return (
+                <button key={topic.id} className="mode-card" onClick={() => startQuiz(topic.id)}>
+                  <TopicIcon size={48} className="mode-icon" />
+                  <h2>{topic.title}</h2>
+                  <p>{topic.description}</p>
+                </button>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -88,6 +119,47 @@ const QuizPage = () => {
                 .title { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--color-primary); }
                 .subtitle { text-align: center; color: var(--color-secondary); margin-bottom: 3rem; font-size: 1.25rem; }
                 
+                .difficulty-selector {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 2.5rem;
+                }
+                .difficulty-selector label {
+                    font-weight: 600;
+                    color: var(--color-text-muted);
+                    font-size: 0.9rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+                .diff-options {
+                    display: flex;
+                    background: var(--color-surface);
+                    padding: 0.25rem;
+                    border-radius: 99px;
+                    border: 1px solid var(--color-border);
+                    box-shadow: var(--shadow-sm);
+                }
+                .diff-btn {
+                    padding: 0.5rem 1.5rem;
+                    border-radius: 99px;
+                    border: none;
+                    background: transparent;
+                    color: var(--color-text-muted);
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+                .diff-btn.active {
+                    background: var(--color-primary);
+                    color: white;
+                    box-shadow: var(--shadow-sm);
+                }
+                .diff-btn:hover:not(.active) {
+                    color: var(--color-primary);
+                }
+
                 .mode-grid {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -195,6 +267,41 @@ const QuizPage = () => {
   }
 
   const currentQuestion = questions[currentQuestionIndex];
+
+  if (isQuizActive && questions.length === 0) {
+    return (
+      <div className="quiz-page container">
+        <div className="result-card">
+          <Brain size={64} className="trophy-icon" style={{ color: 'var(--color-text-muted)' }} />
+          <h1>No Questions Available</h1>
+          <p>We couldn't generate a quiz for this topic yet. Please try another mode.</p>
+          <button onClick={returnToMenu} className="restart-btn primary" style={{ marginTop: '2rem' }}>
+            Return to Menu
+          </button>
+        </div>
+        <style>{`
+                .quiz-page { padding: 4rem 1rem; text-align: center; }
+                .result-card {
+                    background: var(--color-surface);
+                    padding: 3rem;
+                    border-radius: var(--radius-lg);
+                    box-shadow: var(--shadow-md);
+                    max-width: 500px;
+                    margin: 0 auto;
+                    border: 1px solid color-mix(in srgb, var(--color-text), transparent 90%);
+                }
+                .restart-btn {
+                    border: none;
+                    padding: 1rem 1.5rem;
+                    border-radius: var(--radius-md);
+                    font-size: 1rem;
+                    cursor: pointer;
+                    background: var(--color-primary); color: white;
+                }
+             `}</style>
+      </div>
+    );
+  }
 
   return (
     <div className="quiz-page container">
