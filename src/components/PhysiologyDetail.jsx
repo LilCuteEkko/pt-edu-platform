@@ -2,12 +2,17 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Activity } from 'lucide-react';
 import { physiologyTopics } from '../data/physiology';
 import { motion } from 'framer-motion';
-import BrainExplorer from './BrainExplorer';
+// import BrainExplorer from './BrainExplorer';
 import SarcomereAnimator from './SarcomereAnimator';
 import HeartValvesVisualizer from './HeartValvesVisualizer';
 
 import PathologyGrid from './PathologyGrid';
 import MilestoneTracker from './MilestoneTracker';
+import IntegumentaryDetail from './IntegumentaryDetail';
+import NeuromuscularDetail from './NeuromuscularDetail';
+// import brainDiagramImg from '../assets/neuromuscular/human-brain-anatomy.png';
+import InteractiveBrain from './InteractiveBrain';
+import MuscleCard from './MuscleCard';
 
 const PhysiologyDetail = () => {
   const { topicId } = useParams();
@@ -15,6 +20,14 @@ const PhysiologyDetail = () => {
 
   if (!topic) {
     return <div className="container">Topic not found</div>;
+  }
+
+  if (topic.id === 'neuromuscular') {
+    return <NeuromuscularDetail topic={topic} />;
+  }
+
+  if (topic.id === 'integumentary') {
+    return <IntegumentaryDetail topic={topic} />;
   }
 
   return (
@@ -42,16 +55,25 @@ const PhysiologyDetail = () => {
               <p className="intro-text" style={{ marginBottom: '1rem' }}>{subtopic.introduction}</p>
             )}
             {subtopic.type === 'interactive-brain' ? (
-              <BrainExplorer lobes={subtopic.lobes} />
+              <InteractiveBrain lobes={subtopic.lobes} />
             ) : subtopic.type === 'interactive-sarcomere' ? (
               <SarcomereAnimator />
             ) : subtopic.type === 'interactive-heart' ? (
               <HeartValvesVisualizer />
 
             ) : subtopic.type === 'pathology-grid' ? (
-              <PathologyGrid pathologies={subtopic.pathologies} />
+              <PathologyGrid
+                pathologies={subtopic.pathologies}
+                categoryContent={subtopic.categoryContent}
+              />
             ) : subtopic.type === 'milestone-tracker' ? (
               <MilestoneTracker milestones={subtopic.milestones} reflexes={subtopic.reflexes} />
+            ) : subtopic.type === 'muscle-list' ? (
+              <div className="muscle-grid">
+                {subtopic.muscles.map((muscle, idx) => (
+                  <MuscleCard key={idx} muscle={muscle} />
+                ))}
+              </div>
             ) : (
               <div className="content-card">
                 <ul className="key-points">
@@ -159,6 +181,12 @@ const PhysiologyDetail = () => {
           margin: 0;
           color: var(--color-text);
           font-weight: 500;
+        }
+        .muscle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
       `}</style>
     </div>

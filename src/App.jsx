@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import AnatomyPage from './pages/AnatomyPage';
 import PhysiologyPage from './pages/PhysiologyPage';
 import PhysiologyDetail from './components/PhysiologyDetail';
+import ModalitiesPage from './pages/ModalitiesPage';
+import LabValuesPage from './components/LabValuesPage';
 import QuizPage from './pages/QuizPage';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css';
@@ -31,6 +33,8 @@ function AnimatedRoutes() {
           <Route path="anatomy" element={<PageWrapper><AnatomyPage /></PageWrapper>} />
           <Route path="physiology" element={<PageWrapper><PhysiologyPage /></PageWrapper>} />
           <Route path="physiology/:topicId" element={<PageWrapper><PhysiologyDetail /></PageWrapper>} />
+          <Route path="modalities" element={<PageWrapper><ModalitiesPage /></PageWrapper>} />
+          <Route path="labs" element={<PageWrapper><LabValuesPage /></PageWrapper>} />
           <Route path="quiz" element={<PageWrapper><QuizPage /></PageWrapper>} />
         </Route>
       </Routes>

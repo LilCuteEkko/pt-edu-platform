@@ -1,3 +1,211 @@
+import {
+    headNeckContent,
+    elbowContent,
+    wristHandContent,
+    thoracicRibsContent,
+    lumbarPelvicContent,
+    hipContent,
+    footAnkleContent
+} from './orthoContent';
+import { pharmacologyData } from './pharmacology';
+
+const shoulderContent = {
+    pathologyInfo: true,
+    anatomy: {
+        bones: [
+            { name: 'Humerus', description: 'The upper arm bone, which articulates with the scapula to form the glenohumeral joint.' },
+            { name: 'Scapula', description: 'The shoulder blade, which provides a stable base for movement and serves as an attachment site for numerous muscles.' },
+            { name: 'Clavicle', description: 'The collarbone, which connects the sternum to the scapula and provides structural support to the shoulder.' }
+        ],
+        joints: [
+            { name: 'Glenohumeral Joint (GHJ)', description: 'Ball-and-socket joint. Allows flexion, extension, abduction, adduction, IR/ER, and circumduction.' },
+            { name: 'Acromioclavicular Joint (ACJ)', description: 'Plane synovial joint between acromion and clavicle.' },
+            { name: 'Sternoclavicular Joint (SCJ)', description: 'Saddle joint connecting clavicle to sternum.' },
+            { name: 'Scapulothoracic Articulation', description: 'Functional connection between scapula and thoracic cage.' }
+        ],
+        muscles: {
+            rotatorCuff: [
+                { name: 'Supraspinatus', action: 'Initiates abduction (first 15°)' },
+                { name: 'Infraspinatus', action: 'External rotation' },
+                { name: 'Teres Minor', action: 'External rotation' },
+                { name: 'Subscapularis', action: 'Internal rotation' }
+            ],
+            other: [
+                { name: 'Deltoid', action: 'Abduction (>15°)' },
+                { name: 'Pectoralis Major', action: 'IR, flexion, adduction' },
+                { name: 'Pectoralis Minor', action: 'Scapular stabilization' },
+                { name: 'Latissimus Dorsi', action: 'Adduction, extension, IR' },
+                { name: 'Trapezius', action: 'Scapular elevation/depression/retraction' },
+                { name: 'Serratus Anterior', action: 'Scapular protraction/upward rotation' },
+                { name: 'Levator Scapulae', action: 'Scapular elevation' },
+                { name: 'Rhomboids', action: 'Scapular retraction' }
+            ]
+        },
+        ligaments: [
+            { name: 'Coracoacromial', description: 'Prevents superior displacement of humeral head.' },
+            { name: 'Coracoclavicular', description: 'Stabilizes AC joint.' },
+            { name: 'Glenohumeral (Sup/Mid/Inf)', description: 'Reinforce capsule, prevent excessive movement.' },
+            { name: 'Transverse Humeral', description: 'Holds long head of biceps tendon.' }
+        ],
+        neurovascular: {
+            nerves: ['Brachial Plexus (C5-T1)', 'Axillary Nerve (Deltoid/Teres Minor)', 'Suprascapular Nerve (Supra/Infra)', 'Musculocutaneous Nerve (Biceps/Brachialis)'],
+            vascular: ['Subclavian Artery', 'Axillary Artery', 'Brachial Artery']
+        }
+    },
+    function: {
+        biomechanics: [
+            'Scapulohumeral Rhythm: 2:1 ratio (2° humeral elevation for every 1° scapular rotation).',
+            'Force Couples: Deltoid (Upward) vs Rotator Cuff (Compress/Depress) to prevent impingement.',
+            'Scapular Stability: Essential for proper GH joint mechanics.'
+        ],
+        rom: [
+            { movement: 'Flexion', value: '0-180°' },
+            { movement: 'Extension', value: '0-60°' },
+            { movement: 'Abduction', value: '0-180°' },
+            { movement: 'Internal Rotation', value: '0-70° (at side), 0-90° (at 90° abd)' },
+            { movement: 'External Rotation', value: '0-90°' }
+        ],
+        commonConditions: [
+            { category: 'Rotator Cuff', conditions: 'Tendinopathy, Tears, Impingement, Calcific Tendinitis' },
+            { category: 'Instability', conditions: 'Anterior/Posterior/MDI, Labral Tears (SLAP/Bankart)' },
+            { category: 'Impingement', conditions: 'Subacromial, Internal' },
+            { category: 'Bursitis/Tendonitis', conditions: 'Subacromial Bursitis, Biceps Tendinitis' },
+            { category: 'Traumatic', conditions: 'Dislocations, AC Separation, Fractures' },
+            { category: 'Adhesive/Degenerative', conditions: 'Frozen Shoulder, OA, RA' },
+            { category: 'Nerve', conditions: 'TOS, Suprascapular/Axillary Nerve Palsy' }
+        ]
+    },
+    specialTests: [
+        {
+            category: 'Rotator Cuff', tests: [
+                { name: 'Empty Can (Jobe\'s)', purpose: 'Supraspinatus', positive: 'Pain/weakness in abduction' },
+                { name: 'Drop Arm', purpose: 'Full-thickness Tear', positive: 'Inability to hold arm' },
+                { name: 'ER Lag Sign', purpose: 'Infraspinatus/Teres Minor', positive: 'Lag into IR' },
+                { name: 'Lift-Off', purpose: 'Subscapularis', positive: 'Inability to lift hand from back' }
+            ]
+        },
+        {
+            category: 'Impingement', tests: [
+                { name: 'Neer\'s', purpose: 'Subacromial Impingement', positive: 'Pain with forced flexion' },
+                { name: 'Hawkins-Kennedy', purpose: 'Impingement', positive: 'Pain with passive IR' },
+                { name: 'Painful Arc', purpose: 'General Impingement', positive: 'Pain 60°-120°' }
+            ]
+        },
+        {
+            category: 'Instability', tests: [
+                { name: 'Apprehension/Relocation', purpose: 'Anterior Instability', positive: 'Fear/Pain / Relief' },
+                { name: 'Sulcus Sign', purpose: 'MDI/Inferior Instability', positive: 'Visible dimple below acromion' },
+                { name: 'Jerk Test', purpose: 'Posterior Instability', positive: 'Pain/Clunk with adduction' }
+            ]
+        },
+        {
+            category: 'Labral', tests: [
+                { name: 'O\'Brien\'s', purpose: 'SLAP Lesion', positive: 'Pain IR > ER' },
+                { name: 'Crank Test', purpose: 'Labral Pathology', positive: 'Clicking/Pain' },
+                { name: 'Biceps Load II', purpose: 'SLAP', positive: 'Pain resisted flexion' }
+            ]
+        },
+        {
+            category: 'Other', tests: [
+                { name: 'Speed\'s / Yergason\'s', purpose: 'Biceps Tendinitis', positive: 'Pain bicipital groove' },
+                { name: 'Cross-Body Adduction', purpose: 'AC Joint', positive: 'Pain at AC joint' },
+                { name: 'Adson\'s / Roos', purpose: 'TOS', positive: 'Pulse loss / Symptoms reproduction' }
+            ]
+        }
+    ]
+};
+
+const kneeContent = {
+    pathologyInfo: true,
+    anatomy: {
+        bones: [
+            { name: 'Femur', description: 'Distal femur forms the femoral condyles/trochlea.' },
+            { name: 'Tibia', description: 'Proximal tibia (tibial plateau) bears weight.' },
+            { name: 'Fibula', description: 'Non-weight bearing, attachment site for LCL/Biceps Femoris.' },
+            { name: 'Patella', description: 'Sesamoid bone acting as a fulcrum to increase quad leverage.' }
+        ],
+        joints: [
+            { name: 'Tibiofemoral Joint (TFJ)', description: 'Modified hinge joint (double condyloid). Flexion/Extension + some rotation.' },
+            { name: 'Patellofemoral Joint (PFJ)', description: 'Articulation between patella and femoral trochlea. High reaction forces.' },
+            { name: 'Proximal Tibiofibular Joint', description: 'Plane synovial joint nearby.' }
+        ],
+        muscles: {
+            quadriceps: [
+                { name: 'Rectus Femoris', action: 'Knee Ext / Hip Flex' },
+                { name: 'Vastus Medialis (VMO)', action: 'Extension / Patellar stability' },
+                { name: 'Vastus Lateralis/Intermedius', action: 'Knee Extension' }
+            ],
+            hamstrings: [
+                { name: 'Biceps Femoris', action: 'Flexion / ER' },
+                { name: 'Semitendinosus/Membranosus', action: 'Flexion / IR' }
+            ],
+            other: [
+                { name: 'Popliteus', action: 'Unlocks knee (IR of tibia)' },
+                { name: 'Gastrocnemius', action: 'Knee Flexion / Plantarflexion' },
+                { name: 'TFL/IT Band', action: 'Lateral stability' },
+                { name: 'Sartorius/Gracilis', action: 'Pes Anserine group (Flexion/IR)' }
+            ]
+        },
+        ligaments: [
+            { name: 'ACL', description: 'Prevents anterior tibial translation & rotation.' },
+            { name: 'PCL', description: 'Prevents posterior tibial translation.' },
+            { name: 'MCL', description: 'Resists valgus stress.' },
+            { name: 'LCL', description: 'Resists varus stress.' },
+            { name: 'Menisci (Med/Lat)', description: 'Fibrocartilage for shock absorption & congruency.' }
+        ],
+        neurovascular: {
+            nerves: ['Femoral Nerve (Quads)', 'Sciatic -> Tibial/Common Peroneal (Hamstrings/Lower Leg)', 'Saphenous Nerve (Sensory medial knee)'],
+            vascular: ['Popliteal Artery', 'Genicular Arteries (Anastomosis)']
+        }
+    },
+    specialTests: [
+        {
+            category: 'Ligamentous', tests: [
+                { name: 'Lachman\'s', purpose: 'ACL (Gold Std)', positive: 'Soft end feel / translation' },
+                { name: 'Anterior Drawer', purpose: 'ACL', positive: 'Excessive ant. translation' },
+                { name: 'Posterior Drawer', purpose: 'PCL', positive: 'Excessive post. translation' },
+                { name: 'Valgus Stress', purpose: 'MCL', positive: 'Laxity at 30° (Iso) or 0° (Combined)' },
+                { name: 'Varus Stress', purpose: 'LCL', positive: 'Laxity at 30° flexion' }
+            ]
+        },
+        {
+            category: 'Meniscal', tests: [
+                { name: 'McMurray\'s', purpose: 'Meniscus tear', positive: 'Click/Pain with Rot+Ext' },
+                { name: 'Thessaly', purpose: 'Meniscus (func)', positive: 'Pain twisting on 1 leg' },
+                { name: 'Apley\'s Compression', purpose: 'Meniscus', positive: 'Pain with compression' }
+            ]
+        },
+        {
+            category: 'Patellofemoral', tests: [
+                { name: 'Patellar Apprehension', purpose: 'Patellar instability', positive: 'Contraction/Fear' },
+                { name: 'Clarke\'s Sign', purpose: 'PF Pain/Chondromalacia', positive: 'Pain with quad set' },
+                { name: 'Noble Compression', purpose: 'IT Band Friction', positive: 'Pain at 30° flexion' }
+            ]
+        }
+    ],
+    function: {
+        biomechanics: [
+            'Screw Home Mechanism: Tibia ERs (open chain) or Femur IRs (closed chain) to lock knee in full extension.',
+            'Q-Angle: Angle between ASIS-MidPatella and Tibial Tuberosity. > in females.',
+            'Patellar Tracking: Dependent on VMO/ITB balance and hip strength.'
+        ],
+        rom: [
+            { movement: 'Flexion', value: '0-135° (up to 150° passive)' },
+            { movement: 'Extension', value: '0° (up to 5-10° hyperextension)' },
+            { movement: 'Tibial Internal Rotation', value: '10-20° (at 90° flexion)' },
+            { movement: 'Tibial External Rotation', value: '30-40° (at 90° flexion)' }
+        ],
+        commonConditions: [
+            { category: 'Ligamentous', conditions: 'ACL/PCL Hx, MCL/LCL Sprains' },
+            { category: 'Meniscal', conditions: 'Traumatic Tears (Bucket handle), Degenerative' },
+            { category: 'Patellofemoral', conditions: 'PFPS (Runner\'s Knee), Chondromalacia, Dislocation' },
+            { category: 'Tendinopathy', conditions: 'Patellar Tendinitis (Jumper\'s Knee), Pes Anserine' },
+            { category: 'Pediatric', conditions: 'Osgood-Schlatter' }
+        ]
+    }
+};
+
+
 export const physiologyTopics = [
     {
         id: 'neuromuscular',
@@ -44,38 +252,81 @@ export const physiologyTopics = [
                     {
                         id: 'frontal',
                         name: 'Frontal Lobe',
-                        function: 'Voluntary movement (Primary Motor Cortex), Executive function, Personality, Broca\'s Area (Motor Speech).',
-                        ptRelevance: 'Middle Cerebral Artery (MCA) strokes often affect this region, causing contralateral hemiparesis (Face/Arm > Leg) and expressive aphasia.'
+                        functions: 'Voluntary movement (Primary Motor Cortex), Executive function, Personality, Broca\'s Area (Motor Speech), Planning & Sequencing.',
+                        damage: 'Middle Cerebral Artery (MCA) strokes often affect the lateral aspect (Face/Arm), while Anterior Cerebral Artery (ACA) strokes affect the medial aspect (Leg). Results in contralateral hemiparesis, expressive aphasia (Broca\'s), and emotional lability.',
+                        subRegions: [
+                            { name: 'Prefrontal Cortex', func: 'Personality, Decision making, Impulse control' },
+                            { name: 'Primary Motor Cortex', func: 'Execution of contralateral movement' },
+                            { name: 'Broca\'s Area', func: 'Motor production of speech (Left Hemisphere)' },
+                            { name: 'Premotor Cortex', func: 'Motor planning and trunk stability' }
+                        ],
+                        vascularSupply: 'ACA (Medial Surface), MCA (Lateral Surface)',
+                        rehabFocus: 'Task-specific training, Dual-tasking (Cognitive-Motor), Constraint-Induced Movement Therapy (CIMT), Speech therapy collaboration.'
                     },
                     {
                         id: 'parietal',
                         name: 'Parietal Lobe',
-                        function: 'Sensation (Primary Somatosensory Cortex), spatial awareness, proprioception.',
-                        ptRelevance: 'Lesions lead to sensation loss and Hemineglect (ignoring one side of space/body), complicating rehab.'
+                        functions: 'Sensation (Primary Somatosensory Cortex), Spatial awareness, Proprioception, Integration of sensory inputs.',
+                        damage: 'Lesions lead to contralateral sensory loss. Right-sided lesions often cause Hemineglect (ignoring left side of space/body). Left-sided lesions may cause Agraphia, Acalculia, or Apraxia.',
+                        subRegions: [
+                            { name: 'Primary Somatosensory Cortex', func: 'Processing touch, pain, temp, proprioception' },
+                            { name: 'Posterior Parietal Cortex', func: 'Spatial awareness and body schema' },
+                            { name: 'Wernicke\'s Area (Part)', func: 'Language comprehension (Superior region)' }
+                        ],
+                        vascularSupply: 'ACA (Medial), MCA (Lateral)',
+                        rehabFocus: 'Sensory re-education, Visual scanning strategies (Lighthouse technique), Mirror therapy, Bilateral integration.'
                     },
                     {
                         id: 'temporal',
                         name: 'Temporal Lobe',
-                        function: 'Hearing (Auditory Cortex), Memory (Hippocampus), Wernicke\'s Area (Language Comprehension).',
-                        ptRelevance: 'Wernicke\'s Aphasia: Patient speaks fluently but words lack meaning ("Word Salad"). Memory deficits impact learning new exercises.'
+                        functions: 'Hearing (Auditory Cortex), Memory (Hippocampus), Wernicke\'s Area (Language Comprehension), Emotion (Amygdala).',
+                        damage: 'Wernicke\'s Aphasia: Fluent but meaningless speech. Memory deficits (anterograde amnesia) if Hippocampus involved. Auditory processing issues.',
+                        subRegions: [
+                            { name: 'Hippocampus', func: 'Formation of new long-term memories' },
+                            { name: 'Amygdala', func: 'Emotional processing (Fear/Aggression)' },
+                            { name: 'Primary Auditory Cortex', func: 'Processing sound' },
+                            { name: 'Wernicke\'s Area', func: 'Language comprehension' }
+                        ],
+                        vascularSupply: 'MCA (Lateral surface), PCA (Inferior/Medial surface)',
+                        rehabFocus: 'Communication strategies (simplify commands), Memory aids (journals/apps), Errorless learning techniques.'
                     },
                     {
                         id: 'occipital',
                         name: 'Occipital Lobe',
-                        function: 'Visual processing (Visual Cortex).',
-                        ptRelevance: 'Cortical blindness or visual field cuts (Homonymous Hemianopsia) can increase fall risk and affect balance.'
+                        functions: 'Visual processing (Primary Visual Cortex).',
+                        damage: 'Cortical blindness (Anton\'s Syndrome) or visual field cuts such as Contralateral Homonymous Hemianopsia. Can affect balance due to reliance on vision.',
+                        subRegions: [
+                            { name: 'Primary Visual Cortex (V1)', func: 'Basic visual processing' },
+                            { name: 'Visual Association Areas', func: 'Interpretation of visual info (Color, Motion)' }
+                        ],
+                        vascularSupply: 'Posterior Cerebral Artery (PCA)',
+                        rehabFocus: 'Visual scanning, environmental adaptations (lighting/contrast), fall prevention strategies.'
                     },
                     {
                         id: 'cerebellum',
                         name: 'Cerebellum',
-                        function: 'Coordination, Balance, Motor Learning, Fine motor control.',
-                        ptRelevance: 'Cerebellar strokes cause Ataxia, Dysmetria (overshooting), and intention tremors. Balance training is critical.'
+                        functions: 'Coordination (Ataxia), Balance, Motor Learning, Fine motor control, Eye movement control.',
+                        damage: 'Damage causes Ipsilateral Ataxia, Dysmetria (overshooting), Dysdiadochokinesia (impaired rapid alternating movements), and Intention Tremors.',
+                        subRegions: [
+                            { name: 'Vermis', func: 'Trunk stability and gait' },
+                            { name: 'Hemispheres', func: 'Limb coordination' },
+                            { name: 'Flocculonodular Lobe', func: 'Vestibular interaction (Balance/Eye movements)' }
+                        ],
+                        vascularSupply: 'SCA, AICA, PICA (Vertebrobasilar system)',
+                        rehabFocus: 'Frenkel exercises, Weighted vests (for tremors), Proximal stability training, Balance/Vestibular therapy.'
                     },
                     {
                         id: 'brainstem',
                         name: 'Brainstem',
-                        function: 'Vital functions (Heart rate, Breathing), Alertness (Reticular formation), Cranial Nerve nuclei.',
-                        ptRelevance: 'Strokes here can be fatal or cause "Locked-In Syndrome". Affects basic arousal and autonomic stability.'
+                        functions: 'Vital functions (Heart rate, Breathing), Alertness (Reticular Activating System), Cranial Nerve nuclei integration.',
+                        damage: 'Strokes here are critical. Can cause "Locked-In Syndrome" (quadriplegia with preserved consciousness/eye movement). Dysphagia and Dysarthria are common.',
+                        subRegions: [
+                            { name: 'Midbrain', func: 'Eye movement, Auditory/Visual reflexes' },
+                            { name: 'Pons', func: 'Breathing control, Relay to Cerebellum' },
+                            { name: 'Medulla', func: 'HR/BP regulation, Decussation of Pyramids' }
+                        ],
+                        vascularSupply: 'Basilar Artery, Vertebral Arteries',
+                        rehabFocus: 'Upright tolerance (tilt table), Respiratory training, Contracture prevention, Sensory stimulation (coma stim).'
                     }
                 ]
             },
@@ -648,6 +899,15 @@ export const physiologyTopics = [
         ]
     },
     {
+        id: 'integumentary',
+        title: 'Integumentary System',
+        description: 'Skin anatomy, extensive wound care management, and PT interventions for tissue healing.',
+        icon: 'Layers',
+        subtopics: []
+    },
+
+
+    {
         id: 'musculoskeletal',
         title: 'Musculoskeletal Physiology',
         description: 'The mechanics of muscle contraction, bone metabolism, and tissue healing.',
@@ -660,6 +920,17 @@ export const physiologyTopics = [
                 type: 'pathology-grid',
                 clinicalRelevance: 'Differentiating between traumatic, overuse, and degenerative etiologies is key to prognosis and intervention selection.',
                 pathologyConnection: 'Includes joint specific pathologies (ACL, Meniscus) and systemic conditions (OA, RA).',
+                categoryContent: {
+                    'Shoulder': shoulderContent,
+                    'Knee': kneeContent,
+                    'Head & Neck': headNeckContent,
+                    'Elbow': elbowContent,
+                    'Wrist & Hand': wristHandContent,
+                    'Thoracic & Ribs': thoracicRibsContent,
+                    'Lumbar & Pelvis': lumbarPelvicContent,
+                    'Hip': hipContent,
+                    'Foot & Ankle': footAnkleContent
+                },
                 pathologies: [
                     {
                         id: 'oa',
@@ -673,7 +944,8 @@ export const physiologyTopics = [
                             'Heberden\'s (DIP) and Bouchard\'s (PIP) nodes'
                         ],
                         ptIntervention: 'Low-impact aerobic exercise (cycling/swimming), quad strengthening (KOA), weight management, manual therapy for pain/ROM.',
-                        icon: 'Bone'
+                        icon: 'Bone',
+                        category: 'General Ortho'
                     },
                     {
                         id: 'ra',
@@ -687,7 +959,132 @@ export const physiologyTopics = [
                             'Ulnar drift, Swan-neck, Boutonnière deformities'
                         ],
                         ptIntervention: 'Joint protection strategies, energy conservation, gentle ROM during flares (avoid extensive stretching), strengthening during remission.',
-                        icon: 'AlertTriangle'
+                        icon: 'AlertTriangle',
+                        category: 'General Ortho'
+                    },
+                    {
+                        id: 'fracture-healing',
+                        name: 'Fracture Healing',
+                        description: 'Physiological process of bone repair (Hematoma -> Callus -> Remodeling).',
+                        keyFeatures: [
+                            'Inflammatory Phase (Hematoma)',
+                            'Reparative Phase (Soft then Hard Callus)',
+                            'Remodeling Phase (Wolff\'s Law)',
+                            'Smoking delays healing'
+                        ],
+                        ptIntervention: 'Respect healing timelines, controlled loading (Wolff\'s Law), prevent contractures.',
+                        icon: 'Bone',
+                        category: 'General Ortho',
+                        details: {
+                            overview: 'Primary healing (rigid fixation) skips callus. Secondary healing (casting) involves callus formation.',
+                            ptManagement: [
+                                { stage: 'Immobilization', focus: 'Maintain ROM of uninjured joints. Isometrics if allowed.' },
+                                { stage: 'Mobilization', focus: 'Gradual weight bearing, joint mobilization (after union).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'osteoporosis',
+                        name: 'Osteoporosis',
+                        description: 'Systemic skeletal disease characterized by low bone mass (T-score < -2.5).',
+                        keyFeatures: [
+                            'Fragility Fractures (Vertebral, Hip, Wrist)',
+                            'Kyphosis ("Dowager\'s Hump")',
+                            'Height loss',
+                            'Silent until fracture'
+                        ],
+                        ptIntervention: 'Weight-bearing impact exercises, Resistance training, Fall prevention.',
+                        icon: 'Activity',
+                        category: 'General Ortho',
+                        details: {
+                            overview: 'Bone resorption exceeds formation. Osteopenia is T-score -1.0 to -2.5.',
+                            ptManagement: [
+                                { stage: 'Prevention', focus: 'Wolff\'s Law: Bone adapts to load. Squats/Deadlifts/Impact.' },
+                                { stage: 'Precautions', focus: 'Avoid loaded flexion (e.g., crunches) due to vertebral compression risk.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'compartment-syndrome',
+                        name: 'Compartment Syndrome',
+                        description: 'Increased pressure within a muscle compartment compromising circulation. RED FLAG.',
+                        keyFeatures: [
+                            'Pain out of proportion to injury',
+                            'Pallor, Paresthesia, Pulselessness',
+                            'Paralysis (late sign)',
+                            'Shiny tension skin'
+                        ],
+                        ptIntervention: 'ACUTE: IMMEDIATE MEDICAL REFERRAL (Fasciotomy).',
+                        icon: 'AlertTriangle',
+                        category: 'General Ortho',
+                        details: {
+                            overview: 'Acute is an emergency. Chronic Exertional Compartment Syndrome (CECS) is exercise-induced and managed conservatively or surgically.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Do NOT elevate (reduces perfusion pressure). Remove compression.' },
+                                { stage: 'Chronic', focus: 'Gait retraining (forefoot strike), soft tissue mobilization.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'crps',
+                        name: 'Complex Regional Pain Syndrome',
+                        acronym: 'CRPS',
+                        description: 'Chronic pain condition usually affecting a limb after injury (Type I: No nerve damage, Type II: Nerve injury).',
+                        keyFeatures: [
+                            'Allodynia / Hyperalgesia',
+                            'Edema and sweating changes',
+                            'Temperature / Color asymmetry',
+                            'Trophic changes (hair/nail growth)'
+                        ],
+                        ptIntervention: 'Graded Motor Imagery, Desensitization, Scrubbing/Carrying (Stress Loading).',
+                        icon: 'Zap',
+                        category: 'General Ortho',
+                        details: {
+                            overview: 'Budapest Criteria used for diagnosis. Maladaptive neuroplasticity.',
+                            ptManagement: [
+                                { stage: 'GMI', focus: 'Steps: 1. Laterality (L/R recognition), 2. Motor Imagery, 3. Mirror Therapy.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'septic-arthritis',
+                        name: 'Septic Arthritis',
+                        description: 'Infection in a joint space. RED FLAG.',
+                        keyFeatures: [
+                            'Acute red, hot, swollen joint',
+                            'Fever / Chills',
+                            'Inability to bear weight',
+                            'Extreme pain with movement'
+                        ],
+                        ptIntervention: 'IMMEDIATE MEDICAL REFERRAL.',
+                        icon: 'Thermometer',
+                        category: 'General Ortho',
+                        details: {
+                            overview: 'Rapid cartilage destruction. Most common in Knee/Hip.',
+                            ptManagement: [
+                                { stage: 'Post-Medical', focus: 'Gentle ROM once infection is cleared to prevent adhesions.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'fibromyalgia',
+                        name: 'Fibromyalgia',
+                        description: 'Chronic disorder characterized by widespread musculoskeletal pain and tenderness.',
+                        keyFeatures: [
+                            'Widespread Pain Index (WPI) high',
+                            'Fatigue / Sleep disturbance',
+                            'Cognitive dysfunction ("Fibro fog")',
+                            'Central Sensitization'
+                        ],
+                        ptIntervention: 'Low-intensity aerobic exercise, Pacing, Pain Neuroscience Education.',
+                        icon: 'User',
+                        category: 'General Ortho',
+                        details: {
+                            overview: 'Abnormal pain processing. Not an inflammatory condition.',
+                            ptManagement: [
+                                { stage: 'Management', focus: '"Start low, go slow". Aquatic therapy is often well tolerated.' }
+                            ]
+                        }
                     },
                     {
                         id: 'acl',
@@ -701,7 +1098,18 @@ export const physiologyTopics = [
                             'Instability ("giving way")'
                         ],
                         ptIntervention: 'Pre-hab (swelling control, restoring extension). Post-op: Protect graft, quadriceps strengthening, neuromuscular re-education.',
-                        icon: 'Activity'
+                        icon: 'Activity',
+                        category: 'Knee',
+                        details: {
+                            overview: 'Females 2-8x more likely to tear ACL. The "Unhappy Triad" involves ACL, MCL, and Medial Meniscus.',
+                            anatomy: ['ACL: Runs from lateral femoral condyle to anterior tibia.', 'Restrains anterior tibial translation.'],
+                            specialTests: ['Lachman\'s', 'Anterior Drawer', 'Pivot Shift'],
+                            ptManagement: [
+                                { stage: 'Pre-Op', focus: '"Quiet Knee" - Reduce swelling, full extension.' },
+                                { stage: 'Early Post-Op', focus: 'Protect graft (avoid open chain extension 0-45), restore extension.' },
+                                { stage: 'Return to Sport', focus: 'Plyometrics, cutting mechanics, quad symmetry >90%.' }
+                            ]
+                        }
                     },
                     {
                         id: 'meniscus',
@@ -714,7 +1122,936 @@ export const physiologyTopics = [
                             'Positive McMurray\'s and Thessaly tests'
                         ],
                         ptIntervention: 'Control effusion, restore ROM, strengthen kinetic chain (glutes/quads), proprioceptive training.',
-                        icon: 'Circle' // Placeholder, will update map
+                        icon: 'Circle', // Placeholder, will update map
+                        category: 'Knee',
+                        details: {
+                            overview: 'Outer 1/3 (Red-Red zone) has blood supply and can heal/be repaired. Inner 2/3 (White zone) usually requires meniscectomy.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Unload joint, restore ROM, hip strength.' },
+                                { stage: 'Repair Types', focus: 'Repair (Restricted WB/Flexion) vs Meniscectomy (Accelarated rehab).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'pfps',
+                        name: 'Patellofemoral Pain (PFPS)',
+                        acronym: 'PFPS',
+                        description: 'Anterior knee pain generally caused by maltracking of the patella.',
+                        keyFeatures: [
+                            'Pain with stairs, squatting, sitting (Movie sign)',
+                            'Retropatellar pain',
+                            'Valgus collapse during movement',
+                            'Weak Hips (Abductors/ERs)'
+                        ],
+                        ptIntervention: 'Strengthen HIPS (Glute Med/Max), VMO re-ed, Patellar taping (McConnell), Foot orthotics.',
+                        icon: 'Target',
+                        category: 'Knee'
+                    },
+                    {
+                        id: 'mcl-sprain',
+                        name: 'MCL Sprain',
+                        description: 'Injury to the Medial Collateral Ligament from a valgus force.',
+                        keyFeatures: [
+                            'Medial knee pain',
+                            'Mechanism: Blow to outside of knee',
+                            'Positive Valgus Stress test',
+                            'Stiffness'
+                        ],
+                        ptIntervention: 'Protection (brace), Early ROM (avoid valgus stress), strengthening.',
+                        icon: 'Shield',
+                        category: 'Knee'
+                    },
+                    {
+                        id: 'patellar-tendinitis',
+                        name: 'Patellar Tendinitis',
+                        description: 'Overuse injury to the patellar tendon ("Jumper\'s Knee").',
+                        keyFeatures: [
+                            'Inferior patellar pole pain',
+                            'Pain after activity (early) -> during (late)',
+                            'Thickened tendon',
+                            'Jumping athlete'
+                        ],
+                        ptIntervention: 'Eccentric squats (decline board), Isometrics for pain, Load management.',
+                        icon: 'Activity',
+                        category: 'Knee'
+                    },
+                    {
+                        id: 'cervical-radiculopathy',
+                        name: 'Cervical Radiculopathy',
+                        description: 'Nerve root compression in the C-Spine, often C6 or C7.',
+                        keyFeatures: [
+                            'Pain radiating into arm/hand',
+                            'Numbness/Tingling in dermatome',
+                            'Weakness in myotome',
+                            'Positive Spurling\'s test'
+                        ],
+                        ptIntervention: 'Postural re-ed, cervical retraction, nerve glides, traction (manual/mechanical).',
+                        icon: 'Activity',
+                        category: 'Head & Neck',
+                        details: {
+                            overview: 'Compression of nerve roots typically due to disc herniation or foraminal stenosis.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Unloading, gentle ROM, posture.' },
+                                { stage: 'Subacute', focus: 'Nerve gliding, isometric strengthening.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'cervicogenic-headache',
+                        name: 'Cervicogenic Headache',
+                        description: 'Headache caused by referred pain from neck structures (bones, soft tissue) typically C1-C3.',
+                        keyFeatures: [
+                            'Unilateral head pain',
+                            'Aggravated by neck movement/posture',
+                            'Restricted cervical ROM',
+                            'Ram\'s horn distribution'
+                        ],
+                        ptIntervention: 'Mulligan SNAGs C1-C2, Deep Neck Flexor endurance, Thoracic manipulation.',
+                        icon: 'Activity',
+                        category: 'Head & Neck',
+                        details: {
+                            overview: 'Pain perceived in the head but originating from a source in the neck (convergence of Trigeminal and Cervical afferents at TCN).',
+                            anatomy: [
+                                'C1-C3 Facet Joints: Most common source.',
+                                'Trigeminocervical Nucleus (TCN): Mechanism of referral.',
+                                'Muscles: Suboccipitals, Upper Trap, SCM trigger points.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Assessment', focus: 'Flexion-Rotation Test (C1-C2 mobility).' },
+                                { stage: 'Treatment', focus: 'C1-C2 SNAGs (Self-SNAGs mainly), Postural Correction.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'whiplash-wad',
+                        name: 'Whiplash (WAD)',
+                        description: 'Acceleration-deceleration mechanism of energy transfer to the neck.',
+                        keyFeatures: [
+                            'Neck pain and stiffness',
+                            'Headache / Dizziness',
+                            'WAD Classification (I-IV)',
+                            'Visual disturbances'
+                        ],
+                        ptIntervention: 'Early mobilization, Proprioceptive training (Laser), Reassurance (avoid fear-avoidance).',
+                        icon: 'Activity',
+                        category: 'Head & Neck',
+                        details: {
+                            overview: 'Most common after motor vehicle accidents. Recovery varies significantly based on psychosocial factors.',
+                            stats: [
+                                { label: 'Type', value: 'WAD I (Pain/Stiff), WAD II (Reduced ROM), WAD III (Neuro signs)' },
+                                { label: 'Recovery', value: '50% recover fully, 30% mild pain, 20% chronic disability' }
+                            ],
+                            ptManagement: [
+                                { stage: 'Acute (0-2wks)', focus: 'Act as usual, range of motion within tolerance.' },
+                                { stage: 'Subacute', focus: 'Sensorimotor control (JPE - Joint Position Error training), Deep neck flexor activation.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'tmj-dysfunction',
+                        name: 'TMJ Dysfunction',
+                        acronym: 'TMD',
+                        description: 'Pain and dysfunction of the muscles of mastication and the temporomandibular joints.',
+                        keyFeatures: [
+                            'Clicking/Popping with jaw opening',
+                            'Deviation or Deflection of mandible',
+                            'Limited opening (<40mm)',
+                            'Temple headaches'
+                        ],
+                        ptIntervention: 'Rocabado 6x6 exercises, Intra-oral release, Posture correction.',
+                        icon: 'MessageCircle', // Best approximation for jaw/mouth
+                        category: 'Head & Neck',
+                        details: {
+                            overview: 'Complex interaction between the joint disc, muscles (Pterygoids/Masseter), and cervical spine posture.',
+                            anatomy: [
+                                'Disc Displacement with Reduction: Clicking (disc pops back on).',
+                                'Disc Displacement w/o Reduction: Locking (disc blocks opening).',
+                                'Muscles: Lateral Pterygoid (opens/protrudes), Temporalis/Masseter (closes).'
+                            ],
+                            ptManagement: [
+                                { stage: 'Manual', focus: 'Lateral Pterygoid release, Joint distraction.' },
+                                { stage: 'Exercise', focus: 'Controlled opening (tongue on roof of mouth), Isometrics.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'cervical-spondylosis',
+                        name: 'Cervical Spondylosis',
+                        description: 'Age-related wear and tear affecting the spinal disks in the neck (Osteoarthritis).',
+                        keyFeatures: [
+                            'Morning stiffness',
+                            'Neck pain improving with movement',
+                            'Possible radicular signs if severe (stenosis)',
+                            'Crepitus'
+                        ],
+                        ptIntervention: 'Mobilization (Maitland/Kaltenborn), Traction, ROM exercises.',
+                        icon: 'Activity',
+                        category: 'Head & Neck',
+                        details: {
+                            overview: 'Degenerative cascade involving disc height loss, osteophyte formation, and facet hypertrophy.',
+                            ptManagement: [
+                                { stage: 'Management', focus: 'Maintain ROM, Thoracic mobility extension, Deep neck stabiliztion.' },
+                                { stage: 'Education', focus: 'Postural breaks, sleeping ergonomics.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'tennis-elbow',
+                        name: 'Lateral Epicondylitis',
+                        acronym: 'Tennis Elbow',
+                        description: 'Tendinosis of the common extensor origin (ECRB). Angiofibroblastic hyperplasia (not true inflammation).',
+                        keyFeatures: [
+                            'Pain at lateral epicondyle',
+                            'Pain with gripping/resisted extension',
+                            'Morning stiffness',
+                            'Weak grip strength'
+                        ],
+                        ptIntervention: 'Eccentric wrist extension (Tyler Twist), Soft tissue mobilization, Ergonomic changes.',
+                        icon: 'Zap',
+                        category: 'Elbow',
+                        details: {
+                            overview: 'Overuse injury involving the Extensor Carpi Radialis Brevis (ECRB) origin.',
+                            anatomy: [
+                                'ECRB Tendon: Primary site of degeneration.',
+                                'Lateral Epicondyle: Bony attachment site.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Unloading (counterforce brace), Ice, Isometric extension.' },
+                                { stage: 'Rehab', focus: 'Eccentric loading (Tyler Twist), Radial nerve glides.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'golfers-elbow',
+                        name: 'Medial Epicondylitis',
+                        acronym: 'Golfer\'s Elbow',
+                        description: 'Tendinosis of the common flexor origin (FCR, Pronator Teres).',
+                        keyFeatures: [
+                            'Pain at medial epicondyle',
+                            'Pain with resisted wrist flexion/pronation',
+                            'Pain with stretching into extension',
+                            'Ulnar nerve signs sometimes present'
+                        ],
+                        ptIntervention: 'Eccentric wrist flexion, Ulnar nerve protection, Throwing mechanics analysis.',
+                        icon: 'Target',
+                        category: 'Elbow',
+                        details: {
+                            overview: 'Less common than tennis elbow. Affects the flexor-pronator mass.',
+                            ptManagement: [
+                                { stage: 'Protection', focus: 'Avoid repetitive flexion/pronation. Check ulnar nerve integrity.' },
+                                { stage: 'Loading', focus: 'Eccentric wrist flexion, Supination strengthening.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'cubital-tunnel',
+                        name: 'Cubital Tunnel Syndrome',
+                        acronym: 'Ulnar Nerve',
+                        description: 'Compression or traction of the ulnar nerve at the medial elbow.',
+                        keyFeatures: [
+                            'Numbness/Tingling in ring and small finger',
+                            'Positive Tinel\'s at elbow',
+                            'Positive Elbow Flexion Test',
+                            'Weakness in intrinsic hand muscles (severe)'
+                        ],
+                        ptIntervention: 'Nerve gliding, Night splinting (limit flexion), Elbow pad.',
+                        icon: 'Shield',
+                        category: 'Elbow',
+                        details: {
+                            overview: 'Second most common entrapment neuropathy. Nerve is vulnerable in the groove behind medial epicondyle.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Avoid prolonged flexion (phone use, sleeping). Ulnar nerve glides.' },
+                                { stage: 'Post-Op', focus: 'Gentle ROM, scar mobility (if transposition performed).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'ucl-sprain',
+                        name: 'UCL Sprain',
+                        acronym: 'MCL Sprain',
+                        description: 'Injury to the Ulnar Collateral Ligament (Anterior Bundle) from valgus stress.',
+                        keyFeatures: [
+                            'Medial elbow pain',
+                            'Valgus instability',
+                            '"Pop" while throwing',
+                            'Inability to throw with velocity'
+                        ],
+                        ptIntervention: 'Thrower\'s Ten program, Core/Leg strengthening, Mechanics.',
+                        icon: 'Activity',
+                        category: 'Elbow',
+                        details: {
+                            overview: 'Critical stabilizer resisting valgus force (throwing). Tommy John surgery reconstructs this.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Protect valgus stress. Full ROM.' },
+                                { stage: 'Return to Throw', focus: 'Interval throwing program (after ~3-4 months conservative, 9-12 months post-op).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'olecranon-bursitis',
+                        name: 'Olecranon Bursitis',
+                        description: 'Inflammation of the bursa sac at the tip of the elbow.',
+                        keyFeatures: [
+                            'Significant "Goose Egg" swelling',
+                            'Pain with direct pressure',
+                            'Warmth/Redness (exclude infection)',
+                            'Normal ROM usually'
+                        ],
+                        ptIntervention: 'Compression (sleeve), Activity modification, Padding.',
+                        icon: 'Circle',
+                        category: 'Elbow',
+                        details: {
+                            overview: 'Traumatic (fall) or Repetitive (leaning on elbows). Septic bursitis is a red flag.',
+                            ptManagement: [
+                                { stage: 'Management', focus: 'Donut pad, compression, avoid direct pressure. Medical drainage may be needed.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'distal-biceps-rupture',
+                        name: 'Distal Biceps Rupture',
+                        description: 'Complete tear of the biceps tendon at its insertion on the radius.',
+                        keyFeatures: [
+                            '"Popeye" deformity (muscle belly retracts)',
+                            'Significant weakness in Supination',
+                            'Make "Hook" test positive',
+                            'Ecchymosis in antecubital fossa'
+                        ],
+                        ptIntervention: 'Surgical repair typically required for active individuals.',
+                        icon: 'AlertTriangle',
+                        category: 'Elbow',
+                        details: {
+                            overview: 'Common in middle-aged males lifting heavy loads. Supination strength is most affected.',
+                            ptManagement: [
+                                { stage: 'Post-Op', focus: 'Protect repair (hinge brace locked in extension initially). Gradual extension.' },
+                                { stage: 'Strengthening', focus: 'Isometrics -> Isotonics (start with light flex/sup).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'carpal-tunnel',
+                        name: 'Carpal Tunnel Syndrome',
+                        acronym: 'CTS',
+                        description: 'Compression of the median nerve at the wrist.',
+                        keyFeatures: [
+                            'Numbness in thumb/index/middle fingers',
+                            'Night pain/waking up shaking hand',
+                            'Thenar atrophy (severe)',
+                            'Positive Phalen\'s'
+                        ],
+                        ptIntervention: 'Splinting (night), tendon gliding, median nerve glides.',
+                        icon: 'Shield',
+                        category: 'Wrist & Hand',
+                        details: {
+                            overview: 'Most common entrapment neuropathy. Caused by increased pressure in the carpal tunnel compressing the median nerve.',
+                            anatomy: [
+                                'Boundaries: Carpal bones (floor/walls) and Flexor Retinaculum (roof).',
+                                'Contents: 9 Tendons (FDS x4, FDP x4, FPL) and Median Nerve.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Neutral wrist splinting (night), Nerve/Tendon Glides, Ergonomics.' },
+                                { stage: 'Post-Op (Release)', focus: 'Scar mobilization, desensitization, pillar pain management.' }
+                            ],
+                            exercises: [
+                                'Tendon Glides: Hook -> Full Fist -> Tabletop -> Straight Fist.',
+                                'Median Nerve Glides: Waiter\'s tip position.'
+                            ]
+                        }
+                    },
+                    {
+                        id: 'scaphoid-fx',
+                        name: 'Scaphoid Fracture',
+                        description: 'Most common carpal bone fracture, often from FOOSH.',
+                        keyFeatures: [
+                            'Snuffbox tenderness',
+                            'Pain with axial loading of thumb',
+                            'History of fall on outstretched hand',
+                            'High risk of Avascular Necrosis (AVN)'
+                        ],
+                        ptIntervention: 'Immobilization (Thumb Spica), gradual ROM after healing.',
+                        icon: 'Bone',
+                        category: 'Wrist & Hand',
+                        details: {
+                            overview: 'Blood supply enters distally, putting the proximal pole at risk of AVN/Non-union.',
+                            ptManagement: [
+                                { stage: 'Immobilization', focus: 'Thumb Spica cast (6-12 weeks). Maintain finger/shoulder ROM.' },
+                                { stage: 'Post-Immobilization', focus: 'Gentle ROM (wrist/thumb), grip strengthening.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'de-quervains',
+                        name: 'De Quervain\'s Tenosynovitis',
+                        description: 'Stenosing tenosynovitis of the 1st dorsal compartment (APL & EPB).',
+                        keyFeatures: [
+                            'Pain at radial styloid (base of thumb)',
+                            'Positive Finkelstein\'s test',
+                            'Pain with lifting/gripping/texting'
+                        ],
+                        ptIntervention: 'Thumb Spica splint, activity modification, eccentric APL/EPB.',
+                        icon: 'Zap',
+                        category: 'Wrist & Hand',
+                        details: {
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Splinting, Ice, NSAIDs, Avoid aggravating motions (ulnar dev + thumb flexion).' },
+                                { stage: 'Rehab', focus: 'Isometric -> Eccentric strengthening of thumb extensors.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'trigger-finger',
+                        name: 'Trigger Finger',
+                        description: 'Stenosing tenosynovitis causing finger to lock in flexion.',
+                        keyFeatures: [
+                            'Locking/Catching of finger',
+                            'Nodule at A1 pulley (distal palm)',
+                            'Painful to straighten manually'
+                        ],
+                        ptIntervention: 'Splinting (MP extension), tendon gliding.',
+                        icon: 'Circle',
+                        category: 'Wrist & Hand',
+                        details: {
+                            overview: 'Inflammation of the flexor tendon sheath at the A1 pulley typically.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Splinting MP joint in extension, avoiding repetitive gripping.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'cmc-oa',
+                        name: 'Thumb CMC OA',
+                        description: 'Osteoarthritis of the 1st Carpometacarpal joint (Trapezium-Metacarpal).',
+                        keyFeatures: [
+                            'Pain at base of thumb',
+                            'Positive Grind Test',
+                            'Difficulty pinching/opening jars',
+                            '"Shouldering" deformity'
+                        ],
+                        ptIntervention: 'Joint protection, CMC splint, Thenar strengthening.',
+                        icon: 'Grid',
+                        category: 'Wrist & Hand',
+                        details: {
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Custom CMC orthosis, "C" grip exercises, avoid pinch loading.' },
+                                { stage: 'Post-Op (LRTI)', focus: 'Protect reconstruction, gradual ROM.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'scoliosis',
+                        name: 'Scoliosis',
+                        description: 'Lateral curvature of the spine >10 degrees with vertebral rotation.',
+                        keyFeatures: [
+                            'Asymmetrical shoulders/hips',
+                            'Rib hump on forward bend (Adam\'s Test)',
+                            '"C" or "S" curve shape',
+                            'Cobb angle measurement'
+                        ],
+                        ptIntervention: 'Schroth method (3D correction), Core stabilization, Respiratory mechanics.',
+                        icon: 'AlignJustify',
+                        category: 'Thoracic & Ribs',
+                        details: {
+                            overview: 'Structural (fixed) vs Functional (correctable). Monitoring progression is key in adolescents.',
+                            stats: [
+                                { label: 'Mild', value: '10-25 degrees (Observation)' },
+                                { label: 'Moderate', value: '25-45 degrees (Bracing)' },
+                                { label: 'Severe', value: '>45 degrees (Surgery likely)' }
+                            ],
+                            ptManagement: [
+                                { stage: 'Schroth', focus: 'Elongation, Derotation, Expansion breaths.' },
+                                { stage: 'General', focus: 'Side planks (convex side), postural awareness.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'tos',
+                        name: 'Thoracic Outlet Syndrome',
+                        acronym: 'TOS',
+                        description: 'Compression of the neurovascular bundle (Brachial Plexus, Subclavian A/V).',
+                        keyFeatures: [
+                            'Paresthesia in C8-T1 distribution (ulnar hand)',
+                            'Heaviness/Fatigue in arm',
+                            'Positive Roos / Adson\'s test',
+                            'Vascular signs (pallor/coldness) if vascular'
+                        ],
+                        ptIntervention: 'Scalene/Pec Minor stretching, 1st Rib mobilization, Nerve glides.',
+                        icon: 'Activity', // Neuro/Vascular
+                        category: 'Thoracic & Ribs',
+                        details: {
+                            overview: 'Compression sites: Scalene Triangle, Costoclavicular Space, Pectoralis Minor Space.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Open the outlet: Posture (chin tucks), breathing (diaphragmatic vs apical), muscle lengthening.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'scheuermanns',
+                        name: 'Scheuermann\'s Disease',
+                        description: 'Juvenile osteochondrosis leading to structural hyperkyphosis (>45°).',
+                        keyFeatures: [
+                            'Rigid Thoracic Kyphosis',
+                            'Schmorl\'s Nodes on X-ray',
+                            'Pain with extension',
+                            'Tight hamstrings/pecs'
+                        ],
+                        ptIntervention: 'Extension exercises, Postural education, Bracing.',
+                        icon: 'User', // Posture related
+                        category: 'Thoracic & Ribs',
+                        details: {
+                            overview: 'Wedging of anterior vertebral bodies (>5° in 3 consecutive vertebrae). Distinguish from postural kyphosis.',
+                            ptManagement: [
+                                { stage: 'Management', focus: 'Maximize extension ROM, strengthen thoracic extensors, stretch anterior chain.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'costochondritis',
+                        name: 'Costochondritis',
+                        description: 'Inflammation of the costochondral junctions (usually ribs 2-5).',
+                        keyFeatures: [
+                            'Sharp anterior chest pain',
+                            'Palpable tenderness at junction',
+                            'Pain with deep breath/cough/sneezing',
+                            'No swelling (vs Tietze Syndrome)'
+                        ],
+                        ptIntervention: 'Gentle mobility, Modalities, Breathing retraining.',
+                        icon: 'Target',
+                        category: 'Thoracic & Ribs',
+                        details: {
+                            overview: 'Benign but painful. Exclude cardiac causes. Tietze syndrome involves swelling, Costochondritis does not.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Pain control (Ice/Heat), avoid aggravating loading.' },
+                                { stage: 'Recovery', focus: 'Rib expansion breathing, gentle thoracic rotation.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 't4-syndrome',
+                        name: 'T4 Syndrome',
+                        description: 'Sympathetic reaction to hypomobility at the T4 segment (approx).',
+                        keyFeatures: [
+                            '"Glove" paresthesia (uni/bilateral)',
+                            'Night pain',
+                            'Stiff upper thoracic spine',
+                            'Headaches sometimes present'
+                        ],
+                        ptIntervention: 'T4 mobilization/manipulation, Sympathetic slump stretching.',
+                        icon: 'Zap',
+                        category: 'Thoracic & Ribs',
+                        details: {
+                            overview: 'Autonomic nervous system involvement due to proximity of sympathetic trunk to rib heads.',
+                            ptManagement: [
+                                { stage: 'Manual', focus: 'T-Spine manipulation is often highly effective.' },
+                                { stage: 'Exercise', focus: 'Thoracic mobility (Cat/Cow, Open books).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'rib-dysfunction',
+                        name: 'Rib Dysfunction',
+                        description: 'Mechanical restriction of rib movement (Structural or Torsional).',
+                        keyFeatures: [
+                            'Inhalation or Exhalation restriction',
+                            'Localized sharp pain',
+                            'Pain with breathing',
+                            'Palpable asymmetry'
+                        ],
+                        ptIntervention: 'Muscle Energy Techniques (MET), Rib mobilization.',
+                        icon: 'Layers',
+                        category: 'Thoracic & Ribs',
+                        details: {
+                            overview: 'Key Concept: "Pump Handle" (1-6) vs "Bucket Handle" (7-10).',
+                            ptManagement: [
+                                { stage: 'MET', focus: 'Use respiratory muscles (Scalenes/Intercostals/Abs) to correct rib position.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'lumbar-hnp',
+                        name: 'Lumbar Disc Herniation',
+                        acronym: 'HNP',
+                        description: 'Displacement of nucleus pulposus compressing neural structures.',
+                        keyFeatures: [
+                            'Back pain with radiating leg pain',
+                            'Worse with flexion/sitting (posturo-lateral)',
+                            'Positive SLR / Crossed SLR',
+                            'Lateral shift pattern'
+                        ],
+                        ptIntervention: 'Extension bias (McKenzie/MDT), Core stabilization, Nerve glides.',
+                        icon: 'AlertTriangle',
+                        category: 'Lumbar & Pelvis',
+                        details: {
+                            overview: 'Most common at L4-L5 and L5-S1. Directional Preference is key to McKenzie assessment.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Centralization (reptitive extension), avoid peripheralizing positions (flexion).' },
+                                { stage: 'Subacute', focus: 'Reintegration of flexion, core motor control.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'spinal-stenosis',
+                        name: 'Spinal Stenosis',
+                        description: 'Narrowing of the spinal canal (central) or intervertebral foramen (lateral).',
+                        keyFeatures: [
+                            'Neurogenic Claudication (leg pain with walking)',
+                            'Relief with flexion ("Shopping Cart Sign")',
+                            'Bilateral symptoms often',
+                            'Age > 60 usually'
+                        ],
+                        ptIntervention: 'Flexion bias exercises, Hip mobility, Unloading (Aquatic).',
+                        icon: 'Minimize',
+                        category: 'Lumbar & Pelvis',
+                        details: {
+                            overview: 'Degenerative condition. Extension increases compression, Flexion opens the canal.',
+                            ptManagement: [
+                                { stage: 'Management', focus: 'Posterior pelvic tilts, knees to chest, hip flexor stretching (to allow upright posture without lumbar extension).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'spondylolisthesis',
+                        name: 'Spondylolisthesis',
+                        description: 'Anterior slippage of one vertebra on another (usually L5 on S1).',
+                        keyFeatures: [
+                            'Step-off deformity (palpable)',
+                            'Pain with extension (standing/walking)',
+                            'Tight hamstrings',
+                            'Waddle gait (severe)'
+                        ],
+                        ptIntervention: 'Core stabilization (neutral spine), Hamstring stretching, Avoid hyperextension.',
+                        icon: 'Layers',
+                        category: 'Lumbar & Pelvis',
+                        details: {
+                            overview: 'Graded I-V. Pars defect (Spondylolysis) often precedes slippage ("Scotty Dog" fracture).',
+                            ptManagement: [
+                                { stage: 'Stabilization', focus: 'Deep core (TrA/Multifidus) to prevent further slippage. Avoid "Superman" type extension.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'sij-dysfunction',
+                        name: 'SI Joint Dysfunction',
+                        description: 'Pain originating from the Sacroiliac Joint (mechanical or inflammatory).',
+                        keyFeatures: [
+                            'Unilateral LB/Buttock pain (Fortin Finger)',
+                            'Positive Laslett\'s Cluster (3/5 positive)',
+                            'Pain with transitional movements',
+                            'No centralization'
+                        ],
+                        ptIntervention: 'Muscle Energy Techniques (MET), SI Belt, Stabilization.',
+                        icon: 'Grid',
+                        category: 'Lumbar & Pelvis',
+                        details: {
+                            overview: 'Cluster: Distraction, Thigh Thrust, Compression, Sacral Thrust, Gaenslen\'s.',
+                            ptManagement: [
+                                { stage: 'Treatment', focus: 'Correct innominate rotation (Anterior/Posterior) via MET. Strengthen Glute Med/Max.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'ankylosing-spondylitis',
+                        name: 'Ankylosing Spondylitis',
+                        description: 'Systemic autoimmune inflammatory arthritis affecting the spine/SIJ.',
+                        keyFeatures: [
+                            '"Bamboo Spine" (fusion on X-ray)',
+                            'Morning stiffness > 30 mins',
+                            'Pain improves with activity / worse with rest',
+                            'HLA-B27 positive'
+                        ],
+                        ptIntervention: 'Extension promotion, Chest expansion breathing, Posture.',
+                        icon: 'Activity',
+                        category: 'Lumbar & Pelvis',
+                        details: {
+                            overview: 'Progressive fusion. Goal is to fuze in a functional (upright) posture rather than kyphotic.',
+                            ptManagement: [
+                                { stage: 'Maintenance', focus: 'Maximize extension ROM, inspiratory muscle training, high intensity exercise is beneficial.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'cauda-equina',
+                        name: 'Cauda Equina Syndrome',
+                        description: 'Compression of the cauda equina nerve roots (L2-S5). RED FLAG.',
+                        keyFeatures: [
+                            'Saddle Anesthesia',
+                            'Bowel/Bladder retention or incontinence',
+                            'Severe bilateral neuro deficits',
+                            'Sexual dysfunction'
+                        ],
+                        ptIntervention: 'EMERGENCY REFERRAL IMMEDIATE SURGERY.',
+                        icon: 'AlertOctagon',
+                        category: 'Lumbar & Pelvis',
+                        details: {
+                            overview: 'Medical Emergency. Permanent paralysis/incontinence if not decompressed within 24-48hrs.',
+                            ptManagement: [
+                                { stage: 'Action', focus: 'Do not treat. Refer to ER immediately.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'hip-oa',
+                        name: 'Hip Osteoarthritis',
+                        acronym: 'OA',
+                        description: 'Degenerative joint disease of the femoroacetabular joint.',
+                        keyFeatures: [
+                            'Groin pain (C-sign)',
+                            'Morning stiffness <60 mins',
+                            'Loss of IR (<24°) and Flexion',
+                            'Pain with Squatting (CPR)'
+                        ],
+                        ptIntervention: 'Manual therapy (Distraction/Thrust), Strengthening (Glutes/Quads), Weight loss.',
+                        icon: 'Bone',
+                        category: 'Hip',
+                        details: {
+                            overview: 'CPR for Hip OA: Squat pain, Active hip flexion lateral pain, Scour test positive, Active extension pain, IR <25 deg.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Unload joint (cane vs side), Improve ROM/Strength.' },
+                                { stage: 'Post-Op (THA)', focus: 'Precautions (Posterior: No flex>90, add, IR) vs Anterior approach.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'fai',
+                        name: 'Femoroacetabular Impingement',
+                        acronym: 'FAI',
+                        description: 'Abnormal contact between femoral head/neck and acetabular rim.',
+                        keyFeatures: [
+                            'Anterior groin pain',
+                            'Positive FADIR test',
+                            'Pain with deep flexion/rotation',
+                            '"C-Sign" hand placement'
+                        ],
+                        ptIntervention: 'Improve lumbo-pelvic control, Posterior capsule stretching, Activity modification.',
+                        icon: 'Activity',
+                        category: 'Hip',
+                        details: {
+                            overview: 'Types: CAM (Femoral overgrowth), Pincer (Acetabular overgrowth), or Mixed. Can lead to Labral tears.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Avoid end-range impingement (deep squats). Glute strengthening.' },
+                                { stage: 'Post-Op', focus: 'Protect labral repair if done. Gradual ROM restoration.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'gtps',
+                        name: 'Greater Trochanteric Pain',
+                        acronym: 'GTPS',
+                        description: 'Lateral hip pain involving Glute Medius/Minimus tendinopathy or bursitis.',
+                        keyFeatures: [
+                            'Lateral hip pain (tender to palpation)',
+                            'Pain with side-lying on affected side',
+                            'Pain with single leg stance >30s',
+                            'Weak hip abduction'
+                        ],
+                        ptIntervention: 'Isometric abduction, Load management (sleep hygiene), Glute strengthening.',
+                        icon: 'Target',
+                        category: 'Hip',
+                        details: {
+                            overview: 'Formerly "Trochanteric Bursitis", now understood as gluteal tendinopathy. Compressive load (ITB) aggravates it.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Avoid crossing legs, sleep with pillow between knees. Isometrics.' },
+                                { stage: 'Rehab', focus: 'Eccentric abduction, functional loading.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'labral-tear',
+                        name: 'Acetabular Labral Tear',
+                        description: 'Tear of the fibrocartilage ring surrounding the hip socket.',
+                        keyFeatures: [
+                            'Clicking/Locking/Catching',
+                            'Deep groin pain',
+                            'Positive FADIR and FABER',
+                            'Feeling of instability'
+                        ],
+                        ptIntervention: 'Neuromuscular control, Avoid pivoting under load, Core stability.',
+                        icon: 'AlertTriangle',
+                        category: 'Hip',
+                        details: {
+                            overview: 'Often associated with FAI or trauma/dysplasia. The labrum provides suction seal stability.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Optimize movement patterns, minimize anterior hip stress.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'piriformis-syndrome',
+                        name: 'Piriformis Syndrome',
+                        description: 'Sciatic nerve entrapment by the piriformis muscle.',
+                        keyFeatures: [
+                            'Buttock pain radiating to posterior thigh',
+                            'Pain with sitting/wallet in pocket',
+                            'Positive FAIR test',
+                            'Normal lumbar spine exam'
+                        ],
+                        ptIntervention: 'Piriformis stretching, Sciatic nerve glides, Glute activation.',
+                        icon: 'Zap',
+                        category: 'Hip',
+                        details: {
+                            overview: 'Deep Gluteal Syndrome. Diagnosis of exclusion usually.',
+                            ptManagement: [
+                                { stage: 'Treatment', focus: 'Soft tissue mobilization, Nerve mobilization, Correct pelvic alignment.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'adductor-strain',
+                        name: 'Adductor Strain',
+                        description: 'Strain of the adductor muscle group (Longus most common).',
+                        keyFeatures: [
+                            'Groin pain (medial)',
+                            'Pain with sprinting/cutting',
+                            'Pain with resisted adduction',
+                            'Can have palpable defect'
+                        ],
+                        ptIntervention: 'Isometric adduction -> Eccentric loading (Copenhagen), Core stability.',
+                        icon: 'Activity',
+                        category: 'Hip',
+                        details: {
+                            overview: 'Common in "change of direction" sports (Hockey, Soccer). Known as "Groin Strain".',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'PRICE, gentle pain-free submax isometrics.' },
+                                { stage: 'Rehab', focus: 'Copenhagen Adductor Exercise protocol is gold standard.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'ankle-sprain',
+                        name: 'Lateral Ankle Sprain',
+                        description: 'Inversion injury damaging ATFL (most common) then CFL ligaments.',
+                        keyFeatures: [
+                            'Swelling/Bruising laterally',
+                            'Pain with inversion',
+                            'Instability (Anterior Drawer positive)',
+                            'Positive Ottawa Ankle Rules (if fx)'
+                        ],
+                        ptIntervention: 'RICE, Early WB, Proprioception/Balance training.',
+                        icon: 'Footprints',
+                        category: 'Foot & Ankle',
+                        details: {
+                            overview: 'ATFL resists inversion in plantarflexion. CFL resists inversion in neutral.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Protection (brace/tape), edema control, alphabet circles.' },
+                                { stage: 'Subacute', focus: 'Single leg balance (eyes closed, foam), hopping/plyometrics.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'plantar-fasciitis',
+                        name: 'Plantar Fasciitis',
+                        description: 'Irritation/degeneration of the plantar fascia insertion at the calcaneus.',
+                        keyFeatures: [
+                            '"First step" morning pain (severe)',
+                            'Pain at medial calcaneal tubercle',
+                            'Positive Windlass test',
+                            'Tight gastroc/soleus'
+                        ],
+                        ptIntervention: 'Stretching (Gastroc/Soleus/Fascia), Night splint, Orthotics.',
+                        icon: 'Activity',
+                        category: 'Foot & Ankle',
+                        details: {
+                            overview: 'Not just inflammatory ("-itis") but degenerative ("-osis"). Windlass mechanism support is key.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Unload (taping/orthotics), Rolling ice bottle, Night splint (keep DF).' },
+                                { stage: 'Rehab', focus: 'High load strength training (plantar fascia loading).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'achilles-tendinopathy',
+                        name: 'Achilles Tendinopathy',
+                        description: 'Degeneration of the Achilles tendon (Midportion or Insertional).',
+                        keyFeatures: [
+                            'Localized thickening/nodule (midportion)',
+                            'Morning stiffness',
+                            'Pain with push-off/hopping',
+                            'Positive Arc Sign'
+                        ],
+                        ptIntervention: 'Eccentric loading (Alfredson), Heavy Slow Resistance.',
+                        icon: 'Zap',
+                        category: 'Foot & Ankle',
+                        details: {
+                            overview: 'Midportion responds well to eccentrics. Insertional requires avoiding end-range DF.',
+                            ptManagement: [
+                                { stage: 'Midportion', focus: 'Alfredson Protocol: Eccentric heel drops (knee straight/bent).' },
+                                { stage: 'Insertional', focus: 'Do NOT drop past neutral (flat floor only), avoiding compression.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'turf-toe',
+                        name: 'Turf Toe',
+                        description: 'Sprain of the 1st MTP joint capsule (Hyperextension injury).',
+                        keyFeatures: [
+                            'Pain at base of big toe',
+                            'History of push-off injury on turf',
+                            'Pain with passive extension',
+                            'Swelling'
+                        ],
+                        ptIntervention: 'Rigid shoe insert (Morton\'s extension), Taping, Limit extension.',
+                        icon: 'Target',
+                        category: 'Foot & Ankle',
+                        details: {
+                            overview: 'Damage to plantar plate/sesamoids complex. Common in football.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Immobilize 1st MTP (carbon plate/boot).' },
+                                { stage: 'Rehab', focus: 'Gradual extension loading, gait training.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'tarsal-tunnel',
+                        name: 'Tarsal Tunnel Syndrome',
+                        description: 'Compression of Posterior Tibial nerve behind medial malleolus.',
+                        keyFeatures: [
+                            'Burning/tingling in foot sole',
+                            'Positive Tinel\'s at ankle',
+                            'Worse with prolonged standing/pronation',
+                            'Valgus heel common'
+                        ],
+                        ptIntervention: 'Orthotics (correct pronation), Nerve glides, Calf stretching.',
+                        icon: 'Shield',
+                        category: 'Foot & Ankle',
+                        details: {
+                            overview: 'Entrapment under the flexor retinaculum ("Carpal tunnel of the foot").',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Control pronation (medial post), nerve mobilization.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'lisfranc',
+                        name: 'Lisfranc Injury',
+                        description: 'Sprain or fracture at the Tarsometatarsal joints (Midfoot).',
+                        keyFeatures: [
+                            'Midfoot bruising (plantar ecchymosis)',
+                            'Pain with weight bearing/push-off',
+                            'Piano Key test positive',
+                            'Widening of 1st-2nd metatarsal space'
+                        ],
+                        ptIntervention: 'NWB Cast Boot (Stable) or Surgery (Unstable).',
+                        icon: 'AlertTriangle',
+                        category: 'Foot & Ankle',
+                        details: {
+                            overview: 'Often missed. Mechanism: Axial load on plantarflexed foot. Plantar bruising is pathognomonic.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Strict NWB (6 weeks). Progression to boot -> shoe.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'osgood-schlatter',
+                        name: 'Osgood-Schlatter Disease',
+                        description: 'Traction apophysitis of the tibial tuberosity in growing adolescents.',
+                        keyFeatures: [
+                            'Pain/bump at tibial tuberosity',
+                            'Adolescent active in sports',
+                            'Pain with quad contraction',
+                            'Tight quads/hamstrings'
+                        ],
+                        ptIntervention: 'Activity modification, ice, stretching quads/hams, resolving biomechanical faults.',
+                        icon: 'User',
+                        category: 'Knee'
                     },
                     {
                         id: 'rtc',
@@ -728,39 +2065,200 @@ export const physiologyTopics = [
                             'Positive Drop Arm and Empty Can tests'
                         ],
                         ptIntervention: 'Scapular stability, posture correction, RTC strengthening (begin isometrics -> isotonics), manual therapy for capsule tightness.',
-                        icon: 'RotateCw' // Placeholder
+                        icon: 'RotateCw', // Placeholder
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'Rotator Cuff Pathology ranges from mild tendinopathy to massive full-thickness tears. The supraspinatus is most commonly affected due to its location under the subacromial arch.',
+                            anatomy: [
+                                'SITS Muscles: Supraspinatus (Abduction), Infraspinatus/Teres Minor (ER), Subscapularis (IR).',
+                                'Critical Zone: Avascular zone of supraspinatus tendon prone to degeneration.'
+                            ],
+                            specialTests: ['Empty Can', 'Drop Arm', 'ER Lag Sign', 'Neer\'s/Hawkins (for impingement)'],
+                            ptManagement: [
+                                { stage: 'Protection', focus: 'Avoid aggravating activities (overhead). Isometrics for pain relief.' },
+                                { stage: 'Mobility', focus: 'Restore ROM (Pec release, posterior capsule stretch).' },
+                                { stage: 'Strengthening', focus: 'Scapular stabilizers (Lower Trap/Serratus) and RC (Sidelying ER, Prone Ys/Ts).' }
+                            ]
+                        }
                     },
                     {
-                        id: 'plantar-fasciitis',
-                        name: 'Plantar Fasciitis',
-                        description: 'Inflammation of the plantar fascia insertion at the medial calcaneal tubercle. Overuse injury.',
+                        id: 'shoulder-impingement',
+                        name: 'Subacromial Impingement (SAIS)',
+                        acronym: 'SAIS',
+                        description: 'Compression of subacromial structures (bursa, RC tendons) during overhead movement.',
                         keyFeatures: [
-                            'Sharp heel pain with first steps in morning',
-                            'Pain improves with movement but worsens with prolonged standing',
-                            'Tenderness at medial calcaneus',
-                            'Tight gastroc/soleus complex'
+                            'Painful Arc (60-120 degrees)',
+                            'Positive Neer\'s and Hawkins-Kennedy',
+                            'Pain with overhead reaching',
+                            'Forward head/rounded shoulder posture'
                         ],
-                        ptIntervention: 'Calf stretching, plantar fascia stretching, manual therapy (STM), night splints, intrinsics strengthening.',
-                        icon: 'Footprints' // Placeholder
-                    }
+                        ptIntervention: 'Posture re-education, posterior capsule mobilization, strengthening scapular retractors/upward rotators.',
+                        icon: 'AlertTriangle',
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'SAIS occurs when the subacromial space is narrowed, often due to poor scapular mechanics or anatomical variance (Type I-III acromion).',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Reduce inflammation (Ice, positioning). Taping for posture.' },
+                                { stage: 'Rehab', focus: 'Strengthen Serratus Anterior (upward rotation) and Lower Trap (depression) to clear acromion.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'frozen-shoulder',
+                        name: 'Adhesive Capsulitis (Frozen Shoulder)',
+                        acronym: 'FS',
+                        description: 'Progressive restriction of GH joint capsule causing severe stiffness and pain.',
+                        keyFeatures: [
+                            'Capsular Pattern: ER > ABD > IR loss',
+                            'Freezing, Frozen, Thawing stages',
+                            'Diabetes is a major risk factor',
+                            'Night pain'
+                        ],
+                        ptIntervention: 'Pain relief (Freezing), Aggressive mobilization (Frozen/Thawing), pulleys, wand exercises.',
+                        icon: 'ShieldAlert',
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'A self-limiting condition characterized by fibrosis of the GH joint capsule. Recovery can take 1-2 years.',
+                            anatomy: ['Coracohumeral ligament thickening', 'Retraction of inferior capsule'],
+                            stages: ['Freezing (Painful)', 'Frozen (Stiff)', 'Thawing (Recovery)'],
+                            ptManagement: [
+                                { stage: 'Freezing', focus: 'Pain control. Gentle PROM (Pendulums). Avoid aggressive stretching.' },
+                                { stage: 'Frozen', focus: 'Grade III/IV mobilizations (Inferior/Posterior glides) to stretch capsule.' },
+                                { stage: 'Thawing', focus: 'Restore full functional ROM and strength.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'shoulder-instability',
+                        name: 'Glenohumeral Instability',
+                        description: 'Excessive laxity of the GH joint leading to subluxation or dislocation (usually Anterior).',
+                        keyFeatures: [
+                            'History of dislocation ("pop")',
+                            'Positive Apprehension/Relocation tests',
+                            'Bankart or Hill-Sachs lesions',
+                            'Generalized laxity (Beighton score)'
+                        ],
+                        ptIntervention: 'Dynamic stability training (Bodyblade), rhythmic stabilization, RC strengthening.',
+                        icon: 'Activity',
+                        category: 'Shoulder'
+                    },
+                    {
+                        id: 'labral-tears',
+                        name: 'Labral Tears (SLAP & Bankart)',
+                        description: 'Injury to the glenoid labrum. SLAP (Superior) or Bankart (Anterior/Inferior).',
+                        keyFeatures: [
+                            'Clicking, catching, or popping',
+                            'Deep shoulder pain',
+                            'Positive O\'Brien\'s (SLAP) or Crank test',
+                            'History of dislocation (Bankart)'
+                        ],
+                        ptIntervention: 'Stabilization exercises, avoiding bicep tension (SLAP), proprioception. Post-op protocols are specific.',
+                        icon: 'Target',
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'SLAP tears involve the biceps anchor. Bankart lesions are associated with anterior dislocation.',
+                            ptManagement: [
+                                { stage: 'Conservative', focus: 'Restore ROM, RTC strength, scapular stability.' },
+                                { stage: 'Post-Op', focus: 'Protect repair (limit ER for Bankart, limit bicep load for SLAP).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'ac-separation',
+                        name: 'AC Joint Separation',
+                        description: 'Sprain or separation of the acromioclavicular joint, usually from landing on the shoulder tip.',
+                        keyFeatures: [
+                            'Pain at AC joint',
+                            'Step-off deformity (severe grades)',
+                            'Positive Cross-Body Adduction test',
+                            'Pain with elevation > 90°'
+                        ],
+                        ptIntervention: 'Grade I/II: Sling, early ROM, strengthening. Grade III+: May require surgery.',
+                        icon: 'Minimize2',
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'Graded I-VI based on ligament damage (AC vs Coracoclavicular).',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Immobilization, ice, pain control.' },
+                                { stage: 'Rehab', focus: 'Restore ROM, strengthen deltoid/trapezius.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'thoracic-outlet',
+                        name: 'Thoracic Outlet Syndrome (TOS)',
+                        acronym: 'TOS',
+                        description: 'Compression of brachial plexus or subclavian vessels in the thoracic outlet.',
+                        keyFeatures: [
+                            'Numbness/tingling in hand (ulnar dist.)',
+                            'Weakness in hand muscles',
+                            'Positive Adson\'s, Roos, or Wright\'s tests',
+                            'Cold intolerance (vascular)'
+                        ],
+                        ptIntervention: 'Postural correction, stretching scalenes/pec minor, nerve gliding, first rib mobilization.',
+                        icon: 'Activity', // Nerve icon?
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'Entrapment sites: Scalene triangle, Costoclavicular space, Subcoracoid space (Pec Minor).',
+                            ptManagement: [
+                                { stage: 'Mobility', focus: 'Stretch unequal structures (Scalenes, Pecs). Joint mob 1st rib/clavicle.' },
+                                { stage: 'Postural', focus: 'Strengthen deep neck flexors, scapular retractors.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'clavicle-fracture',
+                        name: 'Clavicle Fracture',
+                        description: 'Break in the collarbone, most commonly in the middle third.',
+                        keyFeatures: [
+                            'Visible deformity/swelling',
+                            'Point tenderness',
+                            'Guarding (holding arm against body)',
+                            'Mechanism: Fall on outstretched hand or direct blow'
+                        ],
+                        ptIntervention: 'Immobilization (Figure-8 brace) -> Gentle ROM -> Strengthening.',
+                        icon: 'AlertOctagon',
+                        category: 'Shoulder'
+                    },
+                    {
+                        id: 'scapular-dyskinesis',
+                        name: 'Scapular Dyskinesis',
+                        description: 'Alteration in normal resting position or dynamic motion of the scapula.',
+                        keyFeatures: [
+                            'Winging (medial or lateral)',
+                            'Poor scapulohumeral rhythm',
+                            'Associated with shoulder pain (impingement/instability)',
+                            'Tight Pec Minor / Weak Serratus Anterior'
+                        ],
+                        ptIntervention: 'Scapular re-education, strengthening stabilizers (Serratus, Lower Trap), stretching anterior chest.',
+                        icon: 'RefreshCw',
+                        category: 'Shoulder'
+                    },
+                    {
+                        id: 'biceps-tendinitis',
+                        name: 'Biceps Tendinitis',
+                        description: 'Inflammation of the long head of the biceps tendon in the bicipital groove.',
+                        keyFeatures: [
+                            'Anterior shoulder pain',
+                            'Tenderness over bicipital groove',
+                            'Pain with overhead activity',
+                            'Positive Speed\'s and Yergason\'s tests'
+                        ],
+                        ptIntervention: 'Eccentric strengthening, scapular stabilization, correcting mechanics (e.g. throwing form).',
+                        icon: 'Activity',
+                        category: 'Shoulder',
+                        details: {
+                            overview: 'Often secondary to impingement or instability. Common in overhead athletes.',
+                            ptManagement: [
+                                { stage: 'Acute', focus: 'Rest, Ice, NSAIDs. Avoid painful arc.' },
+                                { stage: 'Rehab', focus: 'Eccentric biceps loading. Scapular re-education.' }
+                            ]
+                        }
+                    },
+
                 ]
             },
-            {
-                id: 'sliding-filament',
-                title: 'Sliding Filament Theory',
-                introduction: 'The mechanism by which muscles contract. It involves the sliding of actin filaments over myosin filaments, shortening the sarcomere.',
-                type: 'interactive-sarcomere', // Enable animator
-                content: [
-                    'Excitation-Contraction Coupling: AP travels down T-tubules, releasing Ca2+ from Sarcoplasmic Reticulum.',
-                    'Active Site Exposure: Ca2+ binds to Troponin C. Tropomyosin shifts, exposing myosin-binding sites on Actin.',
-                    'Cross-Bridge Formation: Energized Myosin heads bind to Actin.',
-                    'Power Stroke: ADP + Pi release causes Myosin head to pivot, pulling Actin toward M-line (Shortening).',
-                    'Detachment: New ATP binds Myosin, causing it to detach from Actin.',
-                    'Re-cocking: ATP hydrolysis (ATP -> ADP + Pi) re-cocks the Myosin head for the next cycle.'
-                ],
-                clinicalRelevance: 'Muscle Cramps: Caused by involuntary, sustained contraction, often due to electrolyte imbalance or fatigue.',
-                pathologyConnection: 'Rigor Mortis: Post-mortem lack of ATP prevents myosin detachment, leaving muscles in a fixed state of contraction.'
-            }
+
         ]
     },
     {
@@ -1149,6 +2647,223 @@ export const physiologyTopics = [
                     { name: 'STNR', stimulus: 'Neck flexion/extension', response: 'Flex: Arms flex/Legs extend. Ext: Arms ext/Legs flex', age: '6-8 mo' },
                     { name: 'Palmar Grasp', stimulus: 'Pressure on palm', response: 'Finger flexion', age: '0-4 mo' },
                     { name: 'Plantar Grasp', stimulus: 'Pressure on ball of foot', response: 'Toe flexion', age: '0-9 mo' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'pharmacology',
+        title: 'Pharmacology for PT',
+        description: 'Common medications encountered in practice and their impact on physical therapy interventions.',
+        icon: 'Pill',
+        subtopics: [
+            {
+                id: 'med-classes',
+                title: 'Common Medications',
+                introduction: 'Understanding drug mechanisms and side effects is crucial for patient safety and maximizing therapeutic outcomes.',
+                type: 'pathology-grid', // Reuse grid for drug cards
+                clinicalRelevance: 'Medications can blunt heart rate response, increase fall risk, or mask pain during evaluation.',
+                pathologyConnection: 'Drugs interact with tissue healing and systemic physiology.',
+                categoryContent: {}, // Not needed for simple grid unless I want detailed tabs, which I do.
+                pathologies: pharmacologyData // This will populate the grid
+            }
+        ]
+    },
+    {
+        id: 'vestibular',
+        title: 'Vestibular System',
+        description: 'The sensory system responsible for providing our brain with information about motion, head position, and spatial orientation.',
+        icon: 'Activity',
+        subtopics: [
+            {
+                id: 'vestibular-anatomy',
+                title: 'Vestibular Anatomy',
+                introduction: 'The vestibular apparatus is located in the inner ear and detects linear and angular acceleration.',
+                type: 'text-content',
+                content: [
+                    'Semicircular Canals (SCC): Detect angular acceleration (rotation). 3 canals: Anterior, Posterior, Horizontal.',
+                    'Otolith Organs: Utricle and Saccule. Detect linear acceleration (gravity/translation). Contains crystals (otoconia).',
+                    'Vestibulo-Ocular Reflex (VOR): Stabilizes gaze during head movement (Head moves left -> Eyes move right 1:1 ratio).',
+                    'Vestibulospinal Reflex (VSR): Stabilizes body posture.'
+                ]
+            },
+            {
+                id: 'vestibular-pathologies',
+                title: 'Vestibular Pathologies',
+                introduction: 'Common disorders affecting the peripheral or central vestibular system, leading to vertigo, dizziness, and imbalance.',
+                type: 'pathology-grid',
+                clinicalRelevance: 'Differentiating between peripheral (BPPV, Neuritis) and central (Stroke, TBI) causes is the first priority in assessment (HINTS exam).',
+                pathologyConnection: 'Vertigo is a symptom, not a diagnosis. Treatment relies on finding the mechanical or physiological root.',
+                pathologies: [
+                    {
+                        id: 'bppv',
+                        name: 'Benign Paroxysmal Positional Vertigo',
+                        acronym: 'BPPV',
+                        description: 'Mechanical disorder where otoconia (crystals) are displaced into the semicircular canals.',
+                        keyFeatures: [
+                            'Short duration vertigo (<1 min)',
+                            'Positional trigger (Rolling over, looking up)',
+                            'Fatigable nystagmus',
+                            'Normal hearing'
+                        ],
+                        ptIntervention: 'Canalith Repositioning Maneuvers (Epley for PC/AC, BBQ Roll for HC). Education on post-maneuver precautions.',
+                        icon: 'RotateCw',
+                        category: 'Peripheral',
+                        details: {
+                            overview: 'Most common cause of vertigo. 90% affects Posterior Canal. Can be canalithiasis (free floating) or cupulothiasis (adhered).',
+                            anatomy: [
+                                'Affected Structure: Semicircular Canals (Posterior > Horizontal > Anterior).',
+                                'Mechanism: Displacement of Otoconia from Utricle -> Canals.'
+                            ],
+                            physiology: [
+                                'Gravity Sensitivity: Displaced crystals make the fluid-filled canal sensitive to gravity, causing false signals of movement.',
+                                'Nystagmus: Torsional/Upbeating (Posterior), Geotropic (Horizontal).'
+                            ],
+                            stats: [
+                                { label: 'Prevalence', value: '2.4% lifetime prevalence' },
+                                { label: 'Recurrence', value: '50% within 5 years' },
+                                { label: 'Age', value: 'Increases with age (avg 60s)' }
+                            ],
+                            medications: [
+                                { name: 'Meclizine', mechanism: 'Antihistamine', effect: 'Suppresses symptoms (Not recommended for BPPV treatment).' }
+                            ],
+                            medicalInterventions: [
+                                'None usually needed unless intractable (canal plugging surgery - rare).'
+                            ],
+                            ptManagement: [
+                                { stage: 'Assessment', focus: 'Dix-Hallpike (Ant/Post canals) & Roll Test (Horiz canal).' },
+                                { stage: 'Treatment', focus: 'Epley (Post Canal), Semont, BBQ Roll (Horiz), Gufoni.' },
+                                { stage: 'Education', focus: 'Avoid potential triggers for 24h (sleeping with head up is outdated but often advised).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'uvh',
+                        name: 'Unilateral Vestibular Hypofunction',
+                        acronym: 'UVH',
+                        description: 'Reduced function of one inner ear, often due to infection (Neuritis/Labyrinthitis).',
+                        keyFeatures: [
+                            'Spontaneous nystagmus (acute)',
+                            'Gaze instability (oscillopsia)',
+                            'Postural instability',
+                            'Positive Head Impulse Test'
+                        ],
+                        ptIntervention: 'Gaze stabilization (VOR x1, x2), Habituation exercises (for motion sensitivity), Balance training.',
+                        icon: 'AlertTriangle',
+                        category: 'Peripheral',
+                        details: {
+                            overview: 'Sudden onset of severe vertigo lasting days, followed by chronic imbalance. Neuritis = nerve only. Labyrinthitis = nerve + hearing loss.',
+                            anatomy: [
+                                'Affected: Vestibular Nerve (CN VIII) or Labyrinth.',
+                                'Etiology: Viral infection (Herpes Simplex), Vascular ischemia.'
+                            ],
+                            physiology: [
+                                'Firing Rate asymmetry: Healthy side fires at tonic rate, sick side fires less -> Brain thinks head is spinning toward healthy side.',
+                                'Compensation: Central nervous system adapts to recalibrate VOR.'
+                            ],
+                            stats: [
+                                { label: 'Recovery', value: 'Good with Vestibular Rehab (VRT)' },
+                                { label: 'Timeline', value: 'Acute (days) -> Chronic (weeks)' }
+                            ],
+                            medications: [
+                                { name: 'Steroids', mechanism: 'Anti-inflammatory', effect: 'Acute management (Prednisone).' },
+                                { name: 'Vestibular Suppressants', mechanism: 'Benzos/Antihistamines', effect: 'Use ONLY in acute phase (stops compensation).' }
+                            ],
+                            medicalInterventions: [
+                                'MRI: To rule out stroke or tumor.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Adaptation', focus: 'VOR x1 viewing: Retraining the gain of the reflex.' },
+                                { stage: 'Habituation', focus: 'Desensitization: Repeated exposure to provoking movements.' },
+                                { stage: 'Substitution', focus: 'Sensory integration: Relying on somatosensory/visual cues.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'menieres',
+                        name: 'Meniere\'s Disease',
+                        acronym: 'MD',
+                        description: 'Chronic disorder of the inner ear causing episodic vertigo, tinnitus, fullness, and fluctuating hearing loss.',
+                        keyFeatures: [
+                            'Episodic Vertigo (20min - 24hr)',
+                            'Sensorineural Hearing Loss (Low freq)',
+                            'Tinnitus (Roaring)',
+                            'Aural Fullness'
+                        ],
+                        ptIntervention: 'Balance training for inter-episodic instability. VRT is NOT effective for preventing attacks, only for chronic hypofunction.',
+                        icon: 'Activity',
+                        category: 'Peripheral',
+                        details: {
+                            overview: 'Endolymphatic Hydrops: Excess fluid pressure in the inner ear. The "Glaucoma of the ear".',
+                            anatomy: [
+                                'Structure: Cochlear duct and Vestibular organs.',
+                                'Fluid: Endolymph accumulation distends Reissner\'s membrane.'
+                            ],
+                            physiology: [
+                                'Rupture: Membrane rupture mixes K+ rich endolymph with perilymph -> Toxic to hair cells -> Vertigo/Hearing loss.'
+                            ],
+                            stats: [
+                                { label: 'Prevalence', value: '190 per 100,000' },
+                                { label: 'Age', value: '40-60 years' },
+                                { label: 'Nature', value: 'Progressive/Fluctuating' }
+                            ],
+                            medications: [
+                                { name: 'Diuretics', mechanism: 'Reduce fluid', effect: 'HCTZ/Dyazide for maintenance.' },
+                                { name: 'Betahistine', mechanism: 'Vasodilator', effect: 'Improves microcirculation (Europe/Canada).' },
+                                { name: 'Intrathecal Gentamicin', mechanism: 'Ablation', effect: 'Destroys vestibular cells (chemical labyrinthectomy).' }
+                            ],
+                            medicalInterventions: [
+                                'Low Sodium Diet: <2000mg/day.',
+                                'Surgery: Endolymphatic sac decompression.'
+                            ],
+                            ptManagement: [
+                                { stage: 'During Attack', focus: 'Safety: Fall prevention. Rest.' },
+                                { stage: 'Between Attacks', focus: 'Balance: If permanent damage (hypofunction) exists.' },
+                                { stage: 'Education', focus: 'Lifestyle: Sodium, Caffeine, Alcohol, Stress management.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'pppd',
+                        name: 'Persistent Postural-Perceptual Dizziness',
+                        acronym: '3PD',
+                        description: 'Functional vestibular disorder characterized by chronic dizziness, unsteadiness, and non-spinning vertigo.',
+                        keyFeatures: [
+                            'Chronic dizziness > 3 months',
+                            'Worse with upright posture',
+                            'Worse with complex visual stimuli (grocery stores)',
+                            'Worse with active motion'
+                        ],
+                        ptIntervention: 'Graded exposure therapy, Desensitization (Optokinetic stimulation), CBT, SSRIs.',
+                        icon: 'Wind',
+                        category: 'Functional',
+                        details: {
+                            overview: 'PPPD is a "software" problem, not "hardware". The brain fails to re-adjust after an acute vestibular event, remaining in "high alert" mode.',
+                            anatomy: [
+                                'Structure: Normal peripheral organs.',
+                                'Network: Hyperactive visual-vestibular cortex integration.'
+                            ],
+                            physiology: [
+                                'Visual Dependence: Over-reliance on vision for balance.',
+                                'Sensory Mismatch: hypersensitivity to self-motion and visual motion.'
+                            ],
+                            stats: [
+                                { label: 'Prevalence', value: 'Most common cause of chronic dizziness' },
+                                { label: 'Trigger', value: 'Vestibular event, Panic attack, TBI' }
+                            ],
+                            medications: [
+                                { name: 'SSRIs/SNRIs', mechanism: 'Antidepressants', effect: 'Reduces central sensory gain/anxiety.' }
+                            ],
+                            medicalInterventions: [
+                                'CBT: Cognitive Behavioral Therapy for anxiety component.'
+                            ],
+                            ptManagement: [
+                                { stage: 'Habituation', focus: 'Optokinetic Stimulation: Watching moving stripes/dots to reduce visual vertigo.' },
+                                { stage: 'Exposure', focus: 'Graded: Slowly re-introducing complex environments (Supermarket).' },
+                                { stage: 'Confidence', focus: 'Movement: Re-establishing trust in balance.' }
+                            ]
+                        }
+                    }
                 ]
             }
         ]

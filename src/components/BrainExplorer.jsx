@@ -6,35 +6,91 @@ const BrainExplorer = ({ lobes }) => {
     const [selectedLobe, setSelectedLobe] = useState(null);
     const [hoveredLobe, setHoveredLobe] = useState(null);
 
-    // Simplified Brain Paths (Lateral View)
-    // Realistic Brain Paths (Lateral View with Gyri/Sulci)
+    // Complex paths with "gyri" (wavy) texture to match the user's reference image
+    // The coordinates are designed to interlock perfectly.
     const paths = {
-        frontal: "M130,225 C120,220 105,200 105,180 C105,160 115,140 130,120 C145,100 170,80 200,75 C230,70 260,80 280,95 C285,100 290,110 290,120 L290,220 C270,225 250,230 230,230 C200,230 160,240 130,225 Z M140,180 Q150,170 160,180 T180,180 M200,120 Q210,110 220,120 T240,120", // Added internal texture lines sketch
-        parietal: "M295,98 C320,95 350,100 370,115 C390,130 405,150 410,180 C412,200 400,215 390,220 L300,220 L300,120 C298,110 295,105 295,98 Z M320,140 Q330,130 340,140 T360,140",
-        occipital: "M410,180 C425,200 430,230 420,250 C410,270 390,285 370,290 L350,290 L350,230 L395,185 L410,180 Z",
-        temporal: "M350,290 L350,230 L290,220 L220,220 C200,230 180,240 180,260 C180,280 210,310 250,315 C290,320 330,310 350,290 Z M220,260 Q240,270 260,260 T300,260",
-        cerebellum: "M320,310 C360,310 390,330 395,350 C400,370 380,390 350,400 C320,410 290,390 280,370 C275,350 290,320 320,310 Z M300,330 L370,330 M310,350 L360,350 M320,370 L350,370", // Folia lines
-        brainstem: "M250,320 C240,340 230,360 235,380 C240,400 250,420 260,425 L280,425 C290,400 295,370 280,330 L250,320 Z"
+        frontal: `
+            M 120,400 
+            C 100,380 90,350 95,320 
+            C 80,300 75,250 90,200 
+            C 100,160 130,120 180,100 
+            C 230,80 300,75 350,90 
+            C 380,100 400,110 420,105 
+            C 425,130 415,150 420,170 
+            C 430,190 410,210 415,230 
+            C 420,250 400,270 405,290 
+            C 410,300 415,310 410,320
+            C 380,315 350,325 320,320 
+            C 290,315 260,325 240,330 
+            C 220,335 200,340 180,350 
+            C 160,360 140,380 120,400 Z
+        `,
+        parietal: `
+            M 420,105
+            C 450,100 480,100 510,105
+            C 550,110 580,120 600,140
+            C 620,160 630,180 635,200
+            C 620,220 600,210 590,230
+            C 580,240 590,260 580,275
+            C 550,270 520,265 490,270
+            C 460,275 430,280 410,320
+            C 415,310 410,300 405,290
+            C 400,270 420,250 415,230
+            C 410,210 430,190 420,170
+            C 415,150 425,130 420,105 Z
+        `,
+        temporal: `
+            M 120,400
+            C 140,380 160,360 180,350
+            C 200,340 220,335 240,330
+            C 260,325 290,315 320,320
+            C 350,325 380,315 410,320
+            C 430,280 460,275 490,270
+            C 520,265 550,270 580,275
+            C 570,300 560,330 540,350
+            C 520,380 480,400 450,405
+            C 400,410 350,400 300,410
+            C 250,420 200,430 150,420
+            C 130,415 120,400 120,400 Z
+        `,
+        occipital: `
+            M 635,200
+            C 650,220 660,250 660,280
+            C 660,310 650,340 630,360
+            C 610,380 580,390 560,385
+            C 560,360 550,340 540,320
+            C 540,350 560,330 570,300 
+            L 580,275
+            C 590,260 580,240 590,230
+            C 600,210 620,220 635,200 Z
+        `,
+        cerebellum: `
+            M 450,450
+            C 480,440 520,430 550,430
+            C 580,430 610,440 630,460
+            C 650,480 660,510 650,530
+            C 640,550 610,560 580,560
+            C 550,560 520,550 500,540
+            C 480,530 460,510 450,490
+            C 440,470 445,460 450,450 Z
+        `,
+        brainstem: `
+            M 380,420
+            C 380,420 420,410 440,460 
+            C 450,490 460,520 450,550
+            C 440,580 450,620 460,650 
+            L 400,650
+            C 390,620 380,580 390,550
+            C 400,520 370,480 380,420 Z
+        `
     };
 
-    // Note: The paths above are semi-realistic "sketches" to simulate complexity without hundreds of points.
-    // Ideally, these would be imported from a professionally drawn SVG, but we are procedurally approximating.
-    // For a truly "wiggly" gyri look, we update the strokes to be more organic.
-
-    // Let's refine the frontal path to be truly detailed for phase 10:
-    paths.frontal = "M100,200 C80,150 120,60 250,60 C260,60 270,62 280,65 C285,67 290,80 300,110 L300,220 L180,220 C150,250 120,230 100,200 Z M130,120 C140,100 160,100 170,120 C180,140 160,160 150,150 M180,90 C200,70 220,70 230,90 C240,110 220,130 210,120";
-    paths.parietal = "M280,65 C330,60 380,80 400,120 C415,150 420,180 415,200 L300,220 L300,110 C290,80 285,70 280,65 Z M330,100 C340,80 360,80 370,100 M350,130 C360,110 380,110 390,130";
-    paths.temporal = "M180,220 L300,220 L350,240 L350,290 C320,320 250,320 200,300 C180,290 160,260 180,220 Z M220,250 C240,240 260,240 280,250 M300,270 C320,260 340,260 350,270";
-    paths.occipital = "M415,200 C430,230 430,270 400,290 C380,300 360,300 350,290 L350,240 L415,200 Z M380,230 C390,220 400,220 410,230";
-    paths.cerebellum = "M300,310 C350,305 400,320 390,360 C380,390 330,400 300,380 C280,360 270,330 300,310 Z M310,330 H360 M320,345 H350 M330,360 H345"; // Striations
-    paths.brainstem = "M240,300 C220,350 230,410 250,430 L270,430 C290,400 280,320 260,300 L240,300 Z";
-
     const colors = {
-        frontal: "#0e7490", // Cyan
-        parietal: "#f59e0b", // Amber
-        temporal: "#10b981", // Emerald
-        occipital: "#6366f1", // Indigo
-        cerebellum: "#ec4899", // Pink
+        frontal: "#ec4899", // Pink (matches reference)
+        parietal: "#eab308", // Yellow (matches reference)
+        temporal: "#22c55e", // Green (matches reference)
+        occipital: "#6366f1", // Purple (matches reference)
+        cerebellum: "#9ca3af", // Gray (matches reference)
         brainstem: "#64748b"  // Slate
     };
 
@@ -42,27 +98,48 @@ const BrainExplorer = ({ lobes }) => {
         <div className="brain-explorer">
             <div className="explorer-container">
                 <div className="svg-container">
-                    <svg viewBox="0 0 500 450" className="brain-svg">
+                    <svg viewBox="0 0 800 700" className="brain-svg">
                         <defs>
                             <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                                 <feGaussianBlur stdDeviation="3" result="blur" />
                                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
                             </filter>
+                            {/* Pattern for Cerebellum striations */}
+                            <pattern id="striations" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <line x1="0" y1="5" x2="10" y2="5" stroke="#6b7280" strokeWidth="0.5" />
+                            </pattern>
                         </defs>
-                        {/* Base Outline/Shadow for depth (Optional) */}
+
+                        {/* Pointers (Lines) - Adjusted for new gyri model */}
+                        <g stroke="#374151" strokeWidth="2">
+                            {/* Frontal */}
+                            <line x1="150" y1="180" x2="250" y2="220" />
+                            {/* Parietal */}
+                            <line x1="600" y1="180" x2="550" y2="180" />
+                            {/* Occipital */}
+                            <line x1="760" y1="365" x2="640" y2="300" />
+                            {/* Temporal */}
+                            <line x1="170" y1="460" x2="280" y2="380" />
+                            {/* Cerebellum */}
+                            <line x1="760" y1="480" x2="600" y2="480" />
+                            {/* Brainstem */}
+                            <line x1="380" y1="620" x2="410" y2="550" />
+                        </g>
 
                         {lobes.map((lobe) => (
                             <motion.path
                                 key={lobe.id}
                                 d={paths[lobe.id]}
-                                fill={selectedLobe?.id === lobe.id ? colors[lobe.id] : "#e2e8f0"}
-                                stroke="white"
-                                strokeWidth="3"
+                                fill={selectedLobe?.id === lobe.id ? colors[lobe.id] : (lobe.id === 'cerebellum' ? "#d1d5db" : "#d1d5db")}
+                                stroke="#1f2937"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 initial={{ opacity: 0 }}
                                 animate={{
                                     opacity: 1,
-                                    fill: selectedLobe?.id === lobe.id || hoveredLobe === lobe.id ? colors[lobe.id] : "#cbd5e1",
-                                    scale: hoveredLobe === lobe.id ? 1.02 : 1
+                                    fill: selectedLobe?.id === lobe.id || hoveredLobe === lobe.id ? colors[lobe.id] : "#d1d5db",
+                                    scale: hoveredLobe === lobe.id ? 1.01 : 1
                                 }}
                                 transition={{ duration: 0.2 }}
                                 onMouseEnter={() => setHoveredLobe(lobe.id)}
@@ -75,13 +152,17 @@ const BrainExplorer = ({ lobes }) => {
                             />
                         ))}
 
-                        {/* Labels (simplified) */}
-                        <text x="210" y="160" fill="currentColor" textAnchor="middle" fontWeight="600" fontSize="14" pointerEvents="none" style={{ opacity: 1 }}>Frontal</text>
-                        <text x="340" y="120" fill="currentColor" textAnchor="middle" fontWeight="600" fontSize="14" pointerEvents="none" style={{ opacity: 1 }}>Parietal</text>
-                        <text x="390" y="260" fill="currentColor" textAnchor="middle" fontWeight="600" fontSize="14" pointerEvents="none" style={{ opacity: 1 }}>Occipital</text>
-                        <text x="260" y="270" fill="currentColor" textAnchor="middle" fontWeight="600" fontSize="14" pointerEvents="none" style={{ opacity: 1 }}>Temporal</text>
-                        <text x="330" y="350" fill="currentColor" textAnchor="middle" fontWeight="600" fontSize="14" pointerEvents="none" style={{ opacity: 1 }}>Cerebellum</text>
-                        <text x="255" y="400" fill="currentColor" textAnchor="middle" fontWeight="600" fontSize="14" pointerEvents="none" style={{ opacity: 1 }}>Brainstem</text>
+                        {/* Cerebellum Texture Overlay (Optional detail) */}
+                        <path d={paths.cerebellum} fill="url(#striations)" opacity="0.1" pointerEvents="none" />
+
+
+                        {/* External Labels */}
+                        <text x="150" y="170" fill="#1f2937" textAnchor="middle" fontWeight="600" fontSize="20">Frontal lobe</text>
+                        <text x="600" y="170" fill="#1f2937" textAnchor="middle" fontWeight="600" fontSize="20">Parietal lobe</text>
+                        <text x="770" y="365" fill="#1f2937" textAnchor="start" fontWeight="600" fontSize="20">Occipital lobe</text>
+                        <text x="170" y="475" fill="#1f2937" textAnchor="middle" fontWeight="600" fontSize="20">Temporal lobe</text>
+                        <text x="770" y="480" fill="#1f2937" textAnchor="start" fontWeight="600" fontSize="20">Cerebellum</text>
+                        <text x="380" y="640" fill="#1f2937" textAnchor="end" fontWeight="600" fontSize="20">Spinal Cord</text>
                     </svg>
                     <p className="instruction-text">Click a region to explore</p>
                 </div>

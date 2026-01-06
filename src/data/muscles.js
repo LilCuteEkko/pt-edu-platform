@@ -36,8 +36,58 @@ import adductorMagnusImg from '../assets/muscles/adductor-magnus.png';
 import tibialisAnteriorImg from '../assets/muscles/tibialis-anterior.png';
 import gastrocnemiusImg from '../assets/muscles/gastrocnemius.png';
 import fibularisLongusImg from '../assets/muscles/fibularis-longus.png';
+import scmImg from '../assets/muscles/sternocleidomastoid.png';
+import scalenesImg from '../assets/muscles/scalenes.png';
+import upperTrapImg from '../assets/muscles/upper-trapezius.png';
+import levatorImg from '../assets/muscles/levator-scapulae.png';
 
 export const muscles = [
+    // 0. Neck
+    {
+        id: 'sternocleidomastoid',
+        name: 'Sternocleidomastoid (SCM)',
+        origin: 'Manubrium of sternum (sternal head) and medial clavicle (clavicular head)',
+        insertion: 'Mastoid process of temporal bone and superior nuchal line',
+        nerve: 'Spinal Accessory Nerve (CN XI)',
+        action: 'Bilateral: Flexes neck. Unilateral: Laterally flexes to same side, Rotates to opposite side.',
+        clinicalNotes: 'Spasm causes Torticollis (Wry Neck). Prominent trigger point referral pattern causes tension headaches around the eye/ear.',
+        imageUrl: scmImg,
+        category: 'Neck'
+    },
+    {
+        id: 'scalenes',
+        name: 'Scalenes (Ant, Mid, Post)',
+        origin: 'Transverse processes of C2-C7 vertebrae',
+        insertion: 'First and Second Ribs',
+        nerve: 'Cervical Spinal Nerves (C3-C8)',
+        action: 'Elevates first two ribs (accessory breathing). Bilateral: Flexes neck. Unilateral: Laterally flexes neck.',
+        clinicalNotes: 'Hypertrophy or tightness can compress the Brachial Plexus (Thoracic Outlet Syndrome - TOS), causing arm numbness/tingling.',
+        imageUrl: scalenesImg,
+        category: 'Neck'
+    },
+    {
+        id: 'upper-trapezius',
+        name: 'Upper Trapezius',
+        origin: 'External occipital protuberance, nuchal ligament, spinous process of C7',
+        insertion: 'Lateral clavicle and acromion process',
+        nerve: 'Spinal Accessory Nerve (CN XI)',
+        action: 'Elevates and upwardly rotates scapula. Bilateral: Extends neck. Unilateral: Laterally flexes to same side, Rotates to opposite side.',
+        clinicalNotes: 'Commonly carries stress/tension. "Upper Trap Dominance" can lead to poor scapular mechanics and impingement.',
+        imageUrl: upperTrapImg,
+        category: 'Neck'
+    },
+    {
+        id: 'levator-scapulae',
+        name: 'Levator Scapulae',
+        origin: 'Transverse processes of C1-C4',
+        insertion: 'Medial border of scapula (superior angle to spine)',
+        nerve: 'Dorsal Scapular Nerve (C5) and C3-C4 roots',
+        action: 'Elevates scapula and downwardly rotates glenoid cavity. Unilateral: Laterally flexes neck to same side.',
+        clinicalNotes: 'Common site of "stiff neck". Tightness limits cervical rotation and can contribute to outcome scapular downward rotation syndrome.',
+        imageUrl: levatorImg,
+        category: 'Neck'
+    },
+
     // 1. Shoulder Girdle & Rotator Cuff
     {
         id: 'supraspinatus',

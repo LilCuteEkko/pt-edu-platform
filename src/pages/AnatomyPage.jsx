@@ -1,27 +1,59 @@
 import { useState, useMemo } from 'react';
 import { Search } from 'lucide-react';
 import MuscleCard from '../components/MuscleCard';
+import OrganCard from '../components/OrganCard';
 import { muscles } from '../data/muscles';
+import { organs } from '../data/organs';
 
 const AnatomyPage = () => {
+  const [activeTab, setActiveTab] = useState('muscles'); // 'muscles' or 'organs'
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', ...new Set(muscles.map(m => m.category))];
+  // Determine which dataset to use
+  const currentData = activeTab === 'muscles' ? muscles : organs;
 
-  const filteredMuscles = useMemo(() => {
-    return muscles.filter(muscle => {
-      const matchesSearch = muscle.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === 'All' || muscle.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+  // Get unique categories (Region for muscles, System for organs)
+  const categories = useMemo(() => {
+    const key = activeTab === 'muscles' ? 'category' : 'system';
+    return ['All', ...new Set(currentData.map(item => item[key]))];
+  }, [currentData, activeTab]);
+
+  // Reset category when tab changes
+  // We handle this effect to ensure we don't get stuck on a category that doesn't exist in the new tab
+  if (selectedCategory !== 'All' && !categories.includes(selectedCategory)) {
+    setSelectedCategory('All');
+  }
+
+  const filteredItems = useMemo(() => {
+    return currentData.filter(item => {
+      const matchName = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const categoryKey = activeTab === 'muscles' ? 'category' : 'system';
+      const matchCategory = selectedCategory === 'All' || item[categoryKey] === selectedCategory;
+      return matchName && matchCategory;
     });
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory, currentData, activeTab]);
 
   return (
     <div className="anatomy-page container">
       <div className="page-header">
         <h1>Anatomy Dashboard</h1>
-        <p>Explore detailed breakdown of muscles, nerves, and actions.</p>
+        <p>Explore detailed breakdown of human anatomy.</p>
+
+        <div className="tab-switcher">
+          <button
+            className={`tab-btn ${activeTab === 'muscles' ? 'active' : ''}`}
+            onClick={() => setActiveTab('muscles')}
+          >
+            Muscles & Bones
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'organs' ? 'active' : ''}`}
+            onClick={() => setActiveTab('organs')}
+          >
+            Organs
+          </button>
+        </div>
       </div>
 
       <div className="controls">
@@ -29,7 +61,7 @@ const AnatomyPage = () => {
           <Search className="search-icon" size={20} />
           <input
             type="text"
-            placeholder="Search muscles..."
+            placeholder={`Search ${activeTab}...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
@@ -37,7 +69,7 @@ const AnatomyPage = () => {
         </div>
 
         <div className="filter-wrapper">
-          <label htmlFor="category-select">Region:</label>
+          <label htmlFor="category-select">{activeTab === 'muscles' ? 'Region' : 'System'}:</label>
           <select
             id="category-select"
             value={selectedCategory}
@@ -51,14 +83,18 @@ const AnatomyPage = () => {
         </div>
       </div>
 
-      <div className="muscles-grid">
-        {filteredMuscles.length > 0 ? (
-          filteredMuscles.map(muscle => (
-            <MuscleCard key={muscle.id} muscle={muscle} />
+      <div className="items-grid">
+        {filteredItems.length > 0 ? (
+          filteredItems.map(item => (
+            activeTab === 'muscles' ? (
+              <MuscleCard key={item.id} muscle={item} />
+            ) : (
+              <OrganCard key={item.id} organ={item} />
+            )
           ))
         ) : (
           <div className="no-results">
-            <p>No muscles found matching your criteria.</p>
+            <p>No {activeTab} found matching your criteria.</p>
           </div>
         )}
       </div>
@@ -69,12 +105,39 @@ const AnatomyPage = () => {
           padding-bottom: 4rem;
         }
         .page-header {
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
           text-align: center;
         }
         .page-header p {
           color: var(--color-text-muted);
           margin-top: 0.5rem;
+          margin-bottom: 2rem;
+        }
+        .tab-switcher {
+          display: inline-flex;
+          background: var(--color-surface);
+          padding: 0.25rem;
+          border-radius: 999px;
+          border: 1px solid var(--color-border);
+          box-shadow: var(--shadow-sm);
+        }
+        .tab-btn {
+          padding: 0.5rem 1.5rem;
+          border-radius: 999px;
+          border: none;
+          background: transparent;
+          color: var(--color-text-muted);
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .tab-btn:hover {
+          color: var(--color-text);
+        }
+        .tab-btn.active {
+          background: var(--color-primary);
+          color: white;
+          box-shadow: var(--shadow-sm);
         }
         .controls {
           display: flex;
@@ -131,7 +194,7 @@ const AnatomyPage = () => {
           background-color: var(--color-surface);
           cursor: pointer;
         }
-        .muscles-grid {
+        .items-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
           gap: 1.5rem;

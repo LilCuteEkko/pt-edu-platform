@@ -16,6 +16,8 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/anatomy">Anatomy</Link>
           <Link to="/physiology">Physiology</Link>
+          <Link to="/modalities">Modalities</Link>
+          <Link to="/labs">Lab Values</Link>
           <Link to="/quiz">Quiz Mode</Link>
           <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}

@@ -10,12 +10,12 @@ const PathologyDeepDive = ({ pathology, onClose }) => {
     const { details } = pathology;
 
     const tabs = [
-        { id: 'overview', label: 'Overview', icon: BookOpen },
-        { id: 'anatomy', label: 'Anatomy & Phys', icon: Brain },
-        { id: 'stats', label: 'Statistics', icon: BarChart },
-        { id: 'medical', label: 'Medical', icon: Pill },
-        { id: 'pt', label: 'PT Management', icon: Activity },
-    ];
+        { id: 'overview', label: 'Overview', icon: BookOpen, show: true },
+        { id: 'anatomy', label: 'Anatomy & Phys', icon: Brain, show: details.anatomy || details.physiology },
+        { id: 'stats', label: 'Statistics', icon: BarChart, show: details.stats },
+        { id: 'medical', label: 'Medical / Risks', icon: Pill, show: details.medications || details.medicalInterventions || details.sideEffects },
+        { id: 'pt', label: 'PT Management', icon: Activity, show: details.ptManagement || details.ptImplications },
+    ].filter(tab => tab.show);
 
     const renderContent = () => {
         switch (activeTab) {
@@ -63,7 +63,7 @@ const PathologyDeepDive = ({ pathology, onClose }) => {
             case 'medical':
                 return (
                     <div className="tab-content">
-                        <div className="section">
+                        {details.medications && <div className="section">
                             <h3>Pharmacology</h3>
                             <div className="med-grid">
                                 {details.medications.map((med, i) => (
@@ -74,29 +74,45 @@ const PathologyDeepDive = ({ pathology, onClose }) => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                        <div className="section">
-                            <h3>Interventions</h3>
-                            <ul>{details.medicalInterventions.map((int, i) => <li key={i}>{int}</li>)}</ul>
-                        </div>
+                        </div>}
+                        {details.sideEffects && (
+                            <div className="section">
+                                <h3>Common Side Effects</h3>
+                                <ul>{details.sideEffects.map((effect, i) => <li key={i}>{effect}</li>)}</ul>
+                            </div>
+                        )}
+                        {details.medicalInterventions && (
+                            <div className="section">
+                                <h3>Interventions</h3>
+                                <ul>{details.medicalInterventions.map((int, i) => <li key={i}>{int}</li>)}</ul>
+                            </div>
+                        )}
                     </div>
                 );
             case 'pt':
                 return (
                     <div className="tab-content">
                         <h3>Physical Therapy Management</h3>
-                        <div className="timeline-stages">
-                            {details.ptManagement.map((stage, i) => (
-                                <div key={i} className="stage-item">
-                                    <div className="stage-header">
-                                        <span className="stage-name">{stage.stage}</span>
+                        {details.ptManagement && (
+                            <div className="timeline-stages">
+                                {details.ptManagement.map((stage, i) => (
+                                    <div key={i} className="stage-item">
+                                        <div className="stage-header">
+                                            <span className="stage-name">{stage.stage}</span>
+                                        </div>
+                                        <div className="stage-focus">
+                                            {stage.focus}
+                                        </div>
                                     </div>
-                                    <div className="stage-focus">
-                                        {stage.focus}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        )}
+                        {details.ptImplications && (
+                            <div className="section">
+                                <h3>Clinical Implications</h3>
+                                <ul>{details.ptImplications.map((imp, i) => <li key={i}>{imp}</li>)}</ul>
+                            </div>
+                        )}
                     </div>
                 );
             default:
