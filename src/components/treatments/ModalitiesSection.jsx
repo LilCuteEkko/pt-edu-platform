@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronRight, AlertTriangle, Zap, Thermometer, Hand, Hammer, Activity } from 'lucide-react'; // Simulating likely icons
-import { modalities } from '../data/modalities';
+import { ChevronRight, AlertTriangle, Activity } from 'lucide-react';
+import { modalities } from '../../data/modalities';
 
-const ModalitiesPage = () => {
+const ModalitiesSection = () => {
     const [selectedModality, setSelectedModality] = useState(modalities[0]);
 
     return (
-        <div className="modalities-page container" style={{ display: 'flex', gap: '2rem', padding: '2rem 0', minHeight: '80vh' }}>
+        <div className="modalities-section" style={{ display: 'flex', gap: '2rem', minHeight: '600px' }}>
 
             {/* Sidebar Navigation */}
             <div className="modalities-sidebar" style={{ width: '300px', flexShrink: 0 }}>
-                <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: 'bold' }}>PT Modalities</h2>
+                <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: 'bold' }}>Modalities List</h2>
                 <div className="modality-list" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     {modalities.map((item) => (
                         <button
@@ -104,7 +104,6 @@ const ModalitiesPage = () => {
                             <p>{selectedModality.mechanism}</p>
                         </div>
 
-                        {/* Markdown-like content rendering */}
                         <div className="deep-dive" style={{ lineHeight: '1.7' }}>
                             {selectedModality.content.split('\n').map((line, i) => {
                                 const cleanLine = line.trim();
@@ -123,4 +122,4 @@ const ModalitiesPage = () => {
     );
 };
 
-export default ModalitiesPage;
+export default ModalitiesSection;

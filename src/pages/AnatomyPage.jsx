@@ -1,26 +1,65 @@
 import { useState, useMemo } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Activity, Skull, Share2, Network, Heart } from 'lucide-react';
 import MuscleCard from '../components/MuscleCard';
 import OrganCard from '../components/OrganCard';
+import BoneCard from '../components/BoneCard';
+import JointCard from '../components/JointCard';
+import NerveCard from '../components/NerveCard';
+import ArteryCard from '../components/ArteryCard';
+import TendonCard from '../components/TendonCard';
+import LigamentCard from '../components/LigamentCard';
 import { muscles } from '../data/muscles';
 import { organs } from '../data/organs';
+import { bones } from '../data/bones';
+import { joints } from '../data/joints';
+import { nerves } from '../data/nerves';
+import { arteries } from '../data/arteries';
+import { tendons } from '../data/tendons';
+import { ligaments } from '../data/ligaments';
 
 const AnatomyPage = () => {
-  const [activeTab, setActiveTab] = useState('muscles'); // 'muscles' or 'organs'
+  const [activeTab, setActiveTab] = useState('muscles'); // 'muscles', 'bones', 'joints', 'organs', 'nerves', 'arteries', 'tendons', 'ligaments'
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const tabs = [
+    { id: 'muscles', label: 'Muscles', icon: Activity },
+    { id: 'bones', label: 'Bones', icon: Skull },
+    { id: 'joints', label: 'Joints', icon: Share2 },
+    { id: 'nerves', label: 'Nerves', icon: Network },
+    { id: 'arteries', label: 'Arteries', icon: Heart },
+    { id: 'tendons', label: 'Tendons', icon: Activity },
+    { id: 'ligaments', label: 'Ligaments', icon: Share2 },
+    { id: 'organs', label: 'Organs', icon: Heart }
+  ];
 
   // Determine which dataset to use
-  const currentData = activeTab === 'muscles' ? muscles : organs;
+  const currentData = useMemo(() => {
+    switch (activeTab) {
+      case 'muscles': return muscles;
+      case 'bones': return bones;
+      case 'joints': return joints;
+      case 'nerves': return nerves;
+      case 'arteries': return arteries;
+      case 'tendons': return tendons;
+      case 'ligaments': return ligaments;
+      case 'organs': return organs;
+      default: return muscles;
+    }
+  }, [activeTab]);
 
-  // Get unique categories (Region for muscles, System for organs)
+  // Get unique categories
   const categories = useMemo(() => {
-    const key = activeTab === 'muscles' ? 'category' : 'system';
+    let key;
+    if (activeTab === 'muscles' || activeTab === 'bones' || activeTab === 'nerves' || activeTab === 'arteries' || activeTab === 'tendons' || activeTab === 'ligaments') key = 'category';
+    else if (activeTab === 'joints') key = 'type'; // Filter joints by type
+    else key = 'system'; // Organs by system
+
     return ['All', ...new Set(currentData.map(item => item[key]))];
   }, [currentData, activeTab]);
 
   // Reset category when tab changes
-  // We handle this effect to ensure we don't get stuck on a category that doesn't exist in the new tab
   if (selectedCategory !== 'All' && !categories.includes(selectedCategory)) {
     setSelectedCategory('All');
   }
@@ -28,7 +67,12 @@ const AnatomyPage = () => {
   const filteredItems = useMemo(() => {
     return currentData.filter(item => {
       const matchName = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const categoryKey = activeTab === 'muscles' ? 'category' : 'system';
+
+      let categoryKey;
+      if (activeTab === 'muscles' || activeTab === 'bones' || activeTab === 'nerves' || activeTab === 'arteries' || activeTab === 'tendons' || activeTab === 'ligaments') categoryKey = 'category';
+      else if (activeTab === 'joints') categoryKey = 'type';
+      else categoryKey = 'system';
+
       const matchCategory = selectedCategory === 'All' || item[categoryKey] === selectedCategory;
       return matchName && matchCategory;
     });
@@ -41,18 +85,15 @@ const AnatomyPage = () => {
         <p>Explore detailed breakdown of human anatomy.</p>
 
         <div className="tab-switcher">
-          <button
-            className={`tab-btn ${activeTab === 'muscles' ? 'active' : ''}`}
-            onClick={() => setActiveTab('muscles')}
-          >
-            Muscles & Bones
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'organs' ? 'active' : ''}`}
-            onClick={() => setActiveTab('organs')}
-          >
-            Organs
-          </button>
+          {tabs.map(tab => (
+            <button
+              key={tab.id}
+              className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -69,7 +110,7 @@ const AnatomyPage = () => {
         </div>
 
         <div className="filter-wrapper">
-          <label htmlFor="category-select">{activeTab === 'muscles' ? 'Region' : 'System'}:</label>
+          <label htmlFor="category-select">Filter:</label>
           <select
             id="category-select"
             value={selectedCategory}
@@ -85,13 +126,17 @@ const AnatomyPage = () => {
 
       <div className="items-grid">
         {filteredItems.length > 0 ? (
-          filteredItems.map(item => (
-            activeTab === 'muscles' ? (
-              <MuscleCard key={item.id} muscle={item} />
-            ) : (
-              <OrganCard key={item.id} organ={item} />
-            )
-          ))
+          filteredItems.map(item => {
+            if (activeTab === 'muscles') return <MuscleCard key={item.id} muscle={item} />;
+            if (activeTab === 'bones') return <BoneCard key={item.id} bone={item} />;
+            if (activeTab === 'joints') return <JointCard key={item.id} joint={item} />;
+            if (activeTab === 'nerves') return <NerveCard key={item.id} nerve={item} />;
+            if (activeTab === 'arteries') return <ArteryCard key={item.id} artery={item} />;
+            if (activeTab === 'tendons') return <TendonCard key={item.id} tendon={item} />;
+            if (activeTab === 'ligaments') return <LigamentCard key={item.id} ligament={item} />;
+            if (activeTab === 'organs') return <OrganCard key={item.id} organ={item} />;
+            return null;
+          })
         ) : (
           <div className="no-results">
             <p>No {activeTab} found matching your criteria.</p>
@@ -115,8 +160,11 @@ const AnatomyPage = () => {
         }
         .tab-switcher {
           display: inline-flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.5rem;
           background: var(--color-surface);
-          padding: 0.25rem;
+          padding: 0.5rem;
           border-radius: 999px;
           border: 1px solid var(--color-border);
           box-shadow: var(--shadow-sm);
@@ -149,7 +197,7 @@ const AnatomyPage = () => {
           background: var(--color-surface);
           padding: 1rem;
           border-radius: var(--radius-lg);
-          border: 1px solid color-mix(in srgb, var(--color-text), transparent 90%);
+          border: 1px solid var(--color-border);
         }
         .search-wrapper {
           position: relative;
@@ -166,7 +214,7 @@ const AnatomyPage = () => {
         .search-input {
           width: 100%;
           padding: 0.75rem 1rem 0.75rem 3rem;
-          border: 1px solid color-mix(in srgb, var(--color-text), transparent 90%);
+          border: 1px solid var(--color-border);
           border-radius: var(--radius-md);
           font-size: 1rem;
           font-family: inherit;
@@ -187,7 +235,7 @@ const AnatomyPage = () => {
         }
         .category-select {
           padding: 0.5rem 2rem 0.5rem 1rem;
-          border: 1px solid color-mix(in srgb, var(--color-text), transparent 90%);
+          border: 1px solid var(--color-border);
           border-radius: var(--radius-md);
           font-size: 0.875rem;
           color: var(--color-text);
@@ -204,6 +252,15 @@ const AnatomyPage = () => {
           text-align: center;
           padding: 3rem;
           color: var(--color-text-muted);
+        }
+        @media (max-width: 600px) {
+            .tab-switcher {
+                border-radius: var(--radius-lg);
+                width: 100%;
+            }
+            .tab-btn {
+                flex: 1 1 auto;
+            }
         }
       `}</style>
     </div>

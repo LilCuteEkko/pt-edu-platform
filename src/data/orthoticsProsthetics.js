@@ -3,6 +3,32 @@ import amputationLevelsImg from '../assets/orthotics-prosthetics/amputation_leve
 import vaultingImg from '../assets/orthotics-prosthetics/gait_vaulting.png';
 import circumductionImg from '../assets/orthotics-prosthetics/gait_circumduction.png';
 import transtibialPressureImg from '../assets/orthotics-prosthetics/transtibial_pressure.png';
+import wristCockUpImg from '../assets/orthotics-prosthetics/wrist_cock_up.png';
+import thumbSpicaImg from '../assets/orthotics-prosthetics/thumb_spica.png';
+import restingHandImg from '../assets/orthotics-prosthetics/resting_hand_splint.png';
+import malletFingerImg from '../assets/orthotics-prosthetics/mallet_finger_splint.png';
+import boutonniereImg from '../assets/orthotics-prosthetics/boutonniere_splint.png';
+import afoPlsImg from '../assets/orthotics-prosthetics/afo_pls.png';
+import afoSolidImg from '../assets/orthotics-prosthetics/afo_solid.png';
+import afoHingedImg from '../assets/orthotics-prosthetics/afo_hinged.png';
+import grafoImg from '../assets/orthotics-prosthetics/grafo.png';
+import kafoImg from '../assets/orthotics-prosthetics/kafo.png';
+import rgoImg from '../assets/orthotics-prosthetics/rgo.png';
+import lsoCorsetImg from '../assets/orthotics-prosthetics/lso_corset.png';
+import tlsoBodyImg from '../assets/orthotics-prosthetics/tlso_body.png';
+import jewettBraceImg from '../assets/orthotics-prosthetics/jewett_brace.png';
+import haloVestImg from '../assets/orthotics-prosthetics/halo_vest.png';
+import miamiJCollarImg from '../assets/orthotics-prosthetics/miami_j_collar.png';
+import philadelphiaCollarImg from '../assets/orthotics-prosthetics/philadelphia_collar.png';
+import softFoamCollarImg from '../assets/orthotics-prosthetics/soft_foam_collar.png';
+import minervaOrthosisImg from '../assets/orthotics-prosthetics/minerva_orthosis.png';
+import heelLiftImg from '../assets/orthotics-prosthetics/heel_lift.png';
+import rockerBottomImg from '../assets/orthotics-prosthetics/rocker_bottom.png';
+import gaitLatTrunkBendImg from '../assets/orthotics-prosthetics/gait_lat_trunk_bend.png';
+import gaitAbductedImg from '../assets/orthotics-prosthetics/gait_abducted.png';
+import gaitKneeInstabilityImg from '../assets/orthotics-prosthetics/gait_knee_instability.png';
+import gaitTerminalImpactImg from '../assets/orthotics-prosthetics/gait_terminal_impact.png';
+
 
 export const orthoticsProstheticsData = {
     prosthetics: {
@@ -119,6 +145,7 @@ export const orthoticsProstheticsData = {
                         name: 'Lateral Trunk Bending',
                         category: 'Prosthetic Gait',
                         description: 'Leaning torso towards the prosthetic side during stance phase.',
+                        image: gaitLatTrunkBendImg,
                         keyFeatures: ['Prosthesis too short', 'High medial wall', 'Weak Hip Abductors (+ Trendelenburg)'],
                         ptIntervention: 'Check length, Glute Med strengthening.'
                     },
@@ -127,6 +154,7 @@ export const orthoticsProstheticsData = {
                         name: 'Abducted Gait',
                         category: 'Prosthetic Gait',
                         description: 'Walking with the prosthesis held wide (away from midline) throughout cycle.',
+                        image: gaitAbductedImg,
                         keyFeatures: ['Prosthesis too long', 'High medial wall (pain)', 'Abd Contracture', 'Insecurity'],
                         ptIntervention: 'Stretch abductors, check medial brim fit.'
                     },
@@ -135,6 +163,7 @@ export const orthoticsProstheticsData = {
                         name: 'Knee Instability',
                         category: 'Prosthetic Gait',
                         description: 'Knee buckles into flexion during loading response.',
+                        image: gaitKneeInstabilityImg,
                         keyFeatures: ['Heel too stiff (creates PF moment -> Knee Flex)', 'Knee axis too anterior', 'Weak Extensors'],
                         ptIntervention: 'Soften heel cushion, move knee posterior.'
                     },
@@ -143,6 +172,7 @@ export const orthoticsProstheticsData = {
                         name: 'Terminal Impact',
                         category: 'Prosthetic Gait',
                         description: 'Audible "clack" at end of swing phase as knee fully extends.',
+                        image: gaitTerminalImpactImg,
                         keyFeatures: ['Insufficient knee friction', 'Extension assist too strong', 'Habit (seeking feedback)'],
                         ptIntervention: 'Adjust knee friction/resistance.'
                     }
@@ -163,6 +193,7 @@ export const orthoticsProstheticsData = {
                 pathologies: [
                     {
                         id: 'afo-pls',
+                        image: afoPlsImg,
                         name: 'Posterior Leaf Spring (AFO)',
                         category: 'Ankle-Foot',
                         description: 'A flexible, narrow plastic AFO located behind the malleoli. Allows for stored energy release.',
@@ -171,6 +202,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'afo-solid',
+                        image: afoSolidImg,
                         name: 'Solid Ankle AFO',
                         category: 'Ankle-Foot',
                         description: 'Rigid plastic that fully encases the malleoli to strictly limit ankle motion.',
@@ -179,6 +211,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'afo-hinged',
+                        image: afoHingedImg,
                         name: 'Articulated (Hinged) AFO',
                         category: 'Ankle-Foot',
                         description: 'Incorporates a mechanical joint to allow sagittal motion (usually DF) while controlling inversion/eversion.',
@@ -187,6 +220,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'grafo',
+                        image: grafoImg,
                         name: 'Ground Reaction AFO',
                         category: 'Ankle-Foot',
                         description: 'Anterior shell places pressure below the knee to prevent excessive knee flexion (buckling) during stance.',
@@ -195,6 +229,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'kafo',
+                        image: kafoImg,
                         name: 'KAFO',
                         category: 'Knee-Ankle-Foot',
                         description: 'Extends from thigh to foot with knee joints. Used when knee stability cannot be controlled by AFO alone.',
@@ -203,6 +238,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'rgo',
+                        image: rgoImg,
                         name: 'RGO (Reciprocating Gait)',
                         category: 'Hip-Knee-Ankle',
                         description: 'HKAFO with a cable system connecting the hips. Flexion of one hip extends the other.',
@@ -218,6 +254,7 @@ export const orthoticsProstheticsData = {
                 pathologies: [
                     {
                         id: 'wrist-cock-up',
+                        image: wristCockUpImg,
                         name: 'Wrist Cock-Up Splint',
                         category: 'Wrist',
                         description: 'Immobilizes the wrist in neutral or slight extension (20-30°) while allowing full MP and finger flexion.',
@@ -226,6 +263,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'thumb-spica',
+                        image: thumbSpicaImg,
                         name: 'Thumb Spica Splint',
                         category: 'Thumb',
                         description: 'Immobilizes the thumb CMC and MP joints. Wrist may be included (Long) or excluded (Short).',
@@ -234,6 +272,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'resting-hand',
+                        image: restingHandImg,
                         name: 'Resting Hand Splint',
                         category: 'Hand/Wrist',
                         description: 'Positions the wrist, hand, and fingers in a functional resting position (Intrinsic Plus).',
@@ -242,6 +281,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'mallet-finger',
+                        image: malletFingerImg,
                         name: 'Mallet Finger Splint',
                         category: 'Finger',
                         description: 'Immobilizes the DIP joint in slight hyperextension.',
@@ -250,6 +290,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'boutonniere',
+                        image: boutonniereImg,
                         name: 'Boutonniere Splint',
                         category: 'Finger',
                         description: 'Block\'s PIP into extension while allowing DIP flexion.',
@@ -265,6 +306,7 @@ export const orthoticsProstheticsData = {
                 pathologies: [
                     {
                         id: 'lso-corset',
+                        image: lsoCorsetImg,
                         name: 'LSO (Corset/Chairback)',
                         category: 'Lumbar',
                         description: 'Fabric or rigid brace supporting L1-L5. Increases abdominal cavity pressure to offload discs.',
@@ -273,6 +315,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'tlso-body',
+                        image: tlsoBodyImg,
                         name: 'TLSO (Body Jacket)',
                         category: 'Thoraco-Lumbar',
                         description: 'Rigid "clamshell" plastic brace offering maximal immobilization of the thoracic and lumbar spine.',
@@ -281,6 +324,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'jewett',
+                        image: jewettBraceImg,
                         name: 'Jewett / CASH Brace',
                         category: 'Hyperextension',
                         description: 'Three-point pressure system (sternum, pubis, lumbar pad) to prevent flexion.',
@@ -289,6 +333,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'halo',
+                        image: haloVestImg,
                         name: 'Halo Vest',
                         category: 'Cervical',
                         description: 'Invasive device with pins fixed into the skull attached to a thoracic vest.',
@@ -297,6 +342,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'miami-j',
+                        image: miamiJCollarImg,
                         name: 'Miami J Collar',
                         category: 'Cervical (CO)',
                         description: 'Rigid two-piece collar with polyethylene shell and soft lining. Provides superior immobilization compared to other collars.',
@@ -305,6 +351,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'philadelphia',
+                        image: philadelphiaCollarImg,
                         name: 'Philadelphia Collar',
                         category: 'Cervical (CO)',
                         description: 'Semi-rigid foam collar. Less restrictive than Miami J but more comfortable for short durations.',
@@ -313,6 +360,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'soft-collar',
+                        image: softFoamCollarImg,
                         name: 'Soft Foam Collar',
                         category: 'Cervical (CO)',
                         description: 'Soft foam ring. Provides minimal mechanical stability.',
@@ -321,6 +369,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'minerva',
+                        image: minervaOrthosisImg,
                         name: 'Minerva / SOMI',
                         category: 'Cervical-Thoracic (CTO)',
                         description: 'Sternal-Occipital-Mandibular Immobilizer. Braces against the chest/back to block cervical motion.',
@@ -336,6 +385,7 @@ export const orthoticsProstheticsData = {
                 pathologies: [
                     {
                         id: 'heel-lift',
+                        image: heelLiftImg,
                         name: 'Heel Lift',
                         category: 'Internal/External',
                         description: 'Added height to the heel.',
@@ -344,6 +394,7 @@ export const orthoticsProstheticsData = {
                     },
                     {
                         id: 'rocker-bottom',
+                        image: rockerBottomImg,
                         name: 'Rocker Bottom',
                         category: 'Sole Mod',
                         description: 'Curved sole that allows the foot to roll from heel to toe without ankle motion.',

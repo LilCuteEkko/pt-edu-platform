@@ -14,10 +14,9 @@ const Navbar = () => {
         </Link>
         <div className="nav-links">
           <Link to="/">Home</Link>
-          <Link to="/anatomy">Anatomy</Link>
-          <Link to="/physiology">Physiology</Link>
-          <Link to="/modalities">Modalities</Link>
-          <Link to="/exercises">Exercises</Link>
+          <Link to="/a-p">Anatomy & Physiology</Link>
+          <Link to="/settings">PT Settings</Link>
+          <Link to="/treatments">PT Treatments</Link>
           <Link to="/labs">Lab Values</Link>
           <Link to="/orthotics-prosthetics">Orthotics & Prosthetics</Link>
           <Link to="/quiz">Quiz Mode</Link>

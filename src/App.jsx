@@ -7,14 +7,15 @@ import './index.css';
 
 // Lazy Load Pages
 const HomePage = lazy(() => import('./pages/HomePage'));
-const AnatomyPage = lazy(() => import('./pages/AnatomyPage'));
-const PhysiologyPage = lazy(() => import('./pages/PhysiologyPage'));
+const AnatomyPhysiologyPage = lazy(() => import('./pages/AnatomyPhysiologyPage'));
 const PhysiologyDetail = lazy(() => import('./components/PhysiologyDetail'));
-const ModalitiesPage = lazy(() => import('./pages/ModalitiesPage'));
-const LabValuesPage = lazy(() => import('./components/LabValuesPage'));
+const PTTreatmentsPage = lazy(() => import('./pages/PTTreatmentsPage'));
+const PTSettingsPage = lazy(() => import('./pages/PTSettingsPage'));
 const OrthoticsProstheticsPage = lazy(() => import('./pages/OrthoticsProstheticsPage'));
 const QuizPage = lazy(() => import('./pages/QuizPage'));
-const ExercisesPage = lazy(() => import('./pages/ExercisesPage'));
+const LabValuesPage = lazy(() => import('./components/LabValuesPage'));
+const AnatomyPage = lazy(() => import('./pages/AnatomyPage'));
+const PhysiologyPage = lazy(() => import('./pages/PhysiologyPage'));
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -42,13 +43,14 @@ function AnimatedRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Layout />}>
             <Route index element={<PageWrapper><HomePage /></PageWrapper>} />
-            <Route path="anatomy" element={<PageWrapper><AnatomyPage /></PageWrapper>} />
-            <Route path="physiology" element={<PageWrapper><PhysiologyPage /></PageWrapper>} />
+            <Route path="a-p" element={<PageWrapper><AnatomyPhysiologyPage /></PageWrapper>} />
+            {/* <Route path="anatomy" element={<PageWrapper><AnatomyPage /></PageWrapper>} /> */}
+            {/* <Route path="physiology" element={<PageWrapper><PhysiologyPage /></PageWrapper>} /> */}
             <Route path="physiology/:topicId" element={<PageWrapper><PhysiologyDetail /></PageWrapper>} />
-            <Route path="modalities" element={<PageWrapper><ModalitiesPage /></PageWrapper>} />
+            <Route path="settings" element={<PageWrapper><PTSettingsPage /></PageWrapper>} />
+            <Route path="treatments" element={<PageWrapper><PTTreatmentsPage /></PageWrapper>} />
             <Route path="labs" element={<PageWrapper><LabValuesPage /></PageWrapper>} />
             <Route path="orthotics-prosthetics" element={<PageWrapper><OrthoticsProstheticsPage /></PageWrapper>} />
-            <Route path="exercises" element={<PageWrapper><ExercisesPage /></PageWrapper>} />
             <Route path="quiz" element={<PageWrapper><QuizPage /></PageWrapper>} />
           </Route>
         </Routes>
