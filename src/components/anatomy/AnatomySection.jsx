@@ -6,49 +6,69 @@ import BoneCard from '../BoneCard';
 import JointCard from '../JointCard';
 import NerveCard from '../NerveCard';
 import ArteryCard from '../ArteryCard';
-import { muscles } from '../../data/muscles';
-import { organs } from '../../data/organs';
-import { bones } from '../../data/bones';
-import { joints } from '../../data/joints';
-import { nerves } from '../../data/nerves';
-import { tendons } from '../../data/tendons';
-import { ligaments } from '../../data/ligaments';
-import TendonCard from '../TendonCard';
-import LigamentCard from '../LigamentCard';
+import { muscles as musclesData } from '../../data/muscles';
+import { organs as organsData } from '../../data/organs';
+import { bones as bonesData } from '../../data/bones';
+import { joints as jointsData } from '../../data/joints';
+import { nerves as nervesData } from '../../data/nerves';
+import { cranialNerves as cranialNervesData } from '../../data/cranialNerves';
+import { arteries as arteriesData } from '../../data/arteries';
+import { veins as veinsData } from '../../data/veins';
+import { tendons as tendonsData } from '../../data/tendons';
+import { ligaments as ligamentsData } from '../../data/ligaments';
+// ... (keep component imports same)
 
 const AnatomySection = ({ onBack }) => {
-    const [activeTab, setActiveTab] = useState('muscles'); // 'muscles', 'bones', 'joints', 'organs', 'nerves', 'arteries'
+    const [activeTab, setActiveTab] = useState('muscles');
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     // Determine which dataset to use
+    // Determine which dataset to use
     const currentData = useMemo(() => {
+        let data = [];
         switch (activeTab) {
-            case 'muscles': return muscles;
-            case 'bones': return bones;
-            case 'joints': return joints;
-            case 'organs': return organs;
-            case 'nerves': return nerves;
-            case 'arteries': return arteries;
-            case 'tendons': return tendons;
-            case 'ligaments': return ligaments;
-            default: return muscles;
+            case 'muscles': data = musclesData; break;
+            case 'bones': data = bonesData; break;
+            case 'joints': data = jointsData; break;
+            case 'organs': data = organsData; break;
+            case 'nerves': data = [...cranialNervesData, ...nervesData]; break;
+            case 'arteries': data = arteriesData; break;
+            case 'veins': data = veinsData; break;
+            case 'tendons': data = tendonsData; break;
+            case 'ligaments': data = ligamentsData; break;
+            default: data = musclesData;
         }
+
+        // Defensive Deduplication: Ensure all items have unique IDs
+        const uniqueItems = [];
+        const seenIds = new Set();
+
+        if (Array.isArray(data)) {
+            data.forEach(item => {
+                if (!seenIds.has(item.id)) {
+                    seenIds.add(item.id);
+                    uniqueItems.push(item);
+                }
+            });
+        }
+
+        return uniqueItems;
     }, [activeTab]);
 
     // Get unique categories
-    const categories = useMemo(() => {
-        let key;
-        if (activeTab === 'muscles' || activeTab === 'bones') key = 'category';
-        else if (activeTab === 'joints') key = 'type';
-        else if (activeTab === 'organs') key = 'system';
-        else if (activeTab === 'nerves') key = 'type'; // Filter nerves by type (Plexus vs Peripheral)
-        else if (activeTab === 'tendons' || activeTab === 'ligaments') key = 'category';
-        else key = 'source'; // Arteries by source (simplified filter)
+    // Filter logic
+    const categoryKey = activeTab === 'organs' ? 'system' : 'category';
 
-        const uniqueCats = ['All', ...new Set(currentData.map(item => item[key] || 'General'))];
-        return uniqueCats.filter(Boolean); // Remove null/undefined
-    }, [currentData, activeTab]);
+    // Get unique categories
+    const categories = useMemo(() => {
+        if (!currentData) return [];
+        // Map items to their category value, defaulting to 'General' if missing
+        const values = currentData.map(item => item[categoryKey] || 'General');
+        // Create unique set, add 'All'
+        const uniqueCats = ['All', ...new Set(values)];
+        return uniqueCats.sort();
+    }, [currentData, categoryKey]);
 
     // Reset category when tab changes
     if (selectedCategory !== 'All' && !categories.includes(selectedCategory)) {
@@ -56,22 +76,14 @@ const AnatomySection = ({ onBack }) => {
     }
 
     const filteredItems = useMemo(() => {
+        if (!currentData) return [];
         return currentData.filter(item => {
             const matchName = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-
-            let categoryKey;
-            if (activeTab === 'muscles' || activeTab === 'bones') categoryKey = 'category';
-            else if (activeTab === 'joints') categoryKey = 'type';
-            else if (activeTab === 'organs') categoryKey = 'system';
-            else if (activeTab === 'nerves') categoryKey = 'type';
-            else if (activeTab === 'tendons' || activeTab === 'ligaments') categoryKey = 'category';
-            else categoryKey = 'source';
-
             const itemCategory = item[categoryKey] || 'General';
             const matchCategory = selectedCategory === 'All' || itemCategory === selectedCategory;
             return matchName && matchCategory;
         });
-    }, [searchTerm, selectedCategory, currentData, activeTab]);
+    }, [searchTerm, selectedCategory, currentData, categoryKey]);
 
     return (
         <div className="anatomy-section">
@@ -113,6 +125,12 @@ const AnatomySection = ({ onBack }) => {
                         onClick={() => setActiveTab('arteries')}
                     >
                         Arteries
+                    </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'veins' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('veins')}
+                    >
+                        Veins
                     </button>
                     <button
                         className={`tab-btn ${activeTab === 'tendons' ? 'active' : ''}`}
@@ -170,6 +188,7 @@ const AnatomySection = ({ onBack }) => {
                         if (activeTab === 'joints') return <JointCard key={item.id} joint={item} />;
                         if (activeTab === 'nerves') return <NerveCard key={item.id} nerve={item} />;
                         if (activeTab === 'arteries') return <ArteryCard key={item.id} artery={item} />;
+                        if (activeTab === 'veins') return <VeinCard key={item.id} vein={item} />;
                         if (activeTab === 'tendons') return <TendonCard key={item.id} tendon={item} />;
                         if (activeTab === 'ligaments') return <LigamentCard key={item.id} ligament={item} />;
                         if (activeTab === 'organs') return <OrganCard key={item.id} organ={item} />;

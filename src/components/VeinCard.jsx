@@ -2,21 +2,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
-const NerveCard = ({ nerve }) => {
+const VeinCard = ({ vein }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <motion.div
             layout
-            className={`nerve-card ${isOpen ? 'open' : ''}`}
+            className={`vein-card ${isOpen ? 'open' : ''}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
         >
             <div className="card-header" onClick={() => setIsOpen(!isOpen)}>
                 <div className="header-text">
-                    <span className="category-badge">{nerve.type}</span>
-                    <h3>{nerve.number ? `CN ${nerve.number} - ${nerve.name}` : nerve.name}</h3>
+                    <span className="category-badge">Vein</span>
+                    <h3>{vein.name}</h3>
                 </div>
                 <button className="toggle-btn">
                     {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -33,74 +33,31 @@ const NerveCard = ({ nerve }) => {
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         className="card-content"
                     >
-                        {nerve.function && (
-                            <div className="detail-row">
-                                <strong>Function:</strong>
-                                <p>{nerve.function}</p>
-                            </div>
-                        )}
+                        <div className="detail-row">
+                            <strong>Drainage:</strong>
+                            <p>{vein.drainage}</p>
+                        </div>
 
-                        {nerve.origin && (
-                            <div className="detail-row">
-                                <strong>Origin:</strong>
-                                <p>{nerve.origin}</p>
-                            </div>
-                        )}
+                        <div className="detail-row">
+                            <strong>Course:</strong>
+                            <p>{vein.course}</p>
+                        </div>
 
-                        {nerve.course && (
+                        {vein.tributaries && vein.tributaries.length > 0 && (
                             <div className="detail-row">
-                                <strong>Course:</strong>
-                                <p>{nerve.course}</p>
-                            </div>
-                        )}
-
-                        {nerve.branches && nerve.branches.length > 0 && (
-                            <div className="detail-row">
-                                <strong>Branches:</strong>
+                                <strong>Tributaries:</strong>
                                 <ul className="detail-list">
-                                    {nerve.branches.map((branch, index) => (
-                                        <li key={index}>{branch}</li>
+                                    {vein.tributaries.map((tributary, index) => (
+                                        <li key={index}>{tributary}</li>
                                     ))}
                                 </ul>
                             </div>
                         )}
 
-                        {nerve.innervation && nerve.innervation.length > 0 && (
-                            <div className="detail-row">
-                                <strong>Innervation:</strong>
-                                <ul className="detail-list">
-                                    {nerve.innervation.map((item, index) => (
-                                        <li key={index}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-                        {nerve.test && (
-                            <div className="detail-row">
-                                <strong>Testing:</strong>
-                                <p>{nerve.test}</p>
-                            </div>
-                        )}
-
-                        {nerve.pathology && (
-                            <div className="detail-row">
-                                <strong>Pathology:</strong>
-                                <p>{nerve.pathology}</p>
-                            </div>
-                        )}
-
-                        {nerve.clinicalNotes && (
+                        {vein.clinicalNotes && (
                             <div className="detail-row clinical">
                                 <strong>Clinical Notes:</strong>
-                                <p>{nerve.clinicalNotes}</p>
-                            </div>
-                        )}
-
-                        {nerve.ptRelevance && (
-                            <div className="detail-row clinical">
-                                <strong>PT Relevance:</strong>
-                                <p>{nerve.ptRelevance}</p>
+                                <p>{vein.clinicalNotes}</p>
                             </div>
                         )}
                     </motion.div>
@@ -108,7 +65,7 @@ const NerveCard = ({ nerve }) => {
             </AnimatePresence>
 
             <style>{`
-        .nerve-card {
+        .vein-card {
           background: var(--color-surface);
           border-radius: var(--radius-lg);
           box-shadow: var(--shadow-sm);
@@ -116,12 +73,12 @@ const NerveCard = ({ nerve }) => {
           transition: transform 0.2s ease, box-shadow 0.2s ease;
           border: 1px solid var(--color-border);
         }
-        .nerve-card:hover {
+        .vein-card:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        .nerve-card.open {
-            border-color: var(--color-primary);
+        .vein-card.open {
+            border-color: #3B82F6; /* Blue for veins */
         }
         .card-header {
             padding: 1.5rem;
@@ -140,8 +97,8 @@ const NerveCard = ({ nerve }) => {
             display: inline-block;
             font-size: 0.75rem;
             font-weight: 600;
-            color: #EAB308; /* Yellow for nerves */
-            background: rgba(234, 179, 8, 0.1);
+            color: #3B82F6; /* Blue for veins */
+            background: rgba(59, 130, 246, 0.1);
             padding: 0.25rem 0.5rem;
             border-radius: 999px;
             margin-bottom: 0.5rem;
@@ -204,4 +161,4 @@ const NerveCard = ({ nerve }) => {
     );
 };
 
-export default NerveCard;
+export default VeinCard;
