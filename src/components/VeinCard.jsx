@@ -2,13 +2,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
-const ArteryCard = ({ artery }) => {
+const VeinCard = ({ vein }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <motion.div
             layout
-            className={`artery-card ${isOpen ? 'open' : ''}`}
+            className={`vein-card ${isOpen ? 'open' : ''}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -16,8 +16,8 @@ const ArteryCard = ({ artery }) => {
 
             <div className="card-header" onClick={() => setIsOpen(!isOpen)}>
                 <div className="header-text">
-                    <span className="category-badge">Artery</span>
-                    <h3>{artery.name}</h3>
+                    <span className="category-badge">Vein</span>
+                    <h3>{vein.name}</h3>
                 </div>
                 <button className="toggle-btn">
                     {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -35,30 +35,19 @@ const ArteryCard = ({ artery }) => {
                         className="card-content"
                     >
                         <div className="detail-row">
-                            <strong>Source:</strong>
-                            <p>{artery.source}</p>
+                            <strong>Drainage:</strong>
+                            <p>{vein.drainage}</p>
                         </div>
 
                         <div className="detail-row">
                             <strong>Course:</strong>
-                            <p>{artery.course}</p>
+                            <p>{vein.course}</p>
                         </div>
 
-                        {artery.branches && artery.branches.length > 0 && (
-                            <div className="detail-row">
-                                <strong>Branches:</strong>
-                                <ul className="detail-list">
-                                    {artery.branches.map((branch, index) => (
-                                        <li key={index}>{branch}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-                        {artery.clinicalNotes && (
+                        {vein.clinicalNotes && (
                             <div className="detail-row clinical">
                                 <strong>Clinical Notes:</strong>
-                                <p>{artery.clinicalNotes}</p>
+                                <p>{vein.clinicalNotes}</p>
                             </div>
                         )}
                     </motion.div>
@@ -66,7 +55,7 @@ const ArteryCard = ({ artery }) => {
             </AnimatePresence>
 
             <style>{`
-        .artery-card {
+        .vein-card {
           background: var(--color-surface);
           border-radius: var(--radius-lg);
           box-shadow: var(--shadow-sm);
@@ -74,12 +63,12 @@ const ArteryCard = ({ artery }) => {
           transition: transform 0.2s ease, box-shadow 0.2s ease;
           border: 1px solid var(--color-border);
         }
-        .artery-card:hover {
+        .vein-card:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        .artery-card.open {
-            border-color: var(--color-error); /* Redish for arteries */
+        .vein-card.open {
+            border-color: #3B82F6; /* Blue for veins */
         }
         .card-header {
             padding: 1.5rem;
@@ -98,8 +87,8 @@ const ArteryCard = ({ artery }) => {
             display: inline-block;
             font-size: 0.75rem;
             font-weight: 600;
-            color: #EF4444; /* Red for arteries */
-            background: rgba(239, 68, 68, 0.1);
+            color: #3B82F6; /* Blue */
+            background: rgba(59, 130, 246, 0.1);
             padding: 0.25rem 0.5rem;
             border-radius: 999px;
             margin-bottom: 0.5rem;
@@ -134,14 +123,6 @@ const ArteryCard = ({ artery }) => {
         .detail-row p {
             color: var(--color-text);
         }
-        .detail-list {
-            margin: 0;
-            padding-left: 1.25rem;
-            color: var(--color-text);
-        }
-        .detail-list li {
-            margin-bottom: 0.25rem;
-        }
         .detail-row.clinical {
           margin-top: 1rem;
           padding: 1rem;
@@ -162,4 +143,4 @@ const ArteryCard = ({ artery }) => {
     );
 };
 
-export default ArteryCard;
+export default VeinCard;

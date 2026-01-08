@@ -7,6 +7,7 @@ import JointCard from '../JointCard';
 import NerveCard from '../NerveCard';
 import ArteryCard from '../ArteryCard';
 import { muscles } from '../../data/muscles';
+import { arteries } from '../../data/arteries';
 import { organs } from '../../data/organs';
 import { bones } from '../../data/bones';
 import { joints } from '../../data/joints';
@@ -15,6 +16,8 @@ import { tendons } from '../../data/tendons';
 import { ligaments } from '../../data/ligaments';
 import TendonCard from '../TendonCard';
 import LigamentCard from '../LigamentCard';
+import VeinCard from '../VeinCard';
+import { veins } from '../../data/veins';
 
 const AnatomySection = ({ onBack }) => {
     const [activeTab, setActiveTab] = useState('muscles'); // 'muscles', 'bones', 'joints', 'organs', 'nerves', 'arteries'
@@ -32,6 +35,7 @@ const AnatomySection = ({ onBack }) => {
             case 'arteries': return arteries;
             case 'tendons': return tendons;
             case 'ligaments': return ligaments;
+            case 'veins': return veins;
             default: return muscles;
         }
     }, [activeTab]);
@@ -44,6 +48,7 @@ const AnatomySection = ({ onBack }) => {
         else if (activeTab === 'organs') key = 'system';
         else if (activeTab === 'nerves') key = 'type'; // Filter nerves by type (Plexus vs Peripheral)
         else if (activeTab === 'tendons' || activeTab === 'ligaments') key = 'category';
+        else if (activeTab === 'veins') key = 'category';
         else key = 'source'; // Arteries by source (simplified filter)
 
         const uniqueCats = ['All', ...new Set(currentData.map(item => item[key] || 'General'))];
@@ -65,6 +70,7 @@ const AnatomySection = ({ onBack }) => {
             else if (activeTab === 'organs') categoryKey = 'system';
             else if (activeTab === 'nerves') categoryKey = 'type';
             else if (activeTab === 'tendons' || activeTab === 'ligaments') categoryKey = 'category';
+            else if (activeTab === 'veins') categoryKey = 'category';
             else categoryKey = 'source';
 
             const itemCategory = item[categoryKey] || 'General';
@@ -113,6 +119,12 @@ const AnatomySection = ({ onBack }) => {
                         onClick={() => setActiveTab('arteries')}
                     >
                         Arteries
+                    </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'veins' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('veins')}
+                    >
+                        Veins
                     </button>
                     <button
                         className={`tab-btn ${activeTab === 'tendons' ? 'active' : ''}`}
@@ -170,6 +182,7 @@ const AnatomySection = ({ onBack }) => {
                         if (activeTab === 'joints') return <JointCard key={item.id} joint={item} />;
                         if (activeTab === 'nerves') return <NerveCard key={item.id} nerve={item} />;
                         if (activeTab === 'arteries') return <ArteryCard key={item.id} artery={item} />;
+                        if (activeTab === 'veins') return <VeinCard key={item.id} vein={item} />;
                         if (activeTab === 'tendons') return <TendonCard key={item.id} tendon={item} />;
                         if (activeTab === 'ligaments') return <LigamentCard key={item.id} ligament={item} />;
                         if (activeTab === 'organs') return <OrganCard key={item.id} organ={item} />;

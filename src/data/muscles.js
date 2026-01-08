@@ -810,25 +810,409 @@ export const muscles = [
         category: 'Lower Limb: Leg'
     },
     {
-        id: 'erector-spinae',
-        name: 'Erector Spinae',
-        origin: 'Sacrum/Ilium.',
-        insertion: 'Ribs/Vertebrae.',
-        nerve: 'Dorsal rami.',
-        action: 'Ext/Lat Flex spine.',
-        clinicalNotes: 'I Love Spine.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Back'
-    },
-    {
         id: 'quadratus-lumborum',
         name: 'Quadratus Lumborum',
         origin: 'Iliac crest.',
         insertion: '12th rib/L1-L4.',
         nerve: 'Ventral rami.',
         action: 'Ext/Lat Flex spine.',
+        clinicalNotes: 'Hip hiking.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back (Posterior Abdominal)'
+    },
+
+    // 8. Back: Intermediate Extrinsic (Respiration)
+    {
+        id: 'serratus-posterior-superior',
+        name: 'Serratus Posterior Superior',
+        origin: 'Nuchal lig, C7-T3 SPs.',
+        insertion: 'Ribs 2-4 (Superior borders).',
+        nerve: 'Intercostal nerves T2-T5.',
+        action: 'Elevates upper ribs (Inspiration).',
+        clinicalNotes: 'Deep to Rhomboids.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intermediate Extrinsic'
+    },
+    {
+        id: 'serratus-posterior-inferior',
+        name: 'Serratus Posterior Inferior',
+        origin: 'Thoracolumbar fascia, T11-L2 SPs.',
+        insertion: 'Ribs 8-12 (Inferior borders).',
+        nerve: 'Ventral rami T9-T12.',
+        action: 'Depresses lower ribs.',
+        clinicalNotes: 'Deep to Latissimus Dorsi.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intermediate Extrinsic'
+    },
+
+    // 9. Back: Intrinsic Superficial
+    {
+        id: 'splenius-capitis',
+        name: 'Splenius Capitis',
+        origin: 'Nuchal lig, C7-T4 SPs.',
+        insertion: 'Mastoid process, Superior nuchal line.',
+        nerve: 'Dorsal rami (C2-C6).',
+        action: 'Bilat: Ext head/neck. Unilat: Rot/Lat Flex to same side.',
+        clinicalNotes: 'Bandage-like muscle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intrinsic Superficial'
+    },
+    {
+        id: 'splenius-cervicis',
+        name: 'Splenius Cervicis',
+        origin: 'T3-T6 SPs.',
+        insertion: 'C1-C3 TPs (Posterior tubercles).',
+        nerve: 'Dorsal rami (C5-C7).',
+        action: 'Bilat: Ext neck. Unilat: Rot/Lat Flex to same side.',
         clinicalNotes: '',
         imageUrl: musclePlaceholderImg,
-        category: 'Back'
+        category: 'Back: Intrinsic Superficial'
+    },
+
+    // 10. Back: Intrinsic Intermediate (Erector Spinae)
+    {
+        id: 'iliocostalis',
+        name: 'Iliocostalis (Lumborum, Thoracis, Cervicis)',
+        origin: 'Common tendon (Sacrum/Iliac crest/SPs).',
+        insertion: 'Ribs angles, C-spine TPs.',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext spine. Unilat: Lat Flex spine.',
+        clinicalNotes: 'Lateral column of Erector Spinae.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Erector Spinae'
+    },
+    {
+        id: 'longissimus',
+        name: 'Longissimus (Thoracis, Cervicis, Capitis)',
+        origin: 'Common tendon.',
+        insertion: 'Ribs, TPs, Mastoid process.',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext spine/head. Unilat: Lat Flex spine/head.',
+        clinicalNotes: 'Intermediate column of Erector Spinae. Only ES to reach head (Capitis).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Erector Spinae'
+    },
+    {
+        id: 'spinalis',
+        name: 'Spinalis (Thoracis, Cervicis, Capitis)',
+        origin: 'Common tendon.',
+        insertion: 'SPs of superior vertebrae/Skull base.',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext spine. Unilat: Lat Flex spine.',
+        clinicalNotes: 'Medial column of Erector Spinae.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Erector Spinae'
+    },
+
+    // 11. Back: Intrinsic Deep (Transversospinalis)
+    {
+        id: 'semispinalis',
+        name: 'Semispinalis (Thoracis, Cervicis, Capitis)',
+        origin: 'TPs of C4-T12.',
+        insertion: 'SPs 4-6 segments above (Capitis to nuchal lines).',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext head/spine. Unilat: Contralateral Rotation.',
+        clinicalNotes: ' spans 4-6 segments. Semispinalis Capitis pierces roof of suboccipital triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Transversospinalis'
+    },
+    {
+        id: 'multifidus',
+        name: 'Multifidus',
+        origin: 'Sacrum, TPs (T1-L5), Arts (C4-C7).',
+        insertion: 'SPs 2-4 segments above.',
+        nerve: 'Dorsal rami.',
+        action: 'Stabilize vertebrae. Contralateral Rotation, Extension.',
+        clinicalNotes: 'Thickest in Lumbar region. Stabilizer.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Transversospinalis'
+    },
+    {
+        id: 'rotatores',
+        name: 'Rotatores (Long & Short)',
+        origin: 'TPs.',
+        insertion: 'Lamina/SP 1 (short) or 2 (long) segments above.',
+        nerve: 'Dorsal rami.',
+        action: 'Proprioception (mostly), Contralateral rotation, Extension.',
+        clinicalNotes: 'Deepest of Transversospinalis.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Transversospinalis'
+    },
+
+    // 12. Minor Deep Back
+    {
+        id: 'interspinales',
+        name: 'Interspinales',
+        origin: 'Superior SP.',
+        insertion: 'Inferior SP.',
+        nerve: 'Dorsal rami.',
+        action: 'Ext spine.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Deep Minor'
+    },
+    {
+        id: 'intertransversarii',
+        name: 'Intertransversarii',
+        origin: 'Superior TP.',
+        insertion: 'Inferior TP.',
+        nerve: 'Dorsal rami.',
+        action: 'Lat Flex spine.',
+        clinicalNotes: 'Proprioception.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Deep Minor'
+    },
+    {
+        id: 'levatores-costarum',
+        name: 'Levatores Costarum',
+        origin: 'TPs C7-T11.',
+        insertion: 'Rib below.',
+        nerve: 'Dorsal rami.',
+        action: 'Elevate ribs (Inspiration), Lat Flex spine.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Deep Minor'
+    },
+
+    // 13. Suboccipital Region
+    {
+        id: 'rectus-capitis-posterior-major',
+        name: 'Rectus Capitis Posterior Major',
+        origin: 'SP of C2 (Axis).',
+        insertion: 'Inferior nuchal line (lateral).',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ext head, Ipsilateral Rotation.',
+        clinicalNotes: 'Medial border of Suboccipital Triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'rectus-capitis-posterior-minor',
+        name: 'Rectus Capitis Posterior Minor',
+        origin: 'Post tubercle of C1 (Atlas).',
+        insertion: 'Inferior nuchal line (medial).',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ext head.',
+        clinicalNotes: 'Medial to Major. Not in triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'obliquus-capitis-inferior',
+        name: 'Obliquus Capitis Inferior',
+        origin: 'SP of C2.',
+        insertion: 'TP of C1.',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ipsilateral Rotation of Head (C1 on C2).',
+        clinicalNotes: 'Inferior border of Triangle. Only Capitis with NO head attachment.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'obliquus-capitis-superior',
+        name: 'Obliquus Capitis Superior',
+        origin: 'TP of C1.',
+        insertion: 'Occiput (between nuchal lines).',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ext head, Ipsilateral Flexion.',
+        clinicalNotes: 'Lateral border of Triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    // 14. Neck: Superficial
+    {
+        id: 'platysma',
+        name: 'Platysma',
+        origin: 'Fascia/Skin over Pectoralis Major & Deltoid.',
+        insertion: 'Inferior border of Mandible & Skin of lower face.',
+        nerve: 'CN VII (Facial - Cervical branch).',
+        action: 'Tenses neck skin, Depresses mandible/mouth angles.',
+        clinicalNotes: 'Superficial muscle in superficial fascia.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Superficial'
+    },
+    {
+        id: 'scm',
+        name: 'Sternocleidomastoid (SCM)',
+        origin: 'Sternal head: Manubrium. Clavicular head: Medial 1/3 Clavicle.',
+        insertion: 'Mastoid Process & Superior Nuchal Line.',
+        nerve: 'CN XI (Accessory).',
+        action: 'Unilat: Ipsilateral Lat Flex, Contralateral Rotation. Bilat: Flex neck.',
+        clinicalNotes: 'Torticollis (wryneck) involves shortening. "Key" muscle of neck (divides triangles).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Superficial'
+    },
+
+    // 15. Neck: Infrahyoid (Strap Muscles) - Depress Hyoid
+    {
+        id: 'sternohyoid',
+        name: 'Sternohyoid',
+        origin: 'Posterior Manubrium & Medial Clavicle.',
+        insertion: 'Hyoid Body.',
+        nerve: 'Ansa Cervicalis (C1-C3).',
+        action: 'Depresses Hyoid.',
+        clinicalNotes: 'Superficial plane.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'omohyoid',
+        name: 'Omohyoid (Superior & Inferior Bellies)',
+        origin: 'Inferior Belly: Superior border Scapula. Superior Belly: Intermediate tendon.',
+        insertion: 'Inferior Belly: Intermediate tendon. Superior Belly: Hyoid Body.',
+        nerve: 'Ansa Cervicalis (C1-C3).',
+        action: 'Depresses, Retracts, Stabilizes Hyoid.',
+        clinicalNotes: 'Fascial sling clavicle. Subdivides Posterior & Anterior triangles.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'sternothyroid',
+        name: 'Sternothyroid',
+        origin: 'Posterior Manubrium.',
+        insertion: 'Oblique line of Thyroid Cartilage.',
+        nerve: 'Ansa Cervicalis (C1-C3).',
+        action: 'Depresses Thyroid Cartilage (Larynx).',
+        clinicalNotes: 'Deep plane. Only infrahyoid not attached to hyoid.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'thyrohyoid',
+        name: 'Thyrohyoid',
+        origin: 'Oblique line of Thyroid Cartilage.',
+        insertion: 'Hyoid Body & Greater Horn.',
+        nerve: 'C1 via CN XII (Hypoglossal).',
+        action: 'Depresses Hyoid, Elevates Thyroid Cartilage.',
+        clinicalNotes: 'Deep plane. Continuation of Sternothyroid.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+
+    // 16. Neck: Suprahyoid - Elevate Hyoid/Tongue
+    {
+        id: 'digastric',
+        name: 'Digastric (Anterior & Posterior)',
+        origin: 'Ant: Digastric Fossa (Mandible). Post: Mastoid Notch.',
+        insertion: 'Intermediate tendon (Hyoid).',
+        nerve: 'Ant: Mylohyoid n. (V3). Post: CN VII (Facial).',
+        action: 'Depresses Mandible, Elevates Hyoid.',
+        clinicalNotes: 'Two bellies, two innervations.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'stylohyoid',
+        name: 'Stylohyoid',
+        origin: 'Styloid Process (Temporal).',
+        insertion: 'Hyoid Body.',
+        nerve: 'CN VII (Facial).',
+        action: 'Elevates & Retracts Hyoid (elongates mouth floor).',
+        clinicalNotes: 'Straddles intermediate tendon of Digastric.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'mylohyoid',
+        name: 'Mylohyoid',
+        origin: 'Mylohyoid line (Mandible).',
+        insertion: 'Raphe & Hyoid Body.',
+        nerve: 'Mylohyoid n. (V3).',
+        action: 'Elevates Hyoid, Floor of Mouth, Tongue.',
+        clinicalNotes: 'Forms floor of mouth.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'geniohyoid',
+        name: 'Geniohyoid',
+        origin: 'Inferior Mental Spine (Mandible).',
+        insertion: 'Hyoid Body.',
+        nerve: 'C1 via CN XII (Hypoglossal).',
+        action: 'Pulls Hyoid Anterosuperiorly (widens pharynx).',
+        clinicalNotes: 'Deep to Mylohyoid.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+
+    // 17. Neck: Scalenes (Floor of Posterior Triangle)
+    {
+        id: 'anterior-scalene',
+        name: 'Anterior Scalene',
+        origin: 'TPs C3-C6.',
+        insertion: '1st Rib (Scalene Tubercle).',
+        nerve: 'Ventral Rami Cervical.',
+        action: 'Elevates 1st Rib (Inspiration), Flex/Rot neck.',
+        clinicalNotes: 'Phrenic n. lies anterior. Brachial Plexus/Subclavian Artery posterior.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Scalenes'
+    },
+    {
+        id: 'middle-scalene',
+        name: 'Middle Scalene',
+        origin: 'TPs C2-C7.',
+        insertion: '1st Rib (Posterior to groove).',
+        nerve: 'Ventral Rami Cervical.',
+        action: 'Elevates 1st Rib, Lateral Flexion.',
+        clinicalNotes: 'Dorsal Scapular & Long Thoracic nerves pierce it.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Scalenes'
+    },
+    {
+        id: 'posterior-scalene',
+        name: 'Posterior Scalene',
+        origin: 'TPs C4-C6.',
+        insertion: '2nd Rib (Outer surface).',
+        nerve: 'Ventral Rami C6-C8.',
+        action: 'Elevates 2nd Rib, Lateral Flexion.',
+        clinicalNotes: 'Smallest scalene.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Scalenes'
+    },
+
+    // 18. Neck: Prevertebral (Deep Neck Flexors)
+    {
+        id: 'longus-colli',
+        name: 'Longus Colli (Cervicis)',
+        origin: 'Bodies C5-T3, TPs C3-C5.',
+        insertion: 'Bodies C2-C4, TPs C5-C6, Atlas Anterior Tubercle.',
+        nerve: 'Ventral Rami.',
+        action: 'Flexes Neck, Reduces Lobrdosis.',
+        clinicalNotes: 'Weakness associated with text neck/whiplash.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    {
+        id: 'longus-capitis',
+        name: 'Longus Capitis',
+        origin: 'TPs C3-C6.',
+        insertion: 'Occipital Bone (Basilar).',
+        nerve: 'Ventral Rami.',
+        action: 'Flexes Head.',
+        clinicalNotes: 'Anterior to Colli.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    {
+        id: 'rectus-capitis-anterior',
+        name: 'Rectus Capitis Anterior',
+        origin: 'Lateral Mass of Atlas.',
+        insertion: 'Occipital Bone (Basilar).',
+        nerve: 'Ventral Rami C1-C2.',
+        action: 'Flexes Head (AO Joint).',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    {
+        id: 'rectus-capitis-lateralis',
+        name: 'Rectus Capitis Lateralis',
+        origin: 'TP of Atlas.',
+        insertion: 'Jugular Process of Occipital Bone.',
+        nerve: 'Ventral Rami C1-C2.',
+        action: 'Lateral Flex Head.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
     }
 ];

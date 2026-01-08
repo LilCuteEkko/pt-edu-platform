@@ -443,5 +443,184 @@ export const organs = [
                 { name: 'Prostate Cancer', desc: 'Slow growing malignancy (often asymptomatic early).' }
             ]
         }
+    },
+    // Neck Viscera
+    {
+        id: 'thyroid',
+        name: 'Thyroid Gland',
+        system: 'Endocrine',
+        function: 'Metabolism regulation (T3/T4) and Calcium balance (Calcitonin).',
+        location: 'Anterior neck, C5-T1 vertebrae level.',
+        bloodSupply: 'Superior & Inferior Thyroid Arteries.',
+        innervation: 'Sympathetic (vasomotor) from Cervical Ganglia.',
+        clinicalNotes: 'Goiter (enlargement). Hypo/Hyperthyroidism. Surgery risks Recurrent Laryngeal Nerve (hoarseness).',
+        details: {
+            microAnatomy: [
+                { term: 'Follicular Cells', def: 'Produce Thyroglobulin (T3/T4 precursor).' },
+                { term: 'Parafollicular (C) Cells', def: 'Secrete Calcitonin (lowers blood calcium).' }
+            ],
+            physiology: {
+                title: 'Hormone Regulation',
+                steps: [
+                    'Hypothalamus: Releases TRH.',
+                    'Pituitary: Releases TSH.',
+                    'Thyroid: Releases T3/T4.',
+                    'Effect: Increases BMR, heat production, heart rate.',
+                    'Feedback: High T3/T4 inhibits TSH/TRH.'
+                ]
+            },
+            pathologies: [
+                { name: 'Graves Disease', desc: 'Autoimmune Hyperthyroidism (Exophthalmos).' },
+                { name: 'Hashimoto Thyroiditis', desc: 'Autoimmune Hypothyroidism.' },
+                { name: 'Goiter', desc: 'Enlarged gland (Iodine deficiency or autoimmune).' }
+            ]
+        }
+    },
+    {
+        id: 'parathyroid',
+        name: 'Parathyroid Glands',
+        system: 'Endocrine',
+        function: 'Regulate Calcium and Phosphate balance.',
+        location: 'Posterior surface of Thyroid lobes (usually 4 glands).',
+        bloodSupply: 'Inferior Thyroid Arteries.',
+        innervation: 'Sympathetic.',
+        clinicalNotes: 'Accidental removal during thyroidectomy causes Tetany (hypocalcemia).',
+        details: {
+            microAnatomy: [
+                { term: 'Chief Cells', def: 'Secrete Parathyroid Hormone (PTH).' },
+                { term: 'Oxyphil Cells', def: 'Function unclear, increase with age.' }
+            ],
+            physiology: {
+                title: 'Calcium Homeostasis',
+                steps: [
+                    'Stimulus: Low blood Calcium.',
+                    'Response: Release PTH.',
+                    'Bone: Osteoclasts release Ca+.',
+                    'Kidney: Reabsorbs Ca+, Activates Vit D.',
+                    'Intestine: Absorbs Ca+ (via Vit D).',
+                    'Result: Blood Calcium rises.'
+                ]
+            },
+            pathologies: [
+                { name: 'Hyperparathyroidism', desc: 'Bones, Stones, Groans, Moans (High Ca+).' },
+                { name: 'Hypoparathyroidism', desc: 'Tetany, Chvostek sign, Trousseau sign (Low Ca+).' }
+            ]
+        }
+    },
+    {
+        id: 'pharynx',
+        name: 'Pharynx',
+        system: 'Respiratory/Digestive',
+        function: 'Conduit for air and food.',
+        location: 'Base of skull to C6 (cricoid).',
+        bloodSupply: 'Ascending Pharyngeal, Facial, Maxillary arteries.',
+        innervation: 'Pharyngeal Plexus (CN IX, X).',
+        clinicalNotes: 'Gag reflex (Afferent IX, Efferent X). Site of Pharyngitis (Strep throat).',
+        details: {
+            microAnatomy: [
+                { term: 'Mucosa', def: 'Stratified squamous (Oro/Laryngo) vs Respiratory (Naso).' },
+                { term: 'Muscles', def: 'Constrictors (Sup/Mid/Inf) and Longitudinal.' }
+            ],
+            physiology: {
+                title: 'Swallowing (Deglutition)',
+                steps: [
+                    'Oral Phase: Voluntary bolus movement.',
+                    'Pharyngeal Phase: Involuntary. Soft palate rises. Epiglottis closes larynx.',
+                    'Esophageal Phase: Peristalsis moves food down.'
+                ]
+            },
+            pathologies: [
+                { name: 'Dysphagia', desc: 'Difficulty swallowing.' },
+                { name: 'Pharyngeal Pouch', desc: 'Zenker\'s Diverticulum (bad breath, regurgitation).' }
+            ]
+        }
+    },
+    {
+        id: 'larynx',
+        name: 'Larynx (Voice Box)',
+        system: 'Respiratory',
+        function: 'Airway protection (sphincter) and Phonation.',
+        location: 'C3-C6 vertebrae anteriorly.',
+        bloodSupply: 'Superior/Inferior Laryngeal Arteries.',
+        innervation: 'Superior & Recurrent Laryngeal Nerves (CN X).',
+        clinicalNotes: 'Cricothyrotomy acts at C6 level. Laryngeal prominence is C4.',
+        details: {
+            microAnatomy: [
+                { term: 'Cartilages', def: 'Thyroid, Cricoid, Epiglottis, Arytenoids.' },
+                { term: 'Vocal Folds', def: 'True chords (vibrate) vs False chords (protect).' }
+            ],
+            physiology: {
+                title: 'Phonation',
+                steps: [
+                    'Adduction: Arytenoids close vocal folds.',
+                    'Airflow: Expiration builds subglottic pressure.',
+                    'Vibration: Folds vibrate producing sound.',
+                    'Pitch: Tension changed by Cricothyroid/Vocalis muscles.'
+                ]
+            },
+            pathologies: [
+                { name: 'Laryngitis', desc: 'Inflammation causing hoarseness.' },
+                { name: 'Vocal Nodules', desc: 'Calluses from overuse ("Singer\'s nodes").' },
+                { name: 'Laryngospasm', desc: 'Reflex closure locking airway.' }
+            ]
+        }
+    },
+    {
+        id: 'trachea',
+        name: 'Trachea',
+        system: 'Respiratory',
+        function: 'Airway conduction.',
+        location: 'C6 to T4/T5 (Sternal Angle).',
+        bloodSupply: 'Inferior Thyroid Artery.',
+        innervation: 'Vagus / Recurrent Laryngeal.',
+        clinicalNotes: 'Carina (bifurcation) is sensitive cough reflex site.',
+        details: {
+            microAnatomy: [
+                { term: 'C-Rings', def: 'Hyaline cartilage rings (open posteriorly).' },
+                { term: 'Trachealis', def: 'Smooth muscle posteriorly (allows esophageal expansion).' },
+                { term: 'Mucosa', def: 'Pseudostratified ciliated epithelium (mucociliary escalator).' }
+            ],
+            physiology: {
+                title: 'Airway Maintenance',
+                steps: [
+                    'Patency: Rings prevent collapse during negative pressure.',
+                    'Clearance: Cilia beat mucus upward to pharynx.',
+                    'Cough: High velocity expulsion of irritants.'
+                ]
+            },
+            pathologies: [
+                { name: 'Tracheomalacia', desc: 'Soft cartillage causing collapse.' },
+                { name: 'Tracheitis', desc: 'Bacterial infection (croup-like but toxic).' }
+            ]
+        }
+    },
+    {
+        id: 'esophagus',
+        name: 'Esophagus',
+        system: 'Digestive',
+        function: 'Food transport to stomach.',
+        location: 'C6 (Pharynx) to T11 (Cardia). Posterior to Trachea.',
+        bloodSupply: 'Inf Thyroid, Aorta, L Gastric.',
+        innervation: 'Esophageal Plexus (Vagus/Sympathetic).',
+        clinicalNotes: 'Porto-caval anastomoses site (Esophageal Varices). Hiatal Hernia.',
+        details: {
+            microAnatomy: [
+                { term: 'Musculature', def: 'Upper 1/3 Skeletal, Middle Mixed, Lower 1/3 Smooth.' },
+                { term: 'Sphincters', def: 'UES (anatomical), LES (physiological).' }
+            ],
+            physiology: {
+                title: 'Peristalsis',
+                steps: [
+                    'Primary: Wave triggered by swallow.',
+                    'Secondary: Wave triggered by distension (stuck food).',
+                    'Relaxation: LES relaxes ahead of wave (NO/VIP).'
+                ]
+            },
+            pathologies: [
+                { name: 'GERD', desc: 'Reflux due to weak LES.' },
+                { name: 'Barrett\'s Esophagus', desc: 'Metaplasia due to chronic acid.' },
+                { name: 'Esophageal Varices', desc: 'Dilated veins from portal HTN (bleed risk).' }
+            ]
+        }
     }
 ];

@@ -1,47 +1,151 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useState } from 'react';
 
-const TendonCard = ({ tendon, onClick }) => {
+const TendonCard = ({ tendon }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <motion.div
-            layoutId={`card-${tendon.id}`}
-            onClick={onClick}
-            className="bg-gray-800 rounded-xl overflow-hidden cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all"
-            whileHover={{ y: -5 }}
+            layout
+            className={`tendon-card ${isOpen ? 'open' : ''}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
         >
-            <div className="h-48 overflow-hidden bg-gray-900 relative">
-                <img
-                    src={tendon.imageUrl}
-                    alt={tendon.name}
-                    className="w-full h-full object-cover opacity-80"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-4">
-                    <span className="text-xs font-bold text-blue-400 uppercase tracking-wider bg-blue-400/10 px-2 py-1 rounded">
-                        {tendon.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-white mt-1">{tendon.name}</h3>
+            <div className="card-header" onClick={() => setIsOpen(!isOpen)}>
+                <div className="header-text">
+                    <span className="category-badge">{tendon.category}</span>
+                    <h3>{tendon.name}</h3>
                 </div>
+                <button className="toggle-btn">
+                    {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </button>
             </div>
 
-            <div className="p-4 space-y-3">
-                <div>
-                    <h4 className="text-gray-400 text-xs uppercase tracking-wider font-semibold">Location</h4>
-                    <p className="text-gray-300 text-sm">{tendon.location}</p>
-                </div>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        layout
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="card-content"
+                    >
+                        {/* Image section removed per user request */}
 
-                <div>
-                    <h4 className="text-gray-400 text-xs uppercase tracking-wider font-semibold">Contents</h4>
-                    <p className="text-gray-300 text-sm">{tendon.contents}</p>
-                </div>
+                        <div className="detail-row">
+                            <strong>Location:</strong>
+                            <p>{tendon.location}</p>
+                        </div>
 
-                {tendon.clinicalNotes && (
-                    <div className="pt-2 border-t border-gray-700">
-                        <h4 className="text-red-400 text-xs uppercase tracking-wider font-semibold mb-1">Clinical Notes</h4>
-                        <p className="text-gray-300 text-sm italic">{tendon.clinicalNotes}</p>
-                    </div>
+                        <div className="detail-row">
+                            <strong>Contents:</strong>
+                            <p>{tendon.contents}</p>
+                        </div>
+
+                        {tendon.clinicalNotes && (
+                            <div className="detail-row clinical">
+                                <strong>Clinical Notes:</strong>
+                                <p>{tendon.clinicalNotes}</p>
+                            </div>
+                        )}
+                    </motion.div>
                 )}
-            </div>
+            </AnimatePresence>
+
+            <style>{`
+        .tendon-card {
+          background: var(--color-surface);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-sm);
+          overflow: hidden;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          border: 1px solid var(--color-border);
+        }
+        .tendon-card:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-md);
+        }
+        .tendon-card.open {
+          border-color: var(--color-primary);
+        }
+        .card-header {
+          padding: 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+          min-height: 80px;
+        }
+        .header-text h3 {
+          margin: 0;
+          font-size: 1.125rem;
+          color: var(--color-text);
+        }
+        .category-badge {
+          display: inline-block;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--color-primary);
+          background: rgba(14, 116, 144, 0.1);
+          padding: 0.25rem 0.5rem;
+          border-radius: 999px;
+          margin-bottom: 0.5rem;
+        }
+        .toggle-btn {
+          background: none;
+          border: none;
+          color: var(--color-text-muted);
+          cursor: pointer;
+          padding: 0.5rem;
+          border-radius: 50%;
+          transition: background 0.2s;
+          display: flex;
+        }
+        .toggle-btn:hover {
+            background: color-mix(in srgb, var(--color-surface), var(--color-text) 5%);
+        }
+        .card-content {
+          padding: 0 1.5rem 1.5rem 1.5rem;
+          border-top: 1px solid var(--color-border);
+        }
+        .detail-row {
+          margin-bottom: 1rem;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+        .detail-row:last-child {
+          margin-bottom: 0;
+        }
+        .detail-row strong {
+          display: block;
+          color: var(--color-text-muted);
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 0.25rem;
+        }
+        .detail-row p {
+            color: var(--color-text);
+        }
+        .detail-row.clinical {
+          margin-top: 1rem;
+          padding: 1rem;
+          background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+          border-radius: var(--radius-md);
+          border-left: 4px solid var(--color-accent);
+        }
+        .detail-row.clinical strong {
+             color: var(--color-accent);
+        }
+        .detail-row.clinical p {
+             margin: 0;
+             color: var(--color-text);
+             font-weight: 500;
+        }
+      `}</style>
         </motion.div>
     );
 };

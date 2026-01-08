@@ -48,5 +48,76 @@ export const joints = [
             'Upward/Downward Rotation'
         ],
         clinicalNotes: 'Scapulohumeral Rhythm: 2:1 ratio (2° GH : 1° ST). Needs ~60° upward rotation for full elevation.'
+    },
+    // Spine & Craniovertebral
+    {
+        id: 'iv-joints',
+        name: 'Intervertebral (IV) Joints',
+        type: 'Symphysis (Cartilaginous)',
+        articulation: 'Vertebral bodies connected by Intervertebral Disc (IVD).',
+        movements: [
+            'Shock absorption',
+            'Mobility: Compression, Distraction, Tilt',
+            'Limits: Height ratio determines mobility (Cervical most, Thoracic least relative).'
+        ],
+        clinicalNotes: 'Disc components: Annulus Fibrosus (outer rings, tensile strength), Nucleus Pulposus (inner gel, hydrophilic). No disc C0-C1, C1-C2. Herniation common (Posterolateral). Degeneration = less H20.'
+    },
+    {
+        id: 'facet-joints',
+        name: 'Zygapophyseal (Facet) Joints',
+        type: 'Plane (Synovial)',
+        articulation: 'Superior & Inferior Articular Processes of adjacent vertebrae.',
+        movements: [
+            'Gliding (Opening/Closing)',
+            'Guide and limit motion based on planar orientation.',
+            'Cervical: 45° (All motions)',
+            'Thoracic: Frontal (Rotation/SB)',
+            'Lumbar: Sagittal (Flex/Ext)'
+        ],
+        clinicalNotes: 'Weight bearing in Cervical/Lumbar. Spondylosis (OA). Stenosis of IV foramen from osteophytes. Meniscoids can get entrapped.'
+    },
+    {
+        id: 'uncovertebral-joints',
+        name: 'Uncovertebral Joints (Joints of Luschka)',
+        type: 'Pseudo-joint (Synovial-like)',
+        articulation: 'Uncinate processes C3-C7.',
+        movements: [
+            'Guide flexion/extension',
+            'Limit lateral flexion'
+        ],
+        clinicalNotes: 'Develop clefts (fissures) with age. Site of bone spur formation affecting nerve roots.'
+    },
+    {
+        id: 'ao-joint',
+        name: 'Atlanto-Occipital (OA) Joint',
+        type: 'Condyloid (Synovial)',
+        articulation: 'Occipital condyles + C1 Superior Facets.',
+        movements: [
+            'Flexion/Extension ("Yes" nod)',
+            'Slight lateral flexion'
+        ],
+        clinicalNotes: 'C0-C1. Convex occiput on concave atlas.'
+    },
+    {
+        id: 'aa-joint',
+        name: 'Atlanto-Axial (AA) Joint',
+        type: 'Pivot / Plane (Synovial)',
+        articulation: 'Median: Dens + C1 Arch (Pivot). Lateral: C1 Inf Facets + C2 Sup Facets (Plane).',
+        movements: [
+            'Rotation (50% of cervical rotation) ("No" shake)',
+            'Screw-home mechanism (vertical vertical displacement)'
+        ],
+        clinicalNotes: 'Dens Held by Transverse Ligament. Instability in RA / Down Syndrome.'
+    },
+    {
+        id: 'si-joint',
+        name: 'Sacroiliac (SI) Joint',
+        type: 'Compound (Synovial Ant / Syndesmosis Post)',
+        articulation: 'Auricular surface of Sacrum + Ilium.',
+        movements: [
+            'Nutration (Sacral flexion)',
+            'Counternutation (Sacral extension)'
+        ],
+        clinicalNotes: 'Transfers weight from spine to LE. Form/Force closure stability.'
     }
 ];
