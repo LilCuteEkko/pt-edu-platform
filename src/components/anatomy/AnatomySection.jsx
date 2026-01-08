@@ -6,24 +6,25 @@ import BoneCard from '../BoneCard';
 import JointCard from '../JointCard';
 import NerveCard from '../NerveCard';
 import ArteryCard from '../ArteryCard';
+import TendonCard from '../TendonCard';
+import LigamentCard from '../LigamentCard';
+import VeinCard from '../VeinCard';
+
 import { muscles as musclesData } from '../../data/muscles';
 import { organs as organsData } from '../../data/organs';
 import { bones as bonesData } from '../../data/bones';
 import { joints as jointsData } from '../../data/joints';
 import { nerves as nervesData } from '../../data/nerves';
-import { cranialNerves as cranialNervesData } from '../../data/cranialNerves';
 import { arteries as arteriesData } from '../../data/arteries';
 import { veins as veinsData } from '../../data/veins';
 import { tendons as tendonsData } from '../../data/tendons';
 import { ligaments as ligamentsData } from '../../data/ligaments';
-// ... (keep component imports same)
 
 const AnatomySection = ({ onBack }) => {
     const [activeTab, setActiveTab] = useState('muscles');
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    // Determine which dataset to use
     // Determine which dataset to use
     const currentData = useMemo(() => {
         let data = [];
@@ -32,7 +33,7 @@ const AnatomySection = ({ onBack }) => {
             case 'bones': data = bonesData; break;
             case 'joints': data = jointsData; break;
             case 'organs': data = organsData; break;
-            case 'nerves': data = [...cranialNervesData, ...nervesData]; break;
+            case 'nerves': data = nervesData; break;
             case 'arteries': data = arteriesData; break;
             case 'veins': data = veinsData; break;
             case 'tendons': data = tendonsData; break;
@@ -56,9 +57,17 @@ const AnatomySection = ({ onBack }) => {
         return uniqueItems;
     }, [activeTab]);
 
-    // Get unique categories
-    // Filter logic
-    const categoryKey = activeTab === 'organs' ? 'system' : 'category';
+    // Filter logic key selection
+    const categoryKey = useMemo(() => {
+        if (activeTab === 'muscles' || activeTab === 'bones') return 'category';
+        if (activeTab === 'joints') return 'type';
+        if (activeTab === 'organs') return 'system';
+        if (activeTab === 'nerves') return 'type';
+        if (activeTab === 'tendons' || activeTab === 'ligaments') return 'category';
+        if (activeTab === 'veins') return 'category';
+        if (activeTab === 'arteries') return 'source';
+        return 'category';
+    }, [activeTab]);
 
     // Get unique categories
     const categories = useMemo(() => {

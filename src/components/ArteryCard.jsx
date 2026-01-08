@@ -13,6 +13,7 @@ const ArteryCard = ({ artery }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
         >
+
             <div className="card-header" onClick={() => setIsOpen(!isOpen)}>
                 <div className="header-text">
                     <span className="category-badge">Artery</span>

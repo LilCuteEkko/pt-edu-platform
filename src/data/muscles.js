@@ -1,3 +1,4 @@
+
 import pectoralisMajorImg from '../assets/muscles/placeholder.png';
 import pectoralisMinorImg from '../assets/muscles/placeholder.png';
 import serratusAnteriorImg from '../assets/muscles/placeholder.png';
@@ -252,54 +253,450 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Head (Eye)'
     },
+    // Neck (from Remote)
+    {
+        id: 'platysma',
+        name: 'Platysma',
+        origin: 'Fascia/Skin over Pectoralis Major & Deltoid.',
+        insertion: 'Inferior border of Mandible & Skin of lower face.',
+        nerve: 'CN VII (Facial - Cervical branch).',
+        action: 'Tenses neck skin, Depresses mandible/mouth angles.',
+        clinicalNotes: 'Superficial muscle in superficial fascia.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Superficial'
+    },
+    {
+        id: 'scm',
+        name: 'Sternocleidomastoid (SCM)',
+        origin: 'Sternal head: Manubrium. Clavicular head: Medial 1/3 Clavicle.',
+        insertion: 'Mastoid Process & Superior Nuchal Line.',
+        nerve: 'CN XI (Accessory).',
+        action: 'Unilat: Ipsilateral Lat Flex, Contralateral Rotation. Bilat: Flex neck.',
+        clinicalNotes: 'Torticollis (wryneck) involves shortening. "Key" muscle of neck (divides triangles).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Superficial'
+    },
+    {
+        id: 'sternohyoid',
+        name: 'Sternohyoid',
+        origin: 'Posterior Manubrium & Medial Clavicle.',
+        insertion: 'Hyoid Body.',
+        nerve: 'Ansa Cervicalis (C1-C3).',
+        action: 'Depresses Hyoid.',
+        clinicalNotes: 'Superficial plane.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'omohyoid',
+        name: 'Omohyoid (Superior & Inferior Bellies)',
+        origin: 'Inferior Belly: Superior border Scapula. Superior Belly: Intermediate tendon.',
+        insertion: 'Inferior Belly: Intermediate tendon. Superior Belly: Hyoid Body.',
+        nerve: 'Ansa Cervicalis (C1-C3).',
+        action: 'Depresses, Retracts, Stabilizes Hyoid.',
+        clinicalNotes: 'Fascial sling clavicle. Subdivides Posterior & Anterior triangles.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'sternothyroid',
+        name: 'Sternothyroid',
+        origin: 'Posterior Manubrium.',
+        insertion: 'Oblique line of Thyroid Cartilage.',
+        nerve: 'Ansa Cervicalis (C1-C3).',
+        action: 'Depresses Thyroid Cartilage (Larynx).',
+        clinicalNotes: 'Deep plane. Only infrahyoid not attached to hyoid.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'thyrohyoid',
+        name: 'Thyrohyoid',
+        origin: 'Oblique line of Thyroid Cartilage.',
+        insertion: 'Hyoid Body & Greater Horn.',
+        nerve: 'C1 via CN XII (Hypoglossal).',
+        action: 'Depresses Hyoid, Elevates Thyroid Cartilage.',
+        clinicalNotes: 'Deep plane. Continuation of Sternothyroid.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Infrahyoid'
+    },
+    {
+        id: 'digastric',
+        name: 'Digastric (Anterior & Posterior)',
+        origin: 'Ant: Digastric Fossa (Mandible). Post: Mastoid Notch.',
+        insertion: 'Intermediate tendon (Hyoid).',
+        nerve: 'Ant: Mylohyoid n. (V3). Post: CN VII (Facial).',
+        action: 'Depresses Mandible, Elevates Hyoid.',
+        clinicalNotes: 'Two bellies, two innervations.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'stylohyoid',
+        name: 'Stylohyoid',
+        origin: 'Styloid Process (Temporal).',
+        insertion: 'Hyoid Body.',
+        nerve: 'CN VII (Facial).',
+        action: 'Elevates & Retracts Hyoid (elongates mouth floor).',
+        clinicalNotes: 'Straddles intermediate tendon of Digastric.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'mylohyoid',
+        name: 'Mylohyoid',
+        origin: 'Mylohyoid line (Mandible).',
+        insertion: 'Raphe & Hyoid Body.',
+        nerve: 'Mylohyoid n. (V3).',
+        action: 'Elevates Hyoid, Floor of Mouth, Tongue.',
+        clinicalNotes: 'Forms floor of mouth.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'geniohyoid',
+        name: 'Geniohyoid',
+        origin: 'Inferior Mental Spine (Mandible).',
+        insertion: 'Hyoid Body.',
+        nerve: 'C1 via CN XII (Hypoglossal).',
+        action: 'Pulls Hyoid Anterosuperiorly (widens pharynx).',
+        clinicalNotes: 'Deep to Mylohyoid.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Suprahyoid'
+    },
+    {
+        id: 'anterior-scalene',
+        name: 'Anterior Scalene',
+        origin: 'TPs C3-C6.',
+        insertion: '1st Rib (Scalene Tubercle).',
+        nerve: 'Ventral Rami Cervical.',
+        action: 'Elevates 1st Rib (Inspiration), Flex/Rot neck.',
+        clinicalNotes: 'Phrenic n. lies anterior. Brachial Plexus/Subclavian Artery posterior.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Scalenes'
+    },
+    {
+        id: 'middle-scalene',
+        name: 'Middle Scalene',
+        origin: 'TPs C2-C7.',
+        insertion: '1st Rib (Posterior to groove).',
+        nerve: 'Ventral Rami Cervical.',
+        action: 'Elevates 1st Rib, Lateral Flexion.',
+        clinicalNotes: 'Dorsal Scapular & Long Thoracic nerves pierce it.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Scalenes'
+    },
+    {
+        id: 'posterior-scalene',
+        name: 'Posterior Scalene',
+        origin: 'TPs C4-C6.',
+        insertion: '2nd Rib (Outer surface).',
+        nerve: 'Ventral Rami C6-C8.',
+        action: 'Elevates 2nd Rib, Lateral Flexion.',
+        clinicalNotes: 'Smallest scalene.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Scalenes'
+    },
+    {
+        id: 'longus-colli',
+        name: 'Longus Colli (Cervicis)',
+        origin: 'Bodies C5-T3, TPs C3-C5.',
+        insertion: 'Bodies C2-C4, TPs C5-C6, Atlas Anterior Tubercle.',
+        nerve: 'Ventral Rami.',
+        action: 'Flexes Neck, Reduces Lobrdosis.',
+        clinicalNotes: 'Weakness associated with text neck/whiplash.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    {
+        id: 'longus-capitis',
+        name: 'Longus Capitis',
+        origin: 'TPs C3-C6.',
+        insertion: 'Occipital Bone (Basilar).',
+        nerve: 'Ventral Rami.',
+        action: 'Flexes Head.',
+        clinicalNotes: 'Anterior to Colli.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    {
+        id: 'rectus-capitis-anterior',
+        name: 'Rectus Capitis Anterior',
+        origin: 'Lateral Mass of Atlas.',
+        insertion: 'Occipital Bone (Basilar).',
+        nerve: 'Ventral Rami C1-C2.',
+        action: 'Flexes Head (AO Joint).',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    {
+        id: 'rectus-capitis-lateralis',
+        name: 'Rectus Capitis Lateralis',
+        origin: 'TP of Atlas.',
+        insertion: 'Jugular Process of Occipital Bone.',
+        nerve: 'Ventral Rami C1-C2.',
+        action: 'Lateral Flex Head.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck: Prevertebral'
+    },
+    // Back
+    {
+        id: 'trapezius',
+        name: 'Trapezius',
+        origin: 'Occipital, Nuchal lig, C7-T12 SPs.',
+        insertion: 'Lat 1/3 clavicle, acromion, scapular spine.',
+        nerve: 'CN XI (Accessory).',
+        action: 'Elevate, Retract, Depress, Rotate scapula (up).',
+        clinicalNotes: 'Test strength by shrugging.',
+        imageUrl: trapeziusImg,
+        category: 'Back: Superficial'
+    },
+    {
+        id: 'latissimus-dorsi',
+        name: 'Latissimus Dorsi',
+        origin: 'T7-T12 SPs, Iliac crest, Ribs 9-12.',
+        insertion: 'Floor intertubercular groove.',
+        nerve: 'Thoracodorsal (C6-C8).',
+        action: 'Ext, Add, IR humerus (climbing).',
+        clinicalNotes: 'Handcuff muscle.',
+        imageUrl: latissimusDorsiImg,
+        category: 'Back: Superficial'
+    },
+    {
+        id: 'levator-scapulae',
+        name: 'Levator Scapulae',
+        origin: 'C1-C4 TPs.',
+        insertion: 'Medial border scapula (sup angle).',
+        nerve: 'Dorsal Scapular (C5) & C3-4.',
+        action: 'Elevate, Rotate scapula (down).',
+        clinicalNotes: 'Stiff neck common.',
+        imageUrl: levatorScapulaeImg,
+        category: 'Back: Superficial'
+    },
+    {
+        id: 'rhomboid-major',
+        name: 'Rhomboid Major',
+        origin: 'T2-T5 SPs.',
+        insertion: 'Medial border scapula (inf to spine).',
+        nerve: 'Dorsal Scapular (C4-C5).',
+        action: 'Retract, Rotate scapula (down).',
+        clinicalNotes: '',
+        imageUrl: rhomboidMajorImg,
+        category: 'Back: Superficial'
+    },
+    {
+        id: 'rhomboid-minor',
+        name: 'Rhomboid Minor',
+        origin: 'Nuchal lig, C7-T1 SPs.',
+        insertion: 'Medial border scapula (spine root).',
+        nerve: 'Dorsal Scapular (C4-C5).',
+        action: 'Retract, Rotate scapula (down).',
+        clinicalNotes: '',
+        imageUrl: rhomboidMinorImg,
+        category: 'Back: Superficial'
+    },
+    {
+        id: 'serratus-posterior-superior',
+        name: 'Serratus Posterior Superior',
+        origin: 'Nuchal lig, C7-T3 SPs.',
+        insertion: 'Ribs 2-4 (Superior borders).',
+        nerve: 'Intercostal nerves T2-T5.',
+        action: 'Elevates upper ribs (Inspiration).',
+        clinicalNotes: 'Deep to Rhomboids.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intermediate Extrinsic'
+    },
+    {
+        id: 'serratus-posterior-inferior',
+        name: 'Serratus Posterior Inferior',
+        origin: 'Thoracolumbar fascia, T11-L2 SPs.',
+        insertion: 'Ribs 8-12 (Inferior borders).',
+        nerve: 'Ventral rami T9-T12.',
+        action: 'Depresses lower ribs.',
+        clinicalNotes: 'Deep to Latissimus Dorsi.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intermediate Extrinsic'
+    },
+    {
+        id: 'splenius-capitis',
+        name: 'Splenius Capitis',
+        origin: 'Nuchal lig, C7-T4 SPs.',
+        insertion: 'Mastoid process, Superior nuchal line.',
+        nerve: 'Dorsal rami (C2-C6).',
+        action: 'Bilat: Ext head/neck. Unilat: Rot/Lat Flex to same side.',
+        clinicalNotes: 'Bandage-like muscle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intrinsic Superficial'
+    },
+    {
+        id: 'splenius-cervicis',
+        name: 'Splenius Cervicis',
+        origin: 'T3-T6 SPs.',
+        insertion: 'C1-C3 TPs (Posterior tubercles).',
+        nerve: 'Dorsal rami (C5-C7).',
+        action: 'Bilat: Ext neck. Unilat: Rot/Lat Flex to same side.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Intrinsic Superficial'
+    },
+    {
+        id: 'iliocostalis',
+        name: 'Iliocostalis (Lumborum, Thoracis, Cervicis)',
+        origin: 'Common tendon (Sacrum/Iliac crest/SPs).',
+        insertion: 'Ribs angles, C-spine TPs.',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext spine. Unilat: Lat Flex spine.',
+        clinicalNotes: 'Lateral column of Erector Spinae.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Erector Spinae'
+    },
+    {
+        id: 'longissimus',
+        name: 'Longissimus (Thoracis, Cervicis, Capitis)',
+        origin: 'Common tendon.',
+        insertion: 'Ribs, TPs, Mastoid process.',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext spine/head. Unilat: Lat Flex spine/head.',
+        clinicalNotes: 'Intermediate column of Erector Spinae. Only ES to reach head (Capitis).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Erector Spinae'
+    },
+    {
+        id: 'spinalis',
+        name: 'Spinalis (Thoracis, Cervicis, Capitis)',
+        origin: 'Common tendon.',
+        insertion: 'SPs of superior vertebrae/Skull base.',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext spine. Unilat: Lat Flex spine.',
+        clinicalNotes: 'Medial column of Erector Spinae.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Erector Spinae'
+    },
+    {
+        id: 'semispinalis',
+        name: 'Semispinalis (Thoracis, Cervicis, Capitis)',
+        origin: 'TPs of C4-T12.',
+        insertion: 'SPs 4-6 segments above (Capitis to nuchal lines).',
+        nerve: 'Dorsal rami.',
+        action: 'Bilat: Ext head/spine. Unilat: Contralateral Rotation.',
+        clinicalNotes: ' spans 4-6 segments. Semispinalis Capitis pierces roof of suboccipital triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Transversospinalis'
+    },
+    {
+        id: 'multifidus',
+        name: 'Multifidus',
+        origin: 'Sacrum, TPs (T1-L5), Arts (C4-C7).',
+        insertion: 'SPs 2-4 segments above.',
+        nerve: 'Dorsal rami.',
+        action: 'Stabilize vertebrae. Contralateral Rotation, Extension.',
+        clinicalNotes: 'Thickest in Lumbar region. Stabilizer.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Transversospinalis'
+    },
+    {
+        id: 'rotatores',
+        name: 'Rotatores (Long & Short)',
+        origin: 'TPs.',
+        insertion: 'Lamina/SP 1 (short) or 2 (long) segments above.',
+        nerve: 'Dorsal rami.',
+        action: 'Proprioception (mostly), Contralateral rotation, Extension.',
+        clinicalNotes: 'Deepest of Transversospinalis.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Transversospinalis'
+    },
+    {
+        id: 'interspinales',
+        name: 'Interspinales',
+        origin: 'Superior SP.',
+        insertion: 'Inferior SP.',
+        nerve: 'Dorsal rami.',
+        action: 'Ext spine.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Deep Minor'
+    },
+    {
+        id: 'intertransversarii',
+        name: 'Intertransversarii',
+        origin: 'Superior TP.',
+        insertion: 'Inferior TP.',
+        nerve: 'Dorsal rami.',
+        action: 'Lat Flex spine.',
+        clinicalNotes: 'Proprioception.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Deep Minor'
+    },
+    {
+        id: 'levatores-costarum',
+        name: 'Levatores Costarum',
+        origin: 'TPs C7-T11.',
+        insertion: 'Rib below.',
+        nerve: 'Dorsal rami.',
+        action: 'Elevate ribs (Inspiration), Lat Flex spine.',
+        clinicalNotes: '',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Deep Minor'
+    },
+    {
+        id: 'rectus-capitis-posterior-major',
+        name: 'Rectus Capitis Posterior Major',
+        origin: 'SP of C2 (Axis).',
+        insertion: 'Inferior nuchal line (lateral).',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ext head, Ipsilateral Rotation.',
+        clinicalNotes: 'Medial border of Suboccipital Triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'rectus-capitis-posterior-minor',
+        name: 'Rectus Capitis Posterior Minor',
+        origin: 'Post tubercle of C1 (Atlas).',
+        insertion: 'Inferior nuchal line (medial).',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ext head.',
+        clinicalNotes: 'Medial to Major. Not in triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'obliquus-capitis-inferior',
+        name: 'Obliquus Capitis Inferior',
+        origin: 'SP of C2.',
+        insertion: 'TP of C1.',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ipsilateral Rotation of Head (C1 on C2).',
+        clinicalNotes: 'Inferior border of Triangle. Only Capitis with NO head attachment.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'obliquus-capitis-superior',
+        name: 'Obliquus Capitis Superior',
+        origin: 'TP of C1.',
+        insertion: 'Occiput (between nuchal lines).',
+        nerve: 'Suboccipital n. (C1).',
+        action: 'Ext head, Ipsilateral Flexion.',
+        clinicalNotes: 'Lateral border of Triangle.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Suboccipital'
+    },
+    {
+        id: 'quadratus-lumborum',
+        name: 'Quadratus Lumborum',
+        origin: 'Iliac crest.',
+        insertion: '12th rib/L1-L4.',
+        nerve: 'Ventral rami.',
+        action: 'Ext/Lat Flex spine.',
+        clinicalNotes: 'Hip hiking.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Back: Posterior Abdominal'
+    },
 
-    // 7. Pelvis & Perineum
-    {
-        id: 'obturator-internus',
-        name: 'Obturator Internus',
-        origin: 'Pelvic surface of Ilium, Ischium, & Obturator membrane.',
-        insertion: 'Greater Trochanter of Femur (medial surface).',
-        nerve: 'Nerve to Obturator Internus (L5, S1, S2).',
-        action: 'External Rotation of extended thigh; Abduction of flexed thigh.',
-        clinicalNotes: 'Leaves pelvis via Lesser Sciatic Foramen. Supported by Gemelli muscles.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Pelvis & Perineum'
-    },
-    {
-        id: 'piriformis',
-        name: 'Piriformis',
-        origin: 'Anterior Sacrum, Sacrotuberous Ligament.',
-        insertion: 'Superior Border of Greater Trochanter.',
-        nerve: 'Nerve to Piriformis (L5, S1, S2).',
-        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
-        clinicalNotes: 'Key landmark: Superior Gluteal N/A exit superior layout; Sciatic/Inf Gluteal exit inferiorly. Piriformis Syndrome.',
-        imageUrl: piriformisImg,
-        category: 'Lower Limb: Gluteal'
-    },
-    {
-        id: 'levator-ani',
-        name: 'Levator Ani Group',
-        origin: 'Body of Pubis, Obturator Fascia (Tendinous Arch), Ischial Spine.',
-        insertion: 'Perineal body, Coccyx, Anococcygeal ligament, Walls of prostate/vagina, Rectum.',
-        nerve: 'Nerve to Levator Ani (S3-S4); Inferior Rectal/Perineal branches (pudendal).',
-        action: 'Supports pelvic viscera; Resists intra-abdominal pressure; Controls urination/defecation.',
-        clinicalNotes: 'Includes: Pubococcygeus, Puborectalis ("slings" rectum), Iliococcygeus. Weakness = Prolapse/Incontinence.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Pelvis & Perineum'
-    },
-    {
-        id: 'coccygeus',
-        name: 'Coccygeus (Ischiococcygeus)',
-        origin: 'Ischial Spine.',
-        insertion: 'Inferior sacrum and Coccyx.',
-        nerve: 'Branches of S4-S5.',
-        action: 'Supports pelvic viscera; Flexes Coccyx.',
-        clinicalNotes: 'Posterior part of Pelvic Diaphragm.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Pelvis & Perineum'
-    },
-
-    // 1. Pectoral Region
+    // Pectoral Region
     {
         id: 'pectoralis-major',
         name: 'Pectoralis Major',
@@ -344,65 +741,7 @@ export const muscles = [
         imageUrl: serratusAnteriorImg,
         category: 'Pectoral Region'
     },
-
-    // 2. Superficial Back
-    {
-        id: 'trapezius',
-        name: 'Trapezius',
-        origin: 'Occipital, Nuchal lig, C7-T12 SPs.',
-        insertion: 'Lat 1/3 clavicle, acromion, scapular spine.',
-        nerve: 'CN XI (Accessory).',
-        action: 'Elevate, Retract, Depress, Rotate scapula (up).',
-        clinicalNotes: 'Test strength by shrugging.',
-        imageUrl: trapeziusImg,
-        category: 'Superficial Back'
-    },
-    {
-        id: 'latissimus-dorsi',
-        name: 'Latissimus Dorsi',
-        origin: 'T7-T12 SPs, Iliac crest, Ribs 9-12.',
-        insertion: 'Floor intertubercular groove.',
-        nerve: 'Thoracodorsal (C6-C8).',
-        action: 'Ext, Add, IR humerus (climbing).',
-        clinicalNotes: 'Handcuff muscle.',
-        imageUrl: latissimusDorsiImg,
-        category: 'Superficial Back'
-    },
-    {
-        id: 'levator-scapulae',
-        name: 'Levator Scapulae',
-        origin: 'C1-C4 TPs.',
-        insertion: 'Medial border scapula (sup angle).',
-        nerve: 'Dorsal Scapular (C5) & C3-4.',
-        action: 'Elevate, Rotate scapula (down).',
-        clinicalNotes: 'Stiff neck common.',
-        imageUrl: levatorScapulaeImg,
-        category: 'Superficial Back'
-    },
-    {
-        id: 'rhomboid-major',
-        name: 'Rhomboid Major',
-        origin: 'T2-T5 SPs.',
-        insertion: 'Medial border scapula (inf to spine).',
-        nerve: 'Dorsal Scapular (C4-C5).',
-        action: 'Retract, Rotate scapula (down).',
-        clinicalNotes: '',
-        imageUrl: rhomboidMajorImg,
-        category: 'Superficial Back'
-    },
-    {
-        id: 'rhomboid-minor',
-        name: 'Rhomboid Minor',
-        origin: 'Nuchal lig, C7-T1 SPs.',
-        insertion: 'Medial border scapula (spine root).',
-        nerve: 'Dorsal Scapular (C4-C5).',
-        action: 'Retract, Rotate scapula (down).',
-        clinicalNotes: '',
-        imageUrl: rhomboidMinorImg,
-        category: 'Superficial Back'
-    },
-
-    // 3. Shoulder (Scapulohumeral)
+    // Shoulder
     {
         id: 'deltoid',
         name: 'Deltoid',
@@ -469,8 +808,7 @@ export const muscles = [
         imageUrl: subscapularisImg,
         category: 'Shoulder'
     },
-
-    // 4. Arm (Anterior)
+    // Arm (Anterior)
     {
         id: 'biceps-brachii',
         name: 'Biceps Brachii',
@@ -504,8 +842,7 @@ export const muscles = [
         imageUrl: coracobrachialisImg,
         category: 'Arm'
     },
-
-    // 5. Arm (Posterior)
+    // Arm (Posterior)
     {
         id: 'triceps-brachii',
         name: 'Triceps Brachii',
@@ -528,8 +865,7 @@ export const muscles = [
         imageUrl: anconeusImg,
         category: 'Arm'
     },
-
-    // 6. Forearm & Hand
+    // Forearm & Hand
     {
         id: 'pronator-teres',
         name: 'Pronator Teres',
@@ -871,8 +1207,30 @@ export const muscles = [
         imageUrl: adductorPollicisImg,
         category: 'Hand'
     },
-
-    // 7. Lower Limb (Preserved)
+    // Pelvis & Perineum
+    {
+        id: 'levator-ani',
+        name: 'Levator Ani Group',
+        origin: 'Body of Pubis, Obturator Fascia (Tendinous Arch), Ischial Spine.',
+        insertion: 'Perineal body, Coccyx, Anococcygeal ligament, Walls of prostate/vagina, Rectum.',
+        nerve: 'Nerve to Levator Ani (S3-S4); Inferior Rectal/Perineal branches (pudendal).',
+        action: 'Supports pelvic viscera; Resists intra-abdominal pressure; Controls urination/defecation.',
+        clinicalNotes: 'Includes: Pubococcygeus, Puborectalis ("slings" rectum), Iliococcygeus. Weakness = Prolapse/Incontinence.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Pelvis & Perineum'
+    },
+    {
+        id: 'coccygeus',
+        name: 'Coccygeus (Ischiococcygeus)',
+        origin: 'Ischial Spine.',
+        insertion: 'Inferior sacrum and Coccyx.',
+        nerve: 'Branches of S4-S5.',
+        action: 'Supports pelvic viscera; Flexes Coccyx.',
+        clinicalNotes: 'Posterior part of Pelvic Diaphragm.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Pelvis & Perineum'
+    },
+    // Lower Limb: Gluteal
     {
         id: 'gluteus-maximus',
         name: 'Gluteus Maximus',
@@ -906,7 +1264,51 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Gluteal'
     },
-
+    {
+        id: 'obturator-internus',
+        name: 'Obturator Internus',
+        origin: 'Pelvic surface of Obturator Membrane & surrounding bones.',
+        insertion: 'Medial surface of Greater Trochanter (Trochanteric Fossa).',
+        nerve: 'Nerve to Obturator Internus (L5, S1, S2).',
+        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
+        clinicalNotes: 'Exits pelvis via Lesser Sciatic Foramen.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Gluteal'
+    },
+    {
+        id: 'superior-gemellus',
+        name: 'Superior Gemellus',
+        origin: 'Ischial Spine.',
+        insertion: 'Blends with Obturator Internus tendon to Greater Trochanter.',
+        nerve: 'Nerve to Obturator Internus (L5, S1, S2).',
+        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
+        clinicalNotes: 'Triceps Coxae (with Obturator Internus and Inferior Gemellus).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Gluteal'
+    },
+    {
+        id: 'inferior-gemellus',
+        name: 'Inferior Gemellus',
+        origin: 'Ischial Tuberosity.',
+        insertion: 'Blends with Obturator Internus tendon to Greater Trochanter.',
+        nerve: 'Nerve to Quadratus Femoris (L4, L5, S1).',
+        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
+        clinicalNotes: 'Triceps Coxae.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Gluteal'
+    },
+    {
+        id: 'quadratus-femoris',
+        name: 'Quadratus Femoris',
+        origin: 'Lateral border of Ischial Tuberosity.',
+        insertion: 'Quadrate Tubercle (Intertrochanteric Crest).',
+        nerve: 'Nerve to Quadratus Femoris (L4, L5, S1).',
+        action: 'Laterally Rotates thigh; Steadies femoral head.',
+        clinicalNotes: 'Short rectangular muscle inferior to Gemelli/Obturator Internus.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Lower Limb: Gluteal'
+    },
+    // Lower Limb: Thigh
     {
         id: 'rectus-femoris',
         name: 'Rectus Femoris',
@@ -916,50 +1318,6 @@ export const muscles = [
         action: 'Extends knee; Flexes hip.',
         clinicalNotes: 'Only Quad muscle that crosses the hip. "Kicking muscle".',
         imageUrl: rectusFemorisImg,
-        category: 'Lower Limb: Thigh'
-    },
-    {
-        id: 'sartorius',
-        name: 'Sartorius',
-        origin: 'ASIS & superior part of notch inferior to it.',
-        insertion: 'Superior part of medial surface of tibia (Pes Anserine).',
-        nerve: 'Femoral (L2, L3).',
-        action: 'Flexes, Abducts, ER thigh; Flexes knee.',
-        clinicalNotes: 'Longest muscle in body. "Tailor\'s muscle" (cross-legged sitting). SGT FOT (Sartorius, Gracilis, SemiT).',
-        imageUrl: sartoriusImg,
-        category: 'Lower Limb: Thigh'
-    },
-    {
-        id: 'biceps-femoris',
-        name: 'Biceps Femoris',
-        origin: 'Long Head: Ischial Tuberosity. Short Head: Linea Aspera/Lat Supracondylar Line.',
-        insertion: 'Head of Fibula (tendon split by LCL).',
-        nerve: 'Long Head: Tibial (L5-S3). Short Head: Common Fibular (L5-S2).',
-        action: 'Flexes knee, Laterally Rotates leg (flexed knee). Long Head extends hip.',
-        clinicalNotes: 'Short head is the only hamstring part not innervated by Tibial nerve and does not cross hip.',
-        imageUrl: bicepsFemorisImg,
-        category: 'Lower Limb: Thigh'
-    },
-    {
-        id: 'adductor-magnus',
-        name: 'Adductor Magnus',
-        origin: 'Adductor part: Inf pubic ramus, Ischial ramus. Hamstring part: Ischial Tuberosity.',
-        insertion: 'Adductor part: Gluteal tuberosity, Linea Aspera, Medial Supracondylar line. Hamstring part: Adductor Tubercle.',
-        nerve: 'Adductor part: Obturator (Post Div L2-L4). Hamstring part: Tibial (L4, L5).',
-        action: 'Adducts thigh. Adductor part: Flexes thigh. Hamstring part: Extends thigh.',
-        clinicalNotes: 'Adductor Hiatus allows femoral vessels to pass through to popliteal fossa.',
-        imageUrl: adductorMagnusImg,
-        category: 'Lower Limb: Thigh'
-    },
-    {
-        id: 'iliopsoas',
-        name: 'Iliopsoas',
-        origin: 'Psoas Major: T12-L5 vertebrae/discs. Iliacus: Iliac Fossa/Crest/Sacrum.',
-        insertion: 'Lesser Trochanter of Femur.',
-        nerve: 'Femoral (L2-L4) for Iliacus; Ventral Rami (L1-L3) for Psoas.',
-        action: 'Chief Flexor of thigh at hip. Postural stabilizer.',
-        clinicalNotes: 'Psoas abscess can track down to inguinal region. Psoas Minor (absent in 40%) attaches to Pectineal Line.',
-        imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Thigh'
     },
     {
@@ -984,106 +1342,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Thigh'
     },
-    {
-        id: 'semitendinosus',
-        name: 'Semitendinosus',
-        origin: 'Ischial Tuberosity.',
-        insertion: 'Medial surface of Superior Tibia (Pes Anserine).',
-        nerve: 'Tibial (L5, S1, S2).',
-        action: 'Extends thigh; Flexes leg & Medially Rotates leg (flexed knee).',
-        clinicalNotes: 'Part of Pes Anserine (S-G-T).',
-        imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Thigh'
-    },
-    {
-        id: 'semimembranosus',
-        name: 'Semimembranosus',
-        origin: 'Ischial Tuberosity.',
-        insertion: 'Posterior Medial Tibial Condyle (Oblique Popliteal Ligament).',
-        nerve: 'Tibial (L5, S1, S2).',
-        action: 'Extends thigh; Flexes leg & Medially Rotates leg (flexed knee).',
-        clinicalNotes: 'Deep to Semitendinosus. Membrane-like tendon.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Thigh'
-    },
-    {
-        id: 'tibialis-anterior',
-        name: 'Tibialis Anterior',
-        origin: 'Lat Tibia.',
-        insertion: 'Med Cuneiform/1st Met.',
-        nerve: 'Deep Fibular.',
-        action: 'DF/Inv.',
-        clinicalNotes: 'Foot drop.',
-        imageUrl: tibialisAnteriorImg,
-        category: 'Lower Limb: Leg'
-    },
-    {
-        id: 'gastrocnemius',
-        name: 'Gastrocnemius',
-        origin: 'Femur condyles.',
-        insertion: 'Calcaneus.',
-        nerve: 'Tibial.',
-        action: 'PF/Knee flex.',
-        clinicalNotes: '',
-        imageUrl: gastrocnemiusImg,
-        category: 'Lower Limb: Leg'
-    },
-    {
-        id: 'soleus',
-        name: 'Soleus',
-        origin: 'Tibia/Fibula.',
-        insertion: 'Calcaneus.',
-        nerve: 'Tibial.',
-        action: 'PF.',
-        clinicalNotes: 'Postural.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Leg'
-    },
-    {
-        id: 'fibularis-longus',
-        name: 'Fibularis Longus',
-        origin: 'Fibula.',
-        insertion: '1st Met/Cuneiform.',
-        nerve: 'Sup Fibular.',
-        action: 'Ev/PF.',
-        clinicalNotes: '',
-        imageUrl: fibularisLongusImg,
-        category: 'Lower Limb: Leg'
-    },
-    {
-        id: 'tibialis-posterior',
-        name: 'Tibialis Posterior',
-        origin: 'Tib/Fib.',
-        insertion: 'Navicular/Mets.',
-        nerve: 'Tibial.',
-        action: 'Inv/PF.',
-        clinicalNotes: 'Shin splints.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Leg'
-    },
-    {
-        id: 'erector-spinae',
-        name: 'Erector Spinae',
-        origin: 'Sacrum/Ilium.',
-        insertion: 'Ribs/Vertebrae.',
-        nerve: 'Dorsal rami.',
-        action: 'Ext/Lat Flex spine.',
-        clinicalNotes: 'I Love Spine.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Back'
-    },
-    {
-        id: 'quadratus-lumborum',
-        name: 'Quadratus Lumborum',
-        origin: 'Iliac crest.',
-        insertion: '12th rib/L1-L4.',
-        nerve: 'Ventral rami.',
-        action: 'Ext/Lat Flex spine.',
-        clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
-        category: 'Back'
-    },
-    // New Module 9a Additions
     {
         id: 'vastus-intermedius',
         name: 'Vastus Intermedius',
@@ -1151,6 +1409,17 @@ export const muscles = [
         category: 'Lower Limb: Thigh'
     },
     {
+        id: 'adductor-magnus',
+        name: 'Adductor Magnus',
+        origin: 'Adductor part: Inf pubic ramus, Ischial ramus. Hamstring part: Ischial Tuberosity.',
+        insertion: 'Adductor part: Gluteal tuberosity, Linea Aspera, Medial Supracondylar line. Hamstring part: Adductor Tubercle.',
+        nerve: 'Adductor part: Obturator (Post Div L2-L4). Hamstring part: Tibial (L4, L5).',
+        action: 'Adducts thigh. Adductor part: Flexes thigh. Hamstring part: Extends thigh.',
+        clinicalNotes: 'Adductor Hiatus allows femoral vessels to pass through to popliteal fossa.',
+        imageUrl: adductorMagnusImg,
+        category: 'Lower Limb: Thigh'
+    },
+    {
         id: 'gracilis',
         name: 'Gracilis',
         origin: 'Body and Inferior Ramus of Pubis.',
@@ -1172,52 +1441,51 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Thigh'
     },
-    // Module 9b: Deep Rotators & Others
     {
-        id: 'obturator-internus',
-        name: 'Obturator Internus',
-        origin: 'Pelvic surface of Obturator Membrane & surrounding bones.',
-        insertion: 'Medial surface of Greater Trochanter (Trochanteric Fossa).',
-        nerve: 'Nerve to Obturator Internus (L5, S1, S2).',
-        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
-        clinicalNotes: 'Exits pelvis via Lesser Sciatic Foramen.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Gluteal'
+        id: 'biceps-femoris',
+        name: 'Biceps Femoris',
+        origin: 'Long Head: Ischial Tuberosity. Short Head: Linea Aspera/Lat Supracondylar Line.',
+        insertion: 'Head of Fibula (tendon split by LCL).',
+        nerve: 'Long Head: Tibial (L5-S3). Short Head: Common Fibular (L5-S2).',
+        action: 'Flexes knee, Laterally Rotates leg (flexed knee). Long Head extends hip.',
+        clinicalNotes: 'Short head is the only hamstring part not innervated by Tibial nerve and does not cross hip.',
+        imageUrl: bicepsFemorisImg,
+        category: 'Lower Limb: Thigh'
     },
     {
-        id: 'superior-gemellus',
-        name: 'Superior Gemellus',
-        origin: 'Ischial Spine.',
-        insertion: 'Blends with Obturator Internus tendon to Greater Trochanter.',
-        nerve: 'Nerve to Obturator Internus (L5, S1, S2).',
-        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
-        clinicalNotes: 'Triceps Coxae (with Obturator Internus and Inferior Gemellus).',
-        imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Gluteal'
-    },
-    {
-        id: 'inferior-gemellus',
-        name: 'Inferior Gemellus',
+        id: 'semitendinosus',
+        name: 'Semitendinosus',
         origin: 'Ischial Tuberosity.',
-        insertion: 'Blends with Obturator Internus tendon to Greater Trochanter.',
-        nerve: 'Nerve to Quadratus Femoris (L4, L5, S1).',
-        action: 'ER extended thigh, Abducts flexed thigh. Steadies femoral head.',
-        clinicalNotes: 'Triceps Coxae.',
+        insertion: 'Medial surface of Superior Tibia (Pes Anserine).',
+        nerve: 'Tibial (L5, S1, S2).',
+        action: 'Extends thigh; Flexes leg & Medially Rotates leg (flexed knee).',
+        clinicalNotes: 'Part of Pes Anserine (S-G-T).',
         imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Gluteal'
+        category: 'Lower Limb: Thigh'
     },
     {
-        id: 'quadratus-femoris',
-        name: 'Quadratus Femoris',
-        origin: 'Lateral border of Ischial Tuberosity.',
-        insertion: 'Quadrate Tubercle (Intertrochanteric Crest).',
-        nerve: 'Nerve to Quadratus Femoris (L4, L5, S1).',
-        action: 'Laterally Rotates thigh; Steadies femoral head.',
-        clinicalNotes: 'Short rectangular muscle inferior to Gemelli/Obturator Internus.',
+        id: 'semimembranosus',
+        name: 'Semimembranosus',
+        origin: 'Ischial Tuberosity.',
+        insertion: 'Posterior Medial Tibial Condyle (Oblique Popliteal Ligament).',
+        nerve: 'Tibial (L5, S1, S2).',
+        action: 'Extends thigh; Flexes leg & Medially Rotates leg (flexed knee).',
+        clinicalNotes: 'Deep to Semitendinosus. Membrane-like tendon.',
         imageUrl: musclePlaceholderImg,
-        category: 'Lower Limb: Gluteal'
+        category: 'Lower Limb: Thigh'
     },
-    // Module 10: Popliteal Fossa Muscles
+    {
+        id: 'sartorius',
+        name: 'Sartorius',
+        origin: 'ASIS & superior part of notch inferior to it.',
+        insertion: 'Superior part of medial surface of tibia (Pes Anserine).',
+        nerve: 'Femoral (L2, L3).',
+        action: 'Flexes, Abducts, ER thigh; Flexes knee.',
+        clinicalNotes: 'Longest muscle in body. "Tailor\'s muscle" (cross-legged sitting). SGT FOT (Sartorius, Gracilis, SemiT).',
+        imageUrl: sartoriusImg,
+        category: 'Lower Limb: Thigh'
+    },
+    // Lower Limb: Leg
     {
         id: 'popliteus',
         name: 'Popliteus',
@@ -1248,7 +1516,7 @@ export const muscles = [
         nerve: 'Tibial (S1, S2).',
         action: 'Plantarflexes foot; Flexes knee.',
         clinicalNotes: 'Crosses two joints. Power muscle for jumping/running. High density of fast-twitch fibers.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: gastrocnemiusImg,
         category: 'Lower Limb: Leg'
     },
     {
@@ -1262,7 +1530,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Leg'
     },
-    // Anterior Compartment
     {
         id: 'tibialis-anterior',
         name: 'Tibialis Anterior',
@@ -1271,7 +1538,7 @@ export const muscles = [
         nerve: 'Deep Fibular (L4, L5).',
         action: 'Dorsiflexes ankle, Inverts foot.',
         clinicalNotes: 'Common source of Shin Splints. Drop foot if paralyzed.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: tibialisAnteriorImg,
         category: 'Lower Limb: Leg'
     },
     {
@@ -1307,7 +1574,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Leg'
     },
-    // Lateral Compartment
     {
         id: 'fibularis-longus',
         name: 'Fibularis (Peroneus) Longus',
@@ -1316,7 +1582,7 @@ export const muscles = [
         nerve: 'Superficial Fibular (L5, S1, S2).',
         action: 'Everts foot, Weak Plantarflexion. Supports Transverse Arch.',
         clinicalNotes: 'Tendon travels deep in foot (cuboid groove).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: fibularisLongusImg,
         category: 'Lower Limb: Leg'
     },
     {
@@ -1330,7 +1596,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Leg'
     },
-    // Deep Posterior Compartment
     {
         id: 'tibialis-posterior',
         name: 'Tibialis Posterior',
@@ -1364,7 +1629,7 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Leg'
     },
-    // Foot: Dorsal Intrinsic
+    // Foot
     {
         id: 'extensor-hallucis-brevis',
         name: 'Extensor Hallucis Brevis',
@@ -1387,7 +1652,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Foot (Dorsal)'
     },
-    // Foot: Plantar Layer 1
     {
         id: 'abductor-hallucis',
         name: 'Abductor Hallucis',
@@ -1421,7 +1685,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Foot (Plantar Layer 1)'
     },
-    // Foot: Plantar Layer 2
     {
         id: 'quadratus-plantae',
         name: 'Quadratus Plantae',
@@ -1444,7 +1707,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Foot (Plantar Layer 2)'
     },
-    // Foot: Plantar Layer 3
     {
         id: 'flexor-hallucis-brevis',
         name: 'Flexor Hallucis Brevis',
@@ -1478,7 +1740,6 @@ export const muscles = [
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Foot (Plantar Layer 3)'
     },
-    // Foot: Plantar Layer 4
     {
         id: 'plantar-interossei',
         name: 'Plantar Interossei (3)',
@@ -1502,3 +1763,4 @@ export const muscles = [
         category: 'Lower Limb: Foot (Plantar Layer 4)'
     }
 ];
+

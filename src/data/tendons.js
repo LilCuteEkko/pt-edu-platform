@@ -1,4 +1,14 @@
 import musclePlaceholderImg from '../assets/muscles/placeholder.png';
+import dorsalCompartment1Img from '../assets/tendons/dorsal-compartment-1.png';
+import dorsalCompartment2Img from '../assets/tendons/dorsal-compartment-2.png';
+import dorsalCompartment3Img from '../assets/tendons/dorsal-compartment-3.png';
+import dorsalCompartment4Img from '../assets/tendons/dorsal-compartment-4.png';
+import dorsalCompartment5Img from '../assets/tendons/dorsal-compartment-5.png';
+import dorsalCompartment6Img from '../assets/tendons/dorsal-compartment-6.png';
+import flexorRetinaculumImg from '../assets/tendons/flexor-retinaculum.png';
+import palmarAponeurosisImg from '../assets/tendons/palmar-aponeurosis.png';
+import flexorPulleysImg from '../assets/tendons/flexor-pulleys.png';
+import anatomicalSnuffboxImg from '../assets/tendons/anatomical-snuffbox.png';
 
 export const tendons = [
     {
@@ -7,7 +17,7 @@ export const tendons = [
         location: 'Lateral Wrist (Radial Styloid)',
         contents: 'Abductor Pollicis Longus (APL) & Extensor Pollicis Brevis (EPB).',
         clinicalNotes: 'De Quervain\'s Tenosynovitis (Finkelstein\'s Test). Borders Anatomical Snuffbox laterally.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: dorsalCompartment1Img,
         category: 'Extensor Compartments'
     },
     {
@@ -16,7 +26,7 @@ export const tendons = [
         location: 'Lateral Wrist',
         contents: 'Extensor Carpi Radialis Longus (ECRL) & Brevis (ECRB).',
         clinicalNotes: ' wrist extensors. Intersection Syndrome (where 1 crosses 2).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: dorsalCompartment2Img,
         category: 'Extensor Compartments'
     },
     {
@@ -25,7 +35,7 @@ export const tendons = [
         location: 'Posterior Wrist (Lister\'s Tubercle)',
         contents: 'Extensor Pollicis Longus (EPL).',
         clinicalNotes: 'Uses Lister\'s Tubercle as a pulley. Rupture common in RA or Colles fx. Medial border of Snuffbox.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: dorsalCompartment3Img,
         category: 'Extensor Compartments'
     },
     {
@@ -34,7 +44,7 @@ export const tendons = [
         location: 'Posterior Wrist',
         contents: 'Extensor Digitorum (ED) & Extensor Indicis (EI).',
         clinicalNotes: 'Common extensor sheath. Ganglion cysts common here.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: dorsalCompartment4Img,
         category: 'Extensor Compartments'
     },
     {
@@ -43,7 +53,7 @@ export const tendons = [
         location: 'Posterior Wrist',
         contents: 'Extensor Digiti Minimi (EDM).',
         clinicalNotes: 'Independent extension of little finger.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: dorsalCompartment5Img,
         category: 'Extensor Compartments'
     },
     {
@@ -52,7 +62,7 @@ export const tendons = [
         location: 'Medial Wrist (Ulnar Head)',
         contents: 'Extensor Carpi Ulnaris (ECU).',
         clinicalNotes: 'ECU subluxation. Snapping wrist.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: dorsalCompartment6Img,
         category: 'Extensor Compartments'
     },
     {
@@ -61,7 +71,7 @@ export const tendons = [
         location: 'Anterior Wrist',
         contents: 'Forms roof of Carpal Tunnel. Attachments: Scaphoid/Trapezium (Lat) to Pisiform/Hamate (Med).',
         clinicalNotes: 'Cut during Carpal Tunnel Release surgery. Median nerve acts as a "content" deep to it.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: flexorRetinaculumImg,
         category: 'Flexor System'
     },
     {
@@ -70,7 +80,7 @@ export const tendons = [
         location: 'Palm',
         contents: 'Apex acts as insertion for Palmaris Longus.',
         clinicalNotes: 'Dupuytren\'s Contracture (thickening/shortening).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: palmarAponeurosisImg,
         category: 'Flexor System'
     },
     {
@@ -79,7 +89,7 @@ export const tendons = [
         location: 'Digits 2-5',
         contents: 'Annular (A1-A5) and Cruciform (C1-C3) pulleys.',
         clinicalNotes: 'Prevent "Bowstringing" of tendons. A2 and A4 are most critical. Trigger Finger (stenosis at A1).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: flexorPulleysImg,
         category: 'Flexor System'
     },
     {
@@ -88,7 +98,8 @@ export const tendons = [
         location: 'Lateral Wrist (Dorsal)',
         contents: 'Floor: Scaphoid, Trapezium. Content: Radial Artery, Cephalic Vein, Superficial Radial Nerve.',
         clinicalNotes: 'Tenderness = Scaphoid Fx. Borders: APL/EPB (Lat) and EPL (Med).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: anatomicalSnuffboxImg,
         category: 'Regions'
     }
 ];
+

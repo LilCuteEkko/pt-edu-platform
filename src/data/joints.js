@@ -79,6 +79,71 @@ export const joints = [
         ],
         clinicalNotes: 'Fontanelles in infants allow for brain growth/birth.'
     },
+    // Spine & Craniovertebral
+    {
+        id: 'iv-joints',
+        name: 'Intervertebral (IV) Joints',
+        category: 'Spine',
+        type: 'Symphysis (Cartilaginous)',
+        articulation: 'Vertebral bodies connected by Intervertebral Disc (IVD).',
+        movements: [
+            'Shock absorption',
+            'Mobility: Compression, Distraction, Tilt',
+            'Limits: Height ratio determines mobility (Cervical most, Thoracic least relative).'
+        ],
+        clinicalNotes: 'Disc components: Annulus Fibrosus (outer rings, tensile strength), Nucleus Pulposus (inner gel, hydrophilic). No disc C0-C1, C1-C2. Herniation common (Posterolateral). Degeneration = less H20.'
+    },
+    {
+        id: 'facet-joints',
+        name: 'Zygapophyseal (Facet) Joints',
+        category: 'Spine',
+        type: 'Plane (Synovial)',
+        articulation: 'Superior & Inferior Articular Processes of adjacent vertebrae.',
+        movements: [
+            'Gliding (Opening/Closing)',
+            'Guide and limit motion based on planar orientation.',
+            'Cervical: 45° (All motions)',
+            'Thoracic: Frontal (Rotation/SB)',
+            'Lumbar: Sagittal (Flex/Ext)'
+        ],
+        clinicalNotes: 'Weight bearing in Cervical/Lumbar. Spondylosis (OA). Stenosis of IV foramen from osteophytes. Meniscoids can get entrapped.'
+    },
+    {
+        id: 'uncovertebral-joints',
+        name: 'Uncovertebral Joints (Joints of Luschka)',
+        category: 'Spine',
+        type: 'Pseudo-joint (Synovial-like)',
+        articulation: 'Uncinate processes C3-C7.',
+        movements: [
+            'Guide flexion/extension',
+            'Limit lateral flexion'
+        ],
+        clinicalNotes: 'Develop clefts (fissures) with age. Site of bone spur formation affecting nerve roots.'
+    },
+    {
+        id: 'ao-joint',
+        name: 'Atlanto-Occipital (OA) Joint',
+        category: 'Spine',
+        type: 'Condyloid (Synovial)',
+        articulation: 'Occipital condyles + C1 Superior Facets.',
+        movements: [
+            'Flexion/Extension ("Yes" nod)',
+            'Slight lateral flexion'
+        ],
+        clinicalNotes: 'C0-C1. Convex occiput on concave atlas.'
+    },
+    {
+        id: 'aa-joint',
+        name: 'Atlanto-Axial (AA) Joint',
+        category: 'Spine',
+        type: 'Pivot / Plane (Synovial)',
+        articulation: 'Median: Dens + C1 Arch (Pivot). Lateral: C1 Inf Facets + C2 Sup Facets (Plane).',
+        movements: [
+            'Rotation (50% of cervical rotation) ("No" shake)',
+            'Screw-home mechanism (vertical vertical displacement)'
+        ],
+        clinicalNotes: 'Dens Held by Transverse Ligament. Instability in RA / Down Syndrome.'
+    },
     // 6. Pelvis
     {
         id: 'si-joint',
@@ -91,7 +156,7 @@ export const joints = [
             'Counternutation (Sacral Extension)',
             'Small gliding/rotational movements'
         ],
-        clinicalNotes: 'Supported by Ant/Post/Interosseous SI ligaments. Nutation increases stability (Form Closure). Dysfunction common in pregnancy.'
+        clinicalNotes: 'Supported by Ant/Post/Interosseous SI ligaments. Nutation increases stability (Form Closure). Dysfunction common in pregnancy. Transfers weight from spine to LE.'
     },
     {
         id: 'pubic-symphysis',

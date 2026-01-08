@@ -1,62 +1,16 @@
-export const arteries = [
-    // Head & Neck
-    {
-        id: 'common-carotid-artery',
-        name: 'Common Carotid Artery',
-        category: 'Head & Neck',
-        source: 'Right: Brachiocephalic Trunk. Left: Aortic Arch.',
-        course: 'Ascends in carotid sheath to C4, divides into Internal and External Carotid Arteries.',
-        branches: [
-            'Internal Carotid Artery (ICA)',
-            'External Carotid Artery (ECA)'
-        ],
-        clinicalNotes: 'Carotid pulse palpable in neck. Site of atherosclerotic plaque (Carotid Endarterectomy).'
-    },
-    {
-        id: 'external-carotid-artery',
-        name: 'External Carotid Artery (ECA)',
-        category: 'Head & Neck',
-        source: 'Common Carotid Artery.',
-        course: 'Supplies structures external to the cranium (Face, Scalp, Neck, Meninges).',
-        branches: [
-            'Superior Thyroid',
-            'Ascending Pharyngeal',
-            'Lingual',
-            'Facial (Face supply)',
-            'Occipital',
-            'Posterior Auricular',
-            'Maxillary (Deep face/meninges)',
-            'Superficial Temporal (Scalp)'
-        ],
-        clinicalNotes: 'Maxillary branch gives off Middle Meningeal Artery (Epidural Hematoma). "Mnemonic: Some Anatomists Like Freaking Out Poor Medical Students".'
-    },
-    {
-        id: 'internal-carotid-artery',
-        name: 'Internal Carotid Artery (ICA)',
-        category: 'Head & Neck',
-        source: 'Common Carotid Artery.',
-        course: 'Enters skull via Carotid Canal. Supplies Brain and Orbit.',
-        branches: [
-            'Ophthalmic Artery (Orbit/Eye)',
-            'Anterior Cerebral Artery (ACA)',
-            'Middle Cerebral Artery (MCA)',
-            'Posterior Communicating Artery'
-        ],
-        clinicalNotes: 'Major stroke vessel (MCA stroke = Contralateral hemiparesis/hemisensory loss).'
-    },
-    {
-        id: 'vertebral-artery', // Overwriting/Updating existing reference if any, or just reinforcing
-        name: 'Vertebral Artery',
-        category: 'Head & Neck',
-        source: 'Subclavian Artery.',
-        course: 'Ascends through Transverse Foramina (C6-C1). Enters skull via Foramen Magnum. Merges to form Basilar Artery.',
-        branches: [
-            'Posterior Inferior Cerebellar Artery (PICA)',
-            'Anterior Spinal Artery'
-        ],
-        clinicalNotes: 'VBI (Vertebrobasilar Insufficiency). Tested with Vertebral Artery Test (Extension + Rotation).'
-    },
+import subclavianArteryImg from '../assets/arteries/subclavian-artery.png';
+import axillaryArteryImg from '../assets/arteries/axillary-artery.png';
+import brachialArteryImg from '../assets/arteries/brachial-artery.png';
+import radialArteryImg from '../assets/arteries/radial-artery.png';
+import ulnarArteryImg from '../assets/arteries/ulnar-artery.png';
+import scapularAnastomosesImg from '../assets/arteries/scapular-anastomoses.png';
+import commonCarotidArteryImg from '../assets/arteries/common-carotid-artery.png';
+import internalCarotidArteryImg from '../assets/arteries/internal-carotid-artery.png';
+import externalCarotidArteryImg from '../assets/arteries/external-carotid-artery.png';
+import vertebralArteryImg from '../assets/arteries/vertebral-artery.png';
+import thyrocervicalTrunkImg from '../assets/arteries/thyrocervical-trunk.png';
 
+export const arteries = [
     // Upper Limb
     {
         id: 'subclavian-artery',
@@ -71,7 +25,8 @@ export const arteries = [
             'Costocervical Trunk',
             'Dorsal Scapular Artery'
         ],
-        clinicalNotes: 'Main blood supply to the upper limb.'
+        clinicalNotes: 'Main blood supply to the upper limb.',
+        imageUrl: subclavianArteryImg
     },
     {
         id: 'axillary-artery',
@@ -84,7 +39,8 @@ export const arteries = [
             '2nd Part (2 branches): Thoraco-acromial Artery, Lateral Thoracic Artery.',
             '3rd Part (3 branches): Subscapular Artery, Ant. Circumflex Humeral, Post. Circumflex Humeral.'
         ],
-        clinicalNotes: 'Anterior/Posterior Circumflex arteries wrap around surgical neck of humerus (anastomose).'
+        clinicalNotes: 'Anterior/Posterior Circumflex arteries wrap around surgical neck of humerus (anastomose).',
+        imageUrl: axillaryArteryImg
     },
     {
         id: 'brachial-artery',
@@ -97,7 +53,8 @@ export const arteries = [
             'Superior Ulnar Collateral Artery.',
             'Inferior Ulnar Collateral Artery.'
         ],
-        clinicalNotes: 'Primary pressure point for controlling hemorrhage in the arm. Blood pressure measurement site.'
+        clinicalNotes: 'Primary pressure point for controlling hemorrhage in the arm. Blood pressure measurement site.',
+        imageUrl: brachialArteryImg
     },
     {
         id: 'radial-artery',
@@ -111,7 +68,8 @@ export const arteries = [
             'Superficial Palmar Arch (completes it)',
             'Deep Palmar Arch (forms it - Main supply to thumb/index)'
         ],
-        clinicalNotes: 'Passes through Anatomical Snuffbox to form Deep Arch. Pulse palpable lateral to FCR.'
+        clinicalNotes: 'Passes through Anatomical Snuffbox to form Deep Arch. Pulse palpable lateral to FCR.',
+        imageUrl: radialArteryImg
     },
     {
         id: 'ulnar-artery',
@@ -125,7 +83,8 @@ export const arteries = [
             'Superficial Palmar Arch (forms it - Main supply to fingers)',
             'Deep Palmar Arch (completes it)'
         ],
-        clinicalNotes: 'Enters hand superficial to Flexor Retinaculum (Guyon\'s Canal). FCR pulse is key.'
+        clinicalNotes: 'Enters hand superficial to Flexor Retinaculum (Guyon\'s Canal). FCR pulse is key.',
+        imageUrl: ulnarArteryImg
     },
     {
         id: 'scapular-anastomoses',
@@ -138,9 +97,84 @@ export const arteries = [
             'Dorsal Scapular Artery (from Subclavian)',
             'Circumflex Scapular Artery (from Subscapular/Axillary)'
         ],
-        clinicalNotes: 'Allows blood to reach the arm if the flow through the Axillary artery is compromised (e.g., ligation).'
+        clinicalNotes: 'Allows blood to reach the arm if the flow through the Axillary artery is compromised (e.g., ligation).',
+        imageUrl: scapularAnastomosesImg
     },
-
+    // Neck: Carotid System
+    {
+        id: 'common-carotid-artery',
+        name: 'Common Carotid Artery (CCA)',
+        category: 'Head & Neck',
+        source: 'Right: Brachiocephalic Trunk. Left: Aortic Arch.',
+        course: 'Ascends in Carotid Sheath (with IJV & Vagus). Bifurcates at Superior Thyroid Cartilage (C4).',
+        branches: [
+            'Internal Carotid Artery (ICA)',
+            'External Carotid Artery (ECA)'
+        ],
+        clinicalNotes: 'Carotid Sinus (Baroreceptor) & Body (Chemoreceptor) at bifurcation. Pulse palpated anterior to SCM.',
+        imageUrl: commonCarotidArteryImg
+    },
+    {
+        id: 'internal-carotid-artery',
+        name: 'Internal Carotid Artery (ICA)',
+        category: 'Head & Neck',
+        source: 'Common Carotid Artery.',
+        course: 'Ascends to Carotid Canal (Temporal bone). NO branches in neck. Supplies Brain.',
+        branches: [
+            'Ophthalmic Artery',
+            'Anterior Cerebral Artery',
+            'Middle Cerebral Artery',
+            'Posterior Communicating Artery'
+        ],
+        clinicalNotes: 'Risk of stenosis (plaque). Carotid Endarterectomy surgery.',
+        imageUrl: internalCarotidArteryImg
+    },
+    {
+        id: 'external-carotid-artery',
+        name: 'External Carotid Artery (ECA)',
+        category: 'Head & Neck',
+        source: 'Common Carotid Artery.',
+        course: 'Supplies neck, face, external skull. Terminates in Parotid Gland.',
+        branches: [
+            '1. Superior Thyroid Artery',
+            '2. Ascending Pharyngeal Artery',
+            '3. Lingual Artery',
+            '4. Facial Artery',
+            '5. Occipital Artery',
+            '6. Posterior Auricular Artery',
+            '7. Maxillary Artery (Terminal)',
+            '8. Superficial Temporal Artery (Terminal)'
+        ],
+        clinicalNotes: 'Pulse palpated anterior to ear (Sup Temp) or at mandible angle (Facial).',
+        imageUrl: externalCarotidArteryImg
+    },
+    {
+        id: 'vertebral-artery',
+        name: 'Vertebral Artery',
+        category: 'Head & Neck',
+        source: 'Subclavian Artery (1st Part).',
+        course: 'Ascends through Transverse Foramina (C6-C1). Enters Foramen Magnum. Merges to Basilar Artery.',
+        branches: [
+            'Spinal branches',
+            'Posterior Inferior Cerebellar Artery (PICA)'
+        ],
+        clinicalNotes: 'Vertebrobasilar Insufficiency (VBI) - check with extension/rotation. Vulnerable at C1/C2 loop.',
+        imageUrl: vertebralArteryImg
+    },
+    {
+        id: 'thyrocervical-trunk',
+        name: 'Thyrocervical Trunk',
+        category: 'Head & Neck',
+        source: 'Subclavian Artery.',
+        course: 'Short trunk.',
+        branches: [
+            'Inferior Thyroid Artery (Supplies thyroid/parathyroids)',
+            'Suprascapular Artery',
+            'Transverse Cervical Artery'
+        ],
+        clinicalNotes: 'Inferior thyroid artery runs near Recurrent Laryngeal Nerve.',
+        imageUrl: thyrocervicalTrunkImg
+    },
     // Pelvis
     {
         id: 'common-iliac-artery',

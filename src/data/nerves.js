@@ -143,6 +143,7 @@ export const nerves = [
         origin: 'Posterior Cord (C6, C7, C8).',
         course: 'Descends along posterior axillary wall.',
         innervation: ['Latissimus Dorsi.'],
+
         clinicalNotes: '"Handcuff muscle" nerve.'
     },
 
@@ -495,5 +496,82 @@ export const nerves = [
             'Sensory: Plantar aspect of heel.'
         ],
         clinicalNotes: 'Heel pain context.'
+
+    },
+    // Neck: Cranial Nerves
+    {
+        id: 'cn-x',
+        name: 'Vagus Nerve (CN X)',
+        type: 'Cranial Nerve',
+        origin: 'Medulla.',
+        course: 'Exits Jugular Foramen. Descends in Carotid Sheath (between IJV & CCA).',
+        innervation: [
+            'Motor: Pharynx (constrictors), Larynx (all muscles), Palate (Levator Veli Palatini).',
+            'Sensory: Larynx, Pharynx, Thoracic/Abdominal Viscera.'
+        ],
+        clinicalNotes: 'Recurrent Laryngeal Nerve branch loops under Aorta (L) or Subclavian (R). Lesion = Hoarseness.'
+    },
+    {
+        id: 'cn-xi',
+        name: 'Spinal Accessory Nerve (CN XI)',
+        type: 'Cranial Nerve',
+        origin: 'Spinal Cord C1-C6.',
+        course: 'Enters Foramen Magnum, Exits Jugular Foramen. Crosses Posterior Triangle.',
+        innervation: [
+            'Motor: Sternocleidomastoid (SCM), Trapezius.'
+        ],
+        clinicalNotes: 'Vulnerable in Posterior Triangle biopsy/surgery. Test: Shrug shoulders (Trap), Turn head (SCM).'
+    },
+    {
+        id: 'cn-xii',
+        name: 'Hypoglossal Nerve (CN XII)',
+        type: 'Cranial Nerve',
+        origin: 'Medulla.',
+        course: 'Exits Hypoglossal Canal. Crosses Anterior Triangle (Submandibular/Carotid).',
+        innervation: [
+            'Motor: Intrinsic/Extrinsic Tongue muscles (except Palatoglossus).'
+        ],
+        clinicalNotes: 'Lesion: Tongue deviates TO injured side ("Lick your wounds").'
+    },
+
+    // Neck: Cervical Plexus (C1-C4)
+    {
+        id: 'cervical-plexus-cutaneous',
+        name: 'Cervical Plexus: Cutaneous Branches',
+        type: 'Plexus',
+        origin: 'Ventral Rami C2-C4. Erb\'s Point (Posterior border SCM).',
+        course: 'Radiate from nerve point of neck.',
+        innervation: [
+            'Lesser Occipital (C2): Post. scalp/ear.',
+            'Greater Auricular (C2-C3): Ant. ear/parotid area.',
+            'Transverse Cervical (C2-C3): Ant. neck skin.',
+            'Supraclavicular (C3-C4): Shoulder/Clavicle skin.'
+        ],
+        clinicalNotes: 'Nerve block site at Erb\'s Point.'
+    },
+    {
+        id: 'phrenic-nerve',
+        name: 'Phrenic Nerve',
+        type: 'Peripheral Nerve',
+        origin: 'C3, C4, C5 ("Keeps the diaphragm alive").',
+        course: 'Descends on Anterior Scalene muscle (deep to fascia). Enters thorax.',
+        innervation: [
+            'Motor: Diaphragm.',
+            'Sensory: Pericardium, Pleura, Peritoneum.'
+        ],
+        clinicalNotes: 'Irritation causes shoulder pain (C3-5 dermatome referral). Located dangerously close to scalene block site.'
+    },
+    {
+        id: 'ansa-cervicalis',
+        name: 'Ansa Cervicalis',
+        type: 'Peripheral Nerve',
+        origin: 'Superior Root (C1-C2), Inferior Root (C2-C3). Loop.',
+        course: 'Loop lies on/in Carotid Sheath.',
+        innervation: [
+            'Motor: Infrahyoid Muscles (Sternohyoid, Sternothyroid, Omohyoid).',
+            'EXCEPTION: Thyrohyoid is C1 via Hypoglossal.'
+        ],
+        clinicalNotes: '"Handle of the neck".'
+
     }
 ];
