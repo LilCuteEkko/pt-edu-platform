@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Skull, Activity } from 'lucide-react';
+import { Activity, BicepsFlexed } from 'lucide-react';
 import AnatomySection from '../components/anatomy/AnatomySection';
 import PhysiologySection from '../components/physiology/PhysiologySection';
 
@@ -26,7 +26,7 @@ const AnatomyPhysiologyPage = () => {
                         <div className="cards-container">
                             <div className="selection-card anatomy" onClick={() => setView('anatomy')}>
                                 <div className="icon-wrapper">
-                                    <Skull size={64} />
+                                    <BicepsFlexed size={64} />
                                 </div>
                                 <h2>Anatomy</h2>
                                 <p>Detailed breakdown of muscles, bones, joints, and organs.</p>

@@ -1,13 +1,19 @@
 
-import pectoralisMajorImg from '../assets/muscles/placeholder.png';
-import pectoralisMinorImg from '../assets/muscles/placeholder.png';
-import serratusAnteriorImg from '../assets/muscles/placeholder.png';
-import subclaviusImg from '../assets/muscles/placeholder.png';
+import pectoralisMajorImg from '../assets/muscles/pectoralis-major.png';
+import pectoralisMinorImg from '../assets/muscles/pectoralis-minor.png';
+import serratusAnteriorImg from '../assets/muscles/serratus-anterior.png';
+import subclaviusImg from '../assets/muscles/subclavius.png';
 import trapeziusImg from '../assets/muscles/upper-trapezius.png';
-import latissimusDorsiImg from '../assets/muscles/placeholder.png';
+import latissimusDorsiImg from '../assets/muscles/latissimus-dorsi.png';
 import levatorScapulaeImg from '../assets/muscles/levator-scapulae.png';
-import rhomboidMajorImg from '../assets/muscles/placeholder.png';
-import rhomboidMinorImg from '../assets/muscles/placeholder.png';
+import rhomboidMajorImg from '../assets/muscles/rhomboid-major.png';
+import rhomboidMinorImg from '../assets/muscles/rhomboid-minor.png';
+import spleniusCapitisImg from '../assets/muscles/splenius-capitis.png';
+import spleniusCervicisImg from '../assets/muscles/splenius-cervicis.png';
+import quadratusLumborumImg from '../assets/muscles/quadratus-lumborum.png';
+import iliocostalisImg from '../assets/muscles/iliocostalis.png';
+import longissimusImg from '../assets/muscles/longissimus.png';
+import spinalisImg from '../assets/muscles/spinalis.png';
 import deltoidImg from '../assets/muscles/deltoid.png';
 import teresMajorImg from '../assets/muscles/teres-major.png';
 import supraspinatusImg from '../assets/muscles/supraspinatus.png';
@@ -516,7 +522,7 @@ export const muscles = [
         nerve: 'Dorsal rami (C2-C6).',
         action: 'Bilat: Ext head/neck. Unilat: Rot/Lat Flex to same side.',
         clinicalNotes: 'Bandage-like muscle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: spleniusCapitisImg,
         category: 'Back: Intrinsic Superficial'
     },
     {
@@ -527,7 +533,7 @@ export const muscles = [
         nerve: 'Dorsal rami (C5-C7).',
         action: 'Bilat: Ext neck. Unilat: Rot/Lat Flex to same side.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: spleniusCervicisImg,
         category: 'Back: Intrinsic Superficial'
     },
     {
@@ -538,7 +544,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Bilat: Ext spine. Unilat: Lat Flex spine.',
         clinicalNotes: 'Lateral column of Erector Spinae.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: iliocostalisImg,
         category: 'Back: Erector Spinae'
     },
     {
@@ -549,7 +555,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Bilat: Ext spine/head. Unilat: Lat Flex spine/head.',
         clinicalNotes: 'Intermediate column of Erector Spinae. Only ES to reach head (Capitis).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: longissimusImg,
         category: 'Back: Erector Spinae'
     },
     {
@@ -560,7 +566,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Bilat: Ext spine. Unilat: Lat Flex spine.',
         clinicalNotes: 'Medial column of Erector Spinae.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: spinalisImg,
         category: 'Back: Erector Spinae'
     },
     {
@@ -681,7 +687,7 @@ export const muscles = [
         nerve: 'Ventral rami.',
         action: 'Ext/Lat Flex spine.',
         clinicalNotes: 'Hip hiking.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: quadratusLumborumImg,
         category: 'Back: Posterior Abdominal'
     },
 

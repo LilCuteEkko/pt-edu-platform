@@ -175,11 +175,11 @@ const PTSettingsSection = () => {
                             {/* Insider Tips Section */}
                             {selectedSetting.insiderTips && (
                                 <div style={{
-                                    background: 'linear-gradient(135deg, #FF6B6B 0%, #EE5253 100%)',
+                                    background: 'linear-gradient(135deg, #6366f1 0%, #4338ca 100%)',
                                     borderRadius: '16px',
                                     padding: '2rem',
                                     color: 'white',
-                                    boxShadow: '0 10px 20px rgba(238, 82, 83, 0.2)'
+                                    boxShadow: '0 10px 20px rgba(67, 56, 202, 0.2)'
                                 }}>
                                     <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                         <Briefcase size={28} />

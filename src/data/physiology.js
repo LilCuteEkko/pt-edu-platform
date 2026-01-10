@@ -1,4 +1,4 @@
-import {
+﻿import {
     headNeckContent,
     elbowContent,
     wristHandContent,
@@ -50,6 +50,7 @@ import cnsPnsImg from '../assets/neuromuscular/cns_vs_pns_schematic_176788384032
 import nmjImg from '../assets/neuromuscular/neuromuscular_junction_schematic_1767883854924.png';
 import brainLobesImg from '../assets/neuromuscular/brain_lobes_schematic_1767883867066.png';
 import circleWillisImg from '../assets/neuromuscular/circle_of_willis_schematic_1767883883015.png';
+import vestibularSystemImg from '../assets/neuromuscular/vestibular_system.png';
 
 
 const shoulderContent = {
@@ -68,13 +69,13 @@ const shoulderContent = {
         ],
         muscles: {
             rotatorCuff: [
-                { name: 'Supraspinatus', action: 'Initiates abduction (first 15°)' },
+                { name: 'Supraspinatus', action: 'Initiates abduction (first 15Â°)' },
                 { name: 'Infraspinatus', action: 'External rotation' },
                 { name: 'Teres Minor', action: 'External rotation' },
                 { name: 'Subscapularis', action: 'Internal rotation' }
             ],
             other: [
-                { name: 'Deltoid', action: 'Abduction (>15°)' },
+                { name: 'Deltoid', action: 'Abduction (>15Â°)' },
                 { name: 'Pectoralis Major', action: 'IR, flexion, adduction' },
                 { name: 'Pectoralis Minor', action: 'Scapular stabilization' },
                 { name: 'Latissimus Dorsi', action: 'Adduction, extension, IR' },
@@ -97,16 +98,16 @@ const shoulderContent = {
     },
     function: {
         biomechanics: [
-            'Scapulohumeral Rhythm: 2:1 ratio (2° humeral elevation for every 1° scapular rotation).',
+            'Scapulohumeral Rhythm: 2:1 ratio (2Â° humeral elevation for every 1Â° scapular rotation).',
             'Force Couples: Deltoid (Upward) vs Rotator Cuff (Compress/Depress) to prevent impingement.',
             'Scapular Stability: Essential for proper GH joint mechanics.'
         ],
         rom: [
-            { movement: 'Flexion', value: '0-180°' },
-            { movement: 'Extension', value: '0-60°' },
-            { movement: 'Abduction', value: '0-180°' },
-            { movement: 'Internal Rotation', value: '0-70° (at side), 0-90° (at 90° abd)' },
-            { movement: 'External Rotation', value: '0-90°' }
+            { movement: 'Flexion', value: '0-180Â°' },
+            { movement: 'Extension', value: '0-60Â°' },
+            { movement: 'Abduction', value: '0-180Â°' },
+            { movement: 'Internal Rotation', value: '0-70Â° (at side), 0-90Â° (at 90Â° abd)' },
+            { movement: 'External Rotation', value: '0-90Â°' }
         ],
         commonConditions: [
             { category: 'Rotator Cuff', conditions: 'Tendinopathy, Tears, Impingement, Calcific Tendinitis' },
@@ -131,7 +132,7 @@ const shoulderContent = {
             category: 'Impingement', tests: [
                 { name: 'Neer\'s', purpose: 'Subacromial Impingement', positive: 'Pain with forced flexion' },
                 { name: 'Hawkins-Kennedy', purpose: 'Impingement', positive: 'Pain with passive IR' },
-                { name: 'Painful Arc', purpose: 'General Impingement', positive: 'Pain 60°-120°' }
+                { name: 'Painful Arc', purpose: 'General Impingement', positive: 'Pain 60Â°-120Â°' }
             ]
         },
         {
@@ -207,8 +208,8 @@ const kneeContent = {
                 { name: 'Lachman\'s', purpose: 'ACL (Gold Std)', positive: 'Soft end feel / translation' },
                 { name: 'Anterior Drawer', purpose: 'ACL', positive: 'Excessive ant. translation' },
                 { name: 'Posterior Drawer', purpose: 'PCL', positive: 'Excessive post. translation' },
-                { name: 'Valgus Stress', purpose: 'MCL', positive: 'Laxity at 30° (Iso) or 0° (Combined)' },
-                { name: 'Varus Stress', purpose: 'LCL', positive: 'Laxity at 30° flexion' }
+                { name: 'Valgus Stress', purpose: 'MCL', positive: 'Laxity at 30Â° (Iso) or 0Â° (Combined)' },
+                { name: 'Varus Stress', purpose: 'LCL', positive: 'Laxity at 30Â° flexion' }
             ]
         },
         {
@@ -222,7 +223,7 @@ const kneeContent = {
             category: 'Patellofemoral', tests: [
                 { name: 'Patellar Apprehension', purpose: 'Patellar instability', positive: 'Contraction/Fear' },
                 { name: 'Clarke\'s Sign', purpose: 'PF Pain/Chondromalacia', positive: 'Pain with quad set' },
-                { name: 'Noble Compression', purpose: 'IT Band Friction', positive: 'Pain at 30° flexion' }
+                { name: 'Noble Compression', purpose: 'IT Band Friction', positive: 'Pain at 30Â° flexion' }
             ]
         }
     ],
@@ -233,10 +234,10 @@ const kneeContent = {
             'Patellar Tracking: Dependent on VMO/ITB balance and hip strength.'
         ],
         rom: [
-            { movement: 'Flexion', value: '0-135° (up to 150° passive)' },
-            { movement: 'Extension', value: '0° (up to 5-10° hyperextension)' },
-            { movement: 'Tibial Internal Rotation', value: '10-20° (at 90° flexion)' },
-            { movement: 'Tibial External Rotation', value: '30-40° (at 90° flexion)' }
+            { movement: 'Flexion', value: '0-135Â° (up to 150Â° passive)' },
+            { movement: 'Extension', value: '0Â° (up to 5-10Â° hyperextension)' },
+            { movement: 'Tibial Internal Rotation', value: '10-20Â° (at 90Â° flexion)' },
+            { movement: 'Tibial External Rotation', value: '30-40Â° (at 90Â° flexion)' }
         ],
         commonConditions: [
             { category: 'Ligamentous', conditions: 'ACL/PCL Hx, MCL/LCL Sprains' },
@@ -253,50 +254,101 @@ const kneeContent = {
 
 export const physiologyTopics = [
     {
-        id: 'neuromuscular',
-        title: 'Neuromuscular Physiology',
-        description: 'The complex interplay between the nervous system and muscle fibers that enables movement.',
+        id: 'neuroscience',
+        title: 'Neuroscience',
+        description: 'Comprehensive guide to the Nervous System: Anatomy, Physiology, and Sensory Pathways.',
         icon: 'Brain',
         subtopics: [
             {
                 id: 'ns-org',
                 title: 'Organization of Nervous System',
                 image: cnsPnsImg,
-                introduction: 'The Human Nervous System is divided into the Central Nervous System (CNS) and the Peripheral Nervous System (PNS).',
+                introduction: 'The Human Nervous System is a complex network divided anatomically into CNS/PNS and physiologically into Somatic/Visceral systems.',
                 content: [
-                    'Central Nervous System (CNS): Consists of the Brain (Cerebrum, Brainstem, Cerebellum) and Spinal Cord.',
-                    'Peripheral Nervous System (PNS): Consists of Cranial Nerves and Spinal Nerves connecting the CNS to the limbs and organs.'
+                    'Anatomical Divisions:',
+                    '- Central Nervous System (CNS): Brain and Spinal Cord. Protected by skull/vertebrae and Meninges (Dura Mater, Arachnoid Mater, Pia Mater).',
+                    '- Peripheral Nervous System (PNS): Cranial Nerves (12 pairs) and Spinal Nerves (31 pairs). Connects CNS to the body.',
+                    'Peripheral Nerve Structure:',
+                    '- Wrappings: Epineurium (surrounds entire nerve), Perineurium (surrounds fascicles), Endoneurium (surrounds individual axons).',
+                    '- Dorsal Root Ganglion (DRG): Contains cell bodies of most sensory neurons (pseudounipolar).',
+                    'Physiological Divisions:',
+                    '- Somatic Nervous System: Innervates skin, joints, skeletal muscle. Functional unit: General Somatic Afferent (Sensory) & General Somatic Efferent (Motor).',
+                    '- Visceral (Autonomic) Nervous System: Innervates organs, vessels, glands, smooth muscle. Includes Sympathetic ("Fight or Flight") and Parasympathetic ("Rest and Digest").'
+                ],
+                clinicalRelevance: 'Damage to CNS (UMN) vs PNS (LMN) presents with distinct patterns. Meningitis is inflammation of the meninges surrounding the CNS.'
+            },
+            {
+                id: 'neural-cells',
+                title: 'Cells of the Nervous System',
+                introduction: 'The nervous system consists of Neurons (signaling units) and Neuroglia (supporting cells).',
+                content: [
+                    'Neurons:',
+                    '- Structure: Soma (cell body), Dendrites (receive input), Axon (transmit output), Axon Hillock (trigger zone), Presynaptic Terminal (neurotransmitter release).',
+                    '- Types: Multipolar (most common, e.g., motor neurons), Bipolar (retina, vestibule), Pseudo-unipolar (sensory DRG).',
+                    'Neuroglia (Glial Cells):',
+                    '- Astrocytes (CNS): Blood-Brain Barrier (BBB), K+ buffering, structural support, scar formation (gliosis).',
+                    '- Oligodendrocytes (CNS): Myelination of multiple axons. Target of MS.',
+                    '- Microglia (CNS): Phagocytes (immune defense).',
+                    '- Ependymal Cells (CNS): Line ventricles, produce/circulate CSF.',
+                    '- Schwann Cells (PNS): Myelination of single axon segments. Vital for regeneration. Target of GBS.',
+                    '- Satellite Cells (PNS): Support cells in ganglia.'
                 ]
             },
             {
-                id: 'action-potential',
-                title: 'Action Potential (Neural)',
-                introduction: 'An action potential is a rapid sequence of changes in the voltage across a membrane.',
+                id: 'neurophysiology',
+                title: 'Neurophysiology: AP & Synapses',
+                image: nmjImg,
+                introduction: 'Communication relies on electrical Action Potentials (AP) and Chemical Synapses.',
                 content: [
-                    'Resting State: Membrane potential is ~-70mV. Na+ channels are closed.',
-                    'Depolarization: Stimulus opens Na+ channels. Na+ rushes IN (influx). Potential rises to +30mV.',
-                    'Repolarization: Na+ channels close. K+ channels open. K+ rushes OUT (efflux). Potential falls.',
-                    'Hyperpolarization: K+ channels remain open slightly longer, potential dips below -70mV.',
-                    'Refractory Period: Na+/K+ pump restores resting balance (3 Na+ out, 2 K+ in).'
+                    'Resting Memberane Potential (RMP): ~-65 to -70mV. Maintained by Na+/K+ Pump (3 Na+ OUT, 2 K+ IN) and K+ leak channels.',
+                    'Action Potential Steps:',
+                    '1. Hypopolarization: Stimulus raises potential toward threshold.',
+                    '2. Depolarization: Voltage-gated Na+ channels open. Na+ influx. Potential spikes to +35mV.',
+                    '3. Repolarization: Na+ gates close. K+ gates open. K+ efflux. Potential drops.',
+                    '4. Hyperpolarization: K+ gates slow to close. Potential dips below RMP.',
+                    '5. Refractory Period: Absolute (no new AP possible) vs Relative (needs stronger stimulus).',
+                    'Conduction Velocity:',
+                    '- Increased by: Larger Axon Diameter (less resistance) and Myelination (Saltatory Conduction via Nodes of Ranvier).',
+                    '- Fiber Types: A-alpha (Fastest, Motor/Proprioception), A-beta (Touch), A-delta (Fast Pain), C-fibers (Slowest, Slow Pain/Temp).',
+                    'Synaptic Transmission:',
+                    '- AP triggers Ca2+ influx -> Vesicle fusion -> NT release -> Binding to Post-synaptic receptors -> EPSP (Excitatory) or IPSP (Inhibitory).',
+                    '- Summation: Spatial (multiple inputs) vs Temporal (high frequency input) determines if threshold is reached.'
                 ],
-                clinicalRelevance: 'Demyelinating diseases (e.g., Multiple Sclerosis) disrupt saltatory conduction, slowing signal velocity and causing motor/sensory deficits.',
-                pathologyConnection: 'Guillain-Barré Syndrome: Acute inflammatory demyelinating polyneuropathy affecting the PNS.'
+                clinicalRelevance: 'Anesthetics (Lidocaine) block Na+ channels preventing APs. Demyelination slows conduction causing signal failure.'
             },
             {
-                id: 'nmj',
-                title: 'Neuromuscular Junction (NMJ)',
-                image: nmjImg,
-                introduction: 'The synapse between a motor neuron and a muscle fiber where the electrical signal is converted into a chemical signal.',
+                id: 'neurotransmitters',
+                title: 'Neurotransmitters',
+                introduction: 'Chemical messengers that transmit signals across a chemical synapse.',
                 content: [
-                    'AP arrives at the axon terminal of the motor neuron.',
-                    'Voltage-gated Calcium channels open; Ca2+ moves into the terminal.',
-                    'Ca2+ triggers exocytosis of synaptic vesicles containing Acetylcholine (ACh).',
-                    'ACh diffuses across the synaptic cleft and binds to Nicotinic receptors on the Motor End Plate.',
-                    'Na+ channels on the muscle open, causing depolarization (End Plate Potential).',
-                    'ACh is broken down by Acetylcholinesterase (AChE) to stop the signal.'
+                    'Acetylcholine (ACh):',
+                    '- PNS: NMJ (Muscle contraction), Autonomic pre-ganglionic & Parasympathetic post-ganglionic.',
+                    '- CNS: Alertness, Memory (lost in Alzheimer\'s).',
+                    '- Receptors: Nicotinic (Fast, Ionotropic), Muscarinic (Slow, Metabotropic).',
+                    'Glutamate: Major EXCITATORY NT in CNS. involved in learning/memory. Excess = Excitotoxicity (Stroke/ALS).',
+                    'GABA: Major INHIBITORY NT in CNS. Site of action for Benzodiazepines/Baclofen.',
+                    'Dopamine: Motor control (Basal Ganglia - lost in PD), Reward/Motivation (Addiction).',
+                    'Norepinephrine (NE): Sympathetic post-ganglionic (Fight/flight). Mood/Arousal in CNS.',
+                    'Serotonin (5-HT): Mood, sleep, pain modulation. Target of SSRIs.'
                 ],
-                clinicalRelevance: 'Drugs like Curare block Nicotinic receptors (paralysis). Botox prevents ACh release.',
-                pathologyConnection: 'Myasthenia Gravis: Autoimmune antibodies attack ACh receptors at the NMJ.'
+                clinicalRelevance: 'Myasthenia Gravis (antibodies vs Nicotinic R). Curare (blocks Nicotinic R). Botox (blocks ACh release).'
+            },
+            {
+                id: 'neural-development',
+                title: 'Neural Development',
+                introduction: 'The nervous system develops from the Ectoderm during the 3rd week of gestation (Neurulation).',
+                content: [
+                    'Neurulation: Neural Plate -> Neural Groove -> Neural Tube (CNS) + Neural Crest (PNS).',
+                    'Neural Tube Defects:',
+                    '- Anencephaly: Failure of cranial pore closure (fatal).',
+                    '- Spina Bifida: Failure of caudal pore closure. (Occulta, Meningocele, Myelomeningocele).',
+                    'Vesicle Formation:',
+                    '- Prosencephalon (Forebrain): Becomes Telencephalon (Cerebrum) + Diencephalon (Thalamus/Hypothalamus).',
+                    '- Mesencephalon (Midbrain): Remains Midbrain.',
+                    '- Rhombencephalon (Hindbrain): Becomes Metencephalon (Pons/Cerebellum) + Myelencephalon (Medulla).',
+                    'Cellular Migration: Neurons migrate on Radial Glia fibers to form cortical layers (Inside-Out pattern).'
+                ],
+                clinicalRelevance: 'Folic Acid supplementation reduces risk of Neural Tube Defects.'
             },
             {
                 id: 'brain-anatomy',
@@ -736,7 +788,7 @@ export const physiologyTopics = [
                     },
                     {
                         id: 'gbs',
-                        name: 'Guillain-Barré Syndrome',
+                        name: 'Guillain-BarrÃ© Syndrome',
                         acronym: 'GBS',
                         description: 'Acute autoimmune destruction of myelin in the Peripheral Nervous System (PNS), often triggered by infection (e.g., Campylobacter).',
                         keyFeatures: [
@@ -748,7 +800,7 @@ export const physiologyTopics = [
                         ptIntervention: 'ROM maintenance, positioning, progressive strengthening ONLY after plateau phase. AVOID OVERWORK WEAKNESS.',
                         icon: 'AlertTriangle',
                         details: {
-                            overview: 'Guillain-Barré Syndrome (GBS) is a rare neurological disorder in which the body\'s immune system mistakenly attacks part of its peripheral nervous system.',
+                            overview: 'Guillain-BarrÃ© Syndrome (GBS) is a rare neurological disorder in which the body\'s immune system mistakenly attacks part of its peripheral nervous system.',
                             anatomy: [
                                 'Target: Peripheral Nerves (Spinal roots and peripheral nerves).',
                                 'Structure: Myelin Sheath (AIDP variant) or Axon (AMAN variant).',
@@ -976,11 +1028,642 @@ export const physiologyTopics = [
                     }
                 ]
             }
+            ,
+            {
+                id: 'somato-overview',
+                title: 'Overview & Receptors',
+                introduction: 'The somatosensory system transmits sensation (touch, temp, pain, position) from receptors to the cortex (S1/S2).',
+                content: [
+                    'Somatosensory Receptors:',
+                    '- Muscle Spindle: Detects muscle length and velocity (rate of stretch). Uses Ia (primary) and II (secondary) fiber types.',
+                    '- Golgi Tendon Organ (GTO): Detects muscle tension (force). Uses Ib fibers.',
+                    '- Meissner Corpuscle: Detects light touch, flutter, or movement. Uses AÎ² fibers.',
+                    '- Pacinian Corpuscle: Detects vibration. Uses AÎ² fibers.',
+                    '- Merkel Disc: Slowly adapting pressure/texture (AÎ²).',
+                    '- Ruffini Ending: Skin stretch and joint angle (AÎ²).',
+                    '- Free Nerve Endings: Detect pain (sharp/dull), temperature (cool/cold), or coarse touch. Use AÎ´ (fast) and C (slow) fibers.',
+                    'Fiber Classification:',
+                    '- AÎ± (Ia/Ib): Largest diameter, myelinated. Proprioception (fastest).',
+                    '- AÎ² (II): Large, myelinated. Mechanoreceptors (touch/vibration).',
+                    '- AÎ´ (III): Small, myelinated. Fast pain (sharp), cold.',
+                    '- C (IV): Small, unmyelinated. Slow pain (dull), warm, itch.'
+                ]
+            },
+            {
+                id: 'dcml',
+                title: 'Dorsal Column Medial Lemniscus (DCML)',
+                introduction: 'Pathway for Discriminative Touch, Vibration, and Conscious Proprioception from the BODY.',
+                content: [
+                    '1st Order Neuron:',
+                    '- Cell Body: Dorsal Root Ganglion (DRG).',
+                    '- Axons enter dorsal horn and ascend IPSILATERALLY in Dorsal Columns.',
+                    '- Fasciculus Gracilis: Medial. Inputs from Lower Extremity (Below T6).',
+                    '- Fasciculus Cuneatus: Lateral. Inputs from Upper Extremity (Above T6).',
+                    '2nd Order Neuron:',
+                    '- Cell Body: Nucleus Gracilis/Cuneatus in Caudal Medulla.',
+                    '- DECUSSATION: Internal Arcuate Fibers cross midline in the medulla.',
+                    '- Ascend as the MEDIAL LEMNISCUS to the Thalamus.',
+                    '- Somatotopy flips: LE is now Lateral, UE is Medial (in Brainstem).',
+                    '3rd Order Neuron:',
+                    '- Cell Body: Ventral Posterolateral Nucleus (VPL) of Thalamus.',
+                    '- Project to Primary Somatosensory Cortex (S1) in Postcentral Gyrus.',
+                    '- Somatotopy (Homunculus): Medial to Lateral = LE -> UE -> Face.'
+                ],
+                clinicalRelevance: 'Lesions cause ipsilateral loss if below medulla. Tabes Dorsalis: Degeneration of Dorsal Columns (e.g., Syphilis) causing loss of proprioception and Sensory Ataxia.'
+            },
+            {
+                id: 'trigeminal-sensory',
+                title: 'Trigeminal Sensory (Touch)',
+                introduction: 'Pathway for Discriminative Touch and Vibration from the FACE (CN V). Analogous to DCML.',
+                content: [
+                    '1st Order Neuron:',
+                    '- Cell Body: Trigeminal Ganglion.',
+                    '- Synapse in the Pons.',
+                    '2nd Order Neuron:',
+                    '- Cell Body: Main Sensory Nucleus of V (Mid-Pons).',
+                    '- DECUSSATION: Cross immediately to join the Medial Lemniscus (Medial part).',
+                    '3rd Order Neuron:',
+                    '- Cell Body: Ventral Posteromedial Nucleus (VPM) of Thalamus.',
+                    '- Project to S1 Cortex (Lateral face area).',
+                    'Note: VVP (Ventral Trigeminothalamic Tract) carries this crossed info.'
+                ]
+            },
+            {
+                id: 'als-pain',
+                title: 'Anterolateral System (Pain/Temp)',
+                introduction: 'Pathway for Pain (Nociception), Temperature, and Crude Touch from the BODY.',
+                content: [
+                    'Overview: Includes Lateral Spinothalamic (Pain/Temp) and Anterior Spinothalamic (Crude Touch).',
+                    '1st Order Neuron:',
+                    '- A-delta (Fast) and C-fibers (Slow). Cell Body: DRG.',
+                    '- Enter Lissauerâ€™s Tract, ascend/descend 1-2 levels.',
+                    '2nd Order Neuron:',
+                    '- Cell Body: Dorsal Horn (Lamina I, II - Substantia Gelatinosa, V).',
+                    '- DECUSSATION: Cross IMMEDIATELY (via Anterior White Commissure).',
+                    '- Ascend in Contralateral Anterolateral Funiculus.',
+                    '3rd Order Neuron:',
+                    '- Cell Body: VPL Thalamus (Classic) and VMpo/MDvc (Homeostatic/Affective).',
+                    '- Project to S1 (Localization) and Insula/Singulate (Pain Affect/Suffering).',
+                    'New Theory (Craig): Pain is a homeostatic emotion (Interoception), projecting strongly to the Insula.'
+                ],
+                clinicalRelevance: 'Brown-Sequard Syndrome: Contralateral Pain/Temp loss (ALS) and Ipsilateral Touch/Proprioception loss (DCML). Allodynia: Pain from non-painful stimuli. Analgesia: Loss of pain sensation.'
+            },
+            {
+                id: 'trigeminal-pain',
+                title: 'Trigeminal Pain & Temp',
+                introduction: 'Pathway for Pain and Temperature from the FACE.',
+                content: [
+                    '1st Order Neuron:',
+                    '- Cell Body: Trigeminal Ganglion.',
+                    '- Descend via Spinal Trigeminal Tract to the Medulla/Upper C-Spine.',
+                    '2nd Order Neuron:',
+                    '- Cell Body: Spinal Nucleus of V (Caudal Medulla).',
+                    '- DECUSSATION: Cross and ascend as Ventral Trigeminothalamic Tract.',
+                    '3rd Order Neuron:',
+                    '- Cell Body: VPM Thalamus (and VMpo).',
+                    '- Project to S1 and Insula.'
+                ],
+                clinicalRelevance: 'Trigeminal Neuralgia (Tic Douloureux): Severe, shooting pain in V2/V3 distribution. Often caused by vascular compression.'
+            },
+            {
+                id: 'proprioception',
+                title: 'Unconscious Proprioception',
+                introduction: 'Pathways transmitting input to the Cerebellum for motor coordination (Spinocerebellar Tracts).',
+                content: [
+                    'Posterior Spinocerebellar Tract (PSCT):',
+                    '- Input: Lower Extremity (Muscle Spindles/GTO).',
+                    '- 1st Order: DRG -> Synapse in Clarkeâ€™s Nucleus (T1-L2).',
+                    '- 2nd Order: Ascend IPSILATERALLY -> Inferior Cerebellar Peduncle.',
+                    'Anterior Spinocerebellar Tract (ASCT):',
+                    '- Input: Lower Extremity (Whole limb movement attempts).',
+                    '- 1st Order: DRG -> Synapse in Spinal Border Cells.',
+                    '- 2nd Order: DECUSSATE in Cord -> Ascend -> DECUSSATE AGAIN in Cerebellum (Superior Peduncle).',
+                    '- Net Result: Ipsilateral input to Cerebellum.',
+                    'Cuneocerebellar Tract:',
+                    '- Input: Upper Extremity.',
+                    '- Ascend in Fasciculus Cuneatus -> Synapse in Lateral Cuneate Nucleus (Medulla) -> Inferior Peduncle -> Cerebellum.'
+                ],
+                clinicalRelevance: 'Damage results in Sensory Ataxia (incoordination) despite intact muscle strength. Romberg Sign partially positive (sway increases with eyes closed).'
+            },
+            {
+                id: 'motor-overview',
+                title: 'Motor Systems & CST',
+                introduction: 'The Somatic Motor System controls voluntary movement via Upper Motor Neurons (UMN) and Lower Motor Neurons (LMN).',
+                content: [
+                    'Organization:',
+                    '- Somatic: Voluntary skeletal muscle control.',
+                    '- Visceral (ANS): Involuntary smooth/cardiac muscle and glands.',
+                    'Cortical Motor Areas:',
+                    '- Primary Motor Cortex (M1): Precentral Gyrus. Execution of movement (Force/Direction). Homunculus (Leg medial, Face lateral).',
+                    '- Premotor & Supplementary Areas: Rostral to M1. Motor planning, initiation, and complex sequencing. Inputs from Prefrontal (decision) and Parietal (spatial).',
+                    'Corticospinal Tract (CST):',
+                    '- Origin: M1 (50%), Premotor, Supplementary.',
+                    '- Path: Internal Capsule (Posterior Limb) -> Cerebral Peduncles -> Pyramids (Medulla).',
+                    '- Lateral CST (85%): Crosses at Pyramidal Decussation. Controls Distal/Limb muscles (Fractionated movement).',
+                    '- Anterior CST (15%): Remains Ipsilateral. Crosses at spinal level. Controls Axial/Trunk muscles (Bilateral posture).',
+                    'Corticobulbar Tract:',
+                    '- Controls Cranial Nerves. Bilateral innervation for Upper Face/Mastication. Unilateral (Contra) for Lower Face (CN VII) and Tongue (CN XII).'
+                ]
+            },
+            {
+                id: 'extrapyramidal',
+                title: 'Extrapyramidal & Reflexes',
+                introduction: 'Brainstem pathways for posture/tone and spinal reflexes for rapid responses.',
+                content: [
+                    'Extrapyramidal Tracts:',
+                    '- Vestibulospinal: Lateral (Anti-gravity/Balance), Medial (Head/Eye coordination).',
+                    '- Reticulospinal: Postural control. Pontine (Extensors), Medullary (Inhibits extensors).',
+                    '- Tectospinal: Head turning to visual/auditory stimuli (Colliculi).',
+                    '- Rubrospinal: Red Nucleus. Flexor tone (Upper limb). Primitive crawling.',
+                    'Lower Motor Neurons (LMN):',
+                    '- Alpha Motor Neurons: Innervate Extrafusal fibers (Force).',
+                    '- Gamma Motor Neurons: Innervate Intrafusal fibers (Spindle sensitivity).',
+                    '- Alpha-Gamma Coactivation: Ensures spindles remain sensitive during contraction.',
+                    'Spinal Reflexes:',
+                    '- Stretch Reflex: Monosynaptic. Agonist contracts, Antagonist relaxes (Reciprocal Inhibition).',
+                    '- Flexor (Withdrawal): Polysynaptic. Pulls limb away from pain.',
+                    '- Crossed Extensor: Contralateral limb extends to support weight during withdrawal.',
+                    '- CPGs: Neural circuits in cord generating rhythmic patterns (walking) without cortical input.'
+                ]
+            },
+            {
+                id: 'motor-pathologies',
+                title: 'Clinical Motor Pathologies',
+                introduction: 'Distinguishing between UMN and LMN lesions is critical for neurologic diagnosis.',
+                type: 'table',
+                content: [
+                    'Upper Motor Neuron (UMN) Syndrome:',
+                    '- Site: Cortex, Brainstem, CST (Spinal Cord white matter).',
+                    '- Signs: Spasticity (Hypertonia), Hyperreflexia (Clonus), Babinski (+), Weakness (Patterned), Little/No Atrophy.',
+                    '- Rigidity: Decorticate (Flexion - Lesion above Red Nucleus), Decerebrate (Extension - Lesion below Red Nucleus).',
+                    'Lower Motor Neuron (LMN) Syndrome:',
+                    '- Site: Anterior Horn Cell, Peripheral Nerve.',
+                    '- Signs: Flaccidity (Hypotonia), Hyporeflexia, Atrophy, Fasciculations, Weakness (Segmental/Focal).',
+                    'Stroke Patterns:',
+                    '- MCA: Contralateral Face/Arm > Leg.',
+                    '- ACA: Contralateral Leg > Arm.',
+                    '- Lacunar: Pure Motor (Internal Capsule).'
+                ]
+            },
+            {
+                id: 'ans-overview',
+                title: 'Autonomic Nervous System',
+                introduction: 'Visceral motor control for homeostasis. Sympathetic (Fight/Flight) vs Parasympathetic (Rest/Digest).',
+                content: [
+                    'Sympathetic Division (Thoracolumbar):',
+                    '- Origin: Lateral Horn (IML) T1-L2.',
+                    '- Architecture: Short Preganglionic -> Chain Ganglia (Paravertebral) or Prevertebral Ganglia -> Long Postganglionic.',
+                    '- Neurotransmitters: Pre = ACh (Nicotinic). Post = NE/Epi (Adrenergic Î±/Î²). *Sweat glands use ACh.*',
+                    '- Function: Dilates pupils, Bronchodilation, Tachycardia, Vasoconstriction (Skin/Gut), Ejaculation.',
+                    'Parasympathetic Division (Craniosacral):',
+                    '- Origin: Brainstem (CN III, VII, IX, X) and S2-S4.',
+                    '- Architecture: Long Preganglionic -> Terminal Ganglia (near organ) -> Short Postganglionic.',
+                    '- Neurotransmitters: Pre = ACh (Nicotinic). Post = ACh (Muscarinic).',
+                    '- Function: Constricts pupils, Bronchoconstriction, Bradycardia, Digestion/Peristalsis, Erection.',
+                    'Enteric Nervous System:',
+                    '- "Brain of the Gut". Myenteric/Submucosal plexuses. Can function independently of CNS.'
+                ]
+            },
+            {
+                id: 'cerebellum-overview',
+                title: 'Cerebellum: The "Little Brain"',
+                introduction: 'Although only 10% of brain volume, it contains 50% of the neurons. Critical for motor coordination and learning.',
+                content: [
+                    'Functions:',
+                    '- Coordination: Voluntary movements (limbs, eye, speech).',
+                    '- Balance/Posture: Regulates muscle tone and equilibrium.',
+                    '- Motor Learning: Feedforward correction (Internal models) and timing.',
+                    '- *Does NOT initiate movement or cause paralysis if damaged.*',
+                    'Anatomy:',
+                    '- Lobes: Anterior, Posterior, Flocculonodular.',
+                    '- Peduncles: Superior (Efferent), Middle (Afferent - Largest), Inferior (Mixed).',
+                    '- Deep Nuclei (Lateral to Medial): Dentate -> Interposed (Emboliform+Globose) -> Fastigial (Don\'t Eat Greasy Foods).'
+                ]
+            },
+            {
+                id: 'cerebellar-zones',
+                title: 'Functional Divisions',
+                introduction: 'The Cerebellum is divided into three functional zones based on connections.',
+                content: [
+                    '1. Vestibulocerebellum (Flocculonodular Lobe):',
+                    '- Input: Vestibular apparatus & Nuclei via ICP.',
+                    '- Output: Fastigial Nucleus -> Vestibular Nuclei.',
+                    '- Function: Balance, VOR (Eye stability), Axial tone.',
+                    '- Lesion: Ataxic gait (Truncal), Nystagmus, Vertigo.',
+                    '2. Spinocerebellum (Vermis & Paravermis):',
+                    '- Input: Proprioception (Spinocerebellar Tracts) via ICP/SCP.',
+                    '- Output: Interposed/Fastigial -> Red Nucleus/Thalamus/Reticular.',
+                    '- Function: Posture (Vermis) and Limb Coordination (Paravermis). Feedback system ("Comparator").',
+                    '- Lesion: Ataxia (Limb), Intention Tremor, Rebound Phenomenon, Hypotonia.',
+                    '3. Cerebrocerebellum (Lateral Hemispheres):',
+                    '- Input: Cerebral Cortex via Pontine Nuclei (MCP). Largest signal.',
+                    '- Output: Dentate Nucleus -> Thalamus (VA/VL) -> Cortex.',
+                    '- Function: Motor planning, timing, procedural learning (feedforward).',
+                    '- Lesion: Dysdiadochokinesia, Dysmetria, Decomposition of movement.'
+                ]
+            },
+            {
+                id: 'cerebellar-circuits',
+                title: 'Circuitry & Peduncles',
+                introduction: 'Detailed look at the microscopic circuitry and the input/output highways (peduncles).',
+                content: [
+                    'Microcircuitry:',
+                    '- Mossy Fibers (Input): From Pons/Spinal Cord. Excite Granule Cells -> Parallel Fibers -> Purkinje.',
+                    '- Climbing Fibers (Input): From Inferior Olive. Direct strong excitatory input to Purkinje (Motor learning).',
+                    '- Purkinje Cells (Output): INHIBITORY output to Deep Nuclei.',
+                    'Peduncles:',
+                    '- Inferior (Restiform): Input from Spinal Cord/Vestibular/Olive. Output to Vestibular/Reticular.',
+                    '- Middle (Brachium Pontis): Input from Pontine Nuclei (Cortex). PURE AFFERENT.',
+                    '- Superior (Brachium Conjunctivum): Major OUTPUT from Deep Nuclei to Thalamus/Red Nucleus. (Decussates!).'
+                ],
+                clinicalRelevance: 'Lesions are typically IPSILATERAL (Double crossing: SCP crosses, CST crosses). Symptoms: DANISH (Dysdiadochokinesia, Ataxia, Nystagmus, Intention Tremor, Slurred Speech, Hypotonia).'
+            },
+            {
+                id: 'bg-anatomy',
+                title: 'Basal Ganglia: Anatomy & Pathways',
+                introduction: 'Deep nuclei involved in the initiation and modification of motor activity, as well as cognitive and emotional functions.',
+                content: [
+                    'Organization:',
+                    '- Striatum: Caudate + Putamen + Nucleus Accumbens. (Main Input).',
+                    '- Globus Pallidus: Internal (GPi - Output) and External (GPe - Intrinsic).',
+                    '- Substantia Nigra: Pars Compacta (SNc - Dopamine) and Pars Reticulata (SNr - Output).',
+                    '- Subthalamic Nucleus (STN): The only excitatory intrinsic nucleus.',
+                    'Functional Loops:',
+                    '- Motor: Putamen -> Motor Cortex. (Execution).',
+                    '- Cognitive: Caudate -> Prefrontal Cortex. (Planning/Executive).',
+                    '- Limbic (Emotional): Ventral Striatum (Nucleus Accumbens) -> Amygdala/Cingulate.',
+                    'Thalamic Drive Pathways:',
+                    '- Direct Pathway ("GO"): Cortex -> Striatum -> Inhibits GPi -> Disinhibits Thalamus -> Increased Movement. (Dopamine D1 facilitates).',
+                    '- Indirect Pathway ("NO-GO"): Cortex -> Striatum -> Inhibits GPe -> Disinhibits STN -> Excites GPi -> Inhibits Thalamus -> Decreased Movement. (Dopamine D2 inhibits this inhibition).',
+                    '- *Key Concept:* Net result of Direct is Excitatory. Net result of Indirect is Inhibitory.'
+                ]
+            },
+            {
+                id: 'bg-pathologies',
+                title: 'Basal Ganglia Disorders',
+                introduction: 'Disorders are classified as Hyperkinetic (too much movement) or Hypokinetic (too little movement) based on Thalamic Drive.',
+                type: 'pathology-grid',
+                content: [
+                    'Movement Terminologies:',
+                    '- Chorea: Involuntary, rapid, dance-like movements (Huntington\'s).',
+                    '- Athetosis: Slow, writhing, "worm-like" movements (distal).',
+                    '- Ballismus: Violent flailing (Hemiballismus = STN lesion).',
+                    '- Dystonia: Persistent sustained abnormal posture.',
+                    'Tremor Types:',
+                    '- Resting: Occurs at rest, decreases with movement (Parkinson\'s).',
+                    '- Postural: Occurs holding a posture (Essential Tremor).',
+                    '- Intention: Occurs during target movement (Cerebellar).',
+                    'Rigidity Types (Velocity Independent):',
+                    '- Lead-pipe: Constant resistance throughout ROM.',
+                    '- Cogwheel: Ratchet-like periodic resistance (Tremor superimposed on rigidity).',
+                    '- *Contrast with Spasticity:* Spasticity is velocity-dependent and usually unidirectional.'
+                ],
+                pathologies: [
+                    {
+                        id: 'pd',
+                        name: 'Parkinson\'s Disease',
+                        acronym: 'PD',
+                        description: 'Hypokinetic disorder caused by loss of Dopamine-producing neurons in Substantia Nigra pars compacta (SNc).',
+                        keyFeatures: [
+                            'Bradykinesia (Slow movement)',
+                            'Resting Tremor ("Pill-rolling")',
+                            'Rigidity (Cogwheel/Leadpipe)',
+                            'Postural Instability'
+                        ],
+                        ptIntervention: 'Big/Loud (LSVT), Rhythmic Auditory Cueing, Rotation to break rigidity, Fall prevention.',
+                        icon: 'Activity',
+                        details: {
+                            overview: 'Degenerative loss of SNc leads to reduced Thalamic Drive (Direct pathway inhibited, Indirect pathway dominant).',
+                            anatomy: ['Substantia Nigra (Midbrain)', 'Lewy Bodies (Alpha-synuclein).'],
+                            physiology: ['Dopamine depletion -> Excessive inhibition of Thalamus.'],
+                            ptManagement: [
+                                { stage: 'Cueing', focus: 'External cues (Visual/Auditory) bypass defective internal generators.' },
+                                { stage: 'Mobility', focus: 'Focus on rotation and extension (counteract flexed posture).' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'huntingtons',
+                        name: 'Huntington\'s Disease',
+                        acronym: 'HD',
+                        description: 'Genetic Hyperkinetic disorder caused by degeneration of the Striatum (Caudate/Putamen).',
+                        keyFeatures: [
+                            'Chorea (Dance-like movements)',
+                            'Dementia / Cognitive decline',
+                            'Psychiatric changes',
+                            'Atrophy of Caudate Nucleus'
+                        ],
+                        ptIntervention: 'Safety (padding), Energy conservation (high metabolic burn from chorea), Caregiver training.',
+                        icon: 'Zap',
+                        details: {
+                            overview: 'Autosomal Dominant (CAG repeats). Loss of GABA-ergic neurons in GPe leads to excessive Thalamic Drive (Indirect pathway failed).',
+                            stats: [
+                                { label: 'Onset', value: '30-50 years' },
+                                { label: 'Genetics', value: '50% inheritance chance' }
+                            ],
+                            ptManagement: [
+                                { stage: 'Early', focus: 'Fitness, Balance, Core stability.' },
+                                { stage: 'Middle', focus: 'Fall prevention, Adaptive equipment (weighted utensils for ataxia/chorea).' },
+                                { stage: 'Late', focus: 'Positioning, comfort, preventing skin breakdown.' }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                id: 'visual-system',
+                title: 'Visual System',
+                introduction: 'Sensation, pathways, and reflexes of vision. Key concept: Right Visual Field -> Left Cortex.',
+                content: [
+                    'Receptors (Retina):',
+                    '- Rods: Low light, black/white, peripheral vision.',
+                    '- Cones: Bright light, color, high acuity (Fovea).',
+                    '1. Geniculostriate Pathway (Conscious Vision):',
+                    '- Retina -> Optic Nerve -> Optic Chiasm (Hemidecussation) -> Optic Tract -> LGN (Thalamus) -> Optic Radiation -> V1 (Occipital).',
+                    '- Hemidecussation: Medial (Nasal) retinal fibers cross. Lateral (Temporal) do not.',
+                    '- Radiation: Superior Path (Parietal) = Lower Field. Inferior Path (Meyer\'s Loop/Temporal) = Upper Field.',
+                    '2. Tectal Pathway (Reflexive):',
+                    '- Retina -> Superior Colliculus. Controls Saccades and orientation to visual stimuli (Blindsight).',
+                    '3. Hypothalamic Pathway (Circadian):',
+                    '- Retina -> Suprachiasmatic Nucleus. Entrains sleep/wake cycle.',
+                    'Visual Cortex (V2+):',
+                    '- Dorsal Stream (Parietal): "Where" (Motion/Location). Lesion = Motion blindness.',
+                    '- Ventral Stream (Temporal): "What" (Form/Color/Faces). Lesion = Prosopagnosia (Face blindness).',
+                    'Lesions:',
+                    '- Optic Nerve: Monocular blindness.',
+                    '- Optic Chiasm: Bitemporal Hemianopsia (Tunnel Vision).',
+                    '- Optic Tract/Radiation: Contralateral Homonymous Hemianopsia.',
+                    '- Macular Sparing: Often seen in cortex lesions due to Dual Blood Supply (MCA/PCA).'
+                ]
+            },
+            {
+                id: 'vestibular-neuro',
+                title: 'Vestibular Neurophysiology',
+                introduction: 'Coordinate head position/movement with posture (Balance) and eye movement (VOR).',
+                content: [
+                    'Sensors (Labyrinth):',
+                    '- Semicircular Canals (3): Detect Angular Acceleration (Rotation). Receptors: Hair cells in Cupula (Crista Ampullaris).',
+                    '- Otoliths (Utricle/Saccule): Detect Linear Acceleration (Gravity). Receptors: Hair cells in Macula (Otolithic membrane).',
+                    'Vestibular Pathways:',
+                    '- Input: CN VIII -> Vestibular Nuclei (Pons/Medulla) & Cerebellum.',
+                    '- Output:',
+                    '  - Lateral Vestibulospinal Tract: Limb Extensors (Antigravity/Balance).',
+                    '  - Medial Vestibulospinal Tract: Neck muscles (Head stability via MLF).',
+                    '  - Oculomotor Nuclei (III, IV, VI): Via MLF for VOR.',
+                    'Vestibulo-Ocular Reflex (VOR):',
+                    '- Stabilizes gaze during head movement. (Head Left -> Eyes Right).',
+                    '- Gain: 1:1 ratio. Adjusted by Flocculus.',
+                    'Nystagmus:',
+                    '- Rhythmic oscillation of eyes. Slow phase (VOR) + Fast phase (Reset). Named by FAST phase.',
+                    '- Physiologic: End-range or rotation.',
+                    '- Pathologic: Spontaneous, vertical (central lesion), direction-changing.'
+                ]
+            },
+            {
+                id: 'special-senses-other',
+                title: 'Auditory, Olfactory, Gustatory',
+                introduction: 'Mechanisms for Hearing, Smell, and Taste.',
+                content: [
+                    'Auditory System:',
+                    '- Outer/Middle Ear: Funnels sound -> Tympanic Membrane -> Ossicles (Malleus/Incus/Stapes). Stapedius reflex dampens loud sounds.',
+                    '- Inner Ear (Cochlea): Organ of Corti (Hair Cells). Transduces mechanical wave to electrical signal.',
+                    '- Pathway: Spiral Ganglion -> Cochlear Nuclei -> Inferior Colliculus (Startle) -> MGN (Thalamus) -> Auditory Cortex (Temporal).',
+                    'Olfactory System (Smell):',
+                    '- CN I: Only sense that bypasses Thalamus initially. Projects to Amygdala/Entorhinal Cortex (Emotion/Memory).',
+                    'Gustatory System (Taste):',
+                    '- Inputs: CN VII (Ant 2/3), CN IX (Post 1/3), CN X (Epiglottis).',
+                    '- Pathway: Solitary Tract Nucleus -> VPM (Thalamus) -> Insula (Gustatory Cortex).'
+                ]
+            },
+            {
+                id: 'hypothalamus-limbic',
+                title: 'Hypothalamus & Limbic System',
+                introduction: 'HOMEOSTASIS (Hypothalamus) and EMOTION/MEMORY (Limbic). "Feel, Feed, Fight, Flee, and... Reproduce".',
+                content: [
+                    'Hypothalamus (Homeostasis):',
+                    '- Anterior: Parasympathetic (Heat Loss). Lesion = Hyperthermia.',
+                    '- Posterior: Sympathetic (Heat Conservation). Lesion = Hypothermia.',
+                    '- Lateral: "Hunger Center". Lesion = Anorexia (Starvation).',
+                    '- Ventromedial: "Satiety Center". Lesion = Hyperphagia (Obesity/Rage).',
+                    '- Supraoptic/Paraventricular: ADH/Oxytocin Production. Lesion = Diabetes Insipidus.',
+                    '- Suprachiasmatic (SCN): Circadian Rhythm (Inputs from Retina).',
+                    'Limbic Structures:',
+                    '- Amygdala: Fear, Rage, Aggression. "Sensory input ends here". Bilateral lesion = Placidity (Kluver-Bucy).',
+                    '- Hippocampus: Memory Consolidation (Short -> Long term). Anterograde Amnesia if damaged.',
+                    '- Circuit of Papez (Memory/Emotion loop):',
+                    '  - Hippocampus -> Fornix -> Mammillary Bodies -> Ant. Thalamus -> Cingulate Gyrus -> Entorhinal Cortex -> Hippocampus.',
+                    'Clinical Syndromes:',
+                    '- Kluver-Bucy: Bilateral Amygdala lesion. Hypersexuality, Hyperorality (mouthing objects), Placidity, Visual Agnosia.',
+                    '- Korsakoff: Thiamine (B1) Deficiency (Alcoholism). Damage to Mammillary Bodies. Confabulation + Amnesia.'
+                ]
+            },
+            {
+                id: 'brainstem-cranial-nerves',
+                title: 'Brainstem & Cranial Nerves',
+                introduction: 'The information highway and integration center. Midbrain, Pons, Medulla.',
+                content: [
+                    'Brainstem Regions (Rostral -> Caudal):',
+                    '- Midbrain: CN III, IV. Tectum (Colliculi), Tegmentum (Red Nucleus, Substantia Nigra), Cerebral Peduncles.',
+                    '- Pons: CN V, VI, VII, VIII. Basal Pons, Cerebellar Peduncles (Sup/Mid/Inf).',
+                    '- Medulla: CN IX, X, XII. Pyramids (Corticospinal Decussation), Olives, Vagal Trigone.',
+                    'Cranial Nerve Nuclei Locations:',
+                    '- Midbrain: Oculomotor (III - Parasym/Motor), Trochlear (IV - Susperior Oblique).',
+                    '- Pons: Trigeminal (V - Sensory/Motor), Abducens (VI - Lat Rectus), Facial (VII - Expression), Cochlear (VIII - Hearing).',
+                    '- Medulla: Vestibular (VIII - Balance), Solitary Nucleus (VII, IX, X - Taste/Visceral), Ambiguus (IX, X - Swallow/Heart), Hypoglossal (XII - Tongue), Accessory (XI - SCM/Trap).',
+                    'Descending Tracts:',
+                    '- Corticospinal: Motor to Body. Crosses at Medullary Pyramids.',
+                    '- Corticobulbar: Motor to Head/Face. Bilateral innervation (except Lower Face VII, Tongue XII).',
+                    '- Reticulospinal: Tone/Posture. Pontine (Extensor bias) vs Medullary (Flexor bias).',
+                    'Ascending Tracts:',
+                    '- Medial Lemniscus: Touch/Proprioception (Body).',
+                    '- Spinothalamic: Pain/Temp (Body).',
+                    '- Trigeminal Lemniscus: Touch/Pain/Temp (Face).',
+                    'Clinical Syndromes:',
+                    '- Medial Strabismus: CN VI (Abducens) lesion.',
+                    '- Ptosis/Mydriasis: CN III (Oculomotor) lesion.',
+                    '- Internuclear Ophthalmoplegia (INO): MLF lesion (connects VI and III).',
+                    '- Horner\'s Syndrome: Sympathetic tract lesion (Ptosis, Miosis, Anhydrosis).'
+                ]
+            },
+            {
+                id: 'cerebral-cortex',
+                title: 'Cerebral Cortex',
+                introduction: 'The highest level of neural processing (Neocortex). Organized into lobes with specific sensory, motor, and association functions.',
+                content: [
+                    'Overview:',
+                    '- Lobes: Frontal, Parietal, Temporal, Occipital, Insular, Limbic.',
+                    '- Columnar Arrangement: Specific input/output layers.',
+                    '- Brodmann Areas: Functional classification map.',
+                    'Connections:',
+                    '- Commissural Fibers: Connect hemispheres. Corpus Callosum (primary), Anterior Commissure (temporal). Lesion = Disconnection syndromes (e.g., Alexia without Agraphia).',
+                    '- Association Fibers: Connect within hemisphere. Arcuate Fasciculus (Wernicke\'s <-> Broca\'s). Lesion = Conduction Aphasia.',
+                    'Occipital Lobe (Vision):',
+                    '- Primary Visual (Area 17): Retinotopic map. Lesion = Visual field loss.',
+                    '- Association (Areas 18, 19): "Where" (Dorsal) & "What" (Ventral) streams.',
+                    '- Clinical: Visual Agnosia (object recognition), Prosopagnosia (faces), Color Agnosia, Alexia (reading).',
+                    'Parietal Lobe (Somatosensory & Association):',
+                    '- Primary Somatosensory (S1 - Areas 3,1,2): Postcentral Gyrus. Cutaneous/Proprioception. Lesion = Contralateral anesthesia.',
+                    '- Somatosensory Association (S2 - Areas 5,7): Multimodal integration. Lesion = Agnosia (Astereognosis, Agraphesthesia).',
+                    '- Non-Dominant (Right) Lesions: Contralateral Neglect (ignore left side), Anosagnosia (denial of illness).',
+                    '- Dominant (Left) Lesions: Apraxia (ideomotor), Gerstmann\'s Syndrome (Angular Gyrus - Area 39: Agraphia, Acalculia, Finger Agnosia, L-R Disorientation).',
+                    'Temporal Lobe (Auditory & Language):',
+                    '- Primary Auditory (Area 41): Tonotopic map. Bilateral input (lesion rarely causes deafness).',
+                    '- Wernicke\'s Area (Area 22 - Dominant): Language comprehension. Lesion = Fluent Aphasia (Word Salad).',
+                    '- Non-Dominant Area 22: Prosody (musical aspects of speech). Lesion = Sensory Aprosodia.',
+                    'Frontal Lobe (Motor & Executive):',
+                    '- Primary Motor (M1 - Area 4): Precentral Gyrus. Execution of movement. Lesion = Contralateral flaccid paralysis -> Spastic hemiparesis.',
+                    '- Premotor/SMA (Area 6): Planning movement. Lesion + M1 = Severe spastic paralysis.',
+                    '- Frontal Eye Fields (Area 8): Saccades. Lesion = Gaze preference TOWARD lesion.',
+                    '- Broca\'s Area (Areas 44, 45 - Dominant): Motor speech production. Lesion = Non-fluent Aphasia (Expressive).',
+                    '- Prefrontal Cortex (Areas 10-12): Executive function. Dorsolateral (Working Memory), Ventromedial (Behavior/Emotion - Phineas Gage).',
+                    'Memory & Learning:',
+                    '- Hippocampus (Medial Temporal): Consolidation (Short -> Long term). Lesion = Anterograde Amnesia.',
+                    '- Explicit (Declarative): Episodic (Events - Non-Dominant?), Semantic (Facts - Dominant?).',
+                    '- Implicit: Procedural (Motor skills - Cerebellum), Emotional (Amygdala).'
+                ],
+                clinicalRelevance: 'Cortical lesions produce distinct "Higher Cortical Deficits" dependent on laterality (Dominant vs Non-Dominant). Aphasia (Language), Apraxia (Motor Planning), Agnosia (Recognition), and Neglect (Attention).'
+            },
+            {
+                id: 'meninges-stroke',
+                title: 'Meninges, CSF & Stroke',
+                introduction: 'The support systems of the CNS (Protection, Circulation, Nutrition) and the devastating effects of their failure (Stroke).',
+                content: [
+                    'Meninges (The Coverings):',
+                    '- Dura Mater: Outer "Tough Mother". Periosteal/Meningeal layers. Forms Sinuses & Falx/Tentorium.',
+                    '- Arachnoid Mater: Middle "Spider". Subarachnoid space contains CSF and vessels.',
+                    '- Pia Mater: Inner "Tender Mother". Adheres to CNS surface.',
+                    '- Spaces: Epidural (MM A. rupture), Subdural (Bridging Veins), Subarachnoid (CSF/Berry Aneurysm).',
+                    'Cerebrospinal Fluid (CSF):',
+                    '- Production: Choroid Plexus (Ventricles). ~500ml/day.',
+                    '- Circulation: Lat Ventricles -> 3rd -> Aqueduct -> 4th -> Subarachnoid Space (via Luschka/Magendie).',
+                    '- Absorption: Arachnoid Villi -> Dural Sinuses -> Jugular Vein.',
+                    '- Function: Buoyancy ("floats" brain), Cushioning, Waste removal.',
+                    'Blood Supply (Circle of Willis):',
+                    '- Anterior Circulation (ICA): Supplies ACA (Medial/Legs) and MCA (Lateral/Face/Arm/Language).',
+                    '- Posterior Circulation (Vertebral/Basilar): Supplies PCA (Vision), Cerebellum (PICA/AICA/SCA), Brainstem.',
+                    'Stroke Syndromes (Cortex):',
+                    '- MCA (Most Common): Contralateral Hemiparesis/Sensory Loss (Face/Arm > Leg). Left = Aphasia. Right = Neglect.',
+                    '- ACA: Contralateral Hemiparesis/Sensory Loss (Leg > Arm). Personality changes.',
+                    '- PCA: Contralateral Homonymous Hemianopsia (Visual field cut). Thalamic pain.',
+                    'Stroke Syndromes (Brainstem/Lacunar):',
+                    '- Lacunar: Small vessel occlusion (HTN/Diabetes). Pure Motor or Pure Sensory.',
+                    '- Lateral Medullary (Wallenberg - PICA): "Don\'t PICA horse that can\'t eat (Dysphagia) or talk (Hoarse)". Loss of Pain/Temp (Ipsi Face, Contra Body), Horner\'s, Ataxia.',
+                    '- Locked-In Syndrome (Basilar): Quadriplegia + Aphonia. Vertical eye movement spared. Reticular formation spared (Conscious).',
+                    'Spinal Cord Vascular Syndromes:',
+                    '- Anterior Cord: Flexion injury/Ant. Spinal Artery. Loss of Motor + Pain/Temp. Proprioception INTRACT.',
+                    '- Central Cord: Hyperextension. "Walking Quad" (UE > LE weakness).',
+                    '- Brown-Sequard: Hemisection. Ipsi Motor/Proprioception loss + Contra Pain/Temp loss.'
+                ],
+                clinicalRelevance: 'Medical emergency! "Time is Brain". Differentiate Ischemic (Clot - tPA candidate?) vs Hemorrhagic (Bleed - Contraindicated!). FAST: Face, Arm, Speech, Time.'
+            }
         ]
     },
-
-
-
+    {
+        id: 'cardiopulmonary',
+        title: 'Cardiopulmonary System',
+        description: 'Anatomy and Physiology of the Heart and Lungs, Hemodynamics, and Gas Exchange.',
+        icon: 'Heart',
+        subtopics: [
+            {
+                id: 'cardiac-anatomy',
+                title: 'Cardiac Anatomy & Cycle',
+                introduction: 'The pump of the circulatory system. Understanding the flow, the valves, and the electrical conduction.',
+                content: [
+                    'Chambers & Valves:',
+                    '- Atria (Receiving): Right (Deox from body), Left (Ox from lungs).',
+                    '- Ventricles await (Pumping): Right (to lungs), Left (to body - high pressure).',
+                    '- AV Valves: Tricuspid (Right), Mitral/Bicuspid (Left). "Try before you Buy".',
+                    '- Semilunar Valves: Pulmonic (Right), Aortic (Left).',
+                    'Blood Flow Pathway:',
+                    '- SVC/IVC -> RA -> Tricuspid -> RV -> Pulmonic Valve -> Pulmonary Artery -> Lungs (Oxygenation).',
+                    '- Pulmonary Veins -> LA -> Mitral -> LV -> Aortic Valve -> Aorta -> Body.',
+                    'Electrical Conduction:',
+                    '- SA Node (Pacemaker): 60-100 bpm. Right Atrium.',
+                    '- AV Node (Gatekeeper): Delays signal to allow ventricular filling. 40-60 bpm if SA fails.',
+                    '- Bundle of His -> Bundle Branches -> Purkinje Fibers (20-40 bpm).',
+                    'Cardiac Cycle:',
+                    '- Systole: Contraction/Ejection. S1 Sound (AV valves close).',
+                    '- Diastole: Relaxation/Filling. S2 Sound (Semilunar valves close). Coronary perfusion occurs here.'
+                ],
+                clinicalRelevance: 'Valve dysfunction (Stenosis/Regurgitation) significantly alters hemodynamics. Arrhythmias (Afib, Blocks) disrupt the efficient pumping action (Atrial Kick).'
+            },
+            {
+                id: 'hemodynamics',
+                title: 'Hemodynamics',
+                introduction: 'The physics of blood flow. Cardiac Output is the holy grail.',
+                content: [
+                    'Cardiac Output (CO):',
+                    '- CO = SV x HR. Normal ~5L/min.',
+                    '- Stroke Volume (SV): Amount ejected per beat. Dependent on Preload, Afterload, Contractility.',
+                    'Key Determinants:',
+                    '- Preload: Stretch at end of diastole (Volume). Frank-Starling Law (More stretch = forceful contraction).',
+                    '- Afterload: Resistance to ejection (Pressure/SVR). High afterload increases work (HTN).',
+                    '- Contractility (Inotropy): Force of contraction independent of stretch (Ca++ availability).',
+                    '- Ejection Fraction (EF): % of EDV pumped out. Normal >55%. <40% = Heart Failure.',
+                    'Blood Pressure:',
+                    '- BP = CO x SVR (Systemic Vascular Resistance).',
+                    '- Regulated by Baroreceptors (Short term) and RAAS (Long term).'
+                ],
+                clinicalRelevance: 'Heart Failure is essentially a failure of CO. Reduced EF leads to backup (Congestion) or poor perfusion. Exercise increases demand on CO.'
+            },
+            {
+                id: 'pulmonary-mechanics',
+                title: 'Pulmonary Mechanics',
+                introduction: 'Ventilation: Moving air in and out.',
+                content: [
+                    'Muscles of Respiration:',
+                    '- Inspiration (Active): Diaphragm (C3-5), External Intercostals. Accessory: SCM, Scalenes (used in distress).',
+                    '- Expiration (Passive at rest): Elastic recoil. Active: Internal Intercostals, Abdominals (forced exhale).',
+                    'Lung Volumes:',
+                    '- Tidal Volume (TV): Normal breath (~500ml).',
+                    '- Residual Volume (RV): Air remaining after max exhale (keeps alveoli open).',
+                    '- Vital Capacity (VC): Max exhale after max inhale.',
+                    '- Total Lung Capacity (TLC): VC + RV.',
+                    'Mechanics:',
+                    '- Compliance: "Stretchability". High in Emphysema (floppy), Low in Fibrosis (stiff).',
+                    '- Surfactant: Reduces surface tension, prevents collapse (Atelectasis).'
+                ],
+                clinicalRelevance: 'Restrictive diseases (Fibrosis) reduce volumes (VC, TLC). Obstructive diseases (COPD) increase volumes alone (Air trapping -> High RV, TLC) but reduce flow rates (FEV1).'
+            },
+            {
+                id: 'gas-exchange',
+                title: 'Gas Exchange & Transport',
+                introduction: 'Respiration: Moving gases across membranes.',
+                content: [
+                    'Diffusion:',
+                    '- Alveolocapillary Membrane: Driven by pressure gradients.',
+                    '- Perfusion (Q) must match Ventilation (V). V/Q Ratio.',
+                    'Transport:',
+                    '- Oxygen: 98% bound to Hemoglobin (SaO2). Oxyhemoglobin Dissociation Curve (Right shift = release O2 to tissues - Acidosis, Fever, CO2).',
+                    '- Carbon Dioxide: Mostly as Bicarbonate (HCO3-). Regulator of pH.',
+                    'Control of Breathing:',
+                    '- Central Chemoreceptors (Medulla): Sense CO2/pH in CSF. Primary drive.',
+                    '- Peripheral Chemoreceptors (Carotid/Aortic): Sense O2 (Hypoxic drive in chronic CO2 retainers).'
+                ],
+                clinicalRelevance: 'Hypoxemia (low O2 in blood) vs Hypoxia (low O2 in tissue). Hypercapnia (high CO2) causes acidosis/confusion.'
+            },
+            {
+                id: 'cp-pathologies',
+                title: 'Common CP Pathologies',
+                introduction: 'Obstructive vs Restrictive, Ischemic vs Failure.',
+                type: 'standard-list',
+                content: [
+                    'Obstructive Defects (Can\'t get air OUT):',
+                    '- COPD (Emphysema/Chronic Bronchitis): Air trapping, flattened diaphragm, barrel chest.',
+                    '- Asthma: Reversible bronchoconstriction.',
+                    '- Cystic Fibrosis: Mucus plugging.',
+                    'Restrictive Defects (Can\'t get air IN):',
+                    '- Pulmonary Fibrosis: Scarring/stiff lungs.',
+                    '- Chest Wall Deformities: Scoliosis, Kyphosis.',
+                    'Cardiac Pathologies:',
+                    '- CAD (Coronary Artery Disease): Ischemia -> Angina -> MI.',
+                    '- CHF (Congestive Heart Failure): L-Sided (Pulmonary Edema/Dyspnea) vs R-Sided (Peripheral Edema/JVD).',
+                    '- DVT/PE: Virchow\'s Triad (Stasis, Damage, Hypercoagulability).'
+                ],
+                clinicalRelevance: 'Differentiate based on symptoms (Dyspnea, Angina, Edema) and PFTs/Echo. Monitor vitals during exercise!'
+            }
+        ]
+    },
     {
         id: 'musculoskeletal',
         title: 'Musculoskeletal Physiology',
@@ -1030,7 +1713,7 @@ export const physiologyTopics = [
                             'Morning stiffness > 1 hour',
                             'Symmetrical joint involvement (MCPs, PIPs, wrists)',
                             'Systemic symptoms (fatigue, fever)',
-                            'Ulnar drift, Swan-neck, Boutonnière deformities'
+                            'Ulnar drift, Swan-neck, BoutonniÃ¨re deformities'
                         ],
                         ptIntervention: 'Joint protection strategies, energy conservation, gentle ROM during flares (avoid extensive stretching), strengthening during remission.',
                         icon: 'AlertTriangle',
@@ -1661,7 +2344,7 @@ export const physiologyTopics = [
                     {
                         id: 'scheuermanns',
                         name: 'Scheuermann\'s Disease',
-                        description: 'Juvenile osteochondrosis leading to structural hyperkyphosis (>45°).',
+                        description: 'Juvenile osteochondrosis leading to structural hyperkyphosis (>45Â°).',
                         keyFeatures: [
                             'Rigid Thoracic Kyphosis',
                             'Schmorl\'s Nodes on X-ray',
@@ -1672,7 +2355,7 @@ export const physiologyTopics = [
                         icon: 'User', // Posture related
                         category: 'Thoracic & Ribs',
                         details: {
-                            overview: 'Wedging of anterior vertebral bodies (>5° in 3 consecutive vertebrae). Distinguish from postural kyphosis.',
+                            overview: 'Wedging of anterior vertebral bodies (>5Â° in 3 consecutive vertebrae). Distinguish from postural kyphosis.',
                             ptManagement: [
                                 { stage: 'Management', focus: 'Maximize extension ROM, strengthen thoracic extensors, stretch anterior chain.' }
                             ]
@@ -1870,7 +2553,7 @@ export const physiologyTopics = [
                         keyFeatures: [
                             'Groin pain (C-sign)',
                             'Morning stiffness <60 mins',
-                            'Loss of IR (<24°) and Flexion',
+                            'Loss of IR (<24Â°) and Flexion',
                             'Pain with Squatting (CPR)'
                         ],
                         ptIntervention: 'Manual therapy (Distraction/Thrust), Strengthening (Glutes/Quads), Weight loss.',
@@ -2245,7 +2928,7 @@ export const physiologyTopics = [
                             'Pain at AC joint',
                             'Step-off deformity (severe grades)',
                             'Positive Cross-Body Adduction test',
-                            'Pain with elevation > 90°'
+                            'Pain with elevation > 90Â°'
                         ],
                         ptIntervention: 'Grade I/II: Sling, early ROM, strengthening. Grade III+: May require surgery.',
                         icon: 'Minimize2',
@@ -2579,261 +3262,7 @@ export const physiologyTopics = [
             }
         ]
     },
-    {
-        id: 'vestibular',
-        title: 'Vestibular System',
-        description: 'The sensory system responsible for providing our brain with information about motion, head position, and spatial orientation.',
-        icon: 'Activity',
-        subtopics: [
-            {
-                id: 'vestibular-anatomy',
-                title: 'Vestibular Anatomy',
-                introduction: 'The vestibular apparatus is located in the inner ear and detects linear and angular acceleration.',
-                type: 'text-content',
-                content: [
-                    'Semicircular Canals (SCC): Detect angular acceleration (rotation). 3 canals: Anterior, Posterior, Horizontal.',
-                    'Otolith Organs: Utricle and Saccule. Detect linear acceleration (gravity/translation). Contains crystals (otoconia).',
-                    'Vestibulo-Ocular Reflex (VOR): Stabilizes gaze during head movement (Head moves left -> Eyes move right 1:1 ratio).',
-                    'Vestibulospinal Reflex (VSR): Stabilizes body posture.'
-                ]
-            },
-            {
-                id: 'vestibular-pathologies',
-                title: 'Vestibular Pathologies',
-                introduction: 'Common disorders affecting the peripheral or central vestibular system, leading to vertigo, dizziness, and imbalance.',
-                type: 'pathology-grid',
-                clinicalRelevance: 'Differentiating between peripheral (BPPV, Neuritis) and central (Stroke, TBI) causes is the first priority in assessment (HINTS exam).',
-                pathologyConnection: 'Vertigo is a symptom, not a diagnosis. Treatment relies on finding the mechanical or physiological root.',
-                categoryContent: {
-                    'All': {
-                        pathologyInfo: true,
-                        specialTests: [
-                            {
-                                category: 'Oculomotor / VOMs',
-                                tests: [
-                                    { name: 'Smooth Pursuit', purpose: 'Central Vestibular', positive: 'Saccadic (jerky) tracking' },
-                                    { name: 'Saccades', purpose: 'Central Vestibular', positive: 'Overshooting (hypermetria) or undershooting' },
-                                    { name: 'Convergence', purpose: 'Central / Concussion', positive: 'Near Point Convergence > 6cm' },
-                                    { name: 'VOR Cancellation', purpose: 'Cerebellar function', positive: 'Saccades (inability to suppress VOR)' }
-                                ]
-                            },
-                            {
-                                category: 'VOR Function',
-                                tests: [
-                                    { name: 'Head Impulse Test (HIT)', purpose: 'Peripheral Hypofunction', positive: 'Corrective Saccade (refixation)' },
-                                    { name: 'Dynamic Visual Acuity (DVA)', purpose: 'Vestibular function during motion', positive: 'Loss of >2 lines on eye chart' },
-                                    { name: 'Head Shake Nystagmus', purpose: 'Asymmetric Vestibular Input', positive: '>3 beats of nystagmus' }
-                                ]
-                            },
-                            {
-                                category: 'Positional Testing',
-                                tests: [
-                                    { name: 'Dix-Hallpike', purpose: 'PC/AC BPPV', positive: 'Vertigo + Torsional/Upbeating Nystagmus' },
-                                    { name: 'Supine Roll Test', purpose: 'Horizontal Canal BPPV', positive: 'Vertigo + Geotropic/Apogeotropic Nystagmus' }
-                                ]
-                            },
-                            {
-                                category: 'Spinal / Balance',
-                                tests: [
-                                    { name: 'Fukuda Step Test', purpose: 'Peripheral asymmetry', positive: 'Rotation >30 degrees' },
-                                    { name: 'Romberg (Sharpened)', purpose: 'Somatosensory/Vestibular', positive: 'Sway or falls (Eyes Closed)' }
-                                ]
-                            }
-                        ],
-                        redFlags: [
-                            {
-                                category: 'HINTS Exam (Acute Vestibular Syndrome)',
-                                findings: [
-                                    { name: 'HI (Head Impulse)', description: 'Normal Head Impulse Test (in acute vertigo means Central/Stroke).' },
-                                    { name: 'N (Nystagmus)', description: 'Direction-Changing Nystagmus (e.g., Left looking Left, Right looking Right).' },
-                                    { name: 'TS (Test of Skew)', description: 'Vertical Skew Deviation (eye misalignment).' }
-                                ]
-                            },
-                            {
-                                category: 'Central Signs',
-                                findings: [
-                                    { name: 'The 4 D\'s', description: 'Diplopia, Dysphagia, Dysarthria, Dysmetria.' },
-                                    { name: 'Vertical Nystagmus', description: 'Pure vertical nystagmus (without torsion) is always Central.' },
-                                    { name: 'Ataxia', description: 'Inability to stand or walk (Peripheral vertigo patients can usually walk).' }
-                                ]
-                            }
-                        ]
-                    }
-                },
-                pathologies: [
-                    {
-                        id: 'bppv',
-                        name: 'Benign Paroxysmal Positional Vertigo',
-                        acronym: 'BPPV',
-                        description: 'Mechanical disorder where otoconia (crystals) are displaced into the semicircular canals.',
-                        keyFeatures: [
-                            'Short duration vertigo (<1 min)',
-                            'Positional trigger (Rolling over, looking up)',
-                            'Fatigable nystagmus',
-                            'Normal hearing'
-                        ],
-                        ptIntervention: 'Canalith Repositioning Maneuvers (Epley for PC/AC, BBQ Roll for HC). Education on post-maneuver precautions.',
-                        icon: 'RotateCw',
-                        category: 'Peripheral',
-                        details: {
-                            overview: 'Most common cause of vertigo. 90% affects Posterior Canal. Can be canalithiasis (free floating) or cupulothiasis (adhered).',
-                            anatomy: [
-                                'Affected Structure: Semicircular Canals (Posterior > Horizontal > Anterior).',
-                                'Mechanism: Displacement of Otoconia from Utricle -> Canals.'
-                            ],
-                            physiology: [
-                                'Gravity Sensitivity: Displaced crystals make the fluid-filled canal sensitive to gravity, causing false signals of movement.',
-                                'Nystagmus: Torsional/Upbeating (Posterior), Geotropic (Horizontal).'
-                            ],
-                            stats: [
-                                { label: 'Prevalence', value: '2.4% lifetime prevalence' },
-                                { label: 'Recurrence', value: '50% within 5 years' },
-                                { label: 'Age', value: 'Increases with age (avg 60s)' }
-                            ],
-                            medications: [
-                                { name: 'Meclizine', mechanism: 'Antihistamine', effect: 'Suppresses symptoms (Not recommended for BPPV treatment).' }
-                            ],
-                            medicalInterventions: [
-                                'None usually needed unless intractable (canal plugging surgery - rare).'
-                            ],
-                            ptManagement: [
-                                { stage: 'Assessment', focus: 'Dix-Hallpike (Ant/Post canals) & Roll Test (Horiz canal).' },
-                                { stage: 'Treatment', focus: 'Epley (Post Canal), Semont, BBQ Roll (Horiz), Gufoni.' },
-                                { stage: 'Education', focus: 'Avoid potential triggers for 24h (sleeping with head up is outdated but often advised).' }
-                            ]
-                        }
-                    },
-                    {
-                        id: 'uvh',
-                        name: 'Unilateral Vestibular Hypofunction',
-                        acronym: 'UVH',
-                        description: 'Reduced function of one inner ear, often due to infection (Neuritis/Labyrinthitis).',
-                        keyFeatures: [
-                            'Spontaneous nystagmus (acute)',
-                            'Gaze instability (oscillopsia)',
-                            'Postural instability',
-                            'Positive Head Impulse Test'
-                        ],
-                        ptIntervention: 'Gaze stabilization (VOR x1, x2), Habituation exercises (for motion sensitivity), Balance training.',
-                        icon: 'AlertTriangle',
-                        category: 'Peripheral',
-                        details: {
-                            overview: 'Sudden onset of severe vertigo lasting days, followed by chronic imbalance. Neuritis = nerve only. Labyrinthitis = nerve + hearing loss.',
-                            anatomy: [
-                                'Affected: Vestibular Nerve (CN VIII) or Labyrinth.',
-                                'Etiology: Viral infection (Herpes Simplex), Vascular ischemia.'
-                            ],
-                            physiology: [
-                                'Firing Rate asymmetry: Healthy side fires at tonic rate, sick side fires less -> Brain thinks head is spinning toward healthy side.',
-                                'Compensation: Central nervous system adapts to recalibrate VOR.'
-                            ],
-                            stats: [
-                                { label: 'Recovery', value: 'Good with Vestibular Rehab (VRT)' },
-                                { label: 'Timeline', value: 'Acute (days) -> Chronic (weeks)' }
-                            ],
-                            medications: [
-                                { name: 'Steroids', mechanism: 'Anti-inflammatory', effect: 'Acute management (Prednisone).' },
-                                { name: 'Vestibular Suppressants', mechanism: 'Benzos/Antihistamines', effect: 'Use ONLY in acute phase (stops compensation).' }
-                            ],
-                            medicalInterventions: [
-                                'MRI: To rule out stroke or tumor.'
-                            ],
-                            ptManagement: [
-                                { stage: 'Adaptation', focus: 'VOR x1 viewing: Retraining the gain of the reflex.' },
-                                { stage: 'Habituation', focus: 'Desensitization: Repeated exposure to provoking movements.' },
-                                { stage: 'Substitution', focus: 'Sensory integration: Relying on somatosensory/visual cues.' }
-                            ]
-                        }
-                    },
-                    {
-                        id: 'menieres',
-                        name: 'Meniere\'s Disease',
-                        acronym: 'MD',
-                        description: 'Chronic disorder of the inner ear causing episodic vertigo, tinnitus, fullness, and fluctuating hearing loss.',
-                        keyFeatures: [
-                            'Episodic Vertigo (20min - 24hr)',
-                            'Sensorineural Hearing Loss (Low freq)',
-                            'Tinnitus (Roaring)',
-                            'Aural Fullness'
-                        ],
-                        ptIntervention: 'Balance training for inter-episodic instability. VRT is NOT effective for preventing attacks, only for chronic hypofunction.',
-                        icon: 'Activity',
-                        category: 'Peripheral',
-                        details: {
-                            overview: 'Endolymphatic Hydrops: Excess fluid pressure in the inner ear. The "Glaucoma of the ear".',
-                            anatomy: [
-                                'Structure: Cochlear duct and Vestibular organs.',
-                                'Fluid: Endolymph accumulation distends Reissner\'s membrane.'
-                            ],
-                            physiology: [
-                                'Rupture: Membrane rupture mixes K+ rich endolymph with perilymph -> Toxic to hair cells -> Vertigo/Hearing loss.'
-                            ],
-                            stats: [
-                                { label: 'Prevalence', value: '190 per 100,000' },
-                                { label: 'Age', value: '40-60 years' },
-                                { label: 'Nature', value: 'Progressive/Fluctuating' }
-                            ],
-                            medications: [
-                                { name: 'Diuretics', mechanism: 'Reduce fluid', effect: 'HCTZ/Dyazide for maintenance.' },
-                                { name: 'Betahistine', mechanism: 'Vasodilator', effect: 'Improves microcirculation (Europe/Canada).' },
-                                { name: 'Intrathecal Gentamicin', mechanism: 'Ablation', effect: 'Destroys vestibular cells (chemical labyrinthectomy).' }
-                            ],
-                            medicalInterventions: [
-                                'Low Sodium Diet: <2000mg/day.',
-                                'Surgery: Endolymphatic sac decompression.'
-                            ],
-                            ptManagement: [
-                                { stage: 'During Attack', focus: 'Safety: Fall prevention. Rest.' },
-                                { stage: 'Between Attacks', focus: 'Balance: If permanent damage (hypofunction) exists.' },
-                                { stage: 'Education', focus: 'Lifestyle: Sodium, Caffeine, Alcohol, Stress management.' }
-                            ]
-                        }
-                    },
-                    {
-                        id: 'pppd',
-                        name: 'Persistent Postural-Perceptual Dizziness',
-                        acronym: '3PD',
-                        description: 'Functional vestibular disorder characterized by chronic dizziness, unsteadiness, and non-spinning vertigo.',
-                        keyFeatures: [
-                            'Chronic dizziness > 3 months',
-                            'Worse with upright posture',
-                            'Worse with complex visual stimuli (grocery stores)',
-                            'Worse with active motion'
-                        ],
-                        ptIntervention: 'Graded exposure therapy, Desensitization (Optokinetic stimulation), CBT, SSRIs.',
-                        icon: 'Wind',
-                        category: 'Functional',
-                        details: {
-                            overview: 'PPPD is a "software" problem, not "hardware". The brain fails to re-adjust after an acute vestibular event, remaining in "high alert" mode.',
-                            anatomy: [
-                                'Structure: Normal peripheral organs.',
-                                'Network: Hyperactive visual-vestibular cortex integration.'
-                            ],
-                            physiology: [
-                                'Visual Dependence: Over-reliance on vision for balance.',
-                                'Sensory Mismatch: hypersensitivity to self-motion and visual motion.'
-                            ],
-                            stats: [
-                                { label: 'Prevalence', value: 'Most common cause of chronic dizziness' },
-                                { label: 'Trigger', value: 'Vestibular event, Panic attack, TBI' }
-                            ],
-                            medications: [
-                                { name: 'SSRIs/SNRIs', mechanism: 'Antidepressants', effect: 'Reduces central sensory gain/anxiety.' }
-                            ],
-                            medicalInterventions: [
-                                'CBT: Cognitive Behavioral Therapy for anxiety component.'
-                            ],
-                            ptManagement: [
-                                { stage: 'Habituation', focus: 'Optokinetic Stimulation: Watching moving stripes/dots to reduce visual vertigo.' },
-                                { stage: 'Exposure', focus: 'Graded: Slowly re-introducing complex environments (Supermarket).' },
-                                { stage: 'Confidence', focus: 'Movement: Re-establishing trust in balance.' }
-                            ]
-                        }
-                    }
-                ]
-            }
-        ]
-    },
+
     {
         id: 'integumentary',
         title: 'Integumentary System',
@@ -3131,7 +3560,7 @@ export const physiologyTopics = [
                                         name: 'Galeazzi Sign',
                                         purpose: 'Assess for leg length discrepancy (LLD).',
                                         positive: 'One knee lower than other in hook-lying.',
-                                        technique: 'Child supine, knees flexed 90°, feet flat.'
+                                        technique: 'Child supine, knees flexed 90Â°, feet flat.'
                                     }
                                 ]
                             },
@@ -3352,7 +3781,7 @@ export const physiologyTopics = [
                     },
                     {
                         id: 'lcpd',
-                        name: 'Legg-Calvé-Perthes Disease',
+                        name: 'Legg-CalvÃ©-Perthes Disease',
                         acronym: 'LCPD',
                         category: 'Musculoskeletal',
                         icon: 'Bone',
@@ -3774,6 +4203,245 @@ export const physiologyTopics = [
                     'Pain is Real: It is 100% real, but it is constructed by the brain.',
                     'Tissues Heal: Muscles, bones, and ligaments heal in 3-6 months. Pain beyond this is largely a nervous system issue.',
                     'You are Bioplastic: Just as the system learned pain, we can teach it to be pain-free through "Graded Exposure" (proving safety to the brain).'
+                ]
+            }
+        ]
+    },
+    {
+        id: 'vestibular',
+        title: 'Vestibular System',
+        description: 'The sensory system responsible for providing our brain with information about motion, head position, and spatial orientation.',
+        icon: 'RotateCw',
+        subtopics: [
+            {
+                id: 'vestib-epidemiology',
+                title: 'Epidemiology: Dizziness Across the Lifespan',
+                introduction: 'Dizziness presentations vary significantly by age group, from developmental delays in infants to balance-related falls in the geriatric population.',
+                content: [
+                    'Birth to 5 Years: Motor delays, low tone. Causes: Congenital hearing loss, Torticollis, BPV of childhood (migraine precursor).',
+                    '8 to 30 Years: Trauma/Sports-related. Highest incidence in female soccer players.',
+                    '12 to 50 Years: Migraine-associated dizziness. Hormonal regulation (puberty, menstrual cycles). 1 in 4 females, 1 in 6 males affected.',
+                    'Geriatric (65+): #1 complaint in >70s. 50% will experience BPPV by age 70. Falls are leading cause of accidental death.'
+                ],
+                clinicalRelevance: '50% of elderly patients who fracture a hip die within 6 months, highlighting the critical nature of fall prevention.'
+            },
+            {
+                id: 'vestib-anatomy',
+                title: 'Anatomy & Physiology',
+                image: vestibularSystemImg,
+                introduction: 'The vestibular system integrates internal (vestibular), visual (external), and somatosensory (proprioceptive) inputs for equilibrium.',
+                clinicalRelevance: 'Understanding the push-pull mechanism is critical. If the right side is hypofunctional, the brain perceives a "push" from the left, leading to vertigo/nystagmus beating toward the healthy side.',
+                content: [
+                    'Peripheral Anatomy: Semicircular Canals (SCC) detect angular acceleration (rotation). Otoliths (Utricle/Saccule) detect linear acceleration/gravity.',
+                    'Push-Pull Mechanism: Turning head right excites right horizontal canal and inhibits left.',
+                    'Central Reflexes:',
+                    ' - VOR (Vestibulo-Ocular): Stabilizes gaze during head movement.',
+                    ' - VSR (Vestibulo-Spinal): Stabilizes body (posture).',
+                    ' - VCR (Vestibulo-Collic): Stabilizes head (neck muscles).'
+                ]
+            },
+            {
+                id: 'vestib-pathologies',
+                title: 'Pathologies & Disorders',
+                introduction: 'Common vestibular conditions ranging from mechanical displacement of otoconia to central processing deficits.',
+                type: 'pathology-grid',
+                categoryContent: {
+                    'All': {
+                        pathologyInfo: true
+                    }
+                },
+                pathologies: [
+                    {
+                        id: 'bppv',
+                        name: 'Benign Paroxysmal Positional Vertigo',
+                        acronym: 'BPPV',
+                        icon: 'RotateCw',
+                        category: 'Peripheral',
+                        description: 'Mechanical displacement of otoconia (crystals) into the semicircular canals. The #1 cause of vertigo.',
+                        keyFeatures: [
+                            'Brief episodes of vertigo (<1 min) with position changes',
+                            'Nystagmus matches canal involved',
+                            'No hearing loss',
+                            'Fatiguable nystagmus'
+                        ],
+                        ptIntervention: 'Canalith Repositioning Maneuvers (Epley, Semont, BBQ Roll).',
+                        details: {
+                            overview: 'BPPV occurs when otoconia detach from the utricle and migrate into a semicircular canal (usually Posterior).',
+                            anatomy: [
+                                'Posterior Canal (PC): Most common (up-beating torsional nystagmus).',
+                                'Horizontal Canal (HC): Lateral nystagmus (Geotropic = toward ground, Ageotropic = away).',
+                                'Anterior Canal (AC): Rare (down-beating torsional nystagmus).'
+                            ],
+                            specialTests: [
+                                { name: 'Dix-Hallpike', purpose: 'Posterior/Anterior Canal', positive: 'Vertigo + Torsional Nystagmus' },
+                                { name: 'Supine Roll Test', purpose: 'Horizontal Canal', positive: 'Vertigo + Horizontal Nystagmus' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'uvd',
+                        name: 'Unilateral Vestibular Hypofunction',
+                        acronym: 'UVH',
+                        icon: 'Activity',
+                        category: 'Peripheral',
+                        description: 'Reduced firing rate of the vestibular nerve on one side due to infection (neuritis/labyrinthitis) or trauma.',
+                        keyFeatures: [
+                            'Spontaneous nystagmus (acute)',
+                            'Gaze instability (oscillopsia)',
+                            'Postural instability',
+                            'Alexander\'s Law (nystagmus beats to healthy side)'
+                        ],
+                        ptIntervention: 'Adaptation exercises (VOR x1) to reset gain. Habituation for motion sensitivity.'
+                    },
+                    {
+                        id: 'concussion',
+                        name: 'Concussion / mTBI',
+                        acronym: 'mTBI',
+                        icon: 'Zap',
+                        category: 'Central/Mixed',
+                        description: 'Functional disturbance caused by metabolic cascade (energy crisis). Not structural damage.',
+                        keyFeatures: [
+                            'Headache, Dizziness, Fogginess',
+                            'Visual motion sensitivity',
+                            'Convergence insufficiency',
+                            'Exercise intolerance'
+                        ],
+                        ptIntervention: 'Sub-symptom threshold aerobic exercise (Buffalo Treadmill), VOR training, Exertion therapy.',
+                        details: {
+                            overview: 'Concussion results in a metabolic mismatch: Potassium efflux, Calcium influx, and Glucose hypermetabolism followed by depression.',
+                            medicalInterventions: ['Physical & Cognitive Rest (24-48h)', 'Graduated Return to Play (RTP)'],
+                            specialTests: [
+                                { name: 'VOMS', purpose: 'Vestibular/Ocular Motor Screening', positive: 'Symptom increase >2 pts' },
+                                { name: 'Buffalo Treadmill', purpose: 'Exercise Tolerance', positive: 'Symptom exacerbation' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'cervicogenic',
+                        name: 'Cervicogenic Dizziness',
+                        acronym: 'CGD',
+                        icon: 'Bone',
+                        category: 'Cervical',
+                        description: 'Dizziness arising from abnormal afferent input from neck proprioceptors.',
+                        keyFeatures: [
+                            '"Wobbly" head feeling (not spinning)',
+                            'Neck pain / stiffness',
+                            'Dizziness limited by neck movement',
+                            'Diagnosis of exclusion'
+                        ],
+                        ptIntervention: 'Manual therapy to C-spine, deep neck flexor strengthening, proprioceptive training (laser output).'
+                    },
+                    {
+                        id: 'menieres',
+                        name: 'Meniere\'s Disease',
+                        acronym: 'MD',
+                        icon: 'Activity',
+                        category: 'Peripheral',
+                        description: 'Chronic inner ear disorder causing episodic vertigo, tinnitus, and hearing loss.',
+                        keyFeatures: [
+                            'Episodic Vertigo (20min - 24hr)',
+                            'Sensorineural Hearing Loss (Low freq)',
+                            'Tinnitus (Roaring)',
+                            'Aural Fullness'
+                        ],
+                        ptIntervention: 'Balance training for inter-episodic instability. VRT is NOT effective for preventing attacks.',
+                        details: {
+                            overview: 'Endolymphatic Hydrops: Excess fluid pressure in the inner ear. The "Glaucoma of the ear".',
+                            anatomy: [
+                                'Structure: Cochlear duct and Vestibular organs.',
+                                'Fluid: Endolymph accumulation distends Reissner\'s membrane.'
+                            ],
+                            stats: [
+                                { label: 'Prevalence', value: '190 per 100,000' },
+                                { label: 'Age', value: '40-60 years' }
+                            ],
+                            ptManagement: [
+                                { stage: 'During Attack', focus: 'Safety: Fall prevention. Rest.' },
+                                { stage: 'Between Attacks', focus: 'Balance: If permanent damage (hypofunction) exists.' },
+                                { stage: 'Education', focus: 'Lifestyle: Sodium, Caffeine, Alcohol, Stress management.' }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'pppd',
+                        name: 'Persistent Postural-Perceptual Dizziness',
+                        acronym: '3PD',
+                        icon: 'Wind',
+                        category: 'Functional',
+                        description: 'Chronic dizziness (>3mo) worse with upright posture and complex visual stimuli.',
+                        keyFeatures: [
+                            'Chronic dizziness > 3 months',
+                            'Worse with upright posture',
+                            'Worse with complex visual stimuli (grocery stores)',
+                            'Worse with active motion'
+                        ],
+                        ptIntervention: 'Graded exposure therapy, Desensitization (Optokinetic stimulation), CBT, SSRIs.',
+                        details: {
+                            overview: 'PPPD is a "software" problem. The brain fails to re-adjust after an acute vestibular event.',
+                            stats: [
+                                { label: 'Prevalence', value: 'Most common cause of chronic dizziness' },
+                                { label: 'Trigger', value: 'Vestibular event, Panic attack, TBI' }
+                            ],
+                            ptManagement: [
+                                { stage: 'Habituation', focus: 'Optokinetic Stimulation: Watching moving stripes/dots.' },
+                                { stage: 'Exposure', focus: 'Graded: Slowly re-introducing complex environments.' },
+                                { stage: 'Confidence', focus: 'Movement: Re-establishing trust in balance.' }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                id: 'vestib-eval',
+                title: 'Evaluation Strategies',
+                image: null,
+                introduction: 'Differentiation between central and peripheral causes is key.',
+                clinicalRelevance: 'The HINTS exam (Head Impulse, Nystagmus, Test of Skew) is more sensitive than MRI for detecting acute stroke in the first 48 hours.',
+                content: [
+                    'Oculomotor Exam:',
+                    ' - Smooth Pursuit (H-pattern): Dysfunction = Central.',
+                    ' - Saccades (Rapid eye movement): Dysfunction = Central.',
+                    ' - VOMS (Concussion screen): Headache, Dizziness, Nausea, Fogginess.',
+                    'Vestibular Specific:',
+                    ' - Head Impulse Test (HIT): Gold standard for VOR. Corrective saccade = Peripheral lesion side.',
+                    ' - Dynamic Visual Acuity (DVA): Drop of >2 lines on eye chart with head motion = Oscillopsia.',
+                    ' - VBI Screening (5Ds & 3Ns): Rule out vertebrobasilar insufficiency.'
+                ]
+            },
+            {
+                id: 'vestib-rehab',
+                title: 'Rehabilitation Protocols (VRT)',
+                introduction: 'VRT relies on three main neuroplasticity strategies: Adaptation, Habituation, and Substitution.',
+                clinicalRelevance: 'Dosage matters: "If you don\'t get dizzy, you don\'t get better." Patients must be educated that symptom provocation is necessary for adaptation.',
+                content: [
+                    '1. Adaptation: Resets VOR gain via retinal slip (error signal).',
+                    ' - Exercise: Gaze Stabilization (VOR x1). Target stable, head moves.',
+                    ' - Dosing: Acute 3x/day (12min total). Chronic 3-5x/day (20min total).',
+                    '2. Habituation: Reduces response to provocative stimulus via desensitization.',
+                    ' - Exercise: Brandt-Daroff, Motion Sensitivity Quotient (MSQ), Optokinetics.',
+                    '3. Substitution: Strengthens alternative strategies (vision/somatosensory) when vestibular loss is complete.',
+                    ' - Exercise: Balance on foam, eyes closed, tandem stance.'
+                ]
+            },
+            {
+                id: 'concussion-mgmt',
+                title: 'Concussion Management & RTP',
+                introduction: 'Clinical trajectories guide treatment. Return to Play (RTP) is a graduated process.',
+                clinicalRelevance: 'Strict rest is OUT. The "Active Rehab" model encourages sub-symptom threshold exercise after 24-48h to reset the autonomic nervous system.',
+                content: [
+                    'Clinical Trajectories:',
+                    ' - Vestibular: Dizziness -> VRT.',
+                    ' - Ocular: Convergence issues -> Vision Therapy.',
+                    ' - Cervical: Neck pain -> Manual Therapy.',
+                    ' - Cognitive/Fatigue: Slow processing -> Aerobic exercise, breaks.',
+                    ' - Anxiety/Mood: Hypervigilance -> CBT, routine.',
+                    'RTP Protocol:',
+                    ' 1. Symptom-limited activity.',
+                    ' 2. Light Aerobic (<55% HR).',
+                    ' 3. Sport-Specific Drills (No contact).',
+                    ' 4. Non-Contact Training.',
+                    ' 5. Full Contact Practice.',
+                    ' 6. Return to Sport.'
                 ]
             }
         ]

@@ -14,6 +14,8 @@ import NeuromuscularDetail from './NeuromuscularDetail';
 import InteractiveBrain from './InteractiveBrain';
 import MuscleCard from './MuscleCard';
 import MilestoneTimeline from './MilestoneTimeline';
+import VestibularDetail from './VestibularDetail';
+import NeuroscienceDetail from './NeuroscienceDetail';
 
 const PhysiologyDetail = () => {
   const { topicId } = useParams();
@@ -29,6 +31,14 @@ const PhysiologyDetail = () => {
 
   if (topic.id === 'integumentary') {
     return <IntegumentaryDetail topic={topic} />;
+  }
+
+  if (topic.id === 'vestibular') {
+    return <VestibularDetail topic={topic} />;
+  }
+
+  if (topic.id === 'neuroscience') {
+    return <NeuroscienceDetail topic={topic} />;
   }
 
   return (

@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-    return (
-        <div className="home-page container">
-            <div className="hero">
-                <h1>Master Anatomy for Physical Therapy</h1>
-                <p>A minimalist, focused resource for PT students to learn muscle origin, insertion, action, and innervation.</p>
-                <Link to="/anatomy" className="cta-button">Start Learning</Link>
-            </div>
+  return (
+    <div className="home-page container">
+      <div className="hero">
+        <h1>Master Anatomy for Physical Therapy</h1>
+        <p>A minimalist, focused resource for PT students to learn muscle origin, insertion, action, and innervation.</p>
+        <Link to="/a-p" className="cta-button">Start Learning</Link>
+      </div>
 
-            <style>{`
+      <style>{`
         .home-page {
           padding-top: 4rem;
           text-align: center;
@@ -47,8 +47,8 @@ const HomePage = () => {
           box-shadow: var(--shadow-md);
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default HomePage;

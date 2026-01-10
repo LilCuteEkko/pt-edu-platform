@@ -38,7 +38,17 @@ export const joints = [
             'Abduction/Adduction',
             'Internal (Medial) / External (Lateral) Rotation'
         ],
-        clinicalNotes: 'Unstable. Stabilizers: GH Ligaments (Sup, Mid, Inf), Coracohumeral Lig, Coracoacromial Arch (prevents sup displacement). Bursa: Subacromial (impingement), Subscapular. SLAP Lesions (Labrum). Transverse Humeral Ligament bridges bicipital groove.'
+        clinicalNotes: 'Unstable. Stabilizers: GH Ligaments (Sup, Mid, Inf), Coracohumeral Lig, Coracoacromial Arch (prevents sup displacement). Bursa: Subacromial (impingement), Subscapular. SLAP Lesions (Labrum). Transverse Humeral Ligament bridges bicipital groove.',
+        mobilization: {
+            rule: 'Convex Humeral Head on Concave Glenoid',
+            openPack: '35-40° Abduction in scapular plane',
+            glides: [
+                { direction: 'Distraction', effect: 'Pain modulation' },
+                { direction: 'Caudal Glide', effect: 'Increase Abduction' },
+                { direction: 'Posterior Glide', effect: 'Increase Flexion and IR' },
+                { direction: 'Anterior Glide', effect: 'Increase Extension and ER' }
+            ]
+        }
     },
     {
         id: 'st-joint',
@@ -51,7 +61,14 @@ export const joints = [
             'Protraction/Retraction (Reaching)',
             'Upward/Downward Rotation'
         ],
-        clinicalNotes: 'Scapulohumeral Rhythm: 2:1 ratio (2° GH : 1° ST). Needs ~60° upward rotation for full elevation.'
+        clinicalNotes: 'Scapulohumeral Rhythm: 2:1 ratio (2° GH : 1° ST). Needs ~60° upward rotation for full elevation.',
+        mobilization: {
+            rule: 'Functional articulation',
+            openPack: 'Resting position',
+            glides: [
+                { direction: 'General Mobilization', effect: 'Elevation, Depression, Protraction, Retraction, Rotation' }
+            ]
+        }
     },
     // 5. Head (TMJ & Skull)
     {
@@ -66,7 +83,15 @@ export const joints = [
             'Lateral Deviation',
             'Rotation (Inferior cavity) / Translation (Superior cavity)'
         ],
-        clinicalNotes: 'Discs can become displaced (Clicking/Locking). Anterior Disc Displacement with Reduction = Click. Without Reduction = Lock (limit opening) "Closed Lock". Open Lock (dislocation) = condyle stuck anterior to tubercle.'
+        clinicalNotes: 'Discs can become displaced (Clicking/Locking). Anterior Disc Displacement with Reduction = Click. Without Reduction = Lock (limit opening) "Closed Lock". Open Lock (dislocation) = condyle stuck anterior to tubercle.',
+        mobilization: {
+            rule: 'Biconvex (Eminence) / Biconcave (Disc) / Convex (Condyle)',
+            openPack: 'Mouth slightly open',
+            glides: [
+                { direction: 'Distraction (Caudal)', effect: 'Pain relief, mobility' },
+                { direction: 'Distraction w/ Anterior Glide', effect: 'Improve opening/translation' }
+            ]
+        }
     },
     {
         id: 'cranial-sutures',
@@ -106,7 +131,15 @@ export const joints = [
             'Thoracic: Frontal (Rotation/SB)',
             'Lumbar: Sagittal (Flex/Ext)'
         ],
-        clinicalNotes: 'Weight bearing in Cervical/Lumbar. Spondylosis (OA). Stenosis of IV foramen from osteophytes. Meniscoids can get entrapped.'
+        clinicalNotes: 'Weight bearing in Cervical/Lumbar. Spondylosis (OA). Stenosis of IV foramen from osteophytes. Meniscoids can get entrapped.',
+        mobilization: {
+            rule: 'Planar joints',
+            openPack: 'Mid-range',
+            glides: [
+                { direction: 'Central PA', effect: 'Extension (on SP below) / Flexion (on SP above)', notes: 'Cervical/Thoracic/Lumbar' },
+                { direction: 'Unilateral PA', effect: 'Rotation / Lateral Flexion' }
+            ]
+        }
     },
     {
         id: 'uncovertebral-joints',
@@ -183,7 +216,131 @@ export const joints = [
         ],
         clinicalNotes: 'Supported by Iliolumbar ligament (L5 TP to Ilium). L5-S1 is most common site of spondylolisthesis.'
     },
-    // 7. Lower Limb (Joints)
+
+    // 7. Upper Limb (Elbow/Wrist/Hand)
+    {
+        id: 'humeroulnar-joint',
+        name: 'Humeroulnar Joint',
+        category: 'Upper Limb',
+        type: 'Hinge (Synovial)',
+        articulation: 'Concave trochlear notch of Ulna + Convex Trochlea of Humerus.',
+        movements: ['Flexion/Extension'],
+        clinicalNotes: 'Primary stabilizer of the elbow.',
+        mobilization: {
+            rule: 'Concave Ulna on Convex Humerus',
+            openPack: '70° Flexion / 10° Supination',
+            glides: [
+                { direction: 'Scoop (Distraction)', effect: 'Increase Flexion / Extension' },
+                { direction: 'Distal Glide', effect: 'Increase Flexion' }
+            ]
+        }
+    },
+    {
+        id: 'humeroradial-joint',
+        name: 'Humeroradial Joint',
+        category: 'Upper Limb',
+        type: 'Gliding / Hinge',
+        articulation: 'Concave Head of Radius + Convex Capitulum of Humerus.',
+        movements: ['Flexion/Extension', 'Rotation (Supination/Pronation)'],
+        clinicalNotes: 'Load transmission.',
+        mobilization: {
+            rule: 'Concave Radius on Convex Humerus',
+            openPack: 'Full Extension / Supination',
+            glides: [
+                { direction: 'Dorsal Glide', effect: 'Increase Extension', notes: 'Posterior glide' },
+                { direction: 'Volar Glide', effect: 'Increase Flexion', notes: 'Anterior glide' }
+            ]
+        }
+    },
+    {
+        id: 'prox-radioulnar-joint',
+        name: 'Proximal Radioulnar Joint',
+        category: 'Upper Limb',
+        type: 'Pivot (Synovial)',
+        articulation: 'Convex Head of Radius + Concave Radial Notch of Ulna.',
+        movements: ['Supination/Pronation'],
+        clinicalNotes: 'Works with distal radioulnar joint.',
+        mobilization: {
+            rule: 'Convex Radius on Concave Ulna',
+            openPack: '70° Flexion / 35° Supination',
+            glides: [
+                { direction: 'Dorsal Glide', effect: 'Increase Pronation', notes: 'Posterior glide' },
+                { direction: 'Volar Glide', effect: 'Increase Supination', notes: 'Anterior glide' }
+            ]
+        }
+    },
+    {
+        id: 'distal-radioulnar-joint',
+        name: 'Distal Radioulnar Joint',
+        category: 'Upper Limb',
+        type: 'Pivot (Synovial)',
+        articulation: 'Concave Ulnar Notch of Radius + Convex Head of Ulna.',
+        movements: ['Supination/Pronation'],
+        clinicalNotes: 'Essential for forearm rotation.',
+        mobilization: {
+            rule: 'Concave Radius on Convex Ulna',
+            openPack: '10° Supination',
+            glides: [
+                { direction: 'Dorsal Glide (Radius)', effect: 'Increase Supination' },
+                { direction: 'Volar Glide (Radius)', effect: 'Increase Pronation' }
+            ]
+        }
+    },
+    {
+        id: 'radiocarpal-joint',
+        name: 'Radiocarpal Joint (Wrist)',
+        category: 'Upper Limb',
+        type: 'Condyloid (Synovial)',
+        articulation: 'Concave Radius/TFCC + Convex Scaphoid/Lunate/Triquetrum.',
+        movements: ['Flexion/Extension', 'Radial/Ulnar Deviation'],
+        clinicalNotes: 'Most flexion occurs at midcarpal joint, movement shared.',
+        mobilization: {
+            rule: 'Convex Carpals on Concave Radius',
+            openPack: 'Neutral / Slight Ulnar Deviation',
+            glides: [
+                { direction: 'Distraction', effect: 'Pain modulation' },
+                { direction: 'Dorsal Glide', effect: 'Increase Flexion' },
+                { direction: 'Volar Glide', effect: 'Increase Extension' }
+            ]
+        }
+    },
+    {
+        id: 'cmc-thumb',
+        name: 'CMC Joint (Thumb)',
+        category: 'Upper Limb',
+        type: 'Saddle (Synovial)',
+        articulation: 'Trapezium + 1st Metacarpal.',
+        movements: ['Flex/Ext', 'Abd/Add', 'Opposition'],
+        clinicalNotes: 'Common site of OA.',
+        mobilization: {
+            rule: 'Saddle: Flex/Ext (Concave on Convex), Abd/Add (Convex on Concave)',
+            openPack: 'Neutral',
+            glides: [
+                { direction: 'Ulnar Glide', effect: 'Increase Flexion' },
+                { direction: 'Radial Glide', effect: 'Increase Extension' },
+                { direction: 'Dorsal Glide', effect: 'Increase Abduction' },
+                { direction: 'Volar Glide', effect: 'Increase Adduction' }
+            ]
+        }
+    },
+    {
+        id: 'mcp-ip-hand',
+        name: 'MCP & IP Joints (Hand)',
+        category: 'Upper Limb',
+        type: 'Condyloid / Hinge',
+        articulation: 'Concave Distal Base + Convex Proximal Head.',
+        movements: ['Flexion/Extension', 'Abd/Add (MCP)'],
+        clinicalNotes: 'Stiffness common post-immobilization.',
+        mobilization: {
+            rule: 'Concave Phalanx on Convex Head',
+            openPack: 'Resting (Slight Flexion)',
+            glides: [
+                { direction: 'Volar Glide', effect: 'Increase Flexion' },
+                { direction: 'Dorsal Glide', effect: 'Increase Extension' }
+            ]
+        }
+    },
+    // 8. Lower Limb (Joints)
     {
         id: 'hip-joint',
         name: 'Hip Joint (Coxafemoral)',
@@ -196,7 +353,18 @@ export const joints = [
             'Internal (Medial) / External (Lateral) Rotation',
             'Circumduction'
         ],
-        clinicalNotes: 'Very stable due to bony congruence and strong ligaments (Iliofemoral, Pubofemoral, Ischiofemoral). Foveal artery supplies head in children; Retinacular arteries (Med Circumflex) in adults (AVN risk).'
+        clinicalNotes: 'Very stable due to bony congruence and strong ligaments (Iliofemoral, Pubofemoral, Ischiofemoral). Foveal artery supplies head in children; Retinacular arteries (Med Circumflex) in adults (AVN risk).',
+        mobilization: {
+            rule: 'Convex femoral head on Concave acetabulum',
+            openPack: '30° Flex / 30° Abd / Slight ER',
+            glides: [
+                { direction: 'Long-axis Distraction', effect: 'Pain relief, mobility' },
+                { direction: 'Lateral Glide', effect: 'General mobility (distraction)' },
+                { direction: 'Posterior Glide', effect: 'Increase Flex and IR (at 90°)' },
+                { direction: 'Anterior Glide', effect: 'Increase Ext and ER' },
+                { direction: 'Inferior Glide', effect: 'Increase Abd and IR (at 90°)' }
+            ]
+        }
     },
     {
         id: 'knee-joint',
@@ -208,7 +376,17 @@ export const joints = [
             'Flexion/Extension',
             'Medial/Lateral Rotation (when flexed)'
         ],
-        clinicalNotes: 'Screw Home Mechanism: Tibia ER on Femur (open chain) to lock in extension. Unlocked by Popliteus. Q-Angle (Lines from ASIS->Patella->Tibial Tuberosity).'
+        clinicalNotes: 'Screw Home Mechanism: Tibia ER on Femur (open chain) to lock in extension. Unlocked by Popliteus. Q-Angle (Lines from ASIS->Patella->Tibial Tuberosity).',
+        mobilization: {
+            rule: 'OKC: Concave tibial plateau on Convex femoral condyle. (Patella: Convex on Concave)',
+            openPack: '25° flexion',
+            glides: [
+                { direction: 'Post Tibial Glide', effect: 'Increase Flexion', notes: 'Posterior roll/glide' },
+                { direction: 'Ant Tibial Glide', effect: 'Increase Extension', notes: 'Anterior roll/glide' },
+                { direction: 'Post Femoral Glide', effect: 'Increase Extension', notes: 'Ant roll/post glide (CKC)' },
+                { direction: 'Patella Sup/Inf', effect: 'Promote Knee Ext/Flex' }
+            ]
+        }
     },
     {
         id: 'proximal-tibiofibular-joint',
@@ -219,7 +397,15 @@ export const joints = [
         movements: [
             'Slight gliding during ankle movement.'
         ],
-        clinicalNotes: 'Not part of the knee joint proper. Strengthened by Ant/Post Tibiofibular ligaments.'
+        clinicalNotes: 'Not part of the knee joint proper. Strengthened by Ant/Post Tibiofibular ligaments.',
+        mobilization: {
+            rule: 'Concave fibular facet on Convex tibial facet',
+            openPack: '10° PF',
+            glides: [
+                { direction: 'Anterior Glide', effect: 'Increase Plantarflexion', notes: 'Fibuls moves inf/ant' },
+                { direction: 'Posterior Glide', effect: 'Increase Dorsiflexion', notes: 'Fibula moves sup/post' }
+            ]
+        }
     },
     {
         id: 'distal-tibiofibular-joint',
@@ -230,7 +416,15 @@ export const joints = [
         movements: [
             'Slight movement to accommodate Talus during dorsiflexion ("Mortise" spreading).'
         ],
-        clinicalNotes: 'Essential for stability. High ankle sprain ("Syndesmotic Sprain") involves damage here.'
+        clinicalNotes: 'Essential for stability. High ankle sprain ("Syndesmotic Sprain") involves damage here.',
+        mobilization: {
+            rule: 'Convex fibula on Concave tibia',
+            openPack: '10° PF',
+            glides: [
+                { direction: 'Anterior Glide', effect: 'Increase Dorsiflexion', notes: 'Fibula moves sup/ant' },
+                { direction: 'Posterior Glide', effect: 'Increase Plantarflexion', notes: 'Fibula moves inf/post' }
+            ]
+        }
     },
     {
         id: 'ankle-joint',
@@ -242,7 +436,16 @@ export const joints = [
             'Dorsiflexion',
             'Plantarflexion'
         ],
-        clinicalNotes: 'Stable in Dorsiflexion (widest part of Talus in Mortise). "High Ankle Sprain" involves Syndesmosis.'
+        clinicalNotes: 'Stable in Dorsiflexion (widest part of Talus in Mortise). "High Ankle Sprain" involves Syndesmosis.',
+        mobilization: {
+            rule: 'OKC: Convex talus on Concave Mortise',
+            openPack: '10° PF',
+            glides: [
+                { direction: 'Distraction', effect: 'Pain modulation' },
+                { direction: 'Posterior Glide', effect: 'Increase Dorsiflexion', notes: 'Ant roll/Post glide' },
+                { direction: 'Anterior Glide', effect: 'Increase Plantarflexion', notes: 'Post roll/Ant glide' }
+            ]
+        }
     },
     {
         id: 'subtalar-joint',
@@ -253,7 +456,15 @@ export const joints = [
         movements: [
             'Inversion/Eversion (Supination/Pronation components).'
         ],
-        clinicalNotes: 'Anatomic Subtalar = Talocalcaneal. Surgical Subtalar = Talocalcaneal + Talocalcaneonavicular.'
+        clinicalNotes: 'Anatomic Subtalar = Talocalcaneal. Surgical Subtalar = Talocalcaneal + Talocalcaneonavicular.',
+        mobilization: {
+            rule: 'OKC: Convex calcaneus on Concave talus',
+            openPack: 'Inversion / Plantarflexion',
+            glides: [
+                { direction: 'Medial Glide', effect: 'Increase Eversion', notes: 'Lat roll/Med glide' },
+                { direction: 'Lateral Glide', effect: 'Increase Inversion', notes: 'Med roll/Lat glide' }
+            ]
+        }
     },
     {
         id: 'talocalcaneonavicular-joint',
@@ -310,7 +521,15 @@ export const joints = [
             'Abduction/Adduction',
             'Circumduction'
         ],
-        clinicalNotes: 'Gout (1st MTP). Turf Toe (Hyperextension 1st MTP). Bunions (Hallux Valgus).'
+        clinicalNotes: 'Gout (1st MTP). Turf Toe (Hyperextension 1st MTP). Bunions (Hallux Valgus).',
+        mobilization: {
+            rule: 'OKC: Concave proximal phalanx on Convex metatarsal head',
+            openPack: 'Resting / Neutral',
+            glides: [
+                { direction: 'Plantar Glide', effect: 'Increase Flexion', notes: 'Plantar roll/glide' },
+                { direction: 'Dorsal Glide', effect: 'Increase Extension', notes: 'Dorsal roll/glide' }
+            ]
+        }
     },
     {
         id: 'interphalangeal-joints-foot',
