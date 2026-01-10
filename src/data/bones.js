@@ -683,5 +683,58 @@ export const bones = [
             'Cricothyroid Joint (Synovial).'
         ],
         clinicalNotes: 'Cricothyrotomy site (Cricothyroid membrane). Tracheostomy usually inferior.'
+    },
+    // Thoracic Cage
+    {
+        id: 'sternum',
+        name: 'Sternum',
+        category: 'Thoracic Cage',
+        description: 'Breastbone. Anterior anchor of thoracic cage.',
+        landmarks: [
+            'Manubrium: Superior part. Suprasternal/Jugular Notch.',
+            'Sternal Angle (Angle of Louis): Manubrium/Body junction (T4 level). Rib 2 attachment.',
+            'Body: Long middle part. Articulates with Ribs 2-7.',
+            'Xiphoid Process: Inferior tip (T10 level). Cartilaginous until 40s.'
+        ],
+        articulations: [
+            'Clavicle (SC Joint)',
+            'Ribs 1-7 (Coastal Cartilages)'
+        ],
+        clinicalNotes: 'Sternal Angle is key landmark for finding 2nd rib and counting ribs. CPR compressions overlap body.'
+    },
+    {
+        id: 'typical-ribs',
+        name: 'Typical Ribs (3-9)',
+        category: 'Thoracic Cage',
+        description: 'Curved flat bones forming lateral walls.',
+        landmarks: [
+            'Head: 2 Facets (articulate with sup/inf vertebrae).',
+            'Neck: Between head and tubercle.',
+            'Tubercle: Articulates with TP of same number vertebrae.',
+            'Shaft (Body): Thin, flat, curved.',
+            'Costal Groove: Inferior internal border (protects Intercostal N/A/V).'
+        ],
+        articulations: [
+            'Vertebral Bodies (Costovertebral)',
+            'Transverse Processes (Costotransverse)',
+            'Sternum (Costochondral/Sternocostal)'
+        ],
+        clinicalNotes: 'Fractures can puncture lungs (Pneumothorax). Neurovascular bundle lies in Costal Groove (inferior).'
+    },
+    {
+        id: 'atypical-ribs',
+        name: 'Atypical Ribs (1, 2, 10-12)',
+        category: 'Thoracic Cage',
+        description: 'Ribs with unique features.',
+        landmarks: [
+            'Rib 1: Shortest/Broadest. 1 Facet on head. Scalene Tubercle (Ant Scalene). Grooves for Subclavian A/V.',
+            'Rib 2: Tuberosity for Serratus Anterior. 2 Facets.',
+            'Rib 10: 1 Facet on head.',
+            'Rib 11-12: Floating. 1 Facet. No Neck/Tubercle.'
+        ],
+        articulations: [
+            'T1 (Rib 1), T2 (Rib 2), T10-12 (Ribs 10-12).'
+        ],
+        clinicalNotes: 'Rib 1 fracture indicates severe trauma (hard to break).'
     }
 ];

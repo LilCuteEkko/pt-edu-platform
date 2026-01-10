@@ -35,16 +35,22 @@ import oiImg from '../assets/pediatrics/oi_schematic.png';
 import amcImg from '../assets/pediatrics/amc_schematic.png';
 
 // Special Tests Assets
-import barlowImg from '../assets/pediatrics/barlow_test.png';
-import ortolaniImg from '../assets/pediatrics/ortolani_test.png';
-import galeazziImg from '../assets/pediatrics/galeazzi_sign.png';
-import adamsTestImg from '../assets/pediatrics/adams_test.png';
-import thomasTestImg from '../assets/pediatrics/thomas_test.png';
-import thaTestImg from '../assets/pediatrics/thigh_foot_angle.png';
+// import barlowImg from '../assets/pediatrics/barlow_test.png';
+// import ortolaniImg from '../assets/pediatrics/ortolani_test.png';
+// import galeazziImg from '../assets/pediatrics/galeazzi_sign.png';
+// import adamsTestImg from '../assets/pediatrics/adams_test.png';
+// import thomasTestImg from '../assets/pediatrics/thomas_test.png';
+// import thaTestImg from '../assets/pediatrics/thigh_foot_angle.png';
 
 import arterialUlcerImg from '../assets/wound-care/arterial_ulcer_icon_1767664793931.png';
 import venousUlcerImg from '../assets/wound-care/venous_ulcer_icon_1767664807273.png';
 import pressureStagingImg from '../assets/wound-care/pressure_injury_staging_1767664821212.png';
+
+import cnsPnsImg from '../assets/neuromuscular/cns_vs_pns_schematic_1767883840326.png';
+import nmjImg from '../assets/neuromuscular/neuromuscular_junction_schematic_1767883854924.png';
+import brainLobesImg from '../assets/neuromuscular/brain_lobes_schematic_1767883867066.png';
+import circleWillisImg from '../assets/neuromuscular/circle_of_willis_schematic_1767883883015.png';
+
 
 const shoulderContent = {
     pathologyInfo: true,
@@ -253,9 +259,19 @@ export const physiologyTopics = [
         icon: 'Brain',
         subtopics: [
             {
+                id: 'ns-org',
+                title: 'Organization of Nervous System',
+                image: cnsPnsImg,
+                introduction: 'The Human Nervous System is divided into the Central Nervous System (CNS) and the Peripheral Nervous System (PNS).',
+                content: [
+                    'Central Nervous System (CNS): Consists of the Brain (Cerebrum, Brainstem, Cerebellum) and Spinal Cord.',
+                    'Peripheral Nervous System (PNS): Consists of Cranial Nerves and Spinal Nerves connecting the CNS to the limbs and organs.'
+                ]
+            },
+            {
                 id: 'action-potential',
                 title: 'Action Potential (Neural)',
-                introduction: 'An action potential is a rapid sequence of changes in the voltage across a membrane. The membrane voltage, or potential, is determined at any time by the relative ratio of ions, extracellular to intracellular, and the permeability of each ion.',
+                introduction: 'An action potential is a rapid sequence of changes in the voltage across a membrane.',
                 content: [
                     'Resting State: Membrane potential is ~-70mV. Na+ channels are closed.',
                     'Depolarization: Stimulus opens Na+ channels. Na+ rushes IN (influx). Potential rises to +30mV.',
@@ -269,7 +285,8 @@ export const physiologyTopics = [
             {
                 id: 'nmj',
                 title: 'Neuromuscular Junction (NMJ)',
-                introduction: 'The synapse between a motor neuron and a muscle fiber. This is where the electrical signal is converted into a chemical signal to trigger contraction.',
+                image: nmjImg,
+                introduction: 'The synapse between a motor neuron and a muscle fiber where the electrical signal is converted into a chemical signal.',
                 content: [
                     'AP arrives at the axon terminal of the motor neuron.',
                     'Voltage-gated Calcium channels open; Ca2+ moves into the terminal.',
@@ -278,100 +295,124 @@ export const physiologyTopics = [
                     'Na+ channels on the muscle open, causing depolarization (End Plate Potential).',
                     'ACh is broken down by Acetylcholinesterase (AChE) to stop the signal.'
                 ],
-                clinicalRelevance: 'Drugs like Curare block Nicotinic receptors, preventing contraction (paralysis). Botox prevents ACh release.',
-                pathologyConnection: 'Myasthenia Gravis: Autoimmune antibodies attack ACh receptors at the NMJ, causing progressive weakness.'
+                clinicalRelevance: 'Drugs like Curare block Nicotinic receptors (paralysis). Botox prevents ACh release.',
+                pathologyConnection: 'Myasthenia Gravis: Autoimmune antibodies attack ACh receptors at the NMJ.'
             },
             {
                 id: 'brain-anatomy',
                 title: 'Interactive Brain Anatomy',
-                introduction: 'Explore the major regions of the brain. Click on a lobe to learn about its function and relevance to physical therapy.',
+                introduction: 'Explore the major regions of the brain. Click on a lobe to learn about its function.',
                 type: 'interactive-brain',
-                content: [], // Handled by interactive component
+                content: [],
                 lobes: [
                     {
                         id: 'frontal',
                         name: 'Frontal Lobe',
-                        functions: 'Voluntary movement (Primary Motor Cortex), Executive function, Personality, Broca\'s Area (Motor Speech), Planning & Sequencing.',
-                        damage: 'Middle Cerebral Artery (MCA) strokes often affect the lateral aspect (Face/Arm), while Anterior Cerebral Artery (ACA) strokes affect the medial aspect (Leg). Results in contralateral hemiparesis, expressive aphasia (Broca\'s), and emotional lability.',
+                        functions: 'Voluntary movement (Primary Motor Cortex), Executive function, Personality, Broca\'s Area.',
+                        damage: 'Contralateral hemiparesis, expressive aphasia, emotional lability.',
                         subRegions: [
-                            { name: 'Prefrontal Cortex', func: 'Personality, Decision making, Impulse control' },
-                            { name: 'Primary Motor Cortex', func: 'Execution of contralateral movement' },
-                            { name: 'Broca\'s Area', func: 'Motor production of speech (Left Hemisphere)' },
-                            { name: 'Premotor Cortex', func: 'Motor planning and trunk stability' }
+                            { name: 'Prefrontal Cortex', func: 'Decision making, Impulse control' },
+                            { name: 'Primary Motor Cortex', func: 'Execution of movement' },
+                            { name: 'Broca\'s Area', func: 'Motor speech (Left Hemisphere)' }
                         ],
-                        vascularSupply: 'ACA (Medial Surface), MCA (Lateral Surface)',
-                        rehabFocus: 'Task-specific training, Dual-tasking (Cognitive-Motor), Constraint-Induced Movement Therapy (CIMT), Speech therapy collaboration.'
+                        vascularSupply: 'ACA (Medial), MCA (Lateral)'
                     },
                     {
                         id: 'parietal',
                         name: 'Parietal Lobe',
-                        functions: 'Sensation (Primary Somatosensory Cortex), Spatial awareness, Proprioception, Integration of sensory inputs.',
-                        damage: 'Lesions lead to contralateral sensory loss. Right-sided lesions often cause Hemineglect (ignoring left side of space/body). Left-sided lesions may cause Agraphia, Acalculia, or Apraxia.',
+                        functions: 'Sensation, Spatial awareness, Proprioception.',
+                        damage: 'Contralateral sensory loss, Hemineglect (Right lesion), Agraphia/Acalculia (Left lesion).',
                         subRegions: [
-                            { name: 'Primary Somatosensory Cortex', func: 'Processing touch, pain, temp, proprioception' },
-                            { name: 'Posterior Parietal Cortex', func: 'Spatial awareness and body schema' },
-                            { name: 'Wernicke\'s Area (Part)', func: 'Language comprehension (Superior region)' }
+                            { name: 'Primary Somatosensory Cortex', func: 'Touch, pain, temp processing' },
+                            { name: 'Posterior Parietal Cortex', func: 'Spatial awareness' }
                         ],
-                        vascularSupply: 'ACA (Medial), MCA (Lateral)',
-                        rehabFocus: 'Sensory re-education, Visual scanning strategies (Lighthouse technique), Mirror therapy, Bilateral integration.'
+                        vascularSupply: 'ACA (Medial), MCA (Lateral)'
                     },
                     {
                         id: 'temporal',
                         name: 'Temporal Lobe',
-                        functions: 'Hearing (Auditory Cortex), Memory (Hippocampus), Wernicke\'s Area (Language Comprehension), Emotion (Amygdala).',
-                        damage: 'Wernicke\'s Aphasia: Fluent but meaningless speech. Memory deficits (anterograde amnesia) if Hippocampus involved. Auditory processing issues.',
+                        functions: 'Hearing, Memory (Hippocampus), Wernicke\'s Area (Language), Emotion (Amygdala).',
+                        damage: 'Wernicke\'s Aphasia, Anterograde amnesia.',
                         subRegions: [
-                            { name: 'Hippocampus', func: 'Formation of new long-term memories' },
-                            { name: 'Amygdala', func: 'Emotional processing (Fear/Aggression)' },
-                            { name: 'Primary Auditory Cortex', func: 'Processing sound' },
+                            { name: 'Hippocampus', func: 'Memory formation' },
+                            { name: 'Amygdala', func: 'Emotional processing' },
+                            { name: 'Primary Auditory Cortex', func: 'Sound processing' },
                             { name: 'Wernicke\'s Area', func: 'Language comprehension' }
                         ],
-                        vascularSupply: 'MCA (Lateral surface), PCA (Inferior/Medial surface)',
-                        rehabFocus: 'Communication strategies (simplify commands), Memory aids (journals/apps), Errorless learning techniques.'
+                        vascularSupply: 'MCA, PCA'
                     },
                     {
                         id: 'occipital',
                         name: 'Occipital Lobe',
-                        functions: 'Visual processing (Primary Visual Cortex).',
-                        damage: 'Cortical blindness (Anton\'s Syndrome) or visual field cuts such as Contralateral Homonymous Hemianopsia. Can affect balance due to reliance on vision.',
+                        functions: 'Visual processing.',
+                        damage: 'Cortical blindness, Visual field cuts.',
                         subRegions: [
-                            { name: 'Primary Visual Cortex (V1)', func: 'Basic visual processing' },
-                            { name: 'Visual Association Areas', func: 'Interpretation of visual info (Color, Motion)' }
+                            { name: 'Primary Visual Cortex', func: 'Basic visual processing' }
                         ],
-                        vascularSupply: 'Posterior Cerebral Artery (PCA)',
-                        rehabFocus: 'Visual scanning, environmental adaptations (lighting/contrast), fall prevention strategies.'
+                        vascularSupply: 'PCA'
                     },
                     {
                         id: 'cerebellum',
                         name: 'Cerebellum',
-                        functions: 'Coordination (Ataxia), Balance, Motor Learning, Fine motor control, Eye movement control.',
-                        damage: 'Damage causes Ipsilateral Ataxia, Dysmetria (overshooting), Dysdiadochokinesia (impaired rapid alternating movements), and Intention Tremors.',
+                        functions: 'Coordination, Balance, Motor Learning.',
+                        damage: 'Ataxia, Dysmetria, Intention Tremors.',
                         subRegions: [
-                            { name: 'Vermis', func: 'Trunk stability and gait' },
-                            { name: 'Hemispheres', func: 'Limb coordination' },
-                            { name: 'Flocculonodular Lobe', func: 'Vestibular interaction (Balance/Eye movements)' }
+                            { name: 'Vermis', func: 'Trunk stability' },
+                            { name: 'Hemispheres', func: 'Limb coordination' }
                         ],
-                        vascularSupply: 'SCA, AICA, PICA (Vertebrobasilar system)',
-                        rehabFocus: 'Frenkel exercises, Weighted vests (for tremors), Proximal stability training, Balance/Vestibular therapy.'
+                        vascularSupply: 'SCA, AICA, PICA'
                     },
                     {
                         id: 'brainstem',
                         name: 'Brainstem',
-                        functions: 'Vital functions (Heart rate, Breathing), Alertness (Reticular Activating System), Cranial Nerve nuclei integration.',
-                        damage: 'Strokes here are critical. Can cause "Locked-In Syndrome" (quadriplegia with preserved consciousness/eye movement). Dysphagia and Dysarthria are common.',
+                        functions: 'Vital functions, Alertness, Cranial Nerve integration.',
+                        damage: 'Locked-In Syndrome, Dysphagia, Coma.',
                         subRegions: [
-                            { name: 'Midbrain', func: 'Eye movement, Auditory/Visual reflexes' },
-                            { name: 'Pons', func: 'Breathing control, Relay to Cerebellum' },
-                            { name: 'Medulla', func: 'HR/BP regulation, Decussation of Pyramids' }
+                            { name: 'Midbrain', func: 'Eye movement, Reflexes' },
+                            { name: 'Pons', func: 'Breathing, Relay' },
+                            { name: 'Medulla', func: 'HR/BP regulation' }
                         ],
-                        vascularSupply: 'Basilar Artery, Vertebral Arteries',
-                        rehabFocus: 'Upright tolerance (tilt table), Respiratory training, Contracture prevention, Sensory stimulation (coma stim).'
+                        vascularSupply: 'Basilar, Vertebral'
                     }
+                ]
+            },
+            {
+                id: 'brain-structures-detail',
+                title: 'Detailed Brain Structures',
+                image: brainLobesImg,
+                introduction: 'A deeper look into the anatomical Divisions and Functional Areas of the Cerebrum.',
+                content: [
+                    'Telencephalon: The two Cerebral Hemispheres.',
+                    'Cerebral Cortex: Gray matter arranged in columns (~75% of cortex is Associative).',
+                    'White Matter: Circuitry connecting regions (Fasciculi, Commissures, Projection Fibers).',
+                    'Basal Ganglia: Deep gray matter involved in motor control loop.'
+                ],
+                clinicalRelevance: 'Understanding the distinction between Gray Matter (processing) and White Matter (transmission) is key for localized vs. disconnect syndromes.'
+            },
+            {
+                id: 'deep-structures',
+                title: 'Basal Ganglia & Diencephalon',
+                content: [
+                    'Basal Ganglia: Striatum (Caudate + Putamen), Globus Pallidus, Substantia Nigra. Functions: Motor refinement, "Brake hypothesis".',
+                    'Thalamus: "Gateway to the Cortex". Relays all sensory info (except smell).',
+                    'Hypothalamus: Homeostasis (ANS, Endocrine, Limbic/Emotion regulation).',
+                    'Limbic System: Hippocampus (Declarative Memory), Amygdala (Fear/Emotion).'
+                ]
+            },
+            {
+                id: 'brainstem-detailed',
+                title: 'Brainstem Anatomy',
+                content: [
+                    'Midbrain: Tectum, Tegmentum, Cerebral Peduncles.',
+                    'Pons: Middle cerebellar peduncles, Pneumotaxic center.',
+                    'Medulla: Pyramidal decussation (CST crossing), Cardiorespiratory centers.',
+                    'Reticular Formulation: Arousal and Consciousness. Damage = Coma.'
                 ]
             },
             {
                 id: 'stroke-syndromes',
                 title: 'Stroke (CVA) Syndromes',
+                image: circleWillisImg,
                 introduction: 'A stroke occurs when blood flow to an area of the brain is cut off. The specific deficits depend on which artery is affected.',
                 type: 'pathology-grid',
                 clinicalRelevance: 'Recognizing these patterns allows for rapid localization of the lesion and tailored rehabilitation strategies.',
@@ -3497,5 +3538,245 @@ export const physiologyTopics = [
             }
         ]
     },
-
+    {
+        id: 'abdominal-gi',
+        title: 'Abdominal & Visceral Anatomy',
+        description: 'Detailed anatomy of the abdomen, including surface landmarks, wall muscles, peritoneum, and visceral organs.',
+        icon: 'Activity',
+        subtopics: [
+            {
+                id: 'surface-anatomy',
+                title: 'Surface Anatomy: Quadrants & Regions',
+                introduction: 'The abdomen is divided into quadrants and regions for clinical localization.',
+                content: [
+                    'Quadrants (Divided by Transumbilical & Median planes):',
+                    '- RUQ: Liver (Rt lobe), Gallbladder, Pylorus, Duodenum, Head of Pancreas, Rt Kidney, Hepatic Flexure.',
+                    '- LUQ: Stomach, Spleen, Liver (Lt lobe), Body/Tail Pancreas, Lt Kidney, Splenic Flexure.',
+                    '- RLQ: Cecum, Appendix, Ileum, Rt Ovary/Ureter.',
+                    '- LLQ: Sigmoid Colon, Descending Colon, Lt Ovary/Ureter.',
+                    'Regions (9 Sections):',
+                    '- Vertical Lines: Midclavicular lines.',
+                    '- Horizontal Lines: Subcostal & Transtubercular planes.',
+                    '- Regions: Rt/Lt Hypochondriac, Epigastric, Rt/Lt Lumbar, Umbilical, Rt/Lt Iliac (Inguinal), Hypogastric.'
+                ],
+                clinicalRelevance: 'Pain localization (e.g., RLQ pain for Appendicitis, RUQ for Cholecystitis).'
+            },
+            {
+                id: 'abdominal-wall',
+                title: 'Abdominal Wall & Inguinal Canal',
+                introduction: 'The anterolateral wall protects viscera and maintains intra-abdominal pressure.',
+                content: [
+                    'Layers (Superficial to Deep): Skin -> Superficial Fascia (Camper\'s/Fatty, Scarpa\'s/Membranous) -> Deep Fascia -> Muscles -> Transversalis Fascia -> Peritoneum.',
+                    'Muscles: External Oblique ("Hands in pockets"), Internal Oblique, Transversus Abdominis ("Corset"), Rectus Abdominis.',
+                    'Rectus Sheath: Formed by aponeuroses. Arcuate Line marks transition where posterior sheath ends (inf 1/3).',
+                    'Inguinal Canal: Passage for Spermatic Cord (Men) or Round Ligament (Women).',
+                    '- Boundaries (MALT): Muscle (Roof), Aponeurosis (Ant wall), Ligament (Floor), Tendon (Post wall - Conjoint).',
+                    '- Deep Ring: Outpouch of Transversalis Fascia. Superficial Ring: Opening in Ext Oblique Aponeurosis.'
+                ],
+                pathologyConnection: 'Hernias: Indirect (Congenital, enters Deep Ring, lateral to epigastric vessels). Direct (Acquired, penetrates Hesselbach\'s Triangle medially). Femoral (Below inguinal ligament).'
+            },
+            {
+                id: 'peritoneum',
+                title: 'Peritoneum & Mesentery',
+                introduction: 'Serous membrane lining the cavity (Parietal) and covering organs (Visceral).',
+                content: [
+                    'Parietal Peritoneum: Lines wall. Pain well-localized (somatic).',
+                    'Visceral Peritoneum: Covers organs. Pain poorly localized (autonomic stretch/chemical).',
+                    'Mesentery: Double layer carrying neurovasculature to Intraperitoneal organs.',
+                    'Omentum: Greater (hangs like apron from stomach), Lesser (connects stomach to liver).',
+                    'Intraperitoneal Organs: Stomach, Liver, Spleen, Jejunum, Ileum, Transverse/Sigmoid Colon.',
+                    'Retroperitoneal (SAD PUCKER): Suprarenals, Aorta/IVC, Duodenum (2-4), Pancreas (head/body), Ureters, Colon (Asc/Desc), Kidneys, Esophagus, Rectum.'
+                ]
+            },
+            {
+                id: 'gi-viscera',
+                title: 'GI Tract Viscera',
+                content: [
+                    'Esophagus: Transport to stomach.',
+                    'Stomach: Acidic digestion (HCl, Pepsin). Intrinsic Factor for B12.',
+                    'Small Intestine: Duodenum (Bile/Pancreatic ducts enter at Sphincter of Oddi), Jejunum, Ileum. Absorption of nutrients.',
+                    'Large Intestine: Cecum (Appendix), Colon (Asc, Trans, Desc, Sigmoid), Rectum. Water absorption, Vitamin K production.',
+                    'Blood Supply: Celiac Trunk (Foregut), Superior Mesenteric A. (Midgut), Inferior Mesenteric A. (Hindgut).',
+                    'Portal System: Venous drainage from GI tract goes to Liver via Hepatic Portal Vein before IVC.'
+                ]
+            },
+            {
+                id: 'accessory-organs',
+                title: 'Accessory Organs (Liver, Pancreas, Spleen)',
+                content: [
+                    'Liver: Detoxification, Bile production (fat emulsification), Protein synthesis (Albumin, Clotting factors), Glycogen storage.',
+                    '- Portal Triad: Portal Vein, Hepatic Artery, Bile Duct.',
+                    'Gallbladder: Stores and concentrates bile.',
+                    'Pancreas: Exocrine (Digestive enzymes + Bicarb). Endocrine (Insulin/Glucagon).',
+                    'Spleen: RBC destruction/recycling, Platelet reservoir. LUQ protection.'
+                ],
+                clinicalRelevance: 'Liver Disease: Jaundice (Bilirubin), Ascites (Portal HTN), Clotting disorders.'
+            },
+            {
+                id: 'posterior-wall',
+                title: 'Posterior Wall & Diaphragm',
+                content: [
+                    'Diaphragm: Main muscle of respiration. C3-C5 Phrenic nerve.',
+                    '- Apertures: Caval (IVC, T8), Esophageal (T10), Aortic (T12).',
+                    'Muscles: Psoas Major (Hip flexor), Quadratus Lumborum (Spine stabilizer/hiker), Iliacus.',
+                    'Kidneys: Retroperitoneal. Filtration, Reabsorption, Secretion. Erythropoietin production.',
+                    'Adrenal Glands: Cortex (Cortisol, Aldosterone), Medulla (Epinephrine/Norepinephrine - Fight/Flight).'
+                ],
+                clinicalRelevance: 'Referred Pain: Diaphragm irritation -> Shoulder (C3-C5 dermatomes). Kidney -> Flank/Groin.'
+            }
+        ]
+    },
+    {
+        id: 'thoracic-anatomy',
+        title: 'Thoracic Anatomy',
+        description: 'Comprehensive guide to the thoracic wall, neurovasculature, and visceral relationships.',
+        icon: 'Box', // Using Box as a placeholder, maybe Layers or similar
+        subtopics: [
+            {
+                id: 'thoracic-wall',
+                title: 'Thoracic Wall & Apertures',
+                introduction: 'The thoracic wall provides protection, facilitates breathing, and anchors the diaphragm.',
+                content: [
+                    'Functions: Protection (Heart/Lungs), Ventilation (bellows action), Attachment for muscles.',
+                    'Apertures:',
+                    '- Superior Thoracic Aperture (Inlet): T1, Rib 1, Manubrium. Passage for Esophagus, Trachea, Vessels.',
+                    '- Inferior Thoracic Aperture (Outlet): T12, Ribs 11-12, Costal Cartilages 7-10, Xiphisternal joint. Closed by Diaphragm.',
+                    'Joints:',
+                    '- Costovertebral: Head of rib with vertebral body.',
+                    '- Costotransverse: Tubercle of rib with TP.',
+                    '- Sternoclavicular: Saddle joint. Only bony attachment of UE to axial skeleton.',
+                    '- Costochondral (Rib-Cartilage), Interchondral (Cartilage-Cartilage), Sternocostal (Cartilage-Sternum).'
+                ],
+                clinicalRelevance: 'Thoracic Outlet Syndrome (compression at superior aperture). Flail Chest (multiple rib fractures).'
+            },
+            {
+                id: 'thoracic-muscles',
+                title: 'Muscles of the Thorax',
+                introduction: 'Muscles acting on the thoracic cage for respiration.',
+                content: [
+                    'Inspiratory Muscles (Elevate Ribs):',
+                    '- Diaphragm (Primary).',
+                    '- External Intercostals ("Hands in pockets").',
+                    '- Scalenes (Ant/Mid elevate Rib 1, Post elevates Rib 2).',
+                    '- Serratus Posterior Superior (Elevates upper ribs).',
+                    '- Pectoralis Major/Minor, Serratus Anterior (Accessory).',
+                    'Expiratory Muscles (Depress Ribs):',
+                    '- Internal/Innermost Intercostals.',
+                    '- Transversus Thoracis.',
+                    '- Serratus Posterior Inferior.',
+                    '- Abdominal Muscles (Rectus, Obliques - force expiration).'
+                ]
+            },
+            {
+                id: 'thoracic-neurovascular',
+                title: 'Neurovasculature',
+                introduction: 'Supply and drainage of the thoracic wall.',
+                content: [
+                    'Intercostal Spaces: Nerves/Vessels run in Costal Groove (Inferior edge of rib). Order (sup to inf): Vein, Artery, Nerve (VAN).',
+                    'Arterial Supply:',
+                    '- Anterior Intercostal Arteries: Branch of Internal Thoracic Artery (Subclavian branch).',
+                    '- Posterior Intercostal Arteries: Branch of Thoracic Aorta (Ribs 3-11) or Supreme Intercostal (Ribs 1-2).',
+                    'Venous Drainage:',
+                    '- Anterior: Internal Thoracic Veins -> Brachiocephalic.',
+                    '- Posterior (Right): Azygous Vein -> SVC.',
+                    '- Posterior (Left): Hemiazygous/Accessory Hemiazygous -> Azygous -> SVC.',
+                    'Nerves:',
+                    '- Intercostal Nerves (Ventral Rami T1-T11). Subcostal Nerve (T12).'
+                ],
+                clinicalRelevance: 'Thoracentesis: Needle insertion superior to rib to avoid VAN bundle in costal groove.'
+            },
+            {
+                id: 'thoracic-viscera-overview',
+                title: 'Thoracic Viscera Overview',
+                introduction: 'Brief overview of organs within the thoracic cavity.',
+                content: [
+                    'Lungs:',
+                    '- Right: 3 Lobes (Sup/Mid/Inf). Horizontal & Oblique fissures.',
+                    '- Left: 2 Lobes (Sup/Inf). Oblique fissure. Cardiac Notch.',
+                    '- Pleura: Visceral (on lung) and Parietal (on wall). Negative intrapleural pressure.',
+                    'Heart:',
+                    '- Mediastinum: Middle mediastinum.',
+                    '- Pericardium: Fibrous (outer) and Serous (inner).',
+                    '- Surface Anatomy: 2nd IS (Base), 5th IS (Apex).',
+                    'Trachea:',
+                    '- C-shaped cartilage rings. Bifurcates at Carina (T4/Sternal Angle).'
+                ],
+                clinicalRelevance: 'See "Cardiopulmonary" and "Abdominal" topics for detailed organ physiology.'
+            }
+        ]
+    },
+    {
+        id: 'pain-neuroscience',
+        title: 'Pain Neuroscience',
+        description: 'The science of how and why we hurt. Based on the work of Moseley & Butler (Explain Pain).',
+        icon: 'Brain',
+        subtopics: [
+            {
+                id: 'paradigm-shift',
+                title: 'The Big Paradigm Shift',
+                introduction: 'The old model: You hit your thumb (input) -> a bell rings (pain). This is 100% wrong. Current research tells us that Pain is an OUTPUT, not an input.',
+                content: [
+                    'The Input: Nociception (danger signaling from tissues).',
+                    'The Output: Pain (a decision made by the brain).',
+                    'The Golden Rule: Your brain weighs danger signals against memories, stress, and beliefs. If it decides you need protection, it creates pain.',
+                    'Example: Finding a bruise you don\'t remember getting. You had tissue damage (nociception), but the brain deemed it "safe" at the time, so no pain was produced.'
+                ],
+                clinicalRelevance: 'We must treat the brain\'s perception of threat, not just the local tissues.'
+            },
+            {
+                id: 'alarm-system',
+                title: 'Pain as an Alarm System',
+                introduction: 'Is pain bad? No. It is a gift. It is the world\'s most sophisticated alarm system designed to force behavior change.',
+                content: [
+                    'Purpose: To protect you. If you put your hand on a stove, pain makes you move it.',
+                    'The Problem: An alarm is great for a fire. But what if it goes off for burnt toast? Or what if it gets stuck "ON" after the fire is out?',
+                    'Chronic Pain: This represents an alarm system glitch. The fire (injury) is out, but the alarm (pain) is still ringing.'
+                ]
+            },
+            {
+                id: 'danger-message',
+                title: 'Anatomy of a "Danger Message"',
+                introduction: 'Tracing the path from a stubbed toe to the "Ouch!".',
+                content: [
+                    '1. The Detectors (Nociceptors): Sensors in tissues activated by Mechanical (pinch), Thermal, or Chemical (inflammation) threats.',
+                    '2. The Transmission: Signals travel up A-Delta fibers (Fast/Sharp "Zing") and C-Fibers (Slow/Dull ache).',
+                    '3. The Spinal Cord (Gatekeeper): The signal hits the Dorsal Horn. The cord can "Close the Gate" (block signal) or amplify it.',
+                    '4. The Brain (Neuromatrix): No single "pain center". Thalamus sorts, Cortex locates, Limbic adds emotion ("I\'m scared"), Prefrontal adds meaning.',
+                    'The Verdict: The brain asks "Is this dangerous?". IF YES -> PAIN.'
+                ]
+            },
+            {
+                id: 'central-sensitization',
+                title: 'Central Sensitization',
+                introduction: 'When the "hardware" (tissues) is healed, but the "software" (nerves) is buggy.',
+                content: [
+                    'Neuroplasticity: Nerves allow us to learn. In chronic pain (>3-6 months), the nervous system "learns" to be good at producing pain.',
+                    'The Volume Knob: Nerves sprout more sensors and become hypersensitive. A movement that used to be safe (bending) now triggers the alarm.',
+                    'Allodynia: When non-painful stimuli (like a bedsheet or light touch) cause pain because the threshold is dropped so low.'
+                ],
+                clinicalRelevance: 'This explains why pain can persist long after tissues have healed.'
+            },
+            {
+                id: 'biopsychosocial',
+                title: 'The Biopsychosocial Influences',
+                introduction: 'Since pain is a brain output, everything that affects the brain affects your pain.',
+                content: [
+                    'The Danger Bucket (Volume UP): Fear ("My back is crumbling"), Stress (Cortisol), Poor Sleep, Anxiety, Hyper-focus on symptoms.',
+                    'The Safety Bucket (Volume DOWN): Knowledge ("Hurt does not equal Harm"), Aerobic Exercise (Natural opioids), Social Connection, Trust.',
+                    'Goal: Fill the Safety bucket to dampen the alarm.'
+                ]
+            },
+            {
+                id: 'dave-summary',
+                title: 'Dave\'s Clinical Summary',
+                introduction: 'The key takeaways for modern physical therapy.',
+                content: [
+                    'Pain is Real: It is 100% real, but it is constructed by the brain.',
+                    'Tissues Heal: Muscles, bones, and ligaments heal in 3-6 months. Pain beyond this is largely a nervous system issue.',
+                    'You are Bioplastic: Just as the system learned pain, we can teach it to be pain-free through "Graded Exposure" (proving safety to the brain).'
+                ]
+            }
+        ]
+    }
 ];
+

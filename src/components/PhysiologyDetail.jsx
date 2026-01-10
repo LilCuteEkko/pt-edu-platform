@@ -80,6 +80,15 @@ const PhysiologyDetail = () => {
               </div>
             ) : (
               <div className="content-card">
+                {subtopic.image && (
+                  <div className="subtopic-image-container" style={{ padding: '2rem', paddingBottom: '0', display: 'flex', justifyContent: 'center' }}>
+                    <img
+                      src={subtopic.image}
+                      alt={subtopic.title}
+                      style={{ maxWidth: '100%', maxHeight: '400px', borderRadius: 'var(--radius-md)', objectFit: 'contain' }}
+                    />
+                  </div>
+                )}
                 <ul className="key-points">
                   {subtopic.content.map((point, i) => (
                     <li key={i}>{point}</li>

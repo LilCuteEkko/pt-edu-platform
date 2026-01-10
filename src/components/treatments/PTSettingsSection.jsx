@@ -150,6 +150,54 @@ const PTSettingsSection = () => {
                                 </div>
                             </div>
 
+                            {/* Detailed Sections (Responsibilities, Specialties, etc.) */}
+                            {selectedSetting.detailedSections && selectedSetting.detailedSections.map((section, idx) => (
+                                <div key={idx} style={{
+                                    background: 'var(--color-surface)',
+                                    borderRadius: '16px',
+                                    padding: '2rem',
+                                    border: '1px solid var(--color-border)'
+                                }}>
+                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-text)' }}>{section.title}</h3>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                        {section.items.map((item, i) => (
+                                            <div key={i}>
+                                                <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-primary)' }}>
+                                                    {item.subtitle}
+                                                </h4>
+                                                <p style={{ lineHeight: '1.6', color: 'var(--color-text-muted)' }}>{item.text}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Insider Tips Section */}
+                            {selectedSetting.insiderTips && (
+                                <div style={{
+                                    background: 'linear-gradient(135deg, #FF6B6B 0%, #EE5253 100%)',
+                                    borderRadius: '16px',
+                                    padding: '2rem',
+                                    color: 'white',
+                                    boxShadow: '0 10px 20px rgba(238, 82, 83, 0.2)'
+                                }}>
+                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                        <Briefcase size={28} />
+                                        {selectedSetting.insiderTips.title || "Insider Info"}
+                                    </h3>
+                                    <div style={{ display: 'grid', gap: '1.5rem' }}>
+                                        {selectedSetting.insiderTips.tips.map((tip, idx) => (
+                                            <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '1.5rem', borderRadius: '8px' }}>
+                                                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem', color: 'white' }}>
+                                                    {tip.title}
+                                                </h4>
+                                                <p style={{ lineHeight: '1.6', opacity: 0.9 }}>{tip.text}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                         </div>
                     </motion.div>
                 </AnimatePresence>

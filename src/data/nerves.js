@@ -1,4 +1,4 @@
-import musclePlaceholderImg from '../assets/muscles/placeholder.png';
+// import musclePlaceholderImg from '../assets/muscles/placeholder.png';
 
 export const nerves = [
     // Brachial Plexus Structure

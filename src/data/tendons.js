@@ -1,4 +1,4 @@
-import musclePlaceholderImg from '../assets/muscles/placeholder.png';
+// import musclePlaceholderImg from '../assets/muscles/placeholder.png';
 import dorsalCompartment1Img from '../assets/tendons/dorsal-compartment-1.png';
 import dorsalCompartment2Img from '../assets/tendons/dorsal-compartment-2.png';
 import dorsalCompartment3Img from '../assets/tendons/dorsal-compartment-3.png';

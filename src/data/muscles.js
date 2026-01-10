@@ -38,7 +38,7 @@ import interosseiImg from '../assets/muscles/interossei.png';
 import adductorPollicisImg from '../assets/muscles/adductor-pollicis.png';
 import gluteusMaximusImg from '../assets/muscles/gluteus-maximus.png';
 import gluteusMediusImg from '../assets/muscles/gluteus-medius.png';
-import piriformisImg from '../assets/muscles/piriformis.png';
+// import piriformisImg from '../assets/muscles/piriformis.png';
 import rectusFemorisImg from '../assets/muscles/rectus-femoris.png';
 import sartoriusImg from '../assets/muscles/sartorius.png';
 import bicepsFemorisImg from '../assets/muscles/biceps-femoris.png';
@@ -46,6 +46,48 @@ import adductorMagnusImg from '../assets/muscles/adductor-magnus.png';
 import tibialisAnteriorImg from '../assets/muscles/tibialis-anterior.png';
 import gastrocnemiusImg from '../assets/muscles/gastrocnemius.png';
 import fibularisLongusImg from '../assets/muscles/fibularis-longus.png';
+import occipitofrontalisImg from '../assets/muscles/occipitofrontalis.png';
+import orbicularisOculiImg from '../assets/muscles/orbicularis-oculi.png';
+import nasalisImg from '../assets/muscles/nasalis.png';
+import levatorLabiiSuperiorisImg from '../assets/muscles/levator-labii-superioris.png';
+import orbicularisOrisImg from '../assets/muscles/orbicularis-oris.png';
+import temporalisImg from '../assets/muscles/temporalis.png';
+import masseterImg from '../assets/muscles/masseter.png';
+import medialPterygoidImg from '../assets/muscles/medial-pterygoid.png';
+import lateralPterygoidImg from '../assets/muscles/lateral-pterygoid.png';
+import platysmaImg from '../assets/muscles/platysma.png';
+import scmImg from '../assets/muscles/sternocleidomastoid.png';
+// import anteriorScaleneImg from '../assets/muscles/anterior-scalene.png';
+// import middleScaleneImg from '../assets/muscles/middle-scalene.png';
+import posteriorScaleneImg from '../assets/muscles/posterior-scalene.png';
+import externalIntercostalImg from '../assets/muscles/external-intercostal.png';
+import internalIntercostalImg from '../assets/muscles/internal-intercostal.png';
+import innermostIntercostalImg from '../assets/muscles/innermost-intercostal.png';
+import serratusPosteriorSuperiorImg from '../assets/muscles/serratus-posterior-superior.png';
+import serratusPosteriorInferiorImg from '../assets/muscles/serratus-posterior-inferior.png';
+import externalObliqueImg from '../assets/muscles/external-oblique.png';
+import internalObliqueImg from '../assets/muscles/internal-oblique.png';
+import mentalisImg from '../assets/muscles/mentalis.png';
+import buccinatorImg from '../assets/muscles/buccinator.png';
+import superiorRectusImg from '../assets/muscles/superior-rectus.png';
+import inferiorRectusImg from '../assets/muscles/inferior-rectus.png';
+import medialRectusImg from '../assets/muscles/medial-rectus.png';
+import lateralRectusImg from '../assets/muscles/lateral-rectus.png';
+import superiorObliqueImg from '../assets/muscles/superior-oblique.png';
+import inferiorObliqueImg from '../assets/muscles/inferior-oblique.png';
+import levatorPalpebraeImg from '../assets/muscles/levator-palpebrae.png';
+import sternohyoidImg from '../assets/muscles/sternohyoid.png';
+import omohyoidImg from '../assets/muscles/omohyoid.png';
+import sternothyroidImg from '../assets/muscles/sternothyroid.png';
+import thyrohyoidImg from '../assets/muscles/thyrohyoid.png';
+import digastricImg from '../assets/muscles/digastric.png';
+import stylohyoidImg from '../assets/muscles/stylohyoid.png';
+import mylohyoidImg from '../assets/muscles/mylohyoid.png';
+import geniohyoidImg from '../assets/muscles/geniohyoid.png';
+import longusColliImg from '../assets/muscles/longus-colli.png';
+import longusCapitisImg from '../assets/muscles/longus-capitis.png';
+import rectusCapitisAnteriorImg from '../assets/muscles/rectus-capitis-anterior.png';
+import rectusCapitisLateralisImg from '../assets/muscles/rectus-capitis-lateralis.png';
 
 
 export const muscles = [
@@ -59,7 +101,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Elevates eyebrows, wrinkles forehead.',
         clinicalNotes: 'Frontal belly surprises, Occipital belly retracts scalp.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: occipitofrontalisImg,
         category: 'Head (Facial Expression)'
     },
     {
@@ -70,7 +112,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Closes eyelids (Palpebral: gently; Orbital: tightly).',
         clinicalNotes: 'Loss of function risks corneal abrasion (cannot close eye).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: orbicularisOculiImg,
         category: 'Head (Facial Expression)'
     },
     {
@@ -81,7 +123,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Flares nostrils (Alar part), Compresses nasal aperture (Transverse part).',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: nasalisImg,
         category: 'Head (Facial Expression)'
     },
     {
@@ -92,7 +134,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Elevates upper lip, flares nostril.',
         clinicalNotes: '"Snarl" muscle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: levatorLabiiSuperiorisImg,
         category: 'Head (Facial Expression)'
     },
     {
@@ -103,7 +145,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Compresses/Protrudes lips (Kissing/Whistling).',
         clinicalNotes: 'First sphincter of the GI tract.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: orbicularisOrisImg,
         category: 'Head (Facial Expression)'
     },
     {
@@ -114,7 +156,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Elevates/Protrudes lower lip (Pouting).',
         clinicalNotes: '"Pouting muscle".',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: mentalisImg,
         category: 'Head (Facial Expression)'
     },
     {
@@ -125,7 +167,7 @@ export const muscles = [
         nerve: 'Facial Nerve (CN VII).',
         action: 'Presses cheek against teeth (blowing/sucking). Keeps food on occlusal surface.',
         clinicalNotes: 'Pierced by Parotid Duct.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: buccinatorImg,
         category: 'Head (Facial Expression)'
     },
 
@@ -138,7 +180,7 @@ export const muscles = [
         nerve: 'Trigeminal Nerve (V3 - Mandibular).',
         action: 'Elevates mandible (close jaw); Retracts mandible (posterior fibers).',
         clinicalNotes: 'Palpate when clenching teeth.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: temporalisImg,
         category: 'Head (Mastication)'
     },
     {
@@ -149,7 +191,7 @@ export const muscles = [
         nerve: 'Trigeminal Nerve (V3 - Mandibular).',
         action: 'Elevates mandible; Protrudes mandible.',
         clinicalNotes: 'Strongest muscle of mastication.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: masseterImg,
         category: 'Head (Mastication)'
     },
     {
@@ -160,7 +202,7 @@ export const muscles = [
         nerve: 'Trigeminal Nerve (V3 - Mandibular).',
         action: 'Elevates mandible; Protrusion; Contralateral lateral deviation.',
         clinicalNotes: 'Forms "sling" with Masseter.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: medialPterygoidImg,
         category: 'Head (Mastication)'
     },
     {
@@ -171,7 +213,7 @@ export const muscles = [
         nerve: 'Trigeminal Nerve (V3 - Mandibular).',
         action: 'Protrusion; Depression (Opening); Contralateral lateral deviation.',
         clinicalNotes: 'Only muscle of mastication that OPENS the mouth. Inserts into TMJ disc.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: lateralPterygoidImg,
         category: 'Head (Mastication)'
     },
 
@@ -184,7 +226,7 @@ export const muscles = [
         nerve: 'Oculomotor (CN III).',
         action: 'Elevation, Adduction.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: superiorRectusImg,
         category: 'Head (Eye)'
     },
     {
@@ -195,7 +237,7 @@ export const muscles = [
         nerve: 'Oculomotor (CN III).',
         action: 'Depression, Adduction.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: inferiorRectusImg,
         category: 'Head (Eye)'
     },
     {
@@ -206,7 +248,7 @@ export const muscles = [
         nerve: 'Oculomotor (CN III).',
         action: 'Adduction.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: medialRectusImg,
         category: 'Head (Eye)'
     },
     {
@@ -217,7 +259,7 @@ export const muscles = [
         nerve: 'Abducens (CN VI).',
         action: 'Abduction.',
         clinicalNotes: 'LR6 (Lateral Rectus supplied by CN 6).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: lateralRectusImg,
         category: 'Head (Eye)'
     },
     {
@@ -228,7 +270,7 @@ export const muscles = [
         nerve: 'Trochlear (CN IV).',
         action: 'Depression, Abduction, Intorsion.',
         clinicalNotes: 'SO4 (Superior Oblique supplied by CN 4). "Down and Out" action.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: superiorObliqueImg,
         category: 'Head (Eye)'
     },
     {
@@ -239,7 +281,7 @@ export const muscles = [
         nerve: 'Oculomotor (CN III).',
         action: 'Elevation, Abduction, Extorsion.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: inferiorObliqueImg,
         category: 'Head (Eye)'
     },
     {
@@ -250,7 +292,7 @@ export const muscles = [
         nerve: 'Oculomotor (CN III).',
         action: 'Elevates upper eyelid.',
         clinicalNotes: 'Ptosis if damaged.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: levatorPalpebraeImg,
         category: 'Head (Eye)'
     },
     // Neck (from Remote)
@@ -262,7 +304,7 @@ export const muscles = [
         nerve: 'CN VII (Facial - Cervical branch).',
         action: 'Tenses neck skin, Depresses mandible/mouth angles.',
         clinicalNotes: 'Superficial muscle in superficial fascia.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: platysmaImg,
         category: 'Neck: Superficial'
     },
     {
@@ -273,7 +315,7 @@ export const muscles = [
         nerve: 'CN XI (Accessory).',
         action: 'Unilat: Ipsilateral Lat Flex, Contralateral Rotation. Bilat: Flex neck.',
         clinicalNotes: 'Torticollis (wryneck) involves shortening. "Key" muscle of neck (divides triangles).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: scmImg,
         category: 'Neck: Superficial'
     },
     {
@@ -284,7 +326,7 @@ export const muscles = [
         nerve: 'Ansa Cervicalis (C1-C3).',
         action: 'Depresses Hyoid.',
         clinicalNotes: 'Superficial plane.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: sternohyoidImg,
         category: 'Neck: Infrahyoid'
     },
     {
@@ -295,7 +337,7 @@ export const muscles = [
         nerve: 'Ansa Cervicalis (C1-C3).',
         action: 'Depresses, Retracts, Stabilizes Hyoid.',
         clinicalNotes: 'Fascial sling clavicle. Subdivides Posterior & Anterior triangles.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: omohyoidImg,
         category: 'Neck: Infrahyoid'
     },
     {
@@ -306,7 +348,7 @@ export const muscles = [
         nerve: 'Ansa Cervicalis (C1-C3).',
         action: 'Depresses Thyroid Cartilage (Larynx).',
         clinicalNotes: 'Deep plane. Only infrahyoid not attached to hyoid.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: sternothyroidImg,
         category: 'Neck: Infrahyoid'
     },
     {
@@ -317,7 +359,7 @@ export const muscles = [
         nerve: 'C1 via CN XII (Hypoglossal).',
         action: 'Depresses Hyoid, Elevates Thyroid Cartilage.',
         clinicalNotes: 'Deep plane. Continuation of Sternothyroid.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: thyrohyoidImg,
         category: 'Neck: Infrahyoid'
     },
     {
@@ -328,7 +370,7 @@ export const muscles = [
         nerve: 'Ant: Mylohyoid n. (V3). Post: CN VII (Facial).',
         action: 'Depresses Mandible, Elevates Hyoid.',
         clinicalNotes: 'Two bellies, two innervations.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: digastricImg,
         category: 'Neck: Suprahyoid'
     },
     {
@@ -339,7 +381,7 @@ export const muscles = [
         nerve: 'CN VII (Facial).',
         action: 'Elevates & Retracts Hyoid (elongates mouth floor).',
         clinicalNotes: 'Straddles intermediate tendon of Digastric.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: stylohyoidImg,
         category: 'Neck: Suprahyoid'
     },
     {
@@ -350,7 +392,7 @@ export const muscles = [
         nerve: 'Mylohyoid n. (V3).',
         action: 'Elevates Hyoid, Floor of Mouth, Tongue.',
         clinicalNotes: 'Forms floor of mouth.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: mylohyoidImg,
         category: 'Neck: Suprahyoid'
     },
     {
@@ -361,42 +403,10 @@ export const muscles = [
         nerve: 'C1 via CN XII (Hypoglossal).',
         action: 'Pulls Hyoid Anterosuperiorly (widens pharynx).',
         clinicalNotes: 'Deep to Mylohyoid.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: geniohyoidImg,
         category: 'Neck: Suprahyoid'
     },
-    {
-        id: 'anterior-scalene',
-        name: 'Anterior Scalene',
-        origin: 'TPs C3-C6.',
-        insertion: '1st Rib (Scalene Tubercle).',
-        nerve: 'Ventral Rami Cervical.',
-        action: 'Elevates 1st Rib (Inspiration), Flex/Rot neck.',
-        clinicalNotes: 'Phrenic n. lies anterior. Brachial Plexus/Subclavian Artery posterior.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Neck: Scalenes'
-    },
-    {
-        id: 'middle-scalene',
-        name: 'Middle Scalene',
-        origin: 'TPs C2-C7.',
-        insertion: '1st Rib (Posterior to groove).',
-        nerve: 'Ventral Rami Cervical.',
-        action: 'Elevates 1st Rib, Lateral Flexion.',
-        clinicalNotes: 'Dorsal Scapular & Long Thoracic nerves pierce it.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Neck: Scalenes'
-    },
-    {
-        id: 'posterior-scalene',
-        name: 'Posterior Scalene',
-        origin: 'TPs C4-C6.',
-        insertion: '2nd Rib (Outer surface).',
-        nerve: 'Ventral Rami C6-C8.',
-        action: 'Elevates 2nd Rib, Lateral Flexion.',
-        clinicalNotes: 'Smallest scalene.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Neck: Scalenes'
-    },
+
     {
         id: 'longus-colli',
         name: 'Longus Colli (Cervicis)',
@@ -405,7 +415,7 @@ export const muscles = [
         nerve: 'Ventral Rami.',
         action: 'Flexes Neck, Reduces Lobrdosis.',
         clinicalNotes: 'Weakness associated with text neck/whiplash.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: longusColliImg,
         category: 'Neck: Prevertebral'
     },
     {
@@ -416,7 +426,7 @@ export const muscles = [
         nerve: 'Ventral Rami.',
         action: 'Flexes Head.',
         clinicalNotes: 'Anterior to Colli.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: longusCapitisImg,
         category: 'Neck: Prevertebral'
     },
     {
@@ -427,7 +437,7 @@ export const muscles = [
         nerve: 'Ventral Rami C1-C2.',
         action: 'Flexes Head (AO Joint).',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: rectusCapitisAnteriorImg,
         category: 'Neck: Prevertebral'
     },
     {
@@ -438,7 +448,7 @@ export const muscles = [
         nerve: 'Ventral Rami C1-C2.',
         action: 'Lateral Flex Head.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: rectusCapitisLateralisImg,
         category: 'Neck: Prevertebral'
     },
     // Back
@@ -497,28 +507,7 @@ export const muscles = [
         imageUrl: rhomboidMinorImg,
         category: 'Back: Superficial'
     },
-    {
-        id: 'serratus-posterior-superior',
-        name: 'Serratus Posterior Superior',
-        origin: 'Nuchal lig, C7-T3 SPs.',
-        insertion: 'Ribs 2-4 (Superior borders).',
-        nerve: 'Intercostal nerves T2-T5.',
-        action: 'Elevates upper ribs (Inspiration).',
-        clinicalNotes: 'Deep to Rhomboids.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Back: Intermediate Extrinsic'
-    },
-    {
-        id: 'serratus-posterior-inferior',
-        name: 'Serratus Posterior Inferior',
-        origin: 'Thoracolumbar fascia, T11-L2 SPs.',
-        insertion: 'Ribs 8-12 (Inferior borders).',
-        nerve: 'Ventral rami T9-T12.',
-        action: 'Depresses lower ribs.',
-        clinicalNotes: 'Deep to Latissimus Dorsi.',
-        imageUrl: musclePlaceholderImg,
-        category: 'Back: Intermediate Extrinsic'
-    },
+
     {
         id: 'splenius-capitis',
         name: 'Splenius Capitis',
@@ -1761,6 +1750,207 @@ export const muscles = [
         clinicalNotes: '4 muscles. Axis of foot is 2nd digit.',
         imageUrl: musclePlaceholderImg,
         category: 'Lower Limb: Foot (Plantar Layer 4)'
+    },
+    // Abdomen
+    {
+        id: 'external-oblique',
+        name: 'External Oblique',
+        origin: 'External surfaces of ribs 5-12.',
+        insertion: 'Linea alba, pubic tubercle, anterior 1/2 iliac crest.',
+        nerve: 'Ventral rami T8-T12.',
+        action: 'Flex/Rotate trunk. Compress abdominal viscera.',
+        clinicalNotes: 'Fibers run "Hands in Pockets". Inferior edge forms Inguinal Ligament.',
+        imageUrl: externalObliqueImg,
+        category: 'Abdomen'
+    },
+    {
+        id: 'internal-oblique',
+        name: 'Internal Oblique',
+        origin: 'Thoracolumbar fascia, Ant 2/3 iliac crest, Lat 1/2 inguinal ligament.',
+        insertion: 'Inf borders ribs 10-12, Linea alba, Pectin pubis (via conjoint tendon).',
+        nerve: 'Ventral rami T8-T12, L1.',
+        action: 'Flex/Rotate trunk. Compress abdominal viscera.',
+        clinicalNotes: 'Fibers run Superior/Medial. Forms Cremaster muscle.',
+        imageUrl: internalObliqueImg,
+        category: 'Abdomen'
+    },
+    {
+        id: 'transversus-abdominis',
+        name: 'Transversus Abdominis',
+        origin: 'Int surfaces costal cartilages 7-12, Thoracolumbar fascia, Iliac crest, Lat 1/3 inguinal lig.',
+        insertion: 'Linea alba, Pubic crest, Pectin pubis (via conjoint tendon).',
+        nerve: 'Ventral rami T8-T12, L1.',
+        action: 'Compress/Support abdominal viscera.',
+        clinicalNotes: 'Deepest layer. Horizontal fibers ("Corset").',
+        imageUrl: musclePlaceholderImg,
+        category: 'Abdomen'
+    },
+    {
+        id: 'rectus-abdominis',
+        name: 'Rectus Abdominis',
+        origin: 'Pubic symphysis and crest.',
+        insertion: 'Xiphoid process and costal cartilages 5-7.',
+        nerve: 'Ventral rami T7-T12.',
+        action: 'Flex trunk. Compress abdominal viscera.',
+        clinicalNotes: 'Six-pack muscle. Separated by Linea Alba. Enclosed in Rectus Sheath.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Abdomen'
+    },
+    {
+        id: 'cremaster',
+        name: 'Cremaster',
+        origin: 'Internal oblique and inguinal ligament.',
+        insertion: 'Tunica vaginalis of testis.',
+        nerve: 'Genital branch of Genitofemoral n. (L1-L2).',
+        action: 'Elevates testis (thermoregulation).',
+        clinicalNotes: 'Cremasteric reflex (L1-L2).',
+        imageUrl: musclePlaceholderImg,
+        category: 'Abdomen'
+    },
+    {
+        id: 'quadratus-lumborum-abd',
+        name: 'Quadratus Lumborum',
+        origin: 'Posterior iliac crest.',
+        insertion: '12th rib and L1-L4 TPs.',
+        nerve: 'Ventral rami T12-L4.',
+        action: 'Extends/Laterally flexes spine. Fixes 12th rib.',
+        clinicalNotes: 'often listed with posterior abdominal wall.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Abdomen'
+    },
+    // Neck
+    {
+        id: 'sternocleidomastoid',
+        name: 'Sternocleidomastoid',
+        origin: 'Manubrium (Sternal head), Medial 1/3 Clavicle (Clavicular head).',
+        insertion: 'Mastoid process.',
+        nerve: 'Accessory Nerve (CN XI).',
+        action: 'Bilat: Flex neck. Unilat: Rotate opposite, Sidebend same.',
+        clinicalNotes: 'Torticollis (wry neck). Key landmark for anterior/posterior triangles.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck'
+    },
+    {
+        id: 'anterior-scalene',
+        name: 'Anterior Scalene',
+        origin: 'TPs C3-C6.',
+        insertion: 'Scalene tubercle of 1st rib.',
+        nerve: 'Ventral rami C4-C6.',
+        action: 'Elevate 1st rib (Inspiration). Sidebend neck.',
+        clinicalNotes: 'Brachial Plexus/Subclavian Artery pass between Ant/Mid Scalene.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck'
+    },
+    {
+        id: 'middle-scalene',
+        name: 'Middle Scalene',
+        origin: 'TPs C2-C7.',
+        insertion: 'Superior surface of 1st rib.',
+        nerve: 'Ventral rami C3-C8.',
+        action: 'Elevate 1st rib (Inspiration). Sidebend neck.',
+        clinicalNotes: 'Largest scalene.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Neck'
+    },
+    {
+        id: 'posterior-scalene',
+        name: 'Posterior Scalene',
+        origin: 'TPs C4-C6.',
+        insertion: 'External surface of 2nd rib.',
+        nerve: 'Ventral rami C6-C8.',
+        action: 'Elevate 2nd rib (Inspiration). Sidebend neck.',
+        clinicalNotes: '',
+        imageUrl: posteriorScaleneImg,
+        category: 'Neck'
+    },
+    // Thorax
+    {
+        id: 'external-intercostal',
+        name: 'External Intercostals',
+        origin: 'Inferior border of rib above.',
+        insertion: 'Superior border of rib below.',
+        nerve: 'Intercostal nerve.',
+        action: 'Elevate ribs (Inspiration).',
+        clinicalNotes: 'fibers run "Hands in pockets" (Inferomedial). Memory: "External Elevates".',
+        imageUrl: externalIntercostalImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'internal-intercostal',
+        name: 'Internal Intercostals',
+        origin: 'Superior border of rib below (costal groove).',
+        insertion: 'Inferior border of rib above.',
+        nerve: 'Intercostal nerve.',
+        action: 'Depress ribs (Expiration).',
+        clinicalNotes: 'Fibers run perpendicular to Externals (Superomedial). Deep to Externals.',
+        imageUrl: internalIntercostalImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'innermost-intercostal',
+        name: 'Innermost Intercostals',
+        origin: 'Internal aspect of ribs.',
+        insertion: 'Internal aspect of ribs.',
+        nerve: 'Intercostal nerve.',
+        action: 'Assists Internals (Expiration).',
+        clinicalNotes: 'Neurovascular bundle runs between Internal and Innermost layers.',
+        imageUrl: innermostIntercostalImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'transversus-thoracis',
+        name: 'Transversus Thoracis',
+        origin: 'Posterior Sternum/Xiphoid.',
+        insertion: 'Costal cartilages 2-6.',
+        nerve: 'Intercostal nerves.',
+        action: 'Depress ribs (weakly). Proprioception.',
+        clinicalNotes: 'Continuous with Transversus Abdominis inferiorly.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'subcostal',
+        name: 'Subcostal Muscles',
+        origin: 'Internal posterior rib.',
+        insertion: 'Internal rib 2-3 levels below.',
+        nerve: 'Intercostal nerves.',
+        action: 'Depress ribs.',
+        clinicalNotes: 'Spans multiple ribs.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'levator-costarum',
+        name: 'Levator Costarum',
+        origin: 'TPs C7-T11.',
+        insertion: 'Subjacent rib.',
+        nerve: 'Dorsal rami C8-T11.',
+        action: 'Elevate ribs.',
+        clinicalNotes: 'Technically back muscles but functional for thorax.',
+        imageUrl: musclePlaceholderImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'serratus-posterior-superior',
+        name: 'Serratus Posterior Superior',
+        origin: 'Nuchal lig, SPs C7-T3.',
+        insertion: 'Sup border ribs 2-4.',
+        nerve: 'Intercostal nerves 2-5.',
+        action: 'Elevates ribs (Inspiration).',
+        clinicalNotes: 'Deep to Rhomboids.',
+        imageUrl: serratusPosteriorSuperiorImg,
+        category: 'Thorax'
+    },
+    {
+        id: 'serratus-posterior-inferior',
+        name: 'Serratus Posterior Inferior',
+        origin: 'SPs T11-L2.',
+        insertion: 'Inf border ribs 8-12.',
+        nerve: 'Ventral rami T9-T12.',
+        action: 'Depress ribs (Expiration).',
+        clinicalNotes: 'Deep to Latissimus Dorsi.',
+        imageUrl: serratusPosteriorInferiorImg,
+        category: 'Thorax'
     }
 ];
 

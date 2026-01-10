@@ -22,7 +22,7 @@ const PathologyDeepDive = ({ pathology, onClose }) => {
             case 'overview':
                 return (
                     <div className="tab-content overview">
-                        <h3>What is {pathology.acronym}?</h3>
+                        <h3>What is {pathology.acronym || pathology.name}?</h3>
                         <p>{details.overview}</p>
                         <div className="key-features-list">
                             <h4>Key Clinical Features</h4>
