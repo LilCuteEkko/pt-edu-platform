@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Search, ArrowLeft } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { Search, ArrowLeft, Loader2 } from 'lucide-react';
 import MuscleCard from '../MuscleCard';
 import OrganCard from '../OrganCard';
 import BoneCard from '../BoneCard';
@@ -10,52 +10,85 @@ import TendonCard from '../TendonCard';
 import LigamentCard from '../LigamentCard';
 import VeinCard from '../VeinCard';
 
-import { muscles as musclesData } from '../../data/muscles';
-import { organs as organsData } from '../../data/organs';
-import { bones as bonesData } from '../../data/bones';
-import { joints as jointsData } from '../../data/joints';
-import { nerves as nervesData } from '../../data/nerves';
-import { arteries as arteriesData } from '../../data/arteries';
-import { veins as veinsData } from '../../data/veins';
-import { tendons as tendonsData } from '../../data/tendons';
-import { ligaments as ligamentsData } from '../../data/ligaments';
+// Map tabs to their data file paths and export names
+const DATA_loader = {
+    muscles: () => import('../../data/muscles').then(m => m.muscles),
+    bones: () => import('../../data/bones').then(m => m.bones),
+    joints: () => import('../../data/joints').then(m => m.joints),
+    organs: () => import('../../data/organs').then(m => m.organs),
+    nerves: () => import('../../data/nerves').then(m => m.nerves),
+    arteries: () => import('../../data/arteries').then(m => m.arteries),
+    veins: () => import('../../data/veins').then(m => m.veins),
+    tendons: () => import('../../data/tendons').then(m => m.tendons),
+    ligaments: () => import('../../data/ligaments').then(m => m.ligaments),
+};
 
 const AnatomySection = ({ onBack }) => {
     const [activeTab, setActiveTab] = useState('muscles');
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    // Determine which dataset to use
-    const currentData = useMemo(() => {
-        let data = [];
-        switch (activeTab) {
-            case 'muscles': data = musclesData; break;
-            case 'bones': data = bonesData; break;
-            case 'joints': data = jointsData; break;
-            case 'organs': data = organsData; break;
-            case 'nerves': data = nervesData; break;
-            case 'arteries': data = arteriesData; break;
-            case 'veins': data = veinsData; break;
-            case 'tendons': data = tendonsData; break;
-            case 'ligaments': data = ligamentsData; break;
-            default: data = musclesData;
-        }
+    // State for dynamic data
+    const [currentData, setCurrentData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-        // Defensive Deduplication: Ensure all items have unique IDs
-        const uniqueItems = [];
-        const seenIds = new Set();
+    // Dynamic Data Loading
+    const dataCache = useMemo(() => new Map(), []); // Persist cache across renders
 
-        if (Array.isArray(data)) {
-            data.forEach(item => {
-                if (!seenIds.has(item.id)) {
-                    seenIds.add(item.id);
-                    uniqueItems.push(item);
+    useEffect(() => {
+        let isMounted = true;
+        setIsLoading(true);
+        setCurrentData([]); // Clear prev data
+
+        const loadData = async () => {
+            try {
+                // Check cache first
+                if (dataCache.has(activeTab)) {
+                    if (isMounted) {
+                        setCurrentData(dataCache.get(activeTab));
+                        setIsLoading(false);
+                    }
+                    return;
                 }
-            });
-        }
 
-        return uniqueItems;
-    }, [activeTab]);
+                const loader = DATA_loader[activeTab];
+                if (!loader) {
+                    console.error(`No loader for tab: ${activeTab}`);
+                    if (isMounted) setIsLoading(false);
+                    return;
+                }
+
+                const rawData = await loader();
+
+                // Defensive Deduplication
+                const uniqueItems = [];
+                const seenIds = new Set();
+
+                if (Array.isArray(rawData)) {
+                    rawData.forEach(item => {
+                        if (!seenIds.has(item.id)) {
+                            seenIds.add(item.id);
+                            uniqueItems.push(item);
+                        }
+                    });
+                }
+
+                if (isMounted) {
+                    // Update Cache
+                    dataCache.set(activeTab, uniqueItems);
+                    setCurrentData(uniqueItems);
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.error("Failed to load anatomy data:", error);
+                if (isMounted) setIsLoading(false);
+            }
+        };
+
+        loadData();
+
+        return () => { isMounted = false; };
+    }, [activeTab, dataCache]);
 
     // Filter logic key selection
     const categoryKey = useMemo(() => {
@@ -71,18 +104,19 @@ const AnatomySection = ({ onBack }) => {
 
     // Get unique categories
     const categories = useMemo(() => {
-        if (!currentData) return [];
-        // Map items to their category value, defaulting to 'General' if missing
+        if (!currentData || currentData.length === 0) return [];
         const values = currentData.map(item => item[categoryKey] || 'General');
-        // Create unique set, add 'All'
         const uniqueCats = ['All', ...new Set(values)];
         return uniqueCats.sort();
     }, [currentData, categoryKey]);
 
-    // Reset category when tab changes
-    if (selectedCategory !== 'All' && !categories.includes(selectedCategory)) {
+    // Reset category when tab changes logic has been moved to rendering or can be kept here
+    // Note: If we change tabs, currentData clears, triggering this to empty, then repopulates.
+    // Ideally we reset filter on tab change.
+    useEffect(() => {
         setSelectedCategory('All');
-    }
+        setSearchTerm('');
+    }, [activeTab]);
 
     const filteredItems = useMemo(() => {
         if (!currentData) return [];
@@ -190,7 +224,12 @@ const AnatomySection = ({ onBack }) => {
             </div>
 
             <div className="items-grid">
-                {filteredItems.length > 0 ? (
+                {isLoading ? (
+                    <div className="loading-state">
+                        <Loader2 className="animate-spin" size={48} color="var(--color-primary)" />
+                        <p>Loading anatomy data...</p>
+                    </div>
+                ) : filteredItems.length > 0 ? (
                     filteredItems.map(item => {
                         if (activeTab === 'muscles') return <MuscleCard key={item.id} muscle={item} />;
                         if (activeTab === 'bones') return <BoneCard key={item.id} bone={item} />;
@@ -341,6 +380,23 @@ const AnatomySection = ({ onBack }) => {
           text-align: center;
           padding: 3rem;
           color: var(--color-text-muted);
+        }
+        .loading-state {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            color: var(--color-text-muted);
+            gap: 1rem;
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         @media (max-width: 600px) {
             .back-btn {

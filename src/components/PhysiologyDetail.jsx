@@ -16,6 +16,7 @@ import MuscleCard from './MuscleCard';
 import MilestoneTimeline from './MilestoneTimeline';
 import VestibularDetail from './VestibularDetail';
 import NeuroscienceDetail from './NeuroscienceDetail';
+import InfectionControlTable from './InfectionControlTable';
 
 const PhysiologyDetail = () => {
   const { topicId } = useParams();
@@ -72,6 +73,8 @@ const PhysiologyDetail = () => {
               <SarcomereAnimator />
             ) : subtopic.type === 'interactive-heart' ? (
               <HeartValvesVisualizer />
+            ) : subtopic.type === 'infection-table' ? (
+              <InfectionControlTable diseases={subtopic.diseases} introduction={subtopic.content} />
 
             ) : subtopic.type === 'pathology-grid' ? (
               <PathologyGrid
@@ -100,9 +103,28 @@ const PhysiologyDetail = () => {
                   </div>
                 )}
                 <ul className="key-points">
-                  {subtopic.content.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
+                  {subtopic.content.map((point, i) => {
+                    const isHeader = point.trim().endsWith(':');
+                    const isSubItem = point.trim().startsWith('-');
+
+                    if (isHeader) {
+                      return (
+                        <li key={i} className="content-header">
+                          {point}
+                        </li>
+                      );
+                    }
+
+                    if (isSubItem) {
+                      return (
+                        <li key={i} className="content-subitem">
+                          {point.replace(/^\s*-\s*/, '')}
+                        </li>
+                      );
+                    }
+
+                    return <li key={i} className="content-item">{point}</li>;
+                  })}
                 </ul>
                 <div className="clinical-grid">
                   <div className="clinical-box importance">
@@ -172,12 +194,39 @@ const PhysiologyDetail = () => {
           margin: 0;
           list-style-type: none;
         }
-        .key-points li {
+        .key-points li.content-header {
+          font-weight: 700;
+          color: var(--color-primary);
+          margin-top: 1rem;
+          margin-bottom: 0.5rem;
+          list-style: none;
+          padding-left: 0;
+          font-size: 1.05rem;
+        }
+        .key-points li.content-header::before {
+          content: none;
+        }
+
+        .key-points li.content-subitem {
+          margin-bottom: 0.5rem;
+          padding-left: 1.5rem;
+          position: relative;
+          color: var(--color-text-muted);
+        }
+        .key-points li.content-subitem::before {
+          content: "◦";
+          color: var(--color-text-muted);
+          position: absolute;
+          left: 0.25rem;
+          font-weight: bold;
+        }
+
+        .key-points li.content-item {
           margin-bottom: 0.75rem;
           padding-left: 1.5rem;
           position: relative;
         }
-        .key-points li::before {
+        .key-points li.content-item::before {
           content: "•";
           color: var(--color-primary);
           position: absolute;

@@ -3,6 +3,16 @@ import externalJugularVeinImg from '../assets/veins/external-jugular-vein.png';
 import anteriorJugularVeinImg from '../assets/veins/anterior-jugular-vein.png';
 import brachiocephalicVeinImg from '../assets/veins/brachiocephalic-vein.png';
 import subclavianVeinImg from '../assets/veins/subclavian-vein.png';
+import externalIliacVeinImg from '../assets/veins/external_iliac_vein.png';
+import internalIliacVeinImg from '../assets/veins/internal_iliac_vein.png';
+import commonIliacVeinImg from '../assets/veins/common_iliac_vein.png';
+import ivcPelvicImg from '../assets/veins/ivc_pelvic.png';
+import superiorGlutealVeinImg from '../assets/veins/superior_gluteal_vein.png';
+import inferiorGlutealVeinImg from '../assets/veins/inferior_gluteal_vein.png';
+import femoralVeinImg from '../assets/veins/femoral_vein.png';
+import greatSaphenousVeinImg from '../assets/veins/great_saphenous_vein.png';
+import poplitealVeinImg from '../assets/veins/popliteal_vein.png';
+import smallSaphenousVeinImg from '../assets/veins/small_saphenous_vein.png';
 
 export const veins = [
     // Pelvic Veins
@@ -17,7 +27,8 @@ export const veins = [
         ],
         course: 'Ascends from inguinal ligament along the pelvic brim. Joins Internal Iliac Vein to form Common Iliac Vein.',
         drainage: 'Lower limb and anterior abdominal wall.',
-        clinicalNotes: 'Valveless in 20-30% of people.'
+        clinicalNotes: 'Valveless in 20-30% of people.',
+        imageUrl: externalIliacVeinImg
     },
     {
         id: 'internal-iliac-vein',
@@ -34,7 +45,8 @@ export const veins = [
         ],
         course: 'Ascends from greater sciatic foramen. Joins External Iliac Vein to form Common Iliac Vein.',
         drainage: 'Pelvic viscera, gluteal region, perineum, medial thigh.',
-        clinicalNotes: 'Major drainage of the pelvis.'
+        clinicalNotes: 'Major drainage of the pelvis.',
+        imageUrl: internalIliacVeinImg
     },
     {
         id: 'common-iliac-vein',
@@ -48,7 +60,8 @@ export const veins = [
         ],
         course: 'Formed by union of Ext/Int Iliac veins. Ascends to L5 to join contralateral Common Iliac Vein to form IVC.',
         drainage: 'Pelvis and Lower Limb.',
-        clinicalNotes: 'Left Common Iliac Vein is longer than the Right.'
+        clinicalNotes: 'Left Common Iliac Vein is longer than the Right.',
+        imageUrl: commonIliacVeinImg
     },
     {
         id: 'inferior-vena-cava-pelvic',
@@ -59,7 +72,8 @@ export const veins = [
         ],
         course: 'Begins at L5 by union of Common Iliac Veins. Ascends on right side of vertebral column.',
         drainage: 'All structures below the diaphragm.',
-        clinicalNotes: 'Largest vein in the body. Compression (e.g., pregnancy) can cause edema/hypotension.'
+        clinicalNotes: 'Largest vein in the body. Compression (e.g., pregnancy) can cause edema/hypotension.',
+        imageUrl: ivcPelvicImg
     },
     {
         id: 'superior-gluteal-vein',
@@ -70,7 +84,8 @@ export const veins = [
         ],
         course: 'Accompanies Superior Gluteal Artery through Greater Sciatic Foramen. Drains into Internal Iliac Vein.',
         drainage: 'Gluteal region.',
-        clinicalNotes: ''
+        clinicalNotes: '',
+        imageUrl: superiorGlutealVeinImg
     },
     {
         id: 'inferior-gluteal-vein',
@@ -81,7 +96,8 @@ export const veins = [
         ],
         course: 'Accompanies Inferior Gluteal Artery through Greater Sciatic Foramen. Drains into Internal Iliac Vein.',
         drainage: 'Upper posterior thigh, buttock.',
-        clinicalNotes: ''
+        clinicalNotes: '',
+        imageUrl: inferiorGlutealVeinImg
     },
     // Lower Limb
     {
@@ -95,7 +111,8 @@ export const veins = [
         ],
         course: 'Ascends through Adductor Hiatus -> Adductor Canal -> Femoral Triangle. Becomes External Iliac Vein at Inguinal Ligament.',
         drainage: 'Deep structures of the thigh and leg.',
-        clinicalNotes: 'Located medial to Femoral Artery in Femoral Triangle. Site for central line.'
+        clinicalNotes: 'Located medial to Femoral Artery in Femoral Triangle. Site for central line.',
+        imageUrl: femoralVeinImg
     },
     {
         id: 'great-saphenous-vein',
@@ -107,7 +124,8 @@ export const veins = [
         ],
         course: 'Ascends anterior to Medial Malleolus -> Medial Leg -> Medial Thigh -> Saphenous Opening -> Femoral Vein.',
         drainage: 'Superficial tissues of medial lower limb.',
-        clinicalNotes: 'Longest vein in body. Used for CABG grafts. Varicose veins common.'
+        clinicalNotes: 'Longest vein in body. Used for CABG grafts. Varicose veins common.',
+        imageUrl: greatSaphenousVeinImg
     },
     {
         id: 'popliteal-vein',
@@ -120,7 +138,8 @@ export const veins = [
         ],
         course: 'Formed by AT/PT veins. Crosses from medial to lateral of artery. Posterior to Artery. Becomes Femoral Vein at Adductor Hiatus.',
         drainage: 'Leg and Foot.',
-        clinicalNotes: 'Superficial to Artery.'
+        clinicalNotes: 'Superficial to Artery.',
+        imageUrl: poplitealVeinImg
     },
     {
         id: 'small-saphenous-vein',
@@ -131,7 +150,8 @@ export const veins = [
         ],
         course: 'Posterior Lateral Malleolus -> Posterior Leg -> Pierces fascia -> Popliteal Vein.',
         drainage: 'Lateral foot and posterior leg.',
-        clinicalNotes: 'Sural nerve accompanies it.'
+        clinicalNotes: 'Sural nerve accompanies it.',
+        imageUrl: smallSaphenousVeinImg
     },
     {
         id: 'internal-jugular-vein',

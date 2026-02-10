@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, BicepsFlexed } from 'lucide-react';
-import AnatomySection from '../components/anatomy/AnatomySection';
-import PhysiologySection from '../components/physiology/PhysiologySection';
+import { Activity, BicepsFlexed, Loader2 } from 'lucide-react';
+
+// Lazy Load Sections
+const AnatomySection = lazy(() => import('../components/anatomy/AnatomySection'));
+const PhysiologySection = lazy(() => import('../components/physiology/PhysiologySection'));
+
+const LoadingFallback = () => (
+    <div className="section-loading">
+        <Loader2 className="animate-spin" size={48} color="var(--color-primary)" />
+        <p>Loading module...</p>
+    </div>
+);
 
 const AnatomyPhysiologyPage = () => {
     const [view, setView] = useState('landing'); // 'landing', 'anatomy', 'physiology'
@@ -52,7 +61,9 @@ const AnatomyPhysiologyPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
                     >
-                        <AnatomySection onBack={() => setView('landing')} />
+                        <Suspense fallback={<LoadingFallback />}>
+                            <AnatomySection onBack={() => setView('landing')} />
+                        </Suspense>
                     </motion.div>
                 )}
 
@@ -63,7 +74,9 @@ const AnatomyPhysiologyPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
                     >
-                        <PhysiologySection onBack={() => setView('landing')} />
+                        <Suspense fallback={<LoadingFallback />}>
+                            <PhysiologySection onBack={() => setView('landing')} />
+                        </Suspense>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -72,6 +85,15 @@ const AnatomyPhysiologyPage = () => {
                 .ap-page {
                     min-height: 80vh;
                     padding-top: 2rem;
+                }
+                .section-loading {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 50vh;
+                    gap: 1rem;
+                    color: var(--color-text-muted);
                 }
                 .landing-header {
                     text-align: center;
@@ -143,8 +165,15 @@ const AnatomyPhysiologyPage = () => {
                     opacity: 1;
                     transform: translateY(0);
                 }
+                .animate-spin {
+                    animation: spin 1s linear infinite;
+                }
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
             `}</style>
-        </div>
+        </div >
     );
 };
 

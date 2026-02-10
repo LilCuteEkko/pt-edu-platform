@@ -95,7 +95,39 @@ import longusCapitisImg from '../assets/muscles/longus-capitis.png';
 import rectusCapitisAnteriorImg from '../assets/muscles/rectus-capitis-anterior.png';
 import rectusCapitisLateralisImg from '../assets/muscles/rectus-capitis-lateralis.png';
 
+import semispinalisImg from '../assets/muscles/semispinalis.png';
+import multifidusImg from '../assets/muscles/multifidus.png';
+import rotatoresImg from '../assets/muscles/rotatores.png';
+import interspinalesImg from '../assets/muscles/interspinales.png';
+import intertransversariiImg from '../assets/muscles/intertransversarii.png';
+import levatoresCostarumImg from '../assets/muscles/levatores-costarum.png';
+import rectusCapitisPosteriorMajorImg from '../assets/muscles/rectus-capitis-posterior-major.png';
+import rectusCapitisPosteriorMinorImg from '../assets/muscles/rectus-capitis-posterior-minor.png';
+import obliquusCapitisInferiorImg from '../assets/muscles/obliquus-capitis-inferior.png';
+import obliquusCapitisSuperiorImg from '../assets/muscles/obliquus-capitis-superior.png';
+import transversusAbdominisImg from '../assets/muscles/transversus-abdominis.png';
+import rectusAbdominisImg from '../assets/muscles/rectus-abdominis.png';
+import cremasterImg from '../assets/muscles/cremaster.png';
+import anteriorScaleneImg from '../assets/muscles/anterior-scalene.png';
+import middleScaleneImg from '../assets/muscles/middle-scalene.png';
+import transversusThoracisImg from '../assets/muscles/transversus-thoracis.png';
+import subcostalMusclesImg from '../assets/muscles/subcostal-muscles.png';
 
+import pronatorQuadratusImg from '../assets/muscles/pronator-quadratus.png';
+import ecrbImg from '../assets/muscles/extensor-carpi-radialis-brevis.png';
+import extensorDigitiMinimiImg from '../assets/muscles/extensor-digiti-minimi.png';
+import ecuImg2 from '../assets/muscles/extensor-carpi-ulnaris.png'; // Distinct from fcuImg
+import extensorIndicisImg from '../assets/muscles/extensor-indicis.png';
+import aplImg from '../assets/muscles/abductor-pollicis-longus.png';
+import epbImg from '../assets/muscles/extensor-pollicis-brevis.png';
+import eplImg from '../assets/muscles/extensor-pollicis-longus.png';
+import apbImg from '../assets/muscles/abductor-pollicis-brevis.png';
+import fpbImg from '../assets/muscles/flexor-pollicis-brevis.png';
+import opponensPollicisImg from '../assets/muscles/opponens-pollicis.png';
+import admImg from '../assets/muscles/abductor-digiti-minimi.png';
+import fdmbImg from '../assets/muscles/flexor-digiti-minimi-brevis.png';
+import odmImg from '../assets/muscles/opponens-digiti-minimi.png';
+import palmarisBrevisImg from '../assets/muscles/palmaris-brevis.png';
 export const muscles = [
     // 0. Head & Face
     // Facial Expression (CN VII)
@@ -577,7 +609,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Bilat: Ext head/spine. Unilat: Contralateral Rotation.',
         clinicalNotes: ' spans 4-6 segments. Semispinalis Capitis pierces roof of suboccipital triangle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: semispinalisImg,
         category: 'Back: Transversospinalis'
     },
     {
@@ -588,7 +620,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Stabilize vertebrae. Contralateral Rotation, Extension.',
         clinicalNotes: 'Thickest in Lumbar region. Stabilizer.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: multifidusImg,
         category: 'Back: Transversospinalis'
     },
     {
@@ -599,7 +631,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Proprioception (mostly), Contralateral rotation, Extension.',
         clinicalNotes: 'Deepest of Transversospinalis.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: rotatoresImg,
         category: 'Back: Transversospinalis'
     },
     {
@@ -610,7 +642,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Ext spine.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: interspinalesImg,
         category: 'Back: Deep Minor'
     },
     {
@@ -621,7 +653,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Lat Flex spine.',
         clinicalNotes: 'Proprioception.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: intertransversariiImg,
         category: 'Back: Deep Minor'
     },
     {
@@ -632,7 +664,7 @@ export const muscles = [
         nerve: 'Dorsal rami.',
         action: 'Elevate ribs (Inspiration), Lat Flex spine.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: levatoresCostarumImg,
         category: 'Back: Deep Minor'
     },
     {
@@ -643,7 +675,7 @@ export const muscles = [
         nerve: 'Suboccipital n. (C1).',
         action: 'Ext head, Ipsilateral Rotation.',
         clinicalNotes: 'Medial border of Suboccipital Triangle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: rectusCapitisPosteriorMajorImg,
         category: 'Back: Suboccipital'
     },
     {
@@ -654,7 +686,7 @@ export const muscles = [
         nerve: 'Suboccipital n. (C1).',
         action: 'Ext head.',
         clinicalNotes: 'Medial to Major. Not in triangle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: rectusCapitisPosteriorMinorImg,
         category: 'Back: Suboccipital'
     },
     {
@@ -665,7 +697,7 @@ export const muscles = [
         nerve: 'Suboccipital n. (C1).',
         action: 'Ipsilateral Rotation of Head (C1 on C2).',
         clinicalNotes: 'Inferior border of Triangle. Only Capitis with NO head attachment.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: obliquusCapitisInferiorImg,
         category: 'Back: Suboccipital'
     },
     {
@@ -676,7 +708,7 @@ export const muscles = [
         nerve: 'Suboccipital n. (C1).',
         action: 'Ext head, Ipsilateral Flexion.',
         clinicalNotes: 'Lateral border of Triangle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: obliquusCapitisSuperiorImg,
         category: 'Back: Suboccipital'
     },
     {
@@ -946,7 +978,7 @@ export const muscles = [
         nerve: 'AIN branch of Median nerve (C8, T1)',
         action: 'Pronates forearm; Stabilizes distal radioulnar joint.',
         clinicalNotes: 'Deepest muscle. Cannot be palpated. Test with elbow flexed to isolate from Teres.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: pronatorQuadratusImg,
         category: 'Forearm (Anterior)'
     },
     {
@@ -979,7 +1011,7 @@ export const muscles = [
         nerve: 'Deep Branch of Radial nerve (C6, C7, C8)',
         action: 'Extension & Radial deviation of wrist/hand.',
         clinicalNotes: 'Tennis Elbow (Lateral Epicondylitis) common site.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: ecrbImg,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1001,7 +1033,7 @@ export const muscles = [
         nerve: 'PIN (Posterior Interosseous branch) of Radial nerve (C6, C7, C8)',
         action: 'Extension of 5th digit (MCP & IP).',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: extensorDigitiMinimiImg,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1012,7 +1044,7 @@ export const muscles = [
         nerve: 'PIN (Posterior Interosseous branch) of Radial nerve (C6, C7, C8)',
         action: 'Extension & Ulnar deviation of wrist/hand.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: ecuImg2,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1034,7 +1066,7 @@ export const muscles = [
         nerve: 'PIN (Radial) (C6, C7, C8)',
         action: 'Extension of 2nd digit.',
         clinicalNotes: 'Deep muscle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: extensorIndicisImg,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1045,7 +1077,7 @@ export const muscles = [
         nerve: 'PIN (Radial) (C6, C7, C8)',
         action: 'Abducts & Extends thumb (CMC).',
         clinicalNotes: 'Outcropping muscle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: aplImg,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1056,7 +1088,7 @@ export const muscles = [
         nerve: 'PIN (Radial) (C6, C7, C8)',
         action: 'Extends MCP joint of thumb; Extends CMC.',
         clinicalNotes: 'Outcropping muscle.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: epbImg,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1067,7 +1099,7 @@ export const muscles = [
         nerve: 'PIN (Radial) (C6, C7, C8)',
         action: 'Extends IP joint of thumb; Extends MCP & CMC.',
         clinicalNotes: 'Outcropping muscle. " Anatomical Snuffbox" medial border.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: eplImg,
         category: 'Forearm (Posterior)'
     },
     {
@@ -1089,7 +1121,7 @@ export const muscles = [
         nerve: 'Median nerve (Recurrent Branch) (C8, T1)',
         action: 'Abducts thumb; Assists opposition.',
         clinicalNotes: 'Part of Thenar Eminence.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: apbImg,
         category: 'Hand'
     },
     {
@@ -1100,7 +1132,7 @@ export const muscles = [
         nerve: 'Median nerve (Recurrent Branch). Deep head: Ulnar nerve.',
         action: 'Flexes thumb (MCP).',
         clinicalNotes: 'Dual innervation common.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: fpbImg,
         category: 'Hand'
     },
     {
@@ -1111,7 +1143,7 @@ export const muscles = [
         nerve: 'Median nerve (Recurrent Branch) (C8, T1)',
         action: 'Opposes thumb (Rotates MC medially).',
         clinicalNotes: 'Deep to APB.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: opponensPollicisImg,
         category: 'Hand'
     },
     {
@@ -1133,7 +1165,7 @@ export const muscles = [
         nerve: 'Ulnar nerve (C8, T1)',
         action: 'Abducts 5th digit.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: admImg,
         category: 'Hand'
     },
     {
@@ -1144,7 +1176,7 @@ export const muscles = [
         nerve: 'Ulnar nerve (C8, T1)',
         action: 'Flexes 5th digit (MCP).',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: fdmbImg,
         category: 'Hand'
     },
     {
@@ -1155,7 +1187,7 @@ export const muscles = [
         nerve: 'Ulnar nerve (C8, T1)',
         action: 'Opposes 5th digit.',
         clinicalNotes: '',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: odmImg,
         category: 'Hand'
     },
     {
@@ -1166,7 +1198,7 @@ export const muscles = [
         nerve: 'Ulnar nerve (Superficial Branch).',
         action: 'Wrinkles skin of hypothenar eminence; Deepens palmar hollow.',
         clinicalNotes: 'Subcutaneous muscle. NOT in hypothenar compartment.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: palmarisBrevisImg,
         category: 'Hand'
     },
     {
@@ -1788,7 +1820,7 @@ export const muscles = [
         nerve: 'Ventral rami T8-T12, L1.',
         action: 'Compress/Support abdominal viscera.',
         clinicalNotes: 'Deepest layer. Horizontal fibers ("Corset").',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: transversusAbdominisImg,
         category: 'Abdomen'
     },
     {
@@ -1799,7 +1831,7 @@ export const muscles = [
         nerve: 'Ventral rami T7-T12.',
         action: 'Flex trunk. Compress abdominal viscera.',
         clinicalNotes: 'Six-pack muscle. Separated by Linea Alba. Enclosed in Rectus Sheath.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: rectusAbdominisImg,
         category: 'Abdomen'
     },
     {
@@ -1810,7 +1842,7 @@ export const muscles = [
         nerve: 'Genital branch of Genitofemoral n. (L1-L2).',
         action: 'Elevates testis (thermoregulation).',
         clinicalNotes: 'Cremasteric reflex (L1-L2).',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: cremasterImg,
         category: 'Abdomen'
     },
     {
@@ -1821,7 +1853,7 @@ export const muscles = [
         nerve: 'Ventral rami T12-L4.',
         action: 'Extends/Laterally flexes spine. Fixes 12th rib.',
         clinicalNotes: 'often listed with posterior abdominal wall.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: quadratusLumborumImg,
         category: 'Abdomen'
     },
     // Neck
@@ -1833,7 +1865,7 @@ export const muscles = [
         nerve: 'Accessory Nerve (CN XI).',
         action: 'Bilat: Flex neck. Unilat: Rotate opposite, Sidebend same.',
         clinicalNotes: 'Torticollis (wry neck). Key landmark for anterior/posterior triangles.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: scmImg,
         category: 'Neck'
     },
     {
@@ -1844,7 +1876,7 @@ export const muscles = [
         nerve: 'Ventral rami C4-C6.',
         action: 'Elevate 1st rib (Inspiration). Sidebend neck.',
         clinicalNotes: 'Brachial Plexus/Subclavian Artery pass between Ant/Mid Scalene.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: anteriorScaleneImg,
         category: 'Neck'
     },
     {
@@ -1855,7 +1887,7 @@ export const muscles = [
         nerve: 'Ventral rami C3-C8.',
         action: 'Elevate 1st rib (Inspiration). Sidebend neck.',
         clinicalNotes: 'Largest scalene.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: middleScaleneImg,
         category: 'Neck'
     },
     {
@@ -1911,7 +1943,7 @@ export const muscles = [
         nerve: 'Intercostal nerves.',
         action: 'Depress ribs (weakly). Proprioception.',
         clinicalNotes: 'Continuous with Transversus Abdominis inferiorly.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: transversusThoracisImg,
         category: 'Thorax'
     },
     {
@@ -1922,7 +1954,7 @@ export const muscles = [
         nerve: 'Intercostal nerves.',
         action: 'Depress ribs.',
         clinicalNotes: 'Spans multiple ribs.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: subcostalMusclesImg,
         category: 'Thorax'
     },
     {
@@ -1933,7 +1965,7 @@ export const muscles = [
         nerve: 'Dorsal rami C8-T11.',
         action: 'Elevate ribs.',
         clinicalNotes: 'Technically back muscles but functional for thorax.',
-        imageUrl: musclePlaceholderImg,
+        imageUrl: levatoresCostarumImg,
         category: 'Thorax'
     },
     {

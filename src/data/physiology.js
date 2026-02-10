@@ -5,6 +5,7 @@
     thoracicRibsContent,
     lumbarPelvicContent,
     hipContent,
+    kneeContent,
     footAnkleContent
 } from './orthoContent';
 import { pharmacologyData } from './pharmacology';
@@ -52,6 +53,12 @@ import brainLobesImg from '../assets/neuromuscular/brain_lobes_schematic_1767883
 import circleWillisImg from '../assets/neuromuscular/circle_of_willis_schematic_1767883883015.png';
 import vestibularSystemImg from '../assets/neuromuscular/vestibular_system.png';
 
+
+import neuronGliaImg from '../assets/neuromuscular/neuron_glia_schematic_1768924384832.png';
+import synapseImg from '../assets/neuromuscular/synapse_schematic_1768924488210.png';
+import neuralDevImg from '../assets/neuromuscular/neural_development_schematic_1768924518301.png';
+import basalGangliaImg from '../assets/neuromuscular/basal_ganglia_schematic_1768924532237.png';
+import brainstemImg from '../assets/neuromuscular/brainstem_schematic_1768924575047.png';
 
 const shoulderContent = {
     pathologyInfo: true,
@@ -159,95 +166,7 @@ const shoulderContent = {
     ]
 };
 
-const kneeContent = {
-    pathologyInfo: true,
-    anatomy: {
-        bones: [
-            { name: 'Femur', description: 'Distal femur forms the femoral condyles/trochlea.' },
-            { name: 'Tibia', description: 'Proximal tibia (tibial plateau) bears weight.' },
-            { name: 'Fibula', description: 'Non-weight bearing, attachment site for LCL/Biceps Femoris.' },
-            { name: 'Patella', description: 'Sesamoid bone acting as a fulcrum to increase quad leverage.' }
-        ],
-        joints: [
-            { name: 'Tibiofemoral Joint (TFJ)', description: 'Modified hinge joint (double condyloid). Flexion/Extension + some rotation.' },
-            { name: 'Patellofemoral Joint (PFJ)', description: 'Articulation between patella and femoral trochlea. High reaction forces.' },
-            { name: 'Proximal Tibiofibular Joint', description: 'Plane synovial joint nearby.' }
-        ],
-        muscles: {
-            quadriceps: [
-                { name: 'Rectus Femoris', action: 'Knee Ext / Hip Flex' },
-                { name: 'Vastus Medialis (VMO)', action: 'Extension / Patellar stability' },
-                { name: 'Vastus Lateralis/Intermedius', action: 'Knee Extension' }
-            ],
-            hamstrings: [
-                { name: 'Biceps Femoris', action: 'Flexion / ER' },
-                { name: 'Semitendinosus/Membranosus', action: 'Flexion / IR' }
-            ],
-            other: [
-                { name: 'Popliteus', action: 'Unlocks knee (IR of tibia)' },
-                { name: 'Gastrocnemius', action: 'Knee Flexion / Plantarflexion' },
-                { name: 'TFL/IT Band', action: 'Lateral stability' },
-                { name: 'Sartorius/Gracilis', action: 'Pes Anserine group (Flexion/IR)' }
-            ]
-        },
-        ligaments: [
-            { name: 'ACL', description: 'Prevents anterior tibial translation & rotation.' },
-            { name: 'PCL', description: 'Prevents posterior tibial translation.' },
-            { name: 'MCL', description: 'Resists valgus stress.' },
-            { name: 'LCL', description: 'Resists varus stress.' },
-            { name: 'Menisci (Med/Lat)', description: 'Fibrocartilage for shock absorption & congruency.' }
-        ],
-        neurovascular: {
-            nerves: ['Femoral Nerve (Quads)', 'Sciatic -> Tibial/Common Peroneal (Hamstrings/Lower Leg)', 'Saphenous Nerve (Sensory medial knee)'],
-            vascular: ['Popliteal Artery', 'Genicular Arteries (Anastomosis)']
-        }
-    },
-    specialTests: [
-        {
-            category: 'Ligamentous', tests: [
-                { name: 'Lachman\'s', purpose: 'ACL (Gold Std)', positive: 'Soft end feel / translation' },
-                { name: 'Anterior Drawer', purpose: 'ACL', positive: 'Excessive ant. translation' },
-                { name: 'Posterior Drawer', purpose: 'PCL', positive: 'Excessive post. translation' },
-                { name: 'Valgus Stress', purpose: 'MCL', positive: 'Laxity at 30Â° (Iso) or 0Â° (Combined)' },
-                { name: 'Varus Stress', purpose: 'LCL', positive: 'Laxity at 30Â° flexion' }
-            ]
-        },
-        {
-            category: 'Meniscal', tests: [
-                { name: 'McMurray\'s', purpose: 'Meniscus tear', positive: 'Click/Pain with Rot+Ext' },
-                { name: 'Thessaly', purpose: 'Meniscus (func)', positive: 'Pain twisting on 1 leg' },
-                { name: 'Apley\'s Compression', purpose: 'Meniscus', positive: 'Pain with compression' }
-            ]
-        },
-        {
-            category: 'Patellofemoral', tests: [
-                { name: 'Patellar Apprehension', purpose: 'Patellar instability', positive: 'Contraction/Fear' },
-                { name: 'Clarke\'s Sign', purpose: 'PF Pain/Chondromalacia', positive: 'Pain with quad set' },
-                { name: 'Noble Compression', purpose: 'IT Band Friction', positive: 'Pain at 30Â° flexion' }
-            ]
-        }
-    ],
-    function: {
-        biomechanics: [
-            'Screw Home Mechanism: Tibia ERs (open chain) or Femur IRs (closed chain) to lock knee in full extension.',
-            'Q-Angle: Angle between ASIS-MidPatella and Tibial Tuberosity. > in females.',
-            'Patellar Tracking: Dependent on VMO/ITB balance and hip strength.'
-        ],
-        rom: [
-            { movement: 'Flexion', value: '0-135Â° (up to 150Â° passive)' },
-            { movement: 'Extension', value: '0Â° (up to 5-10Â° hyperextension)' },
-            { movement: 'Tibial Internal Rotation', value: '10-20Â° (at 90Â° flexion)' },
-            { movement: 'Tibial External Rotation', value: '30-40Â° (at 90Â° flexion)' }
-        ],
-        commonConditions: [
-            { category: 'Ligamentous', conditions: 'ACL/PCL Hx, MCL/LCL Sprains' },
-            { category: 'Meniscal', conditions: 'Traumatic Tears (Bucket handle), Degenerative' },
-            { category: 'Patellofemoral', conditions: 'PFPS (Runner\'s Knee), Chondromalacia, Dislocation' },
-            { category: 'Tendinopathy', conditions: 'Patellar Tendinitis (Jumper\'s Knee), Pes Anserine' },
-            { category: 'Pediatric', conditions: 'Osgood-Schlatter' }
-        ]
-    }
-};
+
 
 
 
@@ -265,15 +184,30 @@ export const physiologyTopics = [
                 image: cnsPnsImg,
                 introduction: 'The Human Nervous System is a complex network divided anatomically into CNS/PNS and physiologically into Somatic/Visceral systems.',
                 content: [
-                    'Anatomical Divisions:',
-                    '- Central Nervous System (CNS): Brain and Spinal Cord. Protected by skull/vertebrae and Meninges (Dura Mater, Arachnoid Mater, Pia Mater).',
-                    '- Peripheral Nervous System (PNS): Cranial Nerves (12 pairs) and Spinal Nerves (31 pairs). Connects CNS to the body.',
-                    'Peripheral Nerve Structure:',
-                    '- Wrappings: Epineurium (surrounds entire nerve), Perineurium (surrounds fascicles), Endoneurium (surrounds individual axons).',
-                    '- Dorsal Root Ganglion (DRG): Contains cell bodies of most sensory neurons (pseudounipolar).',
-                    'Physiological Divisions:',
-                    '- Somatic Nervous System: Innervates skin, joints, skeletal muscle. Functional unit: General Somatic Afferent (Sensory) & General Somatic Efferent (Motor).',
-                    '- Visceral (Autonomic) Nervous System: Innervates organs, vessels, glands, smooth muscle. Includes Sympathetic ("Fight or Flight") and Parasympathetic ("Rest and Digest").'
+                    {
+                        type: 'section',
+                        title: 'Anatomical Divisions',
+                        items: [
+                            '**Central Nervous System (CNS)**: Brain and Spinal Cord. Protected by skull/vertebrae and Meninges (Dura Mater, Arachnoid Mater, Pia Mater).',
+                            '**Peripheral Nervous System (PNS)**: Cranial Nerves (12 pairs) and Spinal Nerves (31 pairs). Connects CNS to the body.'
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        title: 'Peripheral Nerve Structure',
+                        items: [
+                            '**Wrappings**: Epineurium (surrounds entire nerve), Perineurium (surrounds fascicles), Endoneurium (surrounds individual axons).',
+                            '**Dorsal Root Ganglion (DRG)**: Contains cell bodies of most sensory neurons (pseudounipolar).'
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        title: 'Physiological Divisions',
+                        items: [
+                            '**Somatic Nervous System**: Innervates skin, joints, skeletal muscle. Functional unit: General Somatic Afferent (Sensory) & General Somatic Efferent (Motor).',
+                            '**Visceral (Autonomic) Nervous System**: Innervates organs, vessels, glands, smooth muscle. Includes Sympathetic ("Fight or Flight") and Parasympathetic ("Rest and Digest").'
+                        ]
+                    }
                 ],
                 clinicalRelevance: 'Damage to CNS (UMN) vs PNS (LMN) presents with distinct patterns. Meningitis is inflammation of the meninges surrounding the CNS.'
             },
@@ -281,74 +215,137 @@ export const physiologyTopics = [
                 id: 'neural-cells',
                 title: 'Cells of the Nervous System',
                 introduction: 'The nervous system consists of Neurons (signaling units) and Neuroglia (supporting cells).',
+                image: neuronGliaImg,
                 content: [
-                    'Neurons:',
-                    '- Structure: Soma (cell body), Dendrites (receive input), Axon (transmit output), Axon Hillock (trigger zone), Presynaptic Terminal (neurotransmitter release).',
-                    '- Types: Multipolar (most common, e.g., motor neurons), Bipolar (retina, vestibule), Pseudo-unipolar (sensory DRG).',
-                    'Neuroglia (Glial Cells):',
-                    '- Astrocytes (CNS): Blood-Brain Barrier (BBB), K+ buffering, structural support, scar formation (gliosis).',
-                    '- Oligodendrocytes (CNS): Myelination of multiple axons. Target of MS.',
-                    '- Microglia (CNS): Phagocytes (immune defense).',
-                    '- Ependymal Cells (CNS): Line ventricles, produce/circulate CSF.',
-                    '- Schwann Cells (PNS): Myelination of single axon segments. Vital for regeneration. Target of GBS.',
-                    '- Satellite Cells (PNS): Support cells in ganglia.'
+                    {
+                        type: 'section',
+                        title: 'Neurons (Signaling Units)',
+                        items: [
+                            '**Structure**: Soma (cell body), Dendrites (receive input), Axon (transmit output), Axon Hillock (trigger zone), Presynaptic Terminal (neurotransmitter release).',
+                            '**Types**: Multipolar (most common, e.g., motor neurons), Bipolar (retina, vestibule), Pseudo-unipolar (sensory DRG).'
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        title: 'Neuroglia (Supporting Cells)',
+                        items: [
+                            '**Astrocytes (CNS)**: Blood-Brain Barrier (BBB), K+ buffering, structural support, scar formation (gliosis).',
+                            '**Oligodendrocytes (CNS)**: Myelination of multiple axons. Target of MS.',
+                            '**Microglia (CNS)**: Phagocytes (immune defense).',
+                            '**Ependymal Cells (CNS)**: Line ventricles, produce/circulate CSF.',
+                            '**Schwann Cells (PNS)**: Myelination of single axon segments. Vital for regeneration. Target of GBS.',
+                            '**Satellite Cells (PNS)**: Support cells in ganglia.'
+                        ]
+                    }
                 ]
             },
             {
                 id: 'neurophysiology',
                 title: 'Neurophysiology: AP & Synapses',
-                image: nmjImg,
+                image: synapseImg,
                 introduction: 'Communication relies on electrical Action Potentials (AP) and Chemical Synapses.',
                 content: [
-                    'Resting Memberane Potential (RMP): ~-65 to -70mV. Maintained by Na+/K+ Pump (3 Na+ OUT, 2 K+ IN) and K+ leak channels.',
-                    'Action Potential Steps:',
-                    '1. Hypopolarization: Stimulus raises potential toward threshold.',
-                    '2. Depolarization: Voltage-gated Na+ channels open. Na+ influx. Potential spikes to +35mV.',
-                    '3. Repolarization: Na+ gates close. K+ gates open. K+ efflux. Potential drops.',
-                    '4. Hyperpolarization: K+ gates slow to close. Potential dips below RMP.',
-                    '5. Refractory Period: Absolute (no new AP possible) vs Relative (needs stronger stimulus).',
-                    'Conduction Velocity:',
-                    '- Increased by: Larger Axon Diameter (less resistance) and Myelination (Saltatory Conduction via Nodes of Ranvier).',
-                    '- Fiber Types: A-alpha (Fastest, Motor/Proprioception), A-beta (Touch), A-delta (Fast Pain), C-fibers (Slowest, Slow Pain/Temp).',
-                    'Synaptic Transmission:',
-                    '- AP triggers Ca2+ influx -> Vesicle fusion -> NT release -> Binding to Post-synaptic receptors -> EPSP (Excitatory) or IPSP (Inhibitory).',
-                    '- Summation: Spatial (multiple inputs) vs Temporal (high frequency input) determines if threshold is reached.'
-                ],
-                clinicalRelevance: 'Anesthetics (Lidocaine) block Na+ channels preventing APs. Demyelination slows conduction causing signal failure.'
+                    content: [
+                        {
+                            type: 'text',
+                            value: 'Resting Membrane Potential (RMP): ~-65 to -70mV. Maintained by Na+/K+ Pump (3 Na+ OUT, 2 K+ IN) and K+ leak channels.'
+                        },
+                        {
+                            type: 'section',
+                            title: 'Action Potential Steps',
+                            items: [
+                                '1. **Hypopolarization**: Stimulus raises potential toward threshold.',
+                                '2. **Depolarization**: Voltage-gated Na+ channels open. Na+ influx. Potential spikes to +35mV.',
+                                '3. **Repolarization**: Na+ gates close. K+ gates open. K+ efflux. Potential drops.',
+                                '4. **Hyperpolarization**: K+ gates slow to close. Potential dips below RMP.',
+                                '5. **Refractory Period**: Absolute (no new AP possible) vs Relative (needs stronger stimulus).'
+                            ]
+                        },
+                        {
+                            type: 'section',
+                            title: 'Conduction Velocity',
+                            items: [
+                                '**Increased by**: Larger Axon Diameter (less resistance) and Myelination (Saltatory Conduction via Nodes of Ranvier).',
+                                '**Fiber Types**: A-alpha (Fastest, Motor/Proprioception), A-beta (Touch), A-delta (Fast Pain), C-fibers (Slowest, Slow Pain/Temp).'
+                            ]
+                        },
+                        {
+                            type: 'section',
+                            title: 'Synaptic Transmission',
+                            items: [
+                                '**Process**: AP triggers Ca2+ influx -> Vesicle fusion -> NT release -> Binding to Post-synaptic receptors -> EPSP (Excitatory) or IPSP (Inhibitory).',
+                                '**Summation**: Spatial (multiple inputs) vs Temporal (high frequency input) determines if threshold is reached.'
+                            ]
+                        }
+                    ],
+                    clinicalRelevance: 'Anesthetics (Lidocaine) block Na+ channels preventing APs. Demyelination slows conduction causing signal failure.'
             },
             {
                 id: 'neurotransmitters',
                 title: 'Neurotransmitters',
                 introduction: 'Chemical messengers that transmit signals across a chemical synapse.',
                 content: [
-                    'Acetylcholine (ACh):',
-                    '- PNS: NMJ (Muscle contraction), Autonomic pre-ganglionic & Parasympathetic post-ganglionic.',
-                    '- CNS: Alertness, Memory (lost in Alzheimer\'s).',
-                    '- Receptors: Nicotinic (Fast, Ionotropic), Muscarinic (Slow, Metabotropic).',
-                    'Glutamate: Major EXCITATORY NT in CNS. involved in learning/memory. Excess = Excitotoxicity (Stroke/ALS).',
-                    'GABA: Major INHIBITORY NT in CNS. Site of action for Benzodiazepines/Baclofen.',
-                    'Dopamine: Motor control (Basal Ganglia - lost in PD), Reward/Motivation (Addiction).',
-                    'Norepinephrine (NE): Sympathetic post-ganglionic (Fight/flight). Mood/Arousal in CNS.',
-                    'Serotonin (5-HT): Mood, sleep, pain modulation. Target of SSRIs.'
-                ],
-                clinicalRelevance: 'Myasthenia Gravis (antibodies vs Nicotinic R). Curare (blocks Nicotinic R). Botox (blocks ACh release).'
+                    content: [
+                        {
+                            type: 'section',
+                            title: 'Acetylcholine (ACh)',
+                            items: [
+                                '**PNS**: NMJ (Muscle contraction), Autonomic pre-ganglionic & Parasympathetic post-ganglionic.',
+                                '**CNS**: Alertness, Memory (lost in Alzheimer\'s).',
+                                '**Receptors**: Nicotinic (Fast, Ionotropic), Muscarinic (Slow, Metabotropic).'
+                            ]
+                        },
+                        {
+                            type: 'section',
+                            title: 'Amino Acids & Amines',
+                            items: [
+                                '**Glutamate**: Major EXCITATORY NT in CNS. involved in learning/memory. Excess = Excitotoxicity (Stroke/ALS).',
+                                '**GABA**: Major INHIBITORY NT in CNS. Site of action for Benzodiazepines/Baclofen.',
+                                '**Dopamine**: Motor control (Basal Ganglia - lost in PD), Reward/Motivation (Addiction).',
+                                '**Norepinephrine (NE)**: Sympathetic post-ganglionic (Fight/flight). Mood/Arousal in CNS.',
+                                '**Serotonin (5-HT)**: Mood, sleep, pain modulation. Target of SSRIs.'
+                            ]
+                        }
+                    ],
+                    clinicalRelevance: 'Myasthenia Gravis (antibodies vs Nicotinic R). Curare (blocks Nicotinic R). Botox (blocks ACh release).'
             },
             {
                 id: 'neural-development',
                 title: 'Neural Development',
+                image: neuralDevImg,
                 introduction: 'The nervous system develops from the Ectoderm during the 3rd week of gestation (Neurulation).',
                 content: [
-                    'Neurulation: Neural Plate -> Neural Groove -> Neural Tube (CNS) + Neural Crest (PNS).',
-                    'Neural Tube Defects:',
-                    '- Anencephaly: Failure of cranial pore closure (fatal).',
-                    '- Spina Bifida: Failure of caudal pore closure. (Occulta, Meningocele, Myelomeningocele).',
-                    'Vesicle Formation:',
-                    '- Prosencephalon (Forebrain): Becomes Telencephalon (Cerebrum) + Diencephalon (Thalamus/Hypothalamus).',
-                    '- Mesencephalon (Midbrain): Remains Midbrain.',
-                    '- Rhombencephalon (Hindbrain): Becomes Metencephalon (Pons/Cerebellum) + Myelencephalon (Medulla).',
-                    'Cellular Migration: Neurons migrate on Radial Glia fibers to form cortical layers (Inside-Out pattern).'
-                ],
-                clinicalRelevance: 'Folic Acid supplementation reduces risk of Neural Tube Defects.'
+                    content: [
+                        {
+                            type: 'section',
+                            title: 'Neurulation',
+                            items: [
+                                '**Process**: Neural Plate -> Neural Groove -> Neural Tube (CNS) + Neural Crest (PNS).'
+                            ]
+                        },
+                        {
+                            type: 'section',
+                            title: 'Neural Tube Defects',
+                            items: [
+                                '**Anencephaly**: Failure of cranial pore closure (fatal).',
+                                '**Spina Bifida**: Failure of caudal pore closure. (Occulta, Meningocele, Myelomeningocele).'
+                            ]
+                        },
+                        {
+                            type: 'section',
+                            title: 'Vesicle Formation',
+                            items: [
+                                '**Prosencephalon (Forebrain)**: Becomes Telencephalon (Cerebrum) + Diencephalon (Thalamus/Hypothalamus).',
+                                '**Mesencephalon (Midbrain)**: Remains Midbrain.',
+                                '**Rhombencephalon (Hindbrain)**: Becomes Metencephalon (Pons/Cerebellum) + Myelencephalon (Medulla).'
+                            ]
+                        },
+                        {
+                            type: 'text',
+                            value: 'Cellular Migration: Neurons migrate on Radial Glia fibers to form cortical layers (Inside-Out pattern).'
+                        }
+                    ],
+                    clinicalRelevance: 'Folic Acid supplementation reduces risk of Neural Tube Defects.'
             },
             {
                 id: 'brain-anatomy',
@@ -434,31 +431,61 @@ export const physiologyTopics = [
                 image: brainLobesImg,
                 introduction: 'A deeper look into the anatomical Divisions and Functional Areas of the Cerebrum.',
                 content: [
-                    'Telencephalon: The two Cerebral Hemispheres.',
-                    'Cerebral Cortex: Gray matter arranged in columns (~75% of cortex is Associative).',
-                    'White Matter: Circuitry connecting regions (Fasciculi, Commissures, Projection Fibers).',
-                    'Basal Ganglia: Deep gray matter involved in motor control loop.'
+                    {
+                        type: 'section',
+                        title: 'Structure Overview',
+                        items: [
+                            '**Telencephalon**: The two Cerebral Hemispheres.',
+                            '**Cerebral Cortex**: Gray matter arranged in columns (~75% of cortex is Associative).',
+                            '**White Matter**: Circuitry connecting regions (Fasciculi, Commissures, Projection Fibers).',
+                            '**Basal Ganglia**: Deep gray matter involved in motor control loop.'
+                        ]
+                    }
                 ],
                 clinicalRelevance: 'Understanding the distinction between Gray Matter (processing) and White Matter (transmission) is key for localized vs. disconnect syndromes.'
             },
             {
                 id: 'deep-structures',
                 title: 'Basal Ganglia & Diencephalon',
+                image: basalGangliaImg,
                 content: [
-                    'Basal Ganglia: Striatum (Caudate + Putamen), Globus Pallidus, Substantia Nigra. Functions: Motor refinement, "Brake hypothesis".',
-                    'Thalamus: "Gateway to the Cortex". Relays all sensory info (except smell).',
-                    'Hypothalamus: Homeostasis (ANS, Endocrine, Limbic/Emotion regulation).',
-                    'Limbic System: Hippocampus (Declarative Memory), Amygdala (Fear/Emotion).'
+                    {
+                        type: 'section',
+                        title: 'Basal Ganglia',
+                        items: [
+                            '**Components**: Striatum (Caudate + Putamen), Globus Pallidus, Substantia Nigra.',
+                            '**Functions**: Motor refinement, "Brake hypothesis" (selecting desired movements and suppressing unwanted ones).'
+                        ]
+                    },
+                    {
+                        type: 'section',
+                        title: 'Diencephalon',
+                        items: [
+                            '**Thalamus**: "Gateway to the Cortex". Relays all sensory info (except smell).',
+                            '**Hypothalamus**: Homeostasis (ANS, Endocrine, Limbic/Emotion regulation).',
+                            '**Limbic System**: Hippocampus (Declarative Memory), Amygdala (Fear/Emotion).'
+                        ]
+                    }
                 ]
             },
             {
                 id: 'brainstem-detailed',
                 title: 'Brainstem Anatomy',
+                image: brainstemImg,
                 content: [
-                    'Midbrain: Tectum, Tegmentum, Cerebral Peduncles.',
-                    'Pons: Middle cerebellar peduncles, Pneumotaxic center.',
-                    'Medulla: Pyramidal decussation (CST crossing), Cardiorespiratory centers.',
-                    'Reticular Formulation: Arousal and Consciousness. Damage = Coma.'
+                    {
+                        type: 'section',
+                        title: 'Brainstem Divisions',
+                        items: [
+                            '**Midbrain**: Tectum (Superior/Inferior Colliculi), Tegmentum, Cerebral Peduncles.',
+                            '**Pons**: "Bridge". Contains Middle cerebellar peduncles, Pneumotaxic center.',
+                            '**Medulla**: Pyramidal decussation (CST crossing), Cardiorespiratory centers.'
+                        ]
+                    },
+                    {
+                        type: 'text',
+                        value: 'Reticular Formation: Diffuse network essential for Arousal and Consciousness. Damage = Coma.'
+                    }
                 ]
             },
             {
@@ -4442,6 +4469,136 @@ export const physiologyTopics = [
                     ' 4. Non-Contact Training.',
                     ' 5. Full Contact Practice.',
                     ' 6. Return to Sport.'
+                ]
+            }
+        ]
+    },
+
+    {
+        id: 'clinical-safety',
+        title: 'Clinical Safety & Precautions',
+        image: null,
+        description: 'Essential guidelines for patient safety, infection control, and post-operative precautions.',
+        subtopics: [
+            {
+                id: 'infection-control',
+                title: 'Infection Control Precautions',
+                introduction: 'Standard and Transmission-based precautions are critical for preventing HAIs (Healthcare-Associated Infections).',
+                clinicalRelevance: 'Always assume infectious potential (Standard Precautions). Hand hygiene is the #1 prevention method.',
+                type: 'infection-table',
+                content: [
+                    'Standard Precautions: - Apply to ALL patients. - Hand hygiene (Gel in/out).',
+                    'Contact Precautions (Gown + Gloves): - "Mrs. Wee" (Multidrug-resistant organisms).',
+                    'Droplet Precautions (Mask + Eye): - "Spiderman" (Sepsis, Pneumonia, Influenza).',
+                    'Airborne Precautions (N95): - "MTV" (Measles, TB, Varicella).'
+                ],
+                diseases: [
+                    { name: 'MRSA', type: 'Contact', ppe: 'Gown + Gloves', notes: 'Methicillin-Resistant Staph Aureus. Part of "Mrs. Wee". Active infection requires isolation.' },
+                    { name: 'VRE', type: 'Contact', ppe: 'Gown + Gloves', notes: 'Vancomycin-Resistant Enterococcus. Part of "Mrs. Wee".' },
+                    { name: 'C. Diff', type: 'Contact (Plus)', ppe: 'Gown + Gloves', notes: 'Clostridium Difficile. MUST use Soap & Water. Alcohol sanitizer is ineffective against spores.' },
+                    { name: 'Influenza (Flu)', type: 'Droplet', ppe: 'Surgical Mask + Eye Shield', notes: 'Patient must wear a surgical mask during transport out of the room.' },
+                    { name: 'Pneumonia/Pertussis', type: 'Droplet', ppe: 'Surgical Mask + Eye Shield', notes: 'Whooping cough (Pertussis) is highly contagious via droplets.' },
+                    { name: 'Tuberculosis (TB)', type: 'Airborne', ppe: 'N95 Respirator', notes: 'Requires Negative Pressure Room. Door must remain closed. Latent TB is not infectious.' },
+                    { name: 'Measles', type: 'Airborne', ppe: 'N95 Respirator', notes: 'Highly contagious virus. Part of "MTV" mnemonic.' },
+                    { name: 'Varicella (Chickenpox)', type: 'Airborne', ppe: 'N95 Respirator', notes: 'Herpes Zoster (Shingles) also requires Airborne precautions if disseminated (widespread).' },
+                    { name: 'COVID-19', type: 'Droplet / Airborne', ppe: 'N95 + Gown + Gloves + Eye', notes: 'Precautions may vary by facility. Aerosol-generating procedures require Airborne precautions.' },
+                    { name: 'Lice / Scabies', type: 'Contact', ppe: 'Gown + Gloves', notes: 'Direct skin-to-skin contact transmission. Part of "Mrs. Wee" (Skin infections).' },
+                    { name: 'Mumps / Rubella', type: 'Droplet', ppe: 'Surgical Mask', notes: 'Spread via respiratory droplets.' }
+                ]
+            },
+            {
+                id: 'post-op-precautions',
+                title: 'Post-Operative Precautions',
+                introduction: 'Strict adherence to movement restrictions protects surgical repairs.',
+                clinicalRelevance: 'Breaking precautions can lead to dislocation (Hip) or failure of fusion/fixation.',
+                content: [
+                    'Total Hip Arthroplasty (THA):',
+                    ' - Posterior Approach: No Flexion >90°, No Adduction (crossing legs), No Internal Rotation.',
+                    ' - Anterior Approach: No Extension, No External Rotation.',
+                    'Spinal Precautions (BLT):',
+                    ' - No Bending (at waist).',
+                    ' - No Lifting (>5-10 lbs/gallon of milk).',
+                    ' - No Twisting (Log roll for bed mobility).',
+                    'Sternal Precautions (CABG/Open Heart):',
+                    ' - No pushing/pulling.',
+                    ' - No lifting >5-10 lbs.',
+                    ' - No reaching behind back (bilaterally).',
+                    ' - Splint chest with pillow when coughing.'
+                ]
+            },
+            {
+                id: 'general-safety',
+                title: 'General Clinical Safety',
+                introduction: 'Management of acute events and basic safety protocols.',
+                clinicalRelevance: 'Patient safety is the primary responsibility of the therapist.',
+                content: [
+                    'Weight Bearing Status:',
+                    ' - NWB: 0% weight. Foot does not touch ground.',
+                    ' - TTWB/TDWB: Foot can rest for balance only (egg under foot).',
+                    ' - PWB: 20-50% weight.',
+                    ' - WBAT: Patient comfort dictates limit.',
+                    ' - FWB: 100% weight.',
+                    'Seizure Management:',
+                    ' - Safety: Lower to ground, cushion head, move objects away.',
+                    ' - Action: Time the seizure, turn to side (recovery position) post-ictal.',
+                    ' - DO NOT: Restrain or put objects in mouth.',
+                    'Fall Prevention:',
+                    ' - Use Gait Belt for all transfers/mobility.',
+                    ' - Clear environment of cords/rugs.',
+                    ' - Lock wheelchair brakes.'
+                ]
+            },
+            {
+                id: 'medical-emergencies',
+                title: 'Medical Emergencies (Red Flags)',
+                introduction: 'Immediate recognition and action are required for these life-threatening conditions.',
+                clinicalRelevance: 'Stop treatment immediately. Initiate emergency response (Code Blue/911). Do NOT leave the patient alone.',
+                content: [
+                    'Cardiac Arrest (Code Blue):',
+                    ' - Signs: Unresponsive, No pulse, No breathing.',
+                    ' - Action: Call Code/911 -> Start CPR (Push hard/fast, 100-120 bpm) -> Defibrillate (AED) ASAP.',
+                    'Myocardial Infarction (Heart Attack):',
+                    ' - Signs: Chest pain/pressure (Elephant on chest), Radiating pain (L arm/jaw), Diaphoresis (sweating), Shortness of breath.',
+                    ' - Action: Stop activity, Monitor Vitals, Call 911/Medical Team. (MONA protocol usually administered by nursing/EMS).',
+                    'Respiratory Distress / Hypoxia:',
+                    ' - Signs: SpO2 < 90% (unless COPD target 88-92%), Cyanosis (blue lips), Accessory muscle use, Inability to speak.',
+                    ' - Action: Sit patient up (High Fowler\'s), Pursed-lip breathing, Administer O2 (if prescribed/certified), Call for help.',
+                    'Stroke (CVA) - FAST Protocol:',
+                    ' - F: Face drooping (Ask to smile).',
+                    ' - A: Arm weakness (Ask to raise both arms).',
+                    ' - S: Speech difficulty (Slurred).',
+                    ' - T: Time to call 911 (Time is Brain).',
+                    'Hypoglycemia (Low Blood Sugar):',
+                    ' - Signs: <70 mg/dL. Shaking, Sweating, Dizzy, Irritable ("Hangry").',
+                    ' - Action: "Rule of 15" -> Give 15g Fast Carbs (Juice/Candy) -> Wait 15 min -> Re-check.',
+                    'Pulmonary Embolism (PE):',
+                    ' - Signs: Sudden acute shortness of breath, Chest pain (worse with deep breath), Rapid heart rate, Cough (maybe bloody).',
+                    ' - Action: Medical Emergency -> Call Rapid Response/911.',
+                    'Active Bleeding / Hemorrhage:',
+                    ' - Signs: Spurting blood (arterial) vs Oozing (venous), Hypotension (Shock), Tachycardia.',
+                    ' - Action: Apply direct pressure (gloved hand/gauze) -> Elevate limb (if no fracture) -> Tourniquet (if limb life-threatening) -> Call 911.'
+                ]
+            },
+            {
+                id: 'yellow-flags',
+                title: 'Yellow Flags (Psychosocial Barriers)',
+                introduction: 'Psychosocial factors that increase the risk of developing or perpetuating long-term disability and pain.',
+                clinicalRelevance: 'Screen early. High yellow flags require a modified approach: Education, Graded Exposure, and potentially Multidisciplinary care (Psychology).',
+                content: [
+                    'Maladaptive Beliefs:',
+                    ' - "Pain equals harm."',
+                    ' - "I must be pain-free to return to work/activity."',
+                    ' - Catastrophizing ("This will never get better").',
+                    'Emotional Responses:',
+                    ' - Fear-Avoidance Behavior (avoiding movement due to fear).',
+                    ' - Anxiety, Depression, Irritability.',
+                    'Pain Behaviors:',
+                    ' - Reliance on passive treatments (massage, meds, hot packs).',
+                    ' - "Boom-Bust" activity cycles (overdoing it -> crashing).',
+                    'Screening Tools:',
+                    ' - FABQ (Fear Avoidance Beliefs Questionnaire).',
+                    ' - PHQ-9 (Depression Screen).',
+                    ' - OSPRO-YF (Yellow Flag Screen).'
                 ]
             }
         ]

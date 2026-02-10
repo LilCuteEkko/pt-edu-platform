@@ -78,7 +78,7 @@ export const generateQuiz = (numQuestions = 5, mode = 'muscles', difficulty = 'm
     }
 
     const count = sourceData.length;
-    if (count < 4) return []; // Require minimum items for distractors
+    if (count < 2) return []; // Require at least 2 items (1 correct + 1 distractor minimum)
 
     // 2. Generate Questions
     while (questions.length < numQuestions) {
@@ -180,8 +180,12 @@ export const generateQuiz = (numQuestions = 5, mode = 'muscles', difficulty = 'm
                 }
             } else if (randomItem.type === 'brain-lobe') {
                 // Brain Lobe Logic
-                const type = Math.random() > 0.5 ? 'function' : 'damage';
-                if (type === 'function') {
+                let qType = 'function';
+                if (difficulty === 'easy') qType = 'function';
+                else if (difficulty === 'hard') qType = 'damage';
+                else qType = Math.random() > 0.5 ? 'function' : 'damage';
+
+                if (qType === 'function') {
                     questionText = `Which brain lobe is primarily responsible for: ${randomItem.functions.split(',')[0]}?`;
                     correctAnswer = randomItem.name;
                     explanation = `The ${randomItem.name} handles ${randomItem.functions}.`;
@@ -193,7 +197,13 @@ export const generateQuiz = (numQuestions = 5, mode = 'muscles', difficulty = 'm
                 options = [randomItem.name, ...distractors.map(d => d.name)];
             } else if (randomItem.type === 'dressing') {
                 // Dressing Logic
-                const dType = Math.floor(Math.random() * 3);
+                let dTypes = [];
+                if (difficulty === 'easy') dTypes = [2]; // Description only
+                else if (difficulty === 'hard') dTypes = [0, 1]; // Indications/Contraindications
+                else dTypes = [0, 1, 2];
+
+                const dType = dTypes[Math.floor(Math.random() * dTypes.length)];
+
                 if (dType === 0) {
                     questionText = `Which dressing is indicated for: ${randomItem.indications}?`;
                     correctAnswer = randomItem.name;
@@ -210,10 +220,22 @@ export const generateQuiz = (numQuestions = 5, mode = 'muscles', difficulty = 'm
                 options = [randomItem.name, ...distractors.map(d => d.name)];
             } else if (randomItem.type === 'modality') {
                 // Modality Logic
-                questionText = `Which modality is used for: "${randomItem.use}"?`;
-                correctAnswer = randomItem.name;
-                explanation = `${randomItem.name} is used for ${randomItem.use}.`;
-                options = [randomItem.name, ...distractors.map(d => d.name)];
+                let mType = 0; // 0: Use -> Name (Hard), 1: Name -> Use (Easy)
+                if (difficulty === 'easy') mType = 1;
+                else if (difficulty === 'hard') mType = 0;
+                else mType = Math.random() > 0.5 ? 0 : 1;
+
+                if (mType === 0) {
+                    questionText = `Which modality is used for: "${randomItem.use}"?`;
+                    correctAnswer = randomItem.name;
+                    explanation = `${randomItem.name} is used for ${randomItem.use}.`;
+                    options = [randomItem.name, ...distractors.map(d => d.name)];
+                } else {
+                    questionText = `What is a primary use of ${randomItem.name}?`;
+                    correctAnswer = randomItem.use;
+                    explanation = `${randomItem.name} is used for ${randomItem.use}.`;
+                    options = [randomItem.use, ...distractors.map(d => d.use)];
+                }
             }
         }
 

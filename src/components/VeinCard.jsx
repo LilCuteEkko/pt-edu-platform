@@ -1,163 +1,42 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useState } from 'react';
+import GenericAnatomyCard from './anatomy/GenericAnatomyCard';
 
 const VeinCard = ({ vein }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
     return (
-        <motion.div
-            layout
-            className={`vein-card ${isOpen ? 'open' : ''}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+        <GenericAnatomyCard
+            title={vein.name}
+            category="Vein"
+            color="#3B82F6"
+            // VeinCard did not have imageUrl prop originally, can be added if data has it
+            image={vein.imageUrl}
         >
-            <div className="card-header" onClick={() => setIsOpen(!isOpen)}>
-                <div className="header-text">
-                    <span className="category-badge">Vein</span>
-                    <h3>{vein.name}</h3>
-                </div>
-                <button className="toggle-btn">
-                    {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </button>
+            <div className="detail-row">
+                <strong>Drainage:</strong>
+                <p>{vein.drainage}</p>
             </div>
 
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        layout
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="card-content"
-                    >
-                        <div className="detail-row">
-                            <strong>Drainage:</strong>
-                            <p>{vein.drainage}</p>
-                        </div>
+            <div className="detail-row">
+                <strong>Course:</strong>
+                <p>{vein.course}</p>
+            </div>
 
-                        <div className="detail-row">
-                            <strong>Course:</strong>
-                            <p>{vein.course}</p>
-                        </div>
+            {vein.tributaries && vein.tributaries.length > 0 && (
+                <div className="detail-row">
+                    <strong>Tributaries:</strong>
+                    <ul className="detail-list">
+                        {vein.tributaries.map((tributary, index) => (
+                            <li key={index}>{tributary}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
 
-                        {vein.tributaries && vein.tributaries.length > 0 && (
-                            <div className="detail-row">
-                                <strong>Tributaries:</strong>
-                                <ul className="detail-list">
-                                    {vein.tributaries.map((tributary, index) => (
-                                        <li key={index}>{tributary}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-                        {vein.clinicalNotes && (
-                            <div className="detail-row clinical">
-                                <strong>Clinical Notes:</strong>
-                                <p>{vein.clinicalNotes}</p>
-                            </div>
-                        )}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <style>{`
-        .vein-card {
-          background: var(--color-surface);
-          border-radius: var(--radius-lg);
-          box-shadow: var(--shadow-sm);
-          overflow: hidden;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          border: 1px solid var(--color-border);
-        }
-        .vein-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        .vein-card.open {
-            border-color: #3B82F6; /* Blue for veins */
-        }
-        .card-header {
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            min-height: 80px;
-        }
-        .header-text h3 {
-            margin: 0;
-            font-size: 1.125rem;
-            color: var(--color-text);
-        }
-        .category-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #3B82F6; /* Blue for veins */
-            background: rgba(59, 130, 246, 0.1);
-            padding: 0.25rem 0.5rem;
-            border-radius: 999px;
-            margin-bottom: 0.5rem;
-        }
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: var(--color-text-muted);
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background 0.2s;
-            display: flex;
-        }
-        .card-content {
-          padding: 0 1.5rem 1.5rem 1.5rem;
-          border-top: 1px solid var(--color-border);
-        }
-        .detail-row {
-          margin-bottom: 1rem;
-          font-size: 0.95rem;
-          line-height: 1.5;
-        }
-        .detail-row strong {
-          display: block;
-          color: var(--color-text-muted);
-          font-size: 0.85rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin-bottom: 0.25rem;
-        }
-        .detail-row p {
-            color: var(--color-text);
-        }
-        .detail-list {
-            margin: 0;
-            padding-left: 1.25rem;
-            color: var(--color-text);
-        }
-        .detail-list li {
-            margin-bottom: 0.25rem;
-        }
-        .detail-row.clinical {
-          margin-top: 1rem;
-          padding: 1rem;
-          background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
-          border-radius: var(--radius-md);
-          border-left: 4px solid var(--color-accent);
-        }
-        .detail-row.clinical strong {
-             color: var(--color-accent);
-        }
-        .detail-row.clinical p {
-             margin: 0;
-             color: var(--color-text);
-             font-weight: 500;
-        }
-      `}</style>
-        </motion.div>
+            {vein.clinicalNotes && (
+                <div className="detail-row clinical">
+                    <strong>Clinical Notes:</strong>
+                    <p>{vein.clinicalNotes}</p>
+                </div>
+            )}
+        </GenericAnatomyCard>
     );
 };
 
